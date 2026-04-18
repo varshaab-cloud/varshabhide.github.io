@@ -72,7 +72,14 @@ async function convertPage(pageId) {
 }
 
 async function getDatabaseItems(databaseId) {
+  console.log(`  🔍 Querying database ID: ${databaseId}`);
   const res = await notion.databases.query({ database_id: databaseId });
+  console.log(`  📊 Items found: ${res.results.length}`);
+  res.results.forEach(item => {
+    const titleProp = Object.values(item.properties || {}).find(p => p.type === 'title');
+    const name = titleProp?.title?.[0]?.plain_text || 'Untitled';
+    console.log(`  - ${name} (${item.id})`);
+  });
   return res.results;
 }
 
@@ -81,6 +88,7 @@ async function renderDatabase(databaseId, dbTitle) {
   try {
     items = await getDatabaseItems(databaseId);
   } catch (e) {
+    console.log(`  ❌ Error querying database: ${e.message}`);
     return `<p><em>(Could not load "${dbTitle}" — make sure it's shared with the integration)</em></p>`;
   }
 
@@ -90,13 +98,12 @@ async function renderDatabase(databaseId, dbTitle) {
     const slug = slugify(itemTitle);
     const cover = item.cover?.external?.url || item.cover?.file?.url || '';
 
-    // Save each database item as its own page
     try {
       const itemHtml = await convertPage(item.id);
       fs.writeFileSync(`${slug}.html`, buildPage(itemTitle, itemHtml, '', false));
       console.log(`  ✅ ${slug}.html — ${itemTitle}`);
     } catch (e) {
-      console.log(`  ⚠️ Skipped ${itemTitle} — not shared with integration`);
+      console.log(`  ⚠️ Skipped ${itemTitle} — ${e.message}`);
     }
 
     return `
@@ -115,6 +122,8 @@ async function renderDatabase(databaseId, dbTitle) {
 
 async function getPageBlocks(pageId) {
   const res = await notion.blocks.children.list({ block_id: pageId });
+  console.log(`📋 Found ${res.results.length} blocks on root page`);
+  res.results.forEach(b => console.log(`  - type: ${b.type}`));
   return res.results;
 }
 
@@ -126,7 +135,9 @@ async function getPageBlocks(pageId) {
   const childPages = blocks.filter(b => b.type === 'child_page');
   const childDatabases = blocks.filter(b => b.type === 'child_database');
 
-  // Build nav from child pages only
+  console.log(`📄 Child pages found: ${childPages.length}`);
+  console.log(`📦 Child databases found: ${childDatabases.length}`);
+
   const navLinks = childPages.length
     ? `<nav>${childPages.map(p => {
         const slug = slugify(p.child_page.title);
@@ -134,10 +145,8 @@ async function getPageBlocks(pageId) {
       }).join('')}</nav>`
     : '';
 
-  // Build index page — main content + embedded databases as card grids
   let rootHtml = await convertPage(rootId);
 
-  // Render each database inline on the homepage
   for (const db of childDatabases) {
     const dbTitle = db.child_database?.title || 'Projects';
     console.log(`📦 Rendering database: ${dbTitle}`);
@@ -148,7 +157,6 @@ async function getPageBlocks(pageId) {
   fs.writeFileSync('index.html', buildPage(rootTitle, rootHtml, navLinks, true));
   console.log(`✅ index.html — ${rootTitle}`);
 
-  // Build each child page
   for (const block of childPages) {
     const subTitle = block.child_page.title;
     const slug = slugify(subTitle);
