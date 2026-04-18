@@ -2,8 +2,8 @@ name: Sync Notion to GitHub Pages
 
 on:
   schedule:
-    - cron: '0 * * * *'  # every hour
-  workflow_dispatch:       # manual trigger anytime
+    - cron: '0 * * * *'
+  workflow_dispatch:
 
 jobs:
   sync:
@@ -11,12 +11,12 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
 
       - name: Install dependencies
         run: npm install @notionhq/client notion-to-md marked
