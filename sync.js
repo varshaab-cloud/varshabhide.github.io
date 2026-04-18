@@ -23,9 +23,17 @@ const CSS = `
   hr { border: none; border-top: 1px solid #e0e0e0; margin: 32px 0; }
   code { background: #f4f4f4; padding: 2px 6px; border-radius: 4px; font-size: 0.9em; }
   blockquote { border-left: 4px solid #e0e0e0; padding-left: 16px; color: #666; margin: 16px 0; }
-  nav { margin-bottom: 40px; font-size: 0.9rem; color: #888; }
-  nav a { color: #555; margin-right: 16px; }
+  nav { margin-bottom: 40px; padding: 16px 0; border-bottom: 1px solid #e0e0e0; }
+  nav a { color: #555; margin-right: 20px; font-size: 0.95rem; font-weight: 500; }
+  nav a:hover { color: #0070f3; }
   .back { display: inline-block; margin-bottom: 24px; font-size: 0.9rem; color: #888; }
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; margin: 20px 0; }
+  .card { border: 1px solid #e0e0e0; border-radius: 10px; overflow: hidden; transition: box-shadow 0.2s; }
+  .card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+  .card img { width: 100%; height: 160px; object-fit: cover; }
+  .card-body { padding: 14px; }
+  .card-title { font-weight: 600; font-size: 0.95rem; }
+  .card a { text-decoration: none; color: inherit; }
 `;
 
 function buildPage(title, bodyHtml, navLinks = '', isRoot = true) {
@@ -47,10 +55,14 @@ function buildPage(title, bodyHtml, navLinks = '', isRoot = true) {
 </html>`;
 }
 
+function slugify(text) {
+  return text.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+}
+
 async function getTitle(pageId) {
   const page = await notion.pages.retrieve({ page_id: pageId });
   const titleProp = Object.values(page.properties || {}).find(p => p.type === 'title');
-  return titleProp?.title?.[0]?.plain_text || 'Untitled';
+  return titleProp?.title?.[0]?.plain_text || page.child_page?.title || 'Untitled';
 }
 
 async function convertPage(pageId) {
@@ -59,33 +71,88 @@ async function convertPage(pageId) {
   return marked(md.parent || '');
 }
 
-async function getSubpages(pageId) {
-  const blocks = await notion.blocks.children.list({ block_id: pageId });
-  return blocks.results.filter(b => b.type === 'child_page');
+async function getDatabaseItems(databaseId) {
+  const res = await notion.databases.query({ database_id: databaseId });
+  return res.results;
+}
+
+async function renderDatabase(databaseId, dbTitle) {
+  let items;
+  try {
+    items = await getDatabaseItems(databaseId);
+  } catch (e) {
+    return `<p><em>(Could not load "${dbTitle}" — make sure it's shared with the integration)</em></p>`;
+  }
+
+  const cards = await Promise.all(items.map(async (item) => {
+    const titleProp = Object.values(item.properties || {}).find(p => p.type === 'title');
+    const itemTitle = titleProp?.title?.[0]?.plain_text || 'Untitled';
+    const slug = slugify(itemTitle);
+    const cover = item.cover?.external?.url || item.cover?.file?.url || '';
+
+    // Save each database item as its own page
+    try {
+      const itemHtml = await convertPage(item.id);
+      fs.writeFileSync(`${slug}.html`, buildPage(itemTitle, itemHtml, '', false));
+      console.log(`  ✅ ${slug}.html — ${itemTitle}`);
+    } catch (e) {
+      console.log(`  ⚠️ Skipped ${itemTitle} — not shared with integration`);
+    }
+
+    return `
+      <div class="card">
+        <a href="${slug}.html">
+          ${cover ? `<img src="${cover}" alt="${itemTitle}"/>` : ''}
+          <div class="card-body">
+            <div class="card-title">${itemTitle}</div>
+          </div>
+        </a>
+      </div>`;
+  }));
+
+  return `<h2>${dbTitle}</h2><div class="card-grid">${cards.join('')}</div>`;
+}
+
+async function getPageBlocks(pageId) {
+  const res = await notion.blocks.children.list({ block_id: pageId });
+  return res.results;
 }
 
 (async () => {
   const rootId = process.env.NOTION_PAGE_ID;
   const rootTitle = await getTitle(rootId);
-  const subpages = await getSubpages(rootId);
+  const blocks = await getPageBlocks(rootId);
 
-  // Build nav links from subpages
-  const navLinks = subpages.length
-    ? `<nav>${subpages.map(p => {
-        const slug = p.child_page.title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+  const childPages = blocks.filter(b => b.type === 'child_page');
+  const childDatabases = blocks.filter(b => b.type === 'child_database');
+
+  // Build nav from child pages only
+  const navLinks = childPages.length
+    ? `<nav>${childPages.map(p => {
+        const slug = slugify(p.child_page.title);
         return `<a href="${slug}.html">${p.child_page.title}</a>`;
       }).join('')}</nav>`
     : '';
 
-  // Build index.html
-  const rootHtml = await convertPage(rootId);
+  // Build index page — main content + embedded databases as card grids
+  let rootHtml = await convertPage(rootId);
+
+  // Render each database inline on the homepage
+  for (const db of childDatabases) {
+    const dbTitle = db.child_database?.title || 'Projects';
+    console.log(`📦 Rendering database: ${dbTitle}`);
+    const dbHtml = await renderDatabase(db.id, dbTitle);
+    rootHtml += dbHtml;
+  }
+
   fs.writeFileSync('index.html', buildPage(rootTitle, rootHtml, navLinks, true));
   console.log(`✅ index.html — ${rootTitle}`);
 
-  // Build each subpage
-  for (const block of subpages) {
+  // Build each child page
+  for (const block of childPages) {
     const subTitle = block.child_page.title;
-    const slug = subTitle.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+    const slug = slugify(subTitle);
+    console.log(`📄 Rendering page: ${subTitle}`);
     const subHtml = await convertPage(block.id);
     fs.writeFileSync(`${slug}.html`, buildPage(subTitle, subHtml, '', false));
     console.log(`✅ ${slug}.html — ${subTitle}`);
