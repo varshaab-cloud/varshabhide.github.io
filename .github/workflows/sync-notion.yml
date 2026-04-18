@@ -19,7 +19,7 @@ jobs:
           node-version: '20'
 
       - name: Install dependencies
-        run: npm install @notionhq/client notion-to-md marked
+        run: npm install @notionhq/client@2.2.15 notion-to-md marked
 
       - name: Sync Notion pages
         env:
