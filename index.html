@@ -16,6 +16,42 @@
       --white:   #ffffff;
     }
 
+    /* ── DARK MODE ── */
+    body.dark {
+      --black:   #eeeeee;
+      --gray:    #999999;
+      --light:   #1c1c1c;
+      --border:  #2d2d2d;
+      --white:   #0f0f0f;
+    }
+
+    body.dark .g-thumb.t1 { background: #2a1f1a; }
+    body.dark .g-thumb.t2 { background: #1a2224; }
+    body.dark .g-thumb.t3 { background: #25221a; }
+    body.dark .g-thumb.t4 { background: #1a221e; }
+    body.dark .c-thumb.t1 { background: #2a1f1a; }
+    body.dark .c-thumb.t2 { background: #1a2224; }
+    body.dark .c-thumb.t3 { background: #25221a; }
+    body.dark .c-thumb.t4 { background: #1a221e; }
+
+    /* dark mode toggle */
+    .theme-toggle {
+      width: 32px;
+      height: 32px;
+      background: none;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      transition: border-color 0.15s;
+      flex-shrink: 0;
+      font-family: inherit;
+    }
+
+    .theme-toggle:hover { border-color: var(--accent); }
+
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
       background: var(--white);
@@ -649,6 +685,10 @@
       margin: 0 auto;
       padding: 56px 56px 52px;
       border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 24px;
     }
 
     .about-page-header h1 {
@@ -657,6 +697,55 @@
       letter-spacing: -0.04em;
       line-height: 1.1;
     }
+
+    .about-header-actions { flex-shrink: 0; }
+
+    .cv-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--white);
+      background: var(--black);
+      padding: 10px 20px;
+      text-decoration: none;
+      transition: background 0.15s, color 0.15s;
+      letter-spacing: 0.01em;
+    }
+
+    .cv-btn:hover { background: var(--accent); color: var(--black); }
+
+    /* experience list */
+    .exp-list { display: flex; flex-direction: column; gap: 32px; margin-bottom: 20px; }
+
+    .exp-item { display: flex; gap: 32px; }
+
+    .exp-meta { width: 120px; flex-shrink: 0; }
+
+    .exp-year { font-size: 12px; color: var(--gray); letter-spacing: 0.02em; }
+
+    .exp-role {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--black);
+      margin-bottom: 3px;
+    }
+
+    .exp-company { font-size: 13px; color: var(--gray); margin-bottom: 8px; }
+
+    .exp-desc { font-size: 13px; color: var(--gray); line-height: 1.7; max-width: 400px; }
+
+    .exp-note { font-size: 13px; color: var(--gray); }
+
+    .inline-link {
+      color: var(--black);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+      transition: border-color 0.15s, color 0.15s;
+    }
+
+    .inline-link:hover { color: var(--accent); border-color: var(--accent); }
 
     .about-full { padding: 56px 0 80px; }
 
@@ -747,6 +836,7 @@
       <button onclick="navigate('projects')" data-page="projects">Work</button>
       <button onclick="navigate('about')" data-page="about">About</button>
       <button class="nav-contact" onclick="copyEmail()">Get in touch →</button>
+      <button class="theme-toggle" onclick="toggleDark()" id="themeBtn" title="Toggle dark mode">☽</button>
     </div>
   </nav>
 
@@ -830,8 +920,8 @@
           <div class="col-label"><span>About</span></div>
           <div class="col-content">
             <div class="about-preview">
-              <p>Designer with a passion for building scalable design systems. I bridge the gap between design thinking and engineering — turning complexity into clarity.</p>
-              <p>Currently available for freelance and full-time roles.</p>
+              <p>UI/UX designer with 9+ years of experience, specialising in design systems and digital experiences for the pharmaceutical industry.</p>
+              <p>I blend functionality, aesthetics and brand identity — turning complexity into clarity, one system at a time.</p>
               <div class="read-more">
                 <button class="btn-text" onclick="navigate('about')">Read more →</button>
               </div>
@@ -855,7 +945,7 @@
       <div class="footer-inner">
         <span class="footer-text">© 2024 Varsha Bhide</span>
         <div class="footer-links">
-          <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+          <a href="https://www.linkedin.com/in/varsha-bhide-93240b92/" target="_blank">LinkedIn</a>
           <a href="#" onclick="copyEmail(); return false;">Email</a>
         </div>
       </div>
@@ -975,7 +1065,7 @@
       <div class="footer-inner">
         <span class="footer-text">© 2024 Varsha Bhide</span>
         <div class="footer-links">
-          <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+          <a href="https://www.linkedin.com/in/varsha-bhide-93240b92/" target="_blank">LinkedIn</a>
           <a href="#" onclick="copyEmail(); return false;">Email</a>
         </div>
       </div>
@@ -996,6 +1086,9 @@
 
     <div class="about-page-header">
       <h1>About me</h1>
+      <div class="about-header-actions">
+        <a href="varsha-cv.pdf" download class="cv-btn">Download CV ↓</a>
+      </div>
     </div>
 
     <section class="about-full">
@@ -1006,11 +1099,87 @@
           <div class="col-label"><span>Bio</span></div>
           <div class="col-content">
             <div class="about-body">
-              <!-- ↓ Update with Varsha's actual Notion about page content -->
-              <p>I'm Varsha Bhide, a product designer focused on building scalable design systems and thoughtful digital experiences. I care deeply about the craft — the small decisions that make a product feel considered, consistent, and human.</p>
-              <p>My work lives at the intersection of design thinking and engineering. I enjoy working closely with developers, turning ambiguous problems into clear, buildable solutions — from first principles to production-ready components.</p>
-              <p>When I'm not designing, I'm thinking about how systems work, what makes a good design token, and why some interfaces feel effortless while others don't.</p>
+              <p>Hello! I'm a UI/UX designer with a passion for crafting seamless digital experiences, specialising in designing robust design systems and websites for major players in the pharmaceutical industry. Self-driven with a curiosity to continually learn and enhance my skills.</p>
+              <p>With 9+ years of experience in UI/UX, I've dedicated the past 2.5 years to the unique challenges of pharmaceutical industries' digital presence — navigating compliance intricacies and user-centric design principles, utilising top UX methodologies such as user research, user journey mapping and user testing.</p>
+              <p>My focal point lies in meticulously creating design systems and design tokens — blending functionality, aesthetics and brand identity to ensure design systems meet industry standards, growing systematically and thriving in multiple environments.</p>
+              <p>I thrive on collaboration, working closely with design and development teams to ensure projects are seamlessly integrated. I'm committed to staying ahead of industry trends and embracing emerging design methodologies — consistently pushing the boundaries of what's achievable.</p>
             </div>
+          </div>
+        </div>
+
+        <hr class="divider" style="margin-bottom: 52px;">
+
+        <!-- Experience -->
+        <div class="section-row" style="margin-bottom: 52px;">
+          <div class="col-label"><span>Experience</span></div>
+          <div class="col-content">
+            <div class="exp-list">
+
+              <div class="exp-item">
+                <div class="exp-meta"><span class="exp-year">May 2024 — Present</span></div>
+                <div class="exp-detail">
+                  <p class="exp-role">Senior Interaction Designer</p>
+                  <p class="exp-company">OpenText · Full-time · Bengaluru, Hybrid</p>
+                  <p class="exp-desc">Interaction design and visual design for enterprise products.</p>
+                </div>
+              </div>
+
+              <div class="exp-item">
+                <div class="exp-meta"><span class="exp-year">Oct 2023 — May 2024</span></div>
+                <div class="exp-detail">
+                  <p class="exp-role">Lead UI/UX</p>
+                  <p class="exp-company">Indegene · Full-time · Bengaluru</p>
+                  <p class="exp-desc">Led the design system spanning multiple brands. Overseeing design tokens integration and platform-agnostic design characteristics.</p>
+                </div>
+              </div>
+
+              <div class="exp-item">
+                <div class="exp-meta"><span class="exp-year">Jun 2021 — Oct 2023</span></div>
+                <div class="exp-detail">
+                  <p class="exp-role">Senior UI/UX</p>
+                  <p class="exp-company">Indegene · Remote</p>
+                  <p class="exp-desc">Built design systems for pharmaceutical firms, created websites with focus on UX, collaborated with product owners and developers. Introduced design tokens to enhance platform-agnostic design.</p>
+                </div>
+              </div>
+
+              <div class="exp-item">
+                <div class="exp-meta"><span class="exp-year">Nov 2017 — Jun 2021</span></div>
+                <div class="exp-detail">
+                  <p class="exp-role">Visual Designer</p>
+                  <p class="exp-company">SAFEHALO Products · Freelance · Bengaluru</p>
+                  <p class="exp-desc">Brand development across video, marketing materials and application visual design.</p>
+                </div>
+              </div>
+
+              <div class="exp-item">
+                <div class="exp-meta"><span class="exp-year">Apr 2018 — Oct 2020</span></div>
+                <div class="exp-detail">
+                  <p class="exp-role">Career break — Personal goal pursuit</p>
+                  <p class="exp-company">Printmaking</p>
+                  <p class="exp-desc">Studied under a globally acclaimed artist and printmaking instructor, expanding aesthetic skills and creative horizons.</p>
+                </div>
+              </div>
+
+              <div class="exp-item">
+                <div class="exp-meta"><span class="exp-year">Jan 2014 — May 2015</span></div>
+                <div class="exp-detail">
+                  <p class="exp-role">Visual Designer</p>
+                  <p class="exp-company">Aditi Technologies · Full-time · Bengaluru</p>
+                  <p class="exp-desc">Visual design projects with emphasis on user research, information architecture and user journey mapping.</p>
+                </div>
+              </div>
+
+              <div class="exp-item">
+                <div class="exp-meta"><span class="exp-year">Jun 2013 — Jan 2014</span></div>
+                <div class="exp-detail">
+                  <p class="exp-role">Graphic Designer</p>
+                  <p class="exp-company">Wipro Technologies · Full-time · Bengaluru</p>
+                  <p class="exp-desc">Graphic design for one of India's leading technology companies.</p>
+                </div>
+              </div>
+
+            </div>
+            <p class="exp-note">Full experience on <a href="https://www.linkedin.com/in/varsha-bhide-93240b92/" target="_blank" class="inline-link">LinkedIn →</a></p>
           </div>
         </div>
 
@@ -1023,14 +1192,15 @@
             <div class="about-body">
               <div class="skill-list">
                 <span class="skill">Design systems</span>
+                <span class="skill">Design tokens</span>
                 <span class="skill">UX strategy</span>
+                <span class="skill">User research</span>
+                <span class="skill">User journey mapping</span>
+                <span class="skill">User testing</span>
                 <span class="skill">Visual design</span>
                 <span class="skill">Interaction design</span>
-                <span class="skill">Design tokens</span>
                 <span class="skill">Component libraries</span>
                 <span class="skill">Prototyping</span>
-                <span class="skill">User research</span>
-                <span class="skill">Product thinking</span>
               </div>
             </div>
           </div>
@@ -1071,7 +1241,7 @@
       <div class="footer-inner">
         <span class="footer-text">© 2024 Varsha Bhide</span>
         <div class="footer-links">
-          <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+          <a href="https://www.linkedin.com/in/varsha-bhide-93240b92/" target="_blank">LinkedIn</a>
           <a href="#" onclick="copyEmail(); return false;">Email</a>
         </div>
       </div>
@@ -1101,7 +1271,7 @@
 
     // ── COPY EMAIL ──
     function copyEmail() {
-      navigator.clipboard.writeText('varsha@example.com').then(() => {
+      navigator.clipboard.writeText('varsha.ab@gmail.com').then(() => {
         const toast = document.getElementById('toast');
         toast.classList.add('show');
         setTimeout(() => toast.classList.remove('show'), 2500);
@@ -1171,6 +1341,19 @@
     carousel.addEventListener('touchmove', e => {
       carousel.scrollLeft = tScrollLeft - (e.touches[0].pageX - carousel.offsetLeft - tStartX) * 1.4;
     }, { passive: true });
+
+    // ── DARK MODE ──
+    function toggleDark() {
+      const isDark = document.body.classList.toggle('dark');
+      document.getElementById('themeBtn').textContent = isDark ? '☀︎' : '☽';
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    }
+
+    // restore preference
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add('dark');
+      document.getElementById('themeBtn').textContent = '☀︎';
+    }
 
     // ── FILTER TABS ──
     document.querySelectorAll('.filter-tabs .tab').forEach(tab => {
