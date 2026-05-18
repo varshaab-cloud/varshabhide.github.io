@@ -18,39 +18,50 @@
 
     /* ── DARK MODE ── */
     body.dark {
-      --black:   #eeeeee;
-      --gray:    #999999;
-      --light:   #1c1c1c;
-      --border:  #2d2d2d;
-      --white:   #0f0f0f;
+      --black:   #f0f0f0;
+      --gray:    #b0b0b0;
+      --light:   #1e1e1e;
+      --border:  #303030;
+      --white:   #121212;
     }
 
-    body.dark .g-thumb.t1 { background: #2a1f1a; }
-    body.dark .g-thumb.t2 { background: #1a2224; }
-    body.dark .g-thumb.t3 { background: #25221a; }
-    body.dark .g-thumb.t4 { background: #1a221e; }
-    body.dark .c-thumb.t1 { background: #2a1f1a; }
-    body.dark .c-thumb.t2 { background: #1a2224; }
-    body.dark .c-thumb.t3 { background: #25221a; }
-    body.dark .c-thumb.t4 { background: #1a221e; }
+    body.dark .g-thumb.t1 { background: #281e1a; }
+    body.dark .g-thumb.t2 { background: #182022; }
+    body.dark .g-thumb.t3 { background: #232018; }
+    body.dark .g-thumb.t4 { background: #182018; }
+    body.dark .c-thumb.t1 { background: #281e1a; }
+    body.dark .c-thumb.t2 { background: #182022; }
+    body.dark .c-thumb.t3 { background: #232018; }
+    body.dark .c-thumb.t4 { background: #182018; }
+    body.dark .grid-card { background: #1a1a1a; }
+    body.dark .grid-card:hover { background: #222222; }
+    body.dark .carousel-card { background: #1a1a1a; }
+    body.dark .cs-img-block { background: #1a1a1a; }
+    body.dark .cs-conclusion { background: #1a1a1a; }
+    body.dark .chevron-btn { background: #1e1e1e; }
+    body.dark nav { background: #121212; }
 
-    /* dark mode toggle */
+    /* dark mode toggle pill */
     .theme-toggle {
-      width: 32px;
-      height: 32px;
-      background: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      background: var(--light);
       border: 1px solid var(--border);
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-      transition: border-color 0.15s;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--gray);
+      letter-spacing: 0.04em;
+      transition: background 0.15s, border-color 0.15s, color 0.15s;
       flex-shrink: 0;
       font-family: inherit;
+      white-space: nowrap;
     }
 
-    .theme-toggle:hover { border-color: var(--accent); }
+    .theme-toggle:hover { border-color: var(--accent); color: var(--black); }
+    body.dark .theme-toggle { background: #1e1e1e; }
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
@@ -677,6 +688,242 @@
     }
 
     /* ═══════════════════════════
+       CASE STUDY PAGE
+    ═══════════════════════════ */
+
+    .cs-wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 40px 100px;
+    }
+
+    .cs-hero {
+      padding: 56px 0 48px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 56px;
+    }
+
+    .cs-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .cs-tag {
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gray);
+      border: 1px solid var(--border);
+      padding: 4px 10px;
+    }
+
+    .cs-title {
+      font-size: 48px;
+      font-weight: 400;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      color: var(--black);
+      margin-bottom: 28px;
+    }
+
+    .cs-meta-row {
+      display: flex;
+      gap: 40px;
+    }
+
+    .cs-meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .cs-meta-label {
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+
+    .cs-meta-value {
+      font-size: 13px;
+      color: var(--black);
+    }
+
+    .cs-section {
+      margin-bottom: 64px;
+    }
+
+    .cs-section-label {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .cs-body {
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--black);
+    }
+
+    .cs-body p { margin-bottom: 14px; }
+    .cs-body p:last-child { margin-bottom: 0; }
+
+    .cs-two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+
+    .cs-col-head {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      color: var(--black);
+      margin-bottom: 14px;
+    }
+
+    .cs-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .cs-list li {
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--black);
+      padding-left: 16px;
+      position: relative;
+    }
+
+    .cs-list li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      color: var(--gray);
+    }
+
+    .cs-img-block {
+      width: 100%;
+      background: var(--light);
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+
+    .cs-img-block img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .cs-img-block.placeholder {
+      min-height: 280px;
+    }
+
+    .cs-img-placeholder-label {
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gray);
+      opacity: 0.5;
+    }
+
+    .cs-img-caption {
+      font-size: 12px;
+      color: var(--gray);
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .cs-screens-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .cs-screen-item {}
+
+    .cs-screen-label {
+      font-size: 12px;
+      color: var(--gray);
+      margin-top: 8px;
+    }
+
+    .cs-proto-wrap {
+      position: relative;
+      width: 100%;
+      padding-bottom: 62.5%; /* 16:10 aspect ratio */
+      height: 0;
+      border: 1px solid var(--border);
+      background: var(--light);
+    }
+
+    .cs-proto-wrap iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .cs-figma-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid var(--black);
+      padding: 14px 24px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--black);
+      text-decoration: none;
+      transition: background 0.15s, color 0.15s;
+      margin-top: 8px;
+    }
+
+    .cs-figma-link:hover {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .cs-conclusion {
+      background: var(--light);
+      border: 1px solid var(--border);
+      padding: 40px;
+      margin-top: 64px;
+    }
+
+    .cs-conclusion p {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--black);
+      margin-bottom: 24px;
+    }
+
+    @media (max-width: 640px) {
+      .cs-wrap { padding: 0 20px 80px; }
+      .cs-title { font-size: 32px; }
+      .cs-two-col { grid-template-columns: 1fr; }
+      .cs-screens-grid { grid-template-columns: 1fr; }
+      .cs-meta-row { flex-wrap: wrap; gap: 20px; }
+    }
+
+    /* ═══════════════════════════
        ABOUT PAGE
     ═══════════════════════════ */
 
@@ -836,7 +1083,7 @@
       <button onclick="navigate('projects')" data-page="projects">Work</button>
       <button onclick="navigate('about')" data-page="about">About</button>
       <button class="nav-contact" onclick="copyEmail()">Get in touch →</button>
-      <button class="theme-toggle" onclick="toggleDark()" id="themeBtn" title="Toggle dark mode">☽</button>
+      <button class="theme-toggle" onclick="toggleDark()" id="themeBtn">☽ Dark</button>
     </div>
   </nav>
 
@@ -860,41 +1107,41 @@
       <div class="carousel-wrapper" id="carousel">
         <div class="carousel-track">
 
-          <div class="carousel-card">
+          <a href="https://www.figma.com/file/GP04zWAdSpeiXnmo1Hk3DI/Thematic.Design?type=design&node-id=1%3A68&mode=design" target="_blank" rel="noopener" class="carousel-card">
             <div class="c-thumb t1"><span class="c-thumb-label">Design system</span></div>
             <div class="c-body">
-              <div><p class="c-title">Thematic.design</p><p class="c-meta">Design system</p></div>
+              <div><p class="c-title">Thematic.design</p><p class="c-meta">Design system · Atomic design · Components</p></div>
               <span class="c-year">2024</span>
             </div>
             <span class="card-arrow">↗</span>
-          </div>
+          </a>
 
-          <div class="carousel-card">
+          <a href="https://www.figma.com/file/bqywswoCuY52EdGbXbFBKR/Portfolio?type=design&node-id=1%3A2&mode=design" target="_blank" rel="noopener" class="carousel-card">
             <div class="c-thumb t2"><span class="c-thumb-label">Research</span></div>
             <div class="c-body">
-              <div><p class="c-title">Design systems atom definition</p><p class="c-meta">Design system</p></div>
+              <div><p class="c-title">Design systems atom definition</p><p class="c-meta">Colors · Typography · Elevations · Icons</p></div>
               <span class="c-year">2024</span>
             </div>
             <span class="card-arrow">↗</span>
-          </div>
+          </a>
 
-          <div class="carousel-card">
+          <a href="https://www.notion.so/varshabhide/Design-Tokens-7b21108a68404dd9a81ffb9ec2c94fd1" target="_blank" rel="noopener" class="carousel-card">
             <div class="c-thumb t3"><span class="c-thumb-label">Strategy</span></div>
             <div class="c-body">
-              <div><p class="c-title">Design Tokens</p><p class="c-meta">Design system</p></div>
+              <div><p class="c-title">Design Tokens</p><p class="c-meta">What, why and how · Token taxonomy · Pipeline</p></div>
               <span class="c-year">2023</span>
             </div>
             <span class="card-arrow">↗</span>
-          </div>
+          </a>
 
-          <div class="carousel-card">
+          <button onclick="navigate('eps')" class="carousel-card" style="text-align:left; border:none; font-family:inherit; cursor:pointer; background:var(--white);">
             <div class="c-thumb t4"><span class="c-thumb-label">Healthcare · UX</span></div>
             <div class="c-body">
-              <div><p class="c-title">Electronic Patient Service</p><p class="c-meta">Product</p></div>
+              <div><p class="c-title">Electronic Patient Service</p><p class="c-meta">Healthcare · Insurance eligibility · EHR</p></div>
               <span class="c-year">2023</span>
             </div>
             <span class="card-arrow">↗</span>
-          </div>
+          </button>
 
         </div>
       </div>
@@ -985,32 +1232,32 @@
           </div>
           <div class="project-grid">
 
-            <div class="grid-card">
+            <a href="https://www.figma.com/file/GP04zWAdSpeiXnmo1Hk3DI/Thematic.Design?type=design&node-id=1%3A68&mode=design" target="_blank" rel="noopener" class="grid-card">
               <div class="g-thumb t1"><span class="g-thumb-label">Design system</span></div>
               <div class="g-body">
-                <div><p class="g-title">Thematic.design</p><p class="g-meta">Design system</p></div>
+                <div><p class="g-title">Thematic.design</p><p class="g-meta">Design system · Atomic design · Components</p></div>
                 <span class="g-year">2024</span>
               </div>
               <span class="card-arrow">↗</span>
-            </div>
+            </a>
 
-            <div class="grid-card">
+            <a href="https://www.figma.com/file/bqywswoCuY52EdGbXbFBKR/Portfolio?type=design&node-id=1%3A2&mode=design" target="_blank" rel="noopener" class="grid-card">
               <div class="g-thumb t2"><span class="g-thumb-label">Research</span></div>
               <div class="g-body">
-                <div><p class="g-title">Design systems atom definition</p><p class="g-meta">Design system</p></div>
+                <div><p class="g-title">Design systems atom definition</p><p class="g-meta">Foundations · Tokens · Semantic naming</p></div>
                 <span class="g-year">2024</span>
               </div>
               <span class="card-arrow">↗</span>
-            </div>
+            </a>
 
-            <div class="grid-card">
+            <a href="https://www.notion.so/varshabhide/Design-Tokens-7b21108a68404dd9a81ffb9ec2c94fd1" target="_blank" rel="noopener" class="grid-card">
               <div class="g-thumb t3"><span class="g-thumb-label">Strategy</span></div>
               <div class="g-body">
-                <div><p class="g-title">Design Tokens</p><p class="g-meta">Design system</p></div>
+                <div><p class="g-title">Design Tokens</p><p class="g-meta">Token strategy · Cross-platform · Documentation</p></div>
                 <span class="g-year">2023</span>
               </div>
               <span class="card-arrow">↗</span>
-            </div>
+            </a>
 
             <div class="grid-card coming">
               <div class="g-thumb"><span class="g-thumb-label">Coming soon</span></div>
@@ -1029,14 +1276,14 @@
           </div>
           <div class="project-grid">
 
-            <div class="grid-card">
+            <button onclick="navigate('eps')" class="grid-card" style="text-align:left; width:100%; border:none; font-family:inherit; cursor:pointer;">
               <div class="g-thumb t4"><span class="g-thumb-label">Healthcare · UX</span></div>
               <div class="g-body">
-                <div><p class="g-title">Electronic Patient Service</p><p class="g-meta">Product</p></div>
+                <div><p class="g-title">Electronic Patient Service</p><p class="g-meta">Healthcare · UX research · End-to-end design</p></div>
                 <span class="g-year">2023</span>
               </div>
               <span class="card-arrow">↗</span>
-            </div>
+            </button>
 
             <div class="grid-card coming">
               <div class="g-thumb"><span class="g-thumb-label">Coming soon</span></div>
@@ -1249,6 +1496,188 @@
 
   </div>
 
+  <!-- ══════════════════════════════════════════
+       CASE STUDY — ELECTRONIC PATIENT SERVICE
+  ══════════════════════════════════════════ -->
+  <div id="page-eps" class="page">
+
+    <div class="back-bar">
+      <button class="back-btn" onclick="navigate('projects')">
+        <span class="back-arrow">←</span> Work
+      </button>
+    </div>
+
+    <div class="cs-wrap">
+
+      <!-- Hero -->
+      <div class="cs-hero">
+        <div class="cs-tags">
+          <span class="cs-tag">Healthcare</span>
+          <span class="cs-tag">UX Design</span>
+          <span class="cs-tag">Product</span>
+          <span class="cs-tag">2023</span>
+        </div>
+        <h1 class="cs-title">Electronic Patient Service</h1>
+        <div class="cs-meta-row">
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Role</span>
+            <span class="cs-meta-value">Senior UI/UX Designer</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Company</span>
+            <span class="cs-meta-value">Indegene</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Year</span>
+            <span class="cs-meta-value">2023</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Type</span>
+            <span class="cs-meta-value">Web Application</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Overview -->
+      <div class="cs-section">
+        <p class="cs-section-label">Overview</p>
+        <div class="cs-body">
+          <p>Introducing the Electronic Patient Insurance Checker — a web application that streamlines the treatment process with real-time insurance verification. Transitioning from traditional physical records to Electronic Health Records (EHR) as a strategic decision aimed at enhancing efficiency, accuracy, sustainability, and overall patient care.</p>
+        </div>
+        <div class="cs-img-block">
+          <img src="eps-hero.png" alt="Electronic Patient Service — hero banner">
+        </div>
+      </div>
+
+      <!-- Background -->
+      <div class="cs-section">
+        <p class="cs-section-label">Background</p>
+        <div class="cs-body">
+          <p>Major health insurance providers are designated to offer coverage for specific drugs to recipients. However, a significant hurdle lies in the intricate eligibility determination process, leading to a slow enrollment rate.</p>
+          <p>As a prominent consulting firm in the healthcare sector, the objective was to develop a web application for Healthcare Providers (HCPs) to facilitate eligibility checks — enabling HCPs and care providers to effortlessly access this information, ensuring patients receive the care they deserve and bridging existing gaps.</p>
+        </div>
+        <div class="cs-img-block">
+          <img src="eps-dashboard.png" alt="EPS Dashboard mockup">
+        </div>
+      </div>
+
+      <!-- Problem Statement -->
+      <div class="cs-section">
+        <p class="cs-section-label">Problem Statement</p>
+        <div class="cs-body">
+          <p>Create a web application that is interactive, streamlining the eligibility determination process for a specific drug and guaranteeing high acceptance rates.</p>
+        </div>
+      </div>
+
+      <!-- UX Strategy -->
+      <div class="cs-section">
+        <p class="cs-section-label">UX Strategy</p>
+        <div class="cs-body">
+          <p>The design process focused on enhancing the usability, accessibility, and simplification of the application filling process for Healthcare Providers (HCPs) to achieve the desired results. The designs aimed to streamline the process, making it intuitive, engaging, and ensuring a seamless experience for users.</p>
+        </div>
+        <div class="cs-img-block">
+          <img src="eps-workflow.png" alt="Application workflow / Information architecture">
+        </div>
+      </div>
+
+      <!-- Persona -->
+      <div class="cs-section">
+        <p class="cs-section-label">Persona</p>
+        <div class="cs-img-block">
+          <img src="eps-persona.png" alt="User persona">
+        </div>
+      </div>
+
+      <!-- Infograph -->
+      <div class="cs-section">
+        <p class="cs-section-label">Research Insights</p>
+        <div class="cs-img-block">
+          <img src="eps-infograph.png" alt="Research infograph">
+        </div>
+      </div>
+
+      <!-- Key Findings & Design Decisions -->
+      <div class="cs-section">
+        <p class="cs-section-label">Research & Decisions</p>
+        <div class="cs-two-col">
+          <div>
+            <p class="cs-col-head">Key Findings</p>
+            <ul class="cs-list">
+              <li>Elaborate and comprehensive application document creating friction</li>
+              <li>Increased rejection rates due to inconsistent or missing information</li>
+              <li>Absence of coverage predictions and cumbersome application process hinder progress</li>
+              <li>Uncertainty around workflow causing drop-offs</li>
+            </ul>
+          </div>
+          <div>
+            <p class="cs-col-head">Design Decisions</p>
+            <ul class="cs-list">
+              <li>Application simplified by organising into digestible bite-size sections</li>
+              <li>Prompts added when questions are unanswered or answers are irrelevant</li>
+              <li>Steps to reach the "benefit report" identified and personalised per application status</li>
+              <li>Application guides users through the entire process to achieve the desired result</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Focus Areas -->
+      <div class="cs-section">
+        <p class="cs-section-label">Focus Areas</p>
+        <div class="cs-two-col">
+          <div>
+            <p class="cs-col-head">Healthcare Providers (HCPs)</p>
+            <ul class="cs-list">
+              <li>Gathering accurate information from applicants and caregivers</li>
+              <li>Eliminating redundant data entry across sections</li>
+              <li>Decreasing time needed to complete application</li>
+              <li>Streamlining workload management with delegation option at any point</li>
+            </ul>
+          </div>
+          <div>
+            <p class="cs-col-head">Applicants</p>
+            <ul class="cs-list">
+              <li>Encourage friendly and approachable interactions</li>
+              <li>Streamline the application process</li>
+              <li>Engage the applicant actively throughout</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Wireframes -->
+      <div class="cs-section">
+        <p class="cs-section-label">Wireframes</p>
+        <div class="cs-img-block">
+          <img src="eps-wireframes.png" alt="Lo-fidelity wireframes">
+        </div>
+      </div>
+
+      <!-- Live Prototype -->
+      <div class="cs-section">
+        <p class="cs-section-label">Interactive Prototype</p>
+        <div class="cs-proto-wrap">
+          <iframe
+            src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FbqywswoCuY52EdGbXbFBKR%2FPortfolio%3Fpage-id%3D0%253A1%26type%3Ddesign%26node-id%3D1-11580%26viewport%3D582%252C409%252C0.03%26t%3DNNWzQhnngEyXUYJh-1%26scaling%3Dscale-down%26starting-point-node-id%3D1%253A4146"
+            allowfullscreen
+            loading="lazy"
+            title="Electronic Patient Service — Interactive Prototype">
+          </iframe>
+        </div>
+        <p class="cs-screen-label" style="text-align:center; margin-top:12px;">Click through the prototype above — Coverage prediction · Enrollment · Prior authorization · Benefit verification</p>
+      </div>
+
+      <!-- Conclusion -->
+      <div class="cs-conclusion">
+        <p>This project involved designing an end-to-end healthcare web application that simplified a complex insurance eligibility process for both Healthcare Providers and patients — reducing friction, improving acceptance rates, and enabling guided, personalised workflows.</p>
+        <a class="cs-figma-link" href="https://www.figma.com/file/bqywswoCuY52EdGbXbFBKR/Portfolio?type=design&node-id=0%3A1&mode=design" target="_blank" rel="noopener">
+          View in Figma ↗
+        </a>
+      </div>
+
+    </div><!-- /cs-wrap -->
+  </div><!-- /page-eps -->
+
   <script>
     // ── NAVIGATION ──
     function navigate(pageId) {
@@ -1267,7 +1696,7 @@
 
     // load from hash on page open
     const hash = location.hash.replace('#', '');
-    if (['home', 'projects', 'about'].includes(hash)) navigate(hash);
+    if (['home', 'projects', 'about', 'eps'].includes(hash)) navigate(hash);
 
     // ── COPY EMAIL ──
     function copyEmail() {
@@ -1345,14 +1774,14 @@
     // ── DARK MODE ──
     function toggleDark() {
       const isDark = document.body.classList.toggle('dark');
-      document.getElementById('themeBtn').textContent = isDark ? '☀︎' : '☽';
+      document.getElementById('themeBtn').textContent = isDark ? '☀︎ Light' : '☽ Dark';
       localStorage.setItem('theme', isDark ? 'dark' : 'light');
     }
 
     // restore preference
     if (localStorage.getItem('theme') === 'dark') {
       document.body.classList.add('dark');
-      document.getElementById('themeBtn').textContent = '☀︎';
+      document.getElementById('themeBtn').textContent = '☀︎ Light';
     }
 
     // ── FILTER TABS ──
