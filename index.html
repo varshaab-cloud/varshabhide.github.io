@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<!-- saved from url=(0236)file:///Users/varsha/Library/Application%20Support/Claude/local-agent-mode-sessions/250ea376-823e-4e71-8792-a9699c836632/549d965d-1224-47ac-926c-711c85e79836/local_f4876884-5e48-45cc-87c6-e4bc9e6f17d0/outputs/varsha-portfolio-final.html -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Varsha Bhide — Product Designer</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -300,7 +300,7 @@
     }
 
     .carousel-header {
-      max-width: 960px;
+      max-width: 1020px;
       margin: 0 auto 32px;
       padding: 0 56px;
       display: flex;
@@ -338,6 +338,8 @@
       cursor: grab;
       padding: 0 56px;
       user-select: none;
+      max-width: 1020px;
+      margin: 0 auto;
     }
 
     .carousel-wrapper:active { cursor: grabbing; }
@@ -417,7 +419,7 @@
     }
 
     .carousel-controls {
-      max-width: 960px;
+      max-width: 1020px;
       margin: 0 auto;
       padding: 24px 56px 64px;
       display: flex;
@@ -739,10 +741,11 @@
 
   <!-- NAV -->
   <nav>
-    <button class="nav-logo" onclick="navigate(&#39;home&#39;)">Varsha Bhide</button>
+    <button class="nav-logo" onclick="navigate('home')">Varsha Bhide</button>
     <div class="nav-links">
-      <button onclick="navigate(&#39;projects&#39;)" data-page="projects">Work</button>
-      <button onclick="navigate(&#39;about&#39;)" data-page="about">About</button>
+      <button onclick="navigate('home')" data-page="home">Home</button>
+      <button onclick="navigate('projects')" data-page="projects">Work</button>
+      <button onclick="navigate('about')" data-page="about">About</button>
       <button class="nav-contact" onclick="copyEmail()">Get in touch →</button>
     </div>
   </nav>
@@ -755,16 +758,16 @@
     <section class="hero">
       <h1>I'm <span class="name">Varsha Bhide</span>,<br>a product designer</h1>
       <p class="hero-sub">Building thoughtful systems and experiences — from design tokens to full products. Focused on scalable design systems and UX strategy.</p>
-      <button class="btn-text" onclick="navigate(&#39;about&#39;)">About me →</button>
+      <button class="btn-text" onclick="navigate('about')">About me →</button>
     </section>
 
     <section class="carousel-section">
       <div class="carousel-header">
         <span class="carousel-label">Featured work</span>
-        <button class="carousel-all" onclick="navigate(&#39;projects&#39;)">All projects →</button>
+        <button class="carousel-all" onclick="navigate('projects')">All projects →</button>
       </div>
 
-      <div class="carousel-wrapper" id="carousel" style="cursor: grab;">
+      <div class="carousel-wrapper" id="carousel">
         <div class="carousel-track">
 
           <div class="carousel-card">
@@ -807,13 +810,13 @@
       </div>
 
       <div class="carousel-controls">
-        <button class="chevron-btn" id="prevBtn" aria-label="Previous" disabled="">
-          <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        <button class="chevron-btn" id="prevBtn" aria-label="Previous" disabled>
+          <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
         </button>
         <button class="chevron-btn" id="nextBtn" aria-label="Next">
-          <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"></polyline></svg>
+          <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
         </button>
-        <div class="drag-hint visible" id="dragHint">
+        <div class="drag-hint" id="dragHint">
           <div class="drag-line"></div>
           <span>drag to explore</span>
           <div class="drag-line"></div>
@@ -830,7 +833,7 @@
               <p>Designer with a passion for building scalable design systems. I bridge the gap between design thinking and engineering — turning complexity into clarity.</p>
               <p>Currently available for freelance and full-time roles.</p>
               <div class="read-more">
-                <button class="btn-text" onclick="navigate(&#39;about&#39;)">Read more →</button>
+                <button class="btn-text" onclick="navigate('about')">Read more →</button>
               </div>
             </div>
           </div>
@@ -852,8 +855,8 @@
       <div class="footer-inner">
         <span class="footer-text">© 2024 Varsha Bhide</span>
         <div class="footer-links">
-          <a href="https://linkedin.com/" target="_blank">LinkedIn</a>
-          <a href="file:///Users/varsha/Library/Application%20Support/Claude/local-agent-mode-sessions/250ea376-823e-4e71-8792-a9699c836632/549d965d-1224-47ac-926c-711c85e79836/local_f4876884-5e48-45cc-87c6-e4bc9e6f17d0/outputs/varsha-portfolio-final.html#" onclick="copyEmail(); return false;">Email</a>
+          <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+          <a href="#" onclick="copyEmail(); return false;">Email</a>
         </div>
       </div>
     </footer>
@@ -866,7 +869,7 @@
   <div id="page-projects" class="page">
 
     <div class="back-bar">
-      <button class="back-btn" onclick="navigate(&#39;home&#39;)">
+      <button class="back-btn" onclick="navigate('home')">
         <span class="back-arrow">←</span> Home
       </button>
     </div>
@@ -972,8 +975,8 @@
       <div class="footer-inner">
         <span class="footer-text">© 2024 Varsha Bhide</span>
         <div class="footer-links">
-          <a href="https://linkedin.com/" target="_blank">LinkedIn</a>
-          <a href="file:///Users/varsha/Library/Application%20Support/Claude/local-agent-mode-sessions/250ea376-823e-4e71-8792-a9699c836632/549d965d-1224-47ac-926c-711c85e79836/local_f4876884-5e48-45cc-87c6-e4bc9e6f17d0/outputs/varsha-portfolio-final.html#" onclick="copyEmail(); return false;">Email</a>
+          <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+          <a href="#" onclick="copyEmail(); return false;">Email</a>
         </div>
       </div>
     </footer>
@@ -986,7 +989,7 @@
   <div id="page-about" class="page">
 
     <div class="back-bar">
-      <button class="back-btn" onclick="navigate(&#39;home&#39;)">
+      <button class="back-btn" onclick="navigate('home')">
         <span class="back-arrow">←</span> Home
       </button>
     </div>
@@ -1068,8 +1071,8 @@
       <div class="footer-inner">
         <span class="footer-text">© 2024 Varsha Bhide</span>
         <div class="footer-links">
-          <a href="https://linkedin.com/" target="_blank">LinkedIn</a>
-          <a href="file:///Users/varsha/Library/Application%20Support/Claude/local-agent-mode-sessions/250ea376-823e-4e71-8792-a9699c836632/549d965d-1224-47ac-926c-711c85e79836/local_f4876884-5e48-45cc-87c6-e4bc9e6f17d0/outputs/varsha-portfolio-final.html#" onclick="copyEmail(); return false;">Email</a>
+          <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+          <a href="#" onclick="copyEmail(); return false;">Email</a>
         </div>
       </div>
     </footer>
@@ -1180,6 +1183,5 @@
       });
     });
   </script>
-
-
-</body></html>
+</body>
+</html>
