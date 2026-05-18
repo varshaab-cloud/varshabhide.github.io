@@ -23,6 +23,9 @@
       --light:   #1e1e1e;
       --border:  #303030;
       --white:   #121212;
+      background-color: #0a0a0a;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+      background-size: 18px 18px;
     }
 
     body.dark .g-thumb.t1 { background: #281e1a; }
@@ -65,10 +68,20 @@
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
-      background: var(--white);
+      background-color: #f7f7f7;
+      background-image: radial-gradient(circle, rgba(0,0,0,0.08) 1px, transparent 1px);
+      background-size: 18px 18px;
       color: var(--black);
       line-height: 1.5;
       -webkit-font-smoothing: antialiased;
+    }
+
+    #app-panel {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: var(--white);
+      box-shadow: 0 8px 48px rgba(0,0,0,0.08), 0 2px 16px rgba(0,0,0,0.04);
+      min-height: 100vh;
     }
 
     /* ── PAGE SYSTEM ── */
@@ -302,6 +315,29 @@
       max-width: 960px;
       margin: 0 auto;
       padding: 100px 56px 88px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 48px;
+    }
+
+    .hero-text { flex: 1; min-width: 0; }
+
+    .hero-photo {
+      width: 320px;
+      flex-shrink: 0;
+      background: transparent;
+    }
+
+    .hero-photo img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    body.dark .hero-photo img {
+      filter: invert(1);
     }
 
     .hero h1 {
@@ -1057,8 +1093,9 @@
     /* ── RESPONSIVE ── */
     @media (max-width: 640px) {
       nav { padding: 0 20px; }
-      .hero { padding: 60px 20px 56px; }
+      .hero { padding: 60px 20px 56px; flex-direction: column-reverse; gap: 32px; }
       .hero h1 { font-size: 36px; }
+      .hero-photo { width: 100%; height: 260px; }
       .carousel-header, .carousel-controls { padding-left: 20px; padding-right: 20px; }
       .carousel-wrapper { padding: 0 20px; }
       .carousel-card { width: 300px; }
@@ -1075,6 +1112,8 @@
 
   <!-- TOAST -->
   <div class="toast" id="toast">Email copied to clipboard</div>
+
+  <div id="app-panel">
 
   <!-- NAV -->
   <nav>
@@ -1094,9 +1133,14 @@
   <div id="page-home" class="page active">
 
     <section class="hero">
-      <h1>I'm <span class="name">Varsha Bhide</span>,<br>a product designer</h1>
-      <p class="hero-sub">Building thoughtful systems and experiences — from design tokens to full products. Focused on scalable design systems and UX strategy.</p>
-      <button class="btn-text" onclick="navigate('about')">About me →</button>
+      <div class="hero-text">
+        <h1>I'm <span class="name">Varsha Bhide</span>,<br>a product designer</h1>
+        <p class="hero-sub">Building thoughtful systems and experiences — from design tokens to full products. Focused on scalable design systems and UX strategy.</p>
+        <button class="btn-text" onclick="navigate('about')">About me →</button>
+      </div>
+      <div class="hero-photo">
+        <img src="varsha-photo.png" alt="Varsha Bhide">
+      </div>
     </section>
 
     <section class="carousel-section">
@@ -1108,14 +1152,14 @@
       <div class="carousel-wrapper" id="carousel">
         <div class="carousel-track">
 
-          <a href="https://www.figma.com/file/GP04zWAdSpeiXnmo1Hk3DI/Thematic.Design?type=design&node-id=1%3A68&mode=design" target="_blank" rel="noopener" class="carousel-card">
+          <button onclick="navigate('thematic')" class="carousel-card" style="text-align:left; border:none; font-family:inherit; cursor:pointer; background:var(--white);">
             <div class="c-thumb t1"><span class="c-thumb-label">Design system</span></div>
             <div class="c-body">
               <div><p class="c-title">Thematic.design</p><p class="c-meta">Design system · Atomic design · Components</p></div>
               <span class="c-year">2024</span>
             </div>
             <span class="card-arrow">↗</span>
-          </a>
+          </button>
 
           <a href="https://www.figma.com/file/bqywswoCuY52EdGbXbFBKR/Portfolio?type=design&node-id=1%3A2&mode=design" target="_blank" rel="noopener" class="carousel-card">
             <div class="c-thumb t2"><span class="c-thumb-label">Research</span></div>
@@ -1233,14 +1277,14 @@
           </div>
           <div class="project-grid">
 
-            <a href="https://www.figma.com/file/GP04zWAdSpeiXnmo1Hk3DI/Thematic.Design?type=design&node-id=1%3A68&mode=design" target="_blank" rel="noopener" class="grid-card">
+            <button onclick="navigate('thematic')" class="grid-card" style="text-align:left; width:100%; border:none; font-family:inherit; cursor:pointer;">
               <div class="g-thumb t1"><span class="g-thumb-label">Design system</span></div>
               <div class="g-body">
                 <div><p class="g-title">Thematic.design</p><p class="g-meta">Design system · Atomic design · Components</p></div>
                 <span class="g-year">2024</span>
               </div>
               <span class="card-arrow">↗</span>
-            </a>
+            </button>
 
             <a href="https://www.figma.com/file/bqywswoCuY52EdGbXbFBKR/Portfolio?type=design&node-id=1%3A2&mode=design" target="_blank" rel="noopener" class="grid-card">
               <div class="g-thumb t2"><span class="g-thumb-label">Research</span></div>
@@ -1679,6 +1723,141 @@
     </div><!-- /cs-wrap -->
   </div><!-- /page-eps -->
 
+  <!-- ══════════════════════════════════════════
+       CASE STUDY — THEMATIC.DESIGN
+  ══════════════════════════════════════════ -->
+  <div id="page-thematic" class="page">
+
+    <div class="back-bar">
+      <button class="back-btn" onclick="navigate('projects')">
+        <span class="back-arrow">←</span> Work
+      </button>
+    </div>
+
+    <div class="cs-wrap">
+
+      <!-- Hero -->
+      <div class="cs-hero">
+        <div class="cs-tags">
+          <span class="cs-tag">Design System</span>
+          <span class="cs-tag">Atomic Design</span>
+          <span class="cs-tag">Components</span>
+          <span class="cs-tag">2024</span>
+        </div>
+        <h1 class="cs-title">Thematic.design</h1>
+        <div class="cs-meta-row">
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Role</span>
+            <span class="cs-meta-value">Senior UI/UX Designer</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Company</span>
+            <span class="cs-meta-value">Indegene</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Year</span>
+            <span class="cs-meta-value">2024</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Type</span>
+            <span class="cs-meta-value">Design System</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero image -->
+      <div class="cs-section">
+        <div class="cs-img-block">
+          <img src="td-hero.png" alt="Thematic.design hero">
+        </div>
+      </div>
+
+      <!-- Overview -->
+      <div class="cs-section">
+        <p class="cs-section-label">Overview</p>
+        <div class="cs-body">
+          <p>In the dynamic world of design, where digital landscapes evolve at a breathtaking pace, ensuring a cohesive and harmonious user experience is paramount.</p>
+          <p>Thematic.Design is a comprehensive framework meticulously crafted to foster consistency, streamline workflows, and elevate the overall aesthetic and functional quality of digital products. At its core, the design system is more than just a collection of guidelines — it's a living, breathing organism that empowers design teams to create compelling user-centric experiences. It encapsulates brand ethos, design principles, and a shared language that resonates across every pixel and interaction.</p>
+        </div>
+      </div>
+
+      <!-- Atomic Design -->
+      <div class="cs-section">
+        <p class="cs-section-label">Atomic Design Principle</p>
+        <div class="cs-body">
+          <p>Atomic Design is a methodology created by Brad Frost, providing direction on building interface design systems more deliberately and with explicit order and hierarchy.</p>
+        </div>
+        <div class="cs-img-block">
+          <img src="td-atomic.png" alt="Atomic Design Principle diagram">
+        </div>
+      </div>
+
+      <!-- Atoms -->
+      <div class="cs-section">
+        <p class="cs-section-label">Atoms</p>
+        <div class="cs-body">
+          <p>The atoms of the design system represent the foundational elements that serve as building blocks for more complex components. These include basic elements like typography, colors, elevations, spacing, and icons.</p>
+        </div>
+        <div class="cs-img-block">
+          <img src="td-atoms.png" alt="Design system atoms — all frames">
+        </div>
+      </div>
+
+      <!-- Components -->
+      <div class="cs-section">
+        <p class="cs-section-label">What's ready</p>
+        <div class="cs-two-col">
+          <div>
+            <p class="cs-col-head">Atoms</p>
+            <ul class="cs-list">
+              <li>Colors</li>
+              <li>Imagery</li>
+              <li>Typography</li>
+              <li>Elevations</li>
+            </ul>
+          </div>
+          <div>
+            <p class="cs-col-head">Components & Patterns</p>
+            <ul class="cs-list">
+              <li>Header</li>
+              <li>Accordion</li>
+              <li>Image hotspot</li>
+              <li>ISI (Important Safety Information)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Screens grid -->
+      <div class="cs-section">
+        <p class="cs-section-label">System in detail</p>
+        <div class="cs-screens-grid">
+          <div class="cs-screen-item">
+            <div class="cs-img-block">
+              <img src="td-components.png" alt="All components overview">
+            </div>
+            <p class="cs-screen-label">All components — fully documented and ready to view</p>
+          </div>
+          <div class="cs-screen-item">
+            <div class="cs-img-block">
+              <img src="td-prototype.png" alt="Prototyped for seamless viewing">
+            </div>
+            <p class="cs-screen-label">Prototyped for a seamless in-file viewing experience</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Conclusion -->
+      <div class="cs-conclusion">
+        <p>Thematic.design is a front-facing design system file where all atoms and components are fully documented and prototyped for the best user experience. More pages are currently undergoing enhancements and will be unveiled soon.</p>
+        <a class="cs-figma-link" href="https://www.figma.com/file/GP04zWAdSpeiXnmo1Hk3DI/Thematic.Design?type=design&node-id=1%3A68&mode=design" target="_blank" rel="noopener">
+          View in Figma ↗
+        </a>
+      </div>
+
+    </div><!-- /cs-wrap -->
+  </div><!-- /page-thematic -->
+
   <script>
     // ── NAVIGATION ──
     function navigate(pageId) {
@@ -1697,7 +1876,7 @@
 
     // load from hash on page open
     const hash = location.hash.replace('#', '');
-    if (['home', 'projects', 'about', 'eps'].includes(hash)) navigate(hash);
+    if (['home', 'projects', 'about', 'eps', 'thematic'].includes(hash)) navigate(hash);
 
     // ── COPY EMAIL ──
     function copyEmail() {
@@ -1796,5 +1975,7 @@
       });
     });
   </script>
+
+  </div><!-- /app-panel -->
 </body>
 </html>
