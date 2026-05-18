@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<!-- saved from url=(0236)file:///Users/varsha/Library/Application%20Support/Claude/local-agent-mode-sessions/250ea376-823e-4e71-8792-a9699c836632/549d965d-1224-47ac-926c-711c85e79836/local_f4876884-5e48-45cc-87c6-e4bc9e6f17d0/outputs/varsha-portfolio-final.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Varsha Bhide — Product Designer</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --accent:  #EFAB9B;
+      --black:   #111111;
+      --gray:    #888888;
+      --light:   #f5f5f5;
+      --border:  #e8e8e8;
+      --white:   #ffffff;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+      background: var(--white);
+      color: var(--black);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── PAGE SYSTEM ── */
+    .page { display: none; }
+    .page.active { display: block; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 0 56px;
+      height: 56px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--black);
+      letter-spacing: -0.01em;
+      text-decoration: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      padding: 0;
+      transition: color 0.15s;
+    }
+
+    .nav-logo:hover { color: var(--accent); }
+
+    .nav-links { display: flex; gap: 36px; align-items: center; }
+
+    .nav-links button {
+      font-size: 13px;
+      color: var(--gray);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      padding: 0;
+      transition: color 0.15s;
+    }
+
+    .nav-links button:hover { color: var(--black); }
+    .nav-links button.nav-current { color: var(--black); font-weight: 500; }
+
+    .nav-contact {
+      font-size: 13px;
+      color: var(--black);
+      font-weight: 500;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      padding: 0;
+      transition: color 0.15s;
+      position: relative;
+    }
+
+    .nav-contact:hover { color: var(--accent); }
+
+    /* copied toast */
+    .toast {
+      position: fixed;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%) translateY(16px);
+      background: var(--black);
+      color: var(--white);
+      font-size: 13px;
+      padding: 10px 20px;
+      opacity: 0;
+      transition: opacity 0.2s, transform 0.2s;
+      pointer-events: none;
+      z-index: 999;
+      letter-spacing: 0.01em;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* ── BACK BUTTON ── */
+    .back-bar {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 24px 56px 0;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--gray);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      padding: 0;
+      transition: gap 0.2s, color 0.15s;
+      letter-spacing: 0.02em;
+    }
+
+    .back-btn:hover { color: var(--black); gap: 10px; }
+
+    .back-arrow {
+      display: inline-block;
+      transition: transform 0.2s;
+    }
+
+    .back-btn:hover .back-arrow { transform: translateX(-3px); }
+
+    /* ── SHARED LAYOUT ── */
+    .wrap {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 56px;
+    }
+
+    .section-row {
+      display: flex;
+      gap: 48px;
+    }
+
+    .col-label {
+      width: 160px;
+      flex-shrink: 0;
+      padding-top: 2px;
+    }
+
+    .col-label span {
+      font-size: 11px;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 500;
+    }
+
+    .col-content { flex: 1; min-width: 0; }
+
+    .divider { border: none; border-top: 1px solid var(--border); }
+
+    /* ── AVAILABILITY ── */
+    .avail-row {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 36px 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .avail-dot {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: var(--black);
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .avail-sub { font-size: 13px; color: var(--gray); margin-left: 15px; }
+
+    .avail-cta {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--black);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: gap 0.2s, color 0.15s;
+      padding: 0;
+    }
+
+    .avail-cta:hover { gap: 14px; color: var(--accent); }
+
+    /* ── FOOTER ── */
+    .footer-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 28px 56px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-text { font-size: 12px; color: var(--gray); }
+
+    .footer-links { display: flex; gap: 28px; }
+
+    .footer-links a {
+      font-size: 12px;
+      color: var(--gray);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .footer-links a:hover { color: var(--accent); }
+
+    /* ═══════════════════════════
+       HOME PAGE
+    ═══════════════════════════ */
+
+    .hero {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 100px 56px 88px;
+    }
+
+    .hero h1 {
+      font-size: 60px;
+      font-weight: 400;
+      letter-spacing: -0.04em;
+      line-height: 1.08;
+      margin-bottom: 28px;
+    }
+
+    .hero h1 .name { color: var(--accent); font-weight: 500; }
+
+    .hero-sub {
+      font-size: 16px;
+      color: var(--gray);
+      max-width: 440px;
+      line-height: 1.75;
+      margin-bottom: 40px;
+    }
+
+    .btn-text {
+      font-size: 14px;
+      color: var(--black);
+      text-decoration: none;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      padding: 0;
+      transition: gap 0.2s, color 0.15s;
+    }
+
+    .btn-text:hover { gap: 14px; color: var(--accent); }
+
+    /* carousel */
+    .carousel-section {
+      padding: 64px 0 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .carousel-header {
+      max-width: 960px;
+      margin: 0 auto 32px;
+      padding: 0 56px;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .carousel-label {
+      font-size: 11px;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 500;
+    }
+
+    .carousel-all {
+      font-size: 13px;
+      color: var(--gray);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 0;
+      transition: gap 0.2s, color 0.15s;
+    }
+
+    .carousel-all:hover { gap: 10px; color: var(--black); }
+
+    .carousel-wrapper {
+      overflow-x: scroll;
+      scrollbar-width: none;
+      cursor: grab;
+      padding: 0 56px;
+      user-select: none;
+    }
+
+    .carousel-wrapper:active { cursor: grabbing; }
+    .carousel-wrapper::-webkit-scrollbar { display: none; }
+
+    .carousel-track {
+      display: flex;
+      gap: 24px;
+      width: max-content;
+    }
+
+    .carousel-card {
+      width: 440px;
+      flex-shrink: 0;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      border: 1px solid var(--border);
+      transition: border-color 0.15s;
+      cursor: pointer;
+    }
+
+    .carousel-card:hover { border-color: #ccc; }
+    .carousel-card:hover .card-arrow { opacity: 1; transform: translate(0,0); }
+
+    .c-thumb {
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+    }
+
+    .c-thumb.t1 { background: #FDE8DE; }
+    .c-thumb.t2 { background: #E8F0F2; }
+    .c-thumb.t3 { background: #FDF4E8; }
+    .c-thumb.t4 { background: #EEF2EE; }
+
+    .c-thumb-label {
+      font-size: 11px;
+      color: var(--gray);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      opacity: 0.5;
+    }
+
+    .c-body {
+      padding: 18px 20px 20px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      pointer-events: none;
+    }
+
+    .c-title {
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      margin-bottom: 3px;
+    }
+
+    .c-meta { font-size: 12px; color: var(--gray); }
+    .c-year { font-size: 12px; color: var(--gray); }
+
+    .card-arrow {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      font-size: 14px;
+      opacity: 0;
+      transform: translate(-4px, 4px);
+      transition: opacity 0.2s, transform 0.2s;
+      pointer-events: none;
+    }
+
+    .carousel-controls {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 24px 56px 64px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .chevron-btn {
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--border);
+      background: var(--white);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.15s, background 0.15s;
+      flex-shrink: 0;
+    }
+
+    .chevron-btn:hover { border-color: var(--black); background: var(--light); }
+
+    .chevron-btn:disabled { opacity: 0.25; cursor: default; pointer-events: none; }
+
+    .chevron-btn svg {
+      width: 16px;
+      height: 16px;
+      stroke: var(--black);
+      stroke-width: 1.5;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .drag-hint {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      opacity: 0;
+      transition: opacity 0.5s;
+      pointer-events: none;
+    }
+
+    .drag-hint.visible { opacity: 1; }
+
+    .drag-hint span {
+      font-size: 12px;
+      color: var(--gray);
+      letter-spacing: 0.04em;
+    }
+
+    .drag-line {
+      height: 1px;
+      width: 24px;
+      background: var(--gray);
+      opacity: 0.4;
+    }
+
+    /* home about preview */
+    .home-about {
+      padding: 64px 0 80px;
+      border-top: 1px solid var(--border);
+    }
+
+    .about-preview p {
+      font-size: 15px;
+      color: var(--black);
+      line-height: 1.8;
+      max-width: 520px;
+      margin-bottom: 16px;
+      opacity: 0.85;
+    }
+
+    .read-more {
+      margin-top: 8px;
+    }
+
+    /* ═══════════════════════════
+       ALL PROJECTS PAGE
+    ═══════════════════════════ */
+
+    .page-header {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 56px 56px 52px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .page-header h1 {
+      font-size: 48px;
+      font-weight: 400;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      margin-bottom: 10px;
+    }
+
+    .page-header p { font-size: 15px; color: var(--gray); line-height: 1.7; }
+
+    .work-section { padding: 52px 0 80px; }
+
+    .filter-tabs {
+      display: flex;
+      gap: 28px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 48px;
+    }
+
+    .tab {
+      font-size: 13px;
+      color: var(--gray);
+      background: none;
+      border: none;
+      padding: 0 0 14px;
+      cursor: pointer;
+      position: relative;
+      transition: color 0.15s;
+      font-family: inherit;
+    }
+
+    .tab:hover { color: var(--black); }
+    .tab.active { color: var(--black); font-weight: 500; }
+
+    .tab.active::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0; right: 0;
+      height: 1.5px;
+      background: var(--black);
+    }
+
+    .cat-group { margin-bottom: 52px; }
+    .cat-group:last-child { margin-bottom: 0; }
+    .cat-group.hidden { display: none; }
+
+    .cat-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .cat-title {
+      font-size: 11px;
+      color: var(--gray);
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .cat-line { flex: 1; height: 1px; background: var(--border); }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .grid-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: border-color 0.15s, background 0.15s;
+      cursor: pointer;
+    }
+
+    .grid-card:hover { border-color: #ccc; background: var(--light); }
+    .grid-card:hover .card-arrow { opacity: 1; transform: translate(0,0); }
+
+    .g-thumb {
+      height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .g-thumb.t1 { background: #FDE8DE; }
+    .g-thumb.t2 { background: #E8F0F2; }
+    .g-thumb.t3 { background: #FDF4E8; }
+    .g-thumb.t4 { background: #EEF2EE; }
+    .g-thumb.t5 { background: #F0EBF8; }
+
+    .g-thumb-label {
+      font-size: 11px;
+      color: var(--gray);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      opacity: 0.5;
+    }
+
+    .g-body {
+      padding: 18px 20px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .g-title {
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      margin-bottom: 3px;
+      line-height: 1.3;
+    }
+
+    .g-meta { font-size: 12px; color: var(--gray); }
+    .g-year { font-size: 12px; color: var(--gray); flex-shrink: 0; margin-left: 12px; }
+
+    .grid-card.coming {
+      border-style: dashed;
+      pointer-events: none;
+      opacity: 0.35;
+    }
+
+    /* ═══════════════════════════
+       ABOUT PAGE
+    ═══════════════════════════ */
+
+    .about-page-header {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 56px 56px 52px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .about-page-header h1 {
+      font-size: 48px;
+      font-weight: 400;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+    }
+
+    .about-full { padding: 56px 0 80px; }
+
+    .about-full .section-row { margin-bottom: 52px; }
+    .about-full .section-row:last-child { margin-bottom: 0; }
+
+    .about-body p {
+      font-size: 15px;
+      color: var(--black);
+      line-height: 1.85;
+      max-width: 560px;
+      margin-bottom: 20px;
+      opacity: 0.85;
+    }
+
+    .about-body p:last-child { margin-bottom: 0; }
+
+    .about-body h2 {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--black);
+      margin-bottom: 16px;
+      opacity: 0.45;
+    }
+
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 20px;
+    }
+
+    .skill {
+      font-size: 13px;
+      color: var(--gray);
+      padding-bottom: 4px;
+      border-bottom: 1px solid var(--border);
+      transition: color 0.15s, border-color 0.15s;
+      cursor: default;
+    }
+
+    .skill:hover { color: var(--black); border-color: var(--accent); }
+
+    .tools-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tool {
+      font-size: 12px;
+      color: var(--gray);
+      padding: 5px 12px;
+      border: 1px solid var(--border);
+      transition: border-color 0.15s, color 0.15s;
+    }
+
+    .tool:hover { border-color: var(--accent); color: var(--black); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      nav { padding: 0 20px; }
+      .hero { padding: 60px 20px 56px; }
+      .hero h1 { font-size: 36px; }
+      .carousel-header, .carousel-controls { padding-left: 20px; padding-right: 20px; }
+      .carousel-wrapper { padding: 0 20px; }
+      .carousel-card { width: 300px; }
+      .c-thumb { height: 200px; }
+      .wrap, .back-bar, .page-header, .about-page-header, .avail-row, .footer-inner { padding-left: 20px; padding-right: 20px; }
+      .section-row { flex-direction: column; gap: 20px; }
+      .col-label { width: auto; }
+      .project-grid { grid-template-columns: 1fr; }
+      .avail-row { flex-direction: column; align-items: flex-start; gap: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast">Email copied to clipboard</div>
+
+  <!-- NAV -->
+  <nav>
+    <button class="nav-logo" onclick="navigate(&#39;home&#39;)">Varsha Bhide</button>
+    <div class="nav-links">
+      <button onclick="navigate(&#39;projects&#39;)" data-page="projects">Work</button>
+      <button onclick="navigate(&#39;about&#39;)" data-page="about">About</button>
+      <button class="nav-contact" onclick="copyEmail()">Get in touch →</button>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════════════════════
+       HOME
+  ══════════════════════════════════════════ -->
+  <div id="page-home" class="page active">
+
+    <section class="hero">
+      <h1>I'm <span class="name">Varsha Bhide</span>,<br>a product designer</h1>
+      <p class="hero-sub">Building thoughtful systems and experiences — from design tokens to full products. Focused on scalable design systems and UX strategy.</p>
+      <button class="btn-text" onclick="navigate(&#39;about&#39;)">About me →</button>
+    </section>
+
+    <section class="carousel-section">
+      <div class="carousel-header">
+        <span class="carousel-label">Featured work</span>
+        <button class="carousel-all" onclick="navigate(&#39;projects&#39;)">All projects →</button>
+      </div>
+
+      <div class="carousel-wrapper" id="carousel" style="cursor: grab;">
+        <div class="carousel-track">
+
+          <div class="carousel-card">
+            <div class="c-thumb t1"><span class="c-thumb-label">Design system</span></div>
+            <div class="c-body">
+              <div><p class="c-title">Thematic.design</p><p class="c-meta">Design system</p></div>
+              <span class="c-year">2024</span>
+            </div>
+            <span class="card-arrow">↗</span>
+          </div>
+
+          <div class="carousel-card">
+            <div class="c-thumb t2"><span class="c-thumb-label">Research</span></div>
+            <div class="c-body">
+              <div><p class="c-title">Design systems atom definition</p><p class="c-meta">Design system</p></div>
+              <span class="c-year">2024</span>
+            </div>
+            <span class="card-arrow">↗</span>
+          </div>
+
+          <div class="carousel-card">
+            <div class="c-thumb t3"><span class="c-thumb-label">Strategy</span></div>
+            <div class="c-body">
+              <div><p class="c-title">Design Tokens</p><p class="c-meta">Design system</p></div>
+              <span class="c-year">2023</span>
+            </div>
+            <span class="card-arrow">↗</span>
+          </div>
+
+          <div class="carousel-card">
+            <div class="c-thumb t4"><span class="c-thumb-label">Healthcare · UX</span></div>
+            <div class="c-body">
+              <div><p class="c-title">Electronic Patient Service</p><p class="c-meta">Product</p></div>
+              <span class="c-year">2023</span>
+            </div>
+            <span class="card-arrow">↗</span>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="carousel-controls">
+        <button class="chevron-btn" id="prevBtn" aria-label="Previous" disabled="">
+          <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+        <button class="chevron-btn" id="nextBtn" aria-label="Next">
+          <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"></polyline></svg>
+        </button>
+        <div class="drag-hint visible" id="dragHint">
+          <div class="drag-line"></div>
+          <span>drag to explore</span>
+          <div class="drag-line"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-about">
+      <div class="wrap">
+        <div class="section-row">
+          <div class="col-label"><span>About</span></div>
+          <div class="col-content">
+            <div class="about-preview">
+              <p>Designer with a passion for building scalable design systems. I bridge the gap between design thinking and engineering — turning complexity into clarity.</p>
+              <p>Currently available for freelance and full-time roles.</p>
+              <div class="read-more">
+                <button class="btn-text" onclick="navigate(&#39;about&#39;)">Read more →</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider">
+    <div class="avail-row">
+      <div>
+        <div class="avail-dot"><span class="dot"></span>Available for new projects</div>
+        <p class="avail-sub">Open to freelance and full-time opportunities</p>
+      </div>
+      <button class="avail-cta" onclick="copyEmail()">Get in touch →</button>
+    </div>
+    <hr class="divider">
+
+    <footer>
+      <div class="footer-inner">
+        <span class="footer-text">© 2024 Varsha Bhide</span>
+        <div class="footer-links">
+          <a href="https://linkedin.com/" target="_blank">LinkedIn</a>
+          <a href="file:///Users/varsha/Library/Application%20Support/Claude/local-agent-mode-sessions/250ea376-823e-4e71-8792-a9699c836632/549d965d-1224-47ac-926c-711c85e79836/local_f4876884-5e48-45cc-87c6-e4bc9e6f17d0/outputs/varsha-portfolio-final.html#" onclick="copyEmail(); return false;">Email</a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       ALL PROJECTS
+  ══════════════════════════════════════════ -->
+  <div id="page-projects" class="page">
+
+    <div class="back-bar">
+      <button class="back-btn" onclick="navigate(&#39;home&#39;)">
+        <span class="back-arrow">←</span> Home
+      </button>
+    </div>
+
+    <div class="page-header">
+      <h1>All projects</h1>
+      <p>Design system work and product design — built with care.</p>
+    </div>
+
+    <section class="work-section">
+      <div class="wrap">
+
+        <div class="filter-tabs">
+          <button class="tab active" data-filter="all">All</button>
+          <button class="tab" data-filter="design-system">Design system</button>
+          <button class="tab" data-filter="product">Product</button>
+        </div>
+
+        <div class="cat-group" id="grp-ds">
+          <div class="cat-header">
+            <span class="cat-title">Design system</span>
+            <div class="cat-line"></div>
+          </div>
+          <div class="project-grid">
+
+            <div class="grid-card">
+              <div class="g-thumb t1"><span class="g-thumb-label">Design system</span></div>
+              <div class="g-body">
+                <div><p class="g-title">Thematic.design</p><p class="g-meta">Design system</p></div>
+                <span class="g-year">2024</span>
+              </div>
+              <span class="card-arrow">↗</span>
+            </div>
+
+            <div class="grid-card">
+              <div class="g-thumb t2"><span class="g-thumb-label">Research</span></div>
+              <div class="g-body">
+                <div><p class="g-title">Design systems atom definition</p><p class="g-meta">Design system</p></div>
+                <span class="g-year">2024</span>
+              </div>
+              <span class="card-arrow">↗</span>
+            </div>
+
+            <div class="grid-card">
+              <div class="g-thumb t3"><span class="g-thumb-label">Strategy</span></div>
+              <div class="g-body">
+                <div><p class="g-title">Design Tokens</p><p class="g-meta">Design system</p></div>
+                <span class="g-year">2023</span>
+              </div>
+              <span class="card-arrow">↗</span>
+            </div>
+
+            <div class="grid-card coming">
+              <div class="g-thumb"><span class="g-thumb-label">Coming soon</span></div>
+              <div class="g-body">
+                <div><p class="g-title">New project</p><p class="g-meta">Design system</p></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="cat-group" id="grp-prod">
+          <div class="cat-header">
+            <span class="cat-title">Product</span>
+            <div class="cat-line"></div>
+          </div>
+          <div class="project-grid">
+
+            <div class="grid-card">
+              <div class="g-thumb t4"><span class="g-thumb-label">Healthcare · UX</span></div>
+              <div class="g-body">
+                <div><p class="g-title">Electronic Patient Service</p><p class="g-meta">Product</p></div>
+                <span class="g-year">2023</span>
+              </div>
+              <span class="card-arrow">↗</span>
+            </div>
+
+            <div class="grid-card coming">
+              <div class="g-thumb"><span class="g-thumb-label">Coming soon</span></div>
+              <div class="g-body">
+                <div><p class="g-title">New project</p><p class="g-meta">Product</p></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <hr class="divider">
+    <div class="avail-row">
+      <div>
+        <div class="avail-dot"><span class="dot"></span>Available for new projects</div>
+        <p class="avail-sub">Open to freelance and full-time opportunities</p>
+      </div>
+      <button class="avail-cta" onclick="copyEmail()">Get in touch →</button>
+    </div>
+    <hr class="divider">
+
+    <footer>
+      <div class="footer-inner">
+        <span class="footer-text">© 2024 Varsha Bhide</span>
+        <div class="footer-links">
+          <a href="https://linkedin.com/" target="_blank">LinkedIn</a>
+          <a href="file:///Users/varsha/Library/Application%20Support/Claude/local-agent-mode-sessions/250ea376-823e-4e71-8792-a9699c836632/549d965d-1224-47ac-926c-711c85e79836/local_f4876884-5e48-45cc-87c6-e4bc9e6f17d0/outputs/varsha-portfolio-final.html#" onclick="copyEmail(); return false;">Email</a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       ABOUT
+  ══════════════════════════════════════════ -->
+  <div id="page-about" class="page">
+
+    <div class="back-bar">
+      <button class="back-btn" onclick="navigate(&#39;home&#39;)">
+        <span class="back-arrow">←</span> Home
+      </button>
+    </div>
+
+    <div class="about-page-header">
+      <h1>About me</h1>
+    </div>
+
+    <section class="about-full">
+      <div class="wrap">
+
+        <!-- Bio -->
+        <div class="section-row" style="margin-bottom: 52px;">
+          <div class="col-label"><span>Bio</span></div>
+          <div class="col-content">
+            <div class="about-body">
+              <!-- ↓ Update with Varsha's actual Notion about page content -->
+              <p>I'm Varsha Bhide, a product designer focused on building scalable design systems and thoughtful digital experiences. I care deeply about the craft — the small decisions that make a product feel considered, consistent, and human.</p>
+              <p>My work lives at the intersection of design thinking and engineering. I enjoy working closely with developers, turning ambiguous problems into clear, buildable solutions — from first principles to production-ready components.</p>
+              <p>When I'm not designing, I'm thinking about how systems work, what makes a good design token, and why some interfaces feel effortless while others don't.</p>
+            </div>
+          </div>
+        </div>
+
+        <hr class="divider" style="margin-bottom: 52px;">
+
+        <!-- Skills -->
+        <div class="section-row" style="margin-bottom: 52px;">
+          <div class="col-label"><span>Skills</span></div>
+          <div class="col-content">
+            <div class="about-body">
+              <div class="skill-list">
+                <span class="skill">Design systems</span>
+                <span class="skill">UX strategy</span>
+                <span class="skill">Visual design</span>
+                <span class="skill">Interaction design</span>
+                <span class="skill">Design tokens</span>
+                <span class="skill">Component libraries</span>
+                <span class="skill">Prototyping</span>
+                <span class="skill">User research</span>
+                <span class="skill">Product thinking</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr class="divider" style="margin-bottom: 52px;">
+
+        <!-- Tools -->
+        <div class="section-row">
+          <div class="col-label"><span>Tools</span></div>
+          <div class="col-content">
+            <div class="tools-list">
+              <span class="tool">Figma</span>
+              <span class="tool">FigJam</span>
+              <span class="tool">Notion</span>
+              <span class="tool">Storybook</span>
+              <span class="tool">VS Code</span>
+              <span class="tool">HTML / CSS</span>
+              <span class="tool">Zeroheight</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <hr class="divider">
+    <div class="avail-row">
+      <div>
+        <div class="avail-dot"><span class="dot"></span>Available for new projects</div>
+        <p class="avail-sub">Open to freelance and full-time opportunities</p>
+      </div>
+      <button class="avail-cta" onclick="copyEmail()">Get in touch →</button>
+    </div>
+    <hr class="divider">
+
+    <footer>
+      <div class="footer-inner">
+        <span class="footer-text">© 2024 Varsha Bhide</span>
+        <div class="footer-links">
+          <a href="https://linkedin.com/" target="_blank">LinkedIn</a>
+          <a href="file:///Users/varsha/Library/Application%20Support/Claude/local-agent-mode-sessions/250ea376-823e-4e71-8792-a9699c836632/549d965d-1224-47ac-926c-711c85e79836/local_f4876884-5e48-45cc-87c6-e4bc9e6f17d0/outputs/varsha-portfolio-final.html#" onclick="copyEmail(); return false;">Email</a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    // ── NAVIGATION ──
+    function navigate(pageId) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById('page-' + pageId).classList.add('active');
+      document.querySelectorAll('.nav-links [data-page]').forEach(b => b.classList.remove('nav-current'));
+      const active = document.querySelector(`.nav-links [data-page="${pageId}"]`);
+      if (active) active.classList.add('nav-current');
+      window.scrollTo({ top: 0, behavior: 'instant' });
+      history.pushState({ page: pageId }, '', '#' + pageId);
+    }
+
+    window.addEventListener('popstate', e => {
+      if (e.state?.page) navigate(e.state.page);
+    });
+
+    // load from hash on page open
+    const hash = location.hash.replace('#', '');
+    if (['home', 'projects', 'about'].includes(hash)) navigate(hash);
+
+    // ── COPY EMAIL ──
+    function copyEmail() {
+      navigator.clipboard.writeText('varsha@example.com').then(() => {
+        const toast = document.getElementById('toast');
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 2500);
+      });
+    }
+
+    // ── CAROUSEL ──
+    const carousel  = document.getElementById('carousel');
+    const prevBtn   = document.getElementById('prevBtn');
+    const nextBtn   = document.getElementById('nextBtn');
+    const dragHint  = document.getElementById('dragHint');
+    const CARD_W    = 440 + 24;
+    let isDown = false, startX, scrollLeft0, hasDragged = false, dragDelta = 0;
+
+    const hintTimer = setTimeout(() => {
+      if (!hasDragged) dragHint.classList.add('visible');
+    }, 4000);
+
+    function dismissHint() {
+      if (hasDragged) return;
+      hasDragged = true;
+      dragHint.classList.remove('visible');
+      clearTimeout(hintTimer);
+    }
+
+    function updateChevrons() {
+      prevBtn.disabled = carousel.scrollLeft <= 0;
+      nextBtn.disabled = carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth - 2;
+    }
+
+    carousel.addEventListener('scroll', updateChevrons);
+    updateChevrons();
+
+    prevBtn.addEventListener('click', () => { carousel.scrollBy({ left: -CARD_W, behavior: 'smooth' }); dismissHint(); });
+    nextBtn.addEventListener('click', () => { carousel.scrollBy({ left:  CARD_W, behavior: 'smooth' }); dismissHint(); });
+
+    carousel.addEventListener('mousedown', e => {
+      isDown = true; dragDelta = carousel.scrollLeft;
+      carousel.style.cursor = 'grabbing';
+      startX = e.pageX - carousel.offsetLeft;
+      scrollLeft0 = carousel.scrollLeft;
+      dismissHint();
+    });
+
+    carousel.addEventListener('mouseleave', () => { isDown = false; carousel.style.cursor = 'grab'; });
+    carousel.addEventListener('mouseup',    () => { isDown = false; carousel.style.cursor = 'grab'; });
+
+    carousel.addEventListener('mousemove', e => {
+      if (!isDown) return;
+      e.preventDefault();
+      carousel.scrollLeft = scrollLeft0 - (e.pageX - carousel.offsetLeft - startX) * 1.4;
+    });
+
+    carousel.querySelectorAll('.carousel-card').forEach(card => {
+      card.addEventListener('click', e => {
+        if (Math.abs(carousel.scrollLeft - dragDelta) > 6) e.preventDefault();
+      });
+    });
+
+    let tStartX, tScrollLeft;
+    carousel.addEventListener('touchstart', e => {
+      tStartX = e.touches[0].pageX - carousel.offsetLeft;
+      tScrollLeft = carousel.scrollLeft;
+      dismissHint();
+    }, { passive: true });
+
+    carousel.addEventListener('touchmove', e => {
+      carousel.scrollLeft = tScrollLeft - (e.touches[0].pageX - carousel.offsetLeft - tStartX) * 1.4;
+    }, { passive: true });
+
+    // ── FILTER TABS ──
+    document.querySelectorAll('.filter-tabs .tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        tab.closest('.filter-tabs').querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        const f = tab.dataset.filter;
+        document.getElementById('grp-ds').classList.toggle('hidden',   f === 'product');
+        document.getElementById('grp-prod').classList.toggle('hidden', f === 'design-system');
+      });
+    });
+  </script>
+
+
+</body></html>
