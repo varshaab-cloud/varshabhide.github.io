@@ -4,6 +4,25 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Varsha Bhide — Product Designer</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Portfolio of Varsha Bhide — Senior UI/UX Designer specialising in product design, design systems, and healthcare UX."/>
+  <meta name="author" content="Varsha Bhide"/>
+
+  <!-- Open Graph (LinkedIn, WhatsApp, Slack, etc.) -->
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://varshaab-cloud.github.io/varshabhide.github.io/"/>
+  <meta property="og:title" content="Varsha Bhide — Product Designer"/>
+  <meta property="og:description" content="Senior UI/UX Designer specialising in product design, design systems, and healthcare UX. View case studies and work."/>
+  <meta property="og:image" content="https://varshaab-cloud.github.io/varshabhide.github.io/varsha-photo.png"/>
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+
+  <!-- Twitter / X card -->
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Varsha Bhide — Product Designer"/>
+  <meta name="twitter:description" content="Senior UI/UX Designer specialising in product design, design systems, and healthcare UX."/>
+  <meta name="twitter:image" content="https://varshaab-cloud.github.io/varshabhide.github.io/varsha-photo.png"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -1170,14 +1189,14 @@
             <span class="card-arrow">↗</span>
           </a>
 
-          <a href="https://www.notion.so/varshabhide/Design-Tokens-7b21108a68404dd9a81ffb9ec2c94fd1" target="_blank" rel="noopener" class="carousel-card">
+          <button onclick="navigate('tokens')" class="carousel-card" style="text-align:left; border:none; font-family:inherit; cursor:pointer; background:var(--white);">
             <div class="c-thumb t3"><span class="c-thumb-label">Strategy</span></div>
             <div class="c-body">
               <div><p class="c-title">Design Tokens</p><p class="c-meta">What, why and how · Token taxonomy · Pipeline</p></div>
               <span class="c-year">2023</span>
             </div>
-            <span class="card-arrow">↗</span>
-          </a>
+            <span class="card-arrow">→</span>
+          </button>
 
           <button onclick="navigate('eps')" class="carousel-card" style="text-align:left; border:none; font-family:inherit; cursor:pointer; background:var(--white);">
             <div class="c-thumb t4"><span class="c-thumb-label">Healthcare · UX</span></div>
@@ -1295,14 +1314,14 @@
               <span class="card-arrow">↗</span>
             </a>
 
-            <a href="https://www.notion.so/varshabhide/Design-Tokens-7b21108a68404dd9a81ffb9ec2c94fd1" target="_blank" rel="noopener" class="grid-card">
+            <button onclick="navigate('tokens')" class="grid-card" style="text-align:left; width:100%; border:none; font-family:inherit; cursor:pointer;">
               <div class="g-thumb t3"><span class="g-thumb-label">Strategy</span></div>
               <div class="g-body">
                 <div><p class="g-title">Design Tokens</p><p class="g-meta">Token strategy · Cross-platform · Documentation</p></div>
                 <span class="g-year">2023</span>
               </div>
-              <span class="card-arrow">↗</span>
-            </a>
+              <span class="card-arrow">→</span>
+            </button>
 
             <div class="grid-card coming">
               <div class="g-thumb"><span class="g-thumb-label">Coming soon</span></div>
@@ -1858,6 +1877,180 @@
     </div><!-- /cs-wrap -->
   </div><!-- /page-thematic -->
 
+
+  <!-- ══════════════════════════════════════════
+       ARTICLE — DESIGN TOKENS
+  ══════════════════════════════════════════ -->
+  <div id="page-tokens" class="page">
+
+    <div class="back-bar">
+      <button class="back-btn" onclick="navigate('projects')">← All Projects</button>
+    </div>
+
+    <div class="cs-wrap">
+
+      <!-- Header -->
+      <div class="cs-header">
+        <div class="cs-tags">
+          <span class="cs-tag">Design System</span>
+          <span class="cs-tag">Design Tokens</span>
+          <span class="cs-tag">Strategy</span>
+          <span class="cs-tag">2023</span>
+        </div>
+        <h1 class="cs-title">Design Tokens</h1>
+        <p class="cs-subtitle">A deep-dive into what design tokens are, why they matter, and how to structure, name, and deploy them effectively across a scalable design system.</p>
+        <div class="cs-meta-row">
+          <div class="cs-meta-item"><span class="cs-meta-label">Role</span><span class="cs-meta-val">Senior UI/UX Designer</span></div>
+          <div class="cs-meta-item"><span class="cs-meta-label">Company</span><span class="cs-meta-val">Indegene</span></div>
+          <div class="cs-meta-item"><span class="cs-meta-label">Type</span><span class="cs-meta-val">Thought Leadership · Article</span></div>
+        </div>
+      </div>
+
+      <!-- Hero image -->
+      <div class="cs-img-block" style="margin-bottom:48px;">
+        <img src="dt-thumbnail.png" alt="Design Tokens article thumbnail">
+      </div>
+
+      <!-- What is a design token -->
+      <div class="cs-section">
+        <h2 class="cs-h2">What is a design token?</h2>
+        <p class="cs-body">Design tokens are named entities that store visual design attributes — an agnostic, human-readable abstraction of visual styles that sync with all style files in the system. They allow teams to create a scalable and consistent visual system for UI development, replacing hard-coded values like hex codes and pixel values with meaningful names.</p>
+        <div class="cs-img-block" style="margin-top:24px;">
+          <img src="dt-what.png" alt="What is a design token diagram">
+        </div>
+      </div>
+
+      <!-- Why use tokens -->
+      <div class="cs-section">
+        <h2 class="cs-h2">Why use a design token?</h2>
+        <div class="cs-img-block" style="margin-top:16px;">
+          <img src="dt-why.png" alt="Why use design tokens">
+        </div>
+      </div>
+
+      <!-- Versatile -->
+      <div class="cs-section">
+        <h2 class="cs-h2">Design tokens are versatile</h2>
+        <p class="cs-body">Because tokens are platform-agnostic, they are independent of any specific tech stack. A single source of truth can be implemented across web, iOS, Android, and other platforms simultaneously.</p>
+        <div class="cs-img-block" style="margin-top:24px;">
+          <img src="dt-versatile.png" alt="Design tokens are platform agnostic">
+        </div>
+      </div>
+
+      <!-- Three-tier structure -->
+      <div class="cs-section">
+        <h2 class="cs-h2">Three-tier token structure</h2>
+        <p class="cs-body">Tokens are organized into three layers, each with increasing specificity and isolation — base tokens, alias tokens, and component tokens. Each layer references the one below it, creating a clean hierarchy that makes global changes predictable and targeted changes precise.</p>
+        <div class="cs-img-block" style="margin-top:24px;">
+          <img src="dt-three-tier.png" alt="Three tier token structure diagram">
+        </div>
+      </div>
+
+      <!-- Styles vs Tokens -->
+      <div class="cs-section">
+        <h2 class="cs-h2">Difference between styles and design tokens</h2>
+        <div class="cs-img-block" style="margin-top:16px;">
+          <img src="dt-vs-styles.png" alt="Styles vs design tokens comparison">
+        </div>
+      </div>
+
+      <!-- Types of values -->
+      <div class="cs-section">
+        <h2 class="cs-h2">Types of values that can be stored</h2>
+        <div class="cs-img-block" style="margin-top:16px;">
+          <img src="dt-types.png" alt="Types of values in design tokens">
+        </div>
+      </div>
+
+      <!-- Token Strategy -->
+      <div class="cs-section">
+        <h2 class="cs-h2">Token Strategy</h2>
+        <p class="cs-body">By simply observing a token name, both designers and developers should intuitively understand its purpose — without needing documentation. The strategy involves grouping components categorically, assigning each to a specific category to inform the token naming convention.</p>
+        <div class="cs-body" style="margin-top:16px;">
+          <strong>Benefits of this approach:</strong>
+          <ul style="margin-top:8px; padding-left:20px; display:flex; flex-direction:column; gap:6px;">
+            <li>Consolidating repetitive tokens into a single category significantly decreases total token count</li>
+            <li>Better manageability and clear visual hierarchies, reducing cognitive load</li>
+            <li>Reducing token inventory by up to fifty percent</li>
+            <li>Enhanced control over design operations with standardized tokens</li>
+          </ul>
+        </div>
+        <div class="cs-img-block" style="margin-top:24px;">
+          <img src="dt-strategy.png" alt="Token strategy diagram">
+        </div>
+      </div>
+
+      <!-- Token Taxonomy -->
+      <div class="cs-section">
+        <h2 class="cs-h2">Token Taxonomy</h2>
+        <p class="cs-body">Efficiently deploying design tokens is crucial — without a clear taxonomy, token generation quickly becomes unwieldy and leads to an unmanageable inventory. A well-structured taxonomy makes naming conventions intuitive and consistent across the entire design system.</p>
+        <div class="cs-img-block" style="margin-top:24px;">
+          <img src="dt-taxonomy.png" alt="Token taxonomy diagram">
+        </div>
+        <div class="cs-img-block" style="margin-top:16px;">
+          <img src="dt-taxonomy-exp.png" alt="Token taxonomy expanded">
+        </div>
+      </div>
+
+      <!-- Base and alias tokens -->
+      <div class="cs-section">
+        <h2 class="cs-h2">Base and alias tokens</h2>
+        <p class="cs-body">Each alias token is designated with a distinct purpose, meaning, and function. Unlike base tokens, alias tokens are exclusively used within predefined contexts or instances. Naming conventions for alias tokens should balance abstraction with clarity — accommodating various values while conveying their intended use.</p>
+        <div class="cs-img-block" style="margin-top:24px;">
+          <img src="dt-base-alias.png" alt="Base and alias tokens">
+        </div>
+        <div class="cs-img-block" style="margin-top:16px;">
+          <img src="dt-alias-usage.png" alt="Alias token usage">
+        </div>
+      </div>
+
+      <!-- Token isolation -->
+      <div class="cs-section">
+        <h2 class="cs-h2">Token updates and isolation</h2>
+        <p class="cs-body">The hierarchical structure of design tokens facilitates the concept of isolation and control within a design system. Each tier has a different scope of impact when updated.</p>
+        <div class="cs-img-block" style="margin-top:24px;">
+          <img src="dt-isolation.png" alt="Token isolation overview">
+        </div>
+        <div class="cs-screen-grid" style="margin-top:16px;">
+          <div class="cs-screen-item">
+            <div class="cs-img-block">
+              <img src="dt-base-isolation.png" alt="Base token isolation — zero isolation">
+            </div>
+            <p class="cs-screen-label">Base tokens — zero isolation, changes affect the entire system</p>
+          </div>
+          <div class="cs-screen-item">
+            <div class="cs-img-block">
+              <img src="dt-alias-isolation.png" alt="Alias token isolation — moderate isolation">
+            </div>
+            <p class="cs-screen-label">Alias tokens — moderate isolation, changes affect defined contexts</p>
+          </div>
+        </div>
+        <div class="cs-img-block" style="margin-top:16px;">
+          <img src="dt-comp-isolation.png" alt="Component token isolation — full isolation">
+        </div>
+        <p class="cs-screen-label" style="margin-top:8px; text-align:center;">Component tokens — highest isolation, changes affect only that component</p>
+      </div>
+
+      <!-- Token Pipeline -->
+      <div class="cs-section">
+        <h2 class="cs-h2">Token pipeline and workflow</h2>
+        <p class="cs-body">The process utilises the open-source <strong>Figma Token Studio</strong> plugin to generate tokens and export them to GitHub in JSON format. The tokens are then analyzed through <strong>Style Dictionary</strong> on GitHub and converted to CSS variables for use in code — creating an end-to-end automated token pipeline.</p>
+        <div class="cs-img-block" style="margin-top:24px;">
+          <img src="dt-pipeline.png" alt="Token pipeline and workflow">
+        </div>
+      </div>
+
+      <!-- Conclusion -->
+      <div class="cs-conclusion">
+        <p>Design tokens are the keystones of a harmonious and scalable design system — providing a unified language for consistency and adaptability in the ever-evolving landscape of UI design. To observe the implementation of design tokens in the atom section of the design system, read the full article on Notion.</p>
+        <a class="cs-figma-link" href="https://www.notion.so/varshabhide/Design-Tokens-7b21108a68404dd9a81ffb9ec2c94fd1" target="_blank" rel="noopener">
+          Read full article ↗
+        </a>
+      </div>
+
+    </div><!-- /cs-wrap -->
+  </div><!-- /page-tokens -->
+
   <script>
     // ── NAVIGATION ──
     function navigate(pageId) {
@@ -1876,7 +2069,7 @@
 
     // load from hash on page open
     const hash = location.hash.replace('#', '');
-    if (['home', 'projects', 'about', 'eps', 'thematic'].includes(hash)) navigate(hash);
+    if (['home', 'projects', 'about', 'eps', 'thematic', 'tokens'].includes(hash)) navigate(hash);
 
     // ── COPY EMAIL ──
     function copyEmail() {
