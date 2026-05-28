@@ -1,2196 +1,3707 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Varsha Bhide — Product Designer</title>
-
-  <!-- SEO -->
-  <meta name="description" content="Portfolio of Varsha Bhide — Senior UI/UX Designer specialising in product design, design systems, and healthcare UX."/>
-  <meta name="author" content="Varsha Bhide"/>
-
-  <!-- Open Graph (LinkedIn, WhatsApp, Slack, etc.) -->
-  <meta property="og:type" content="website"/>
-  <meta property="og:url" content="https://varshaab-cloud.github.io/varshabhide.github.io/"/>
-  <meta property="og:title" content="Varsha Bhide — Product Designer"/>
-  <meta property="og:description" content="Senior UI/UX Designer specialising in product design, design systems, and healthcare UX. View case studies and work."/>
-  <meta property="og:image" content="https://varshaab-cloud.github.io/varshabhide.github.io/varsha-photo.png"/>
-  <meta property="og:image:width" content="1200"/>
-  <meta property="og:image:height" content="630"/>
-
-  <!-- Twitter / X card -->
-  <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:title" content="Varsha Bhide — Product Designer"/>
-  <meta name="twitter:description" content="Senior UI/UX Designer specialising in product design, design systems, and healthcare UX."/>
-  <meta name="twitter:image" content="https://varshaab-cloud.github.io/varshabhide.github.io/varsha-photo.png"/>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --accent:  #EFAB9B;
-      --black:   #111111;
-      --gray:    #888888;
-      --light:   #f5f5f5;
-      --border:  #e8e8e8;
-      --white:   #ffffff;
-    }
-
-    /* ── DARK MODE ── */
-    body.dark {
-      --black:   #f0f0f0;
-      --gray:    #b0b0b0;
-      --light:   #1e1e1e;
-      --border:  #303030;
-      --white:   #121212;
-      background-color: #0a0a0a;
-      background-image: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
-      background-size: 18px 18px;
-    }
-
-    body.dark .g-thumb.t1 { background: #281e1a; }
-    body.dark .g-thumb.t2 { background: #182022; }
-    body.dark .g-thumb.t3 { background: #232018; }
-    body.dark .g-thumb.t4 { background: #182018; }
-    body.dark .c-thumb.t1 { background: #281e1a; }
-    body.dark .c-thumb.t2 { background: #182022; }
-    body.dark .c-thumb.t3 { background: #232018; }
-    body.dark .c-thumb.t4 { background: #182018; }
-    body.dark .grid-card { background: #1a1a1a; }
-    body.dark .grid-card:hover { background: #222222; }
-    body.dark .carousel-card { background: #1a1a1a; }
-    body.dark .cs-img-block { background: #1a1a1a; }
-    body.dark .cs-conclusion { background: #1a1a1a; }
-    body.dark .chevron-btn { background: #1e1e1e; }
-    body.dark nav { background: #121212; }
-
-    /* dark mode toggle pill */
-    .theme-toggle {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 12px;
-      background: var(--light);
-      border: 1px solid var(--border);
-      cursor: pointer;
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--gray);
-      letter-spacing: 0.04em;
-      transition: background 0.15s, border-color 0.15s, color 0.15s;
-      flex-shrink: 0;
-      font-family: inherit;
-      white-space: nowrap;
-    }
-
-    .theme-toggle:hover { border-color: var(--accent); color: var(--black); }
-    body.dark .theme-toggle { background: #1e1e1e; }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
-      background-color: #f7f7f7;
-      background-image: radial-gradient(circle, rgba(0,0,0,0.08) 1px, transparent 1px);
-      background-size: 18px 18px;
-      color: var(--black);
-      line-height: 1.5;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    #app-panel {
-      max-width: 1200px;
-      margin: 0 auto;
-      background: var(--white);
-      box-shadow: 0 8px 48px rgba(0,0,0,0.08), 0 2px 16px rgba(0,0,0,0.04);
-      min-height: 100vh;
-    }
-
-    /* ── PAGE SYSTEM ── */
-    .page { display: none; }
-    .page.active { display: block; }
-
-    /* ── NAV ── */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: var(--white);
-      border-bottom: 1px solid var(--border);
-      padding: 0 56px;
-      height: 56px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .nav-logo {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--black);
-      letter-spacing: -0.01em;
-      text-decoration: none;
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-family: inherit;
-      padding: 0;
-      transition: color 0.15s;
-    }
-
-    .nav-logo:hover { color: var(--accent); }
-
-    .nav-links { display: flex; gap: 36px; align-items: center; }
-
-    .nav-links button {
-      font-size: 13px;
-      color: var(--gray);
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-family: inherit;
-      padding: 0;
-      transition: color 0.15s;
-    }
-
-    .nav-links button:hover { color: var(--black); }
-    .nav-links button.nav-current { color: var(--black); font-weight: 500; }
-
-    .nav-contact {
-      font-size: 13px;
-      color: var(--black);
-      font-weight: 500;
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-family: inherit;
-      padding: 0;
-      transition: color 0.15s;
-      position: relative;
-    }
-
-    .nav-contact:hover { color: var(--accent); }
-
-    /* copied toast */
-    .toast {
-      position: fixed;
-      bottom: 32px;
-      left: 50%;
-      transform: translateX(-50%) translateY(16px);
-      background: var(--black);
-      color: var(--white);
-      font-size: 13px;
-      padding: 10px 20px;
-      opacity: 0;
-      transition: opacity 0.2s, transform 0.2s;
-      pointer-events: none;
-      z-index: 999;
-      letter-spacing: 0.01em;
-    }
-
-    .toast.show {
-      opacity: 1;
-      transform: translateX(-50%) translateY(0);
-    }
-
-    /* ── BACK BUTTON ── */
-    .back-bar {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 24px 56px 0;
-    }
-
-    .back-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 12px;
-      color: var(--gray);
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-family: inherit;
-      padding: 0;
-      transition: gap 0.2s, color 0.15s;
-      letter-spacing: 0.02em;
-    }
-
-    .back-btn:hover { color: var(--black); gap: 10px; }
-
-    .back-arrow {
-      display: inline-block;
-      transition: transform 0.2s;
-    }
-
-    .back-btn:hover .back-arrow { transform: translateX(-3px); }
-
-    /* ── SHARED LAYOUT ── */
-    .wrap {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 0 56px;
-    }
-
-    .section-row {
-      display: flex;
-      gap: 48px;
-    }
-
-    .col-label {
-      width: 160px;
-      flex-shrink: 0;
-      padding-top: 2px;
-    }
-
-    .col-label span {
-      font-size: 11px;
-      color: var(--gray);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      font-weight: 500;
-    }
-
-    .col-content { flex: 1; min-width: 0; }
-
-    .divider { border: none; border-top: 1px solid var(--border); }
-
-    /* ── AVAILABILITY ── */
-    .avail-row {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 36px 56px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .avail-dot {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 14px;
-      color: var(--black);
-      font-weight: 500;
-      margin-bottom: 4px;
-    }
-
-    .dot {
-      width: 7px;
-      height: 7px;
-      background: var(--accent);
-      border-radius: 50%;
-      animation: pulse 2s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.3; }
-    }
-
-    .avail-sub { font-size: 13px; color: var(--gray); margin-left: 15px; }
-
-    .avail-cta {
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--black);
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-family: inherit;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: gap 0.2s, color 0.15s;
-      padding: 0;
-    }
-
-    .avail-cta:hover { gap: 14px; color: var(--accent); }
-
-    /* ── FOOTER ── */
-    .footer-inner {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 28px 56px 48px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .footer-text { font-size: 12px; color: var(--gray); }
-
-    .footer-links { display: flex; gap: 28px; }
-
-    .footer-links a {
-      font-size: 12px;
-      color: var(--gray);
-      text-decoration: none;
-      transition: color 0.15s;
-    }
-
-    .footer-links a:hover { color: var(--accent); }
-
-    /* ═══════════════════════════
-       HOME PAGE
-    ═══════════════════════════ */
-
-    .hero {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 100px 56px 88px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 48px;
-    }
-
-    .hero-text { flex: 1; min-width: 0; }
-
-    .hero-photo {
-      width: 320px;
-      flex-shrink: 0;
-      background: transparent;
-    }
-
-    .hero-photo img {
-      width: 100%;
-      height: auto;
-      display: block;
-      object-fit: contain;
-    }
-
-    body.dark .hero-photo img {
-      filter: invert(1);
-    }
-
-    .hero h1 {
-      font-size: 60px;
-      font-weight: 400;
-      letter-spacing: -0.04em;
-      line-height: 1.08;
-      margin-bottom: 28px;
-    }
-
-    .hero h1 .name { color: var(--accent); font-weight: 500; }
-
-    .hero-sub {
-      font-size: 16px;
-      color: var(--gray);
-      max-width: 440px;
-      line-height: 1.75;
-      margin-bottom: 40px;
-    }
-
-    .btn-text {
-      font-size: 14px;
-      color: var(--black);
-      text-decoration: none;
-      font-weight: 500;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-family: inherit;
-      padding: 0;
-      transition: gap 0.2s, color 0.15s;
-    }
-
-    .btn-text:hover { gap: 14px; color: var(--accent); }
-
-    /* carousel */
-    .carousel-section {
-      padding: 64px 0 0;
-      border-top: 1px solid var(--border);
-    }
-
-    .carousel-header {
-      max-width: 1020px;
-      margin: 0 auto 32px;
-      padding: 0 56px;
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-    }
-
-    .carousel-label {
-      font-size: 11px;
-      color: var(--gray);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      font-weight: 500;
-    }
-
-    .carousel-all {
-      font-size: 13px;
-      color: var(--gray);
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-family: inherit;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      padding: 0;
-      transition: gap 0.2s, color 0.15s;
-    }
-
-    .carousel-all:hover { gap: 10px; color: var(--black); }
-
-    .carousel-wrapper {
-      overflow-x: scroll;
-      scrollbar-width: none;
-      cursor: grab;
-      padding: 0 56px;
-      user-select: none;
-      max-width: 1020px;
-      margin: 0 auto;
-    }
-
-    .carousel-wrapper:active { cursor: grabbing; }
-    .carousel-wrapper::-webkit-scrollbar { display: none; }
-
-    .carousel-track {
-      display: flex;
-      gap: 24px;
-      width: max-content;
-    }
-
-    .carousel-card {
-      width: 440px;
-      flex-shrink: 0;
-      text-decoration: none;
-      color: inherit;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      border: 1px solid var(--border);
-      transition: border-color 0.15s;
-      cursor: pointer;
-    }
-
-    .carousel-card:hover { border-color: #ccc; }
-    .carousel-card:hover .card-arrow { opacity: 1; transform: translate(0,0); }
-
-    .c-thumb {
-      height: 300px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      pointer-events: none;
-    }
-
-    .c-thumb.t1 { background: #FDE8DE; }
-    .c-thumb.t2 { background: #E8F0F2; }
-    .c-thumb.t3 { background: #FDF4E8; }
-    .c-thumb.t4 { background: #EEF2EE; }
-
-    .c-thumb-label {
-      font-size: 11px;
-      color: var(--gray);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      opacity: 0.5;
-    }
-
-    .c-body {
-      padding: 18px 20px 20px;
-      border-top: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      pointer-events: none;
-    }
-
-    .c-title {
-      font-size: 15px;
-      font-weight: 500;
-      letter-spacing: -0.01em;
-      margin-bottom: 3px;
-    }
-
-    .c-meta { font-size: 12px; color: var(--gray); }
-    .c-year { font-size: 12px; color: var(--gray); }
-
-    .card-arrow {
-      position: absolute;
-      top: 14px;
-      right: 14px;
-      font-size: 14px;
-      opacity: 0;
-      transform: translate(-4px, 4px);
-      transition: opacity 0.2s, transform 0.2s;
-      pointer-events: none;
-    }
-
-    .carousel-controls {
-      max-width: 1020px;
-      margin: 0 auto;
-      padding: 24px 56px 64px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .chevron-btn {
-      width: 40px;
-      height: 40px;
-      border: 1px solid var(--border);
-      background: var(--white);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: border-color 0.15s, background 0.15s;
-      flex-shrink: 0;
-    }
-
-    .chevron-btn:hover { border-color: var(--black); background: var(--light); }
-
-    .chevron-btn:disabled { opacity: 0.25; cursor: default; pointer-events: none; }
-
-    .chevron-btn svg {
-      width: 16px;
-      height: 16px;
-      stroke: var(--black);
-      stroke-width: 1.5;
-      fill: none;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .drag-hint {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      opacity: 0;
-      transition: opacity 0.5s;
-      pointer-events: none;
-    }
-
-    .drag-hint.visible { opacity: 1; }
-
-    .drag-hint span {
-      font-size: 12px;
-      color: var(--gray);
-      letter-spacing: 0.04em;
-    }
-
-    .drag-line {
-      height: 1px;
-      width: 24px;
-      background: var(--gray);
-      opacity: 0.4;
-    }
-
-    /* home about preview */
-    .home-about {
-      padding: 64px 0 80px;
-      border-top: 1px solid var(--border);
-    }
-
-    .about-preview p {
-      font-size: 15px;
-      color: var(--black);
-      line-height: 1.8;
-      max-width: 520px;
-      margin-bottom: 16px;
-      opacity: 0.85;
-    }
-
-    .read-more {
-      margin-top: 8px;
-    }
-
-    /* ═══════════════════════════
-       ALL PROJECTS PAGE
-    ═══════════════════════════ */
-
-    .page-header {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 56px 56px 52px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .page-header h1 {
-      font-size: 48px;
-      font-weight: 400;
-      letter-spacing: -0.04em;
-      line-height: 1.1;
-      margin-bottom: 10px;
-    }
-
-    .page-header p { font-size: 15px; color: var(--gray); line-height: 1.7; }
-
-    .work-section { padding: 52px 0 80px; }
-
-    .filter-tabs {
-      display: flex;
-      gap: 28px;
-      border-bottom: 1px solid var(--border);
-      margin-bottom: 48px;
-    }
-
-    .tab {
-      font-size: 13px;
-      color: var(--gray);
-      background: none;
-      border: none;
-      padding: 0 0 14px;
-      cursor: pointer;
-      position: relative;
-      transition: color 0.15s;
-      font-family: inherit;
-    }
-
-    .tab:hover { color: var(--black); }
-    .tab.active { color: var(--black); font-weight: 500; }
-
-    .tab.active::after {
-      content: '';
-      position: absolute;
-      bottom: -1px;
-      left: 0; right: 0;
-      height: 1.5px;
-      background: var(--black);
-    }
-
-    .cat-group { margin-bottom: 52px; }
-    .cat-group:last-child { margin-bottom: 0; }
-    .cat-group.hidden { display: none; }
-
-    .cat-header {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 24px;
-    }
-
-    .cat-title {
-      font-size: 11px;
-      color: var(--gray);
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
-
-    .cat-line { flex: 1; height: 1px; background: var(--border); }
-
-    .project-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-    }
-
-    .grid-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      text-decoration: none;
-      color: inherit;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      transition: border-color 0.15s, background 0.15s;
-      cursor: pointer;
-    }
-
-    .grid-card:hover { border-color: #ccc; background: var(--light); }
-    .grid-card:hover .card-arrow { opacity: 1; transform: translate(0,0); }
-
-    .g-thumb {
-      height: 220px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .g-thumb.t1 { background: #FDE8DE; }
-    .g-thumb.t2 { background: #E8F0F2; }
-    .g-thumb.t3 { background: #FDF4E8; }
-    .g-thumb.t4 { background: #EEF2EE; }
-    .g-thumb.t5 { background: #F0EBF8; }
-
-    .g-thumb-label {
-      font-size: 11px;
-      color: var(--gray);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      opacity: 0.5;
-    }
-
-    .g-body {
-      padding: 18px 20px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-    }
-
-    .g-title {
-      font-size: 14px;
-      font-weight: 500;
-      letter-spacing: -0.01em;
-      margin-bottom: 3px;
-      line-height: 1.3;
-    }
-
-    .g-meta { font-size: 12px; color: var(--gray); }
-    .g-year { font-size: 12px; color: var(--gray); flex-shrink: 0; margin-left: 12px; }
-
-    .grid-card.coming {
-      border-style: dashed;
-      pointer-events: none;
-      opacity: 0.35;
-    }
-
-    /* ═══════════════════════════
-       CASE STUDY PAGE
-    ═══════════════════════════ */
-
-    .cs-wrap {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 0 40px 100px;
-    }
-
-    .cs-hero {
-      padding: 56px 0 48px;
-      border-bottom: 1px solid var(--border);
-      margin-bottom: 56px;
-    }
-
-    .cs-tags {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-bottom: 20px;
-    }
-
-    .cs-tag {
-      font-size: 11px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--gray);
-      border: 1px solid var(--border);
-      padding: 4px 10px;
-    }
-
-    .cs-title {
-      font-size: 48px;
-      font-weight: 400;
-      letter-spacing: -0.04em;
-      line-height: 1.1;
-      color: var(--black);
-      margin-bottom: 28px;
-    }
-
-    .cs-meta-row {
-      display: flex;
-      gap: 40px;
-    }
-
-    .cs-meta-item {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .cs-meta-label {
-      font-size: 11px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--gray);
-    }
-
-    .cs-meta-value {
-      font-size: 13px;
-      color: var(--black);
-    }
-
-    .cs-section {
-      margin-bottom: 64px;
-    }
-
-    .cs-section-label {
-      font-size: 11px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--gray);
-      margin-bottom: 16px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .cs-body {
-      font-size: 15px;
-      line-height: 1.75;
-      color: var(--black);
-    }
-
-    .cs-body p { margin-bottom: 14px; }
-    .cs-body p:last-child { margin-bottom: 0; }
-
-    .cs-two-col {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 32px;
-    }
-
-    .cs-col-head {
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: -0.01em;
-      color: var(--black);
-      margin-bottom: 14px;
-    }
-
-    .cs-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .cs-list li {
-      font-size: 14px;
-      line-height: 1.5;
-      color: var(--black);
-      padding-left: 16px;
-      position: relative;
-    }
-
-    .cs-list li::before {
-      content: '–';
-      position: absolute;
-      left: 0;
-      color: var(--gray);
-    }
-
-    .cs-img-block {
-      width: 100%;
-      background: var(--light);
-      border: 1px solid var(--border);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      margin-top: 32px;
-      margin-bottom: 32px;
-      overflow: hidden;
-    }
-
-    .cs-img-block img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    .cs-img-block.placeholder {
-      min-height: 280px;
-    }
-
-    .cs-img-placeholder-label {
-      font-size: 11px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--gray);
-      opacity: 0.5;
-    }
-
-    .cs-img-caption {
-      font-size: 12px;
-      color: var(--gray);
-      text-align: center;
-      margin-bottom: 32px;
-    }
-
-    .cs-screens-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
-
-    .cs-screen-item {}
-
-    .cs-screen-label {
-      font-size: 12px;
-      color: var(--gray);
-      margin-top: 8px;
-    }
-
-    .cs-proto-wrap {
-      position: relative;
-      width: 100%;
-      padding-bottom: 62.5%; /* 16:10 aspect ratio */
-      height: 0;
-      border: 1px solid var(--border);
-      background: var(--light);
-    }
-
-    .cs-proto-wrap iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-
-    .cs-figma-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      border: 1px solid var(--black);
-      padding: 14px 24px;
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--black);
-      text-decoration: none;
-      transition: background 0.15s, color 0.15s;
-      margin-top: 8px;
-    }
-
-    .cs-figma-link:hover {
-      background: var(--black);
-      color: var(--white);
-    }
-
-    .cs-conclusion {
-      background: var(--light);
-      border: 1px solid var(--border);
-      padding: 40px;
-      margin-top: 64px;
-    }
-
-    .cs-conclusion p {
-      font-size: 15px;
-      line-height: 1.7;
-      color: var(--black);
-      margin-bottom: 24px;
-    }
-
-    .cs-h2 {
-      font-size: 22px;
-      font-weight: 500;
-      letter-spacing: -0.02em;
-      color: var(--black);
-      margin-bottom: 16px;
-      line-height: 1.3;
-    }
-
-    .cs-subtitle {
-      font-size: 17px;
-      color: var(--gray);
-      line-height: 1.7;
-      max-width: 640px;
-      margin-bottom: 32px;
-    }
-
-    .cs-meta-val {
-      font-size: 13px;
-      color: var(--black);
-    }
-
-    @media (max-width: 640px) {
-      .cs-wrap { padding: 0 20px 80px; }
-      .cs-title { font-size: 32px; }
-      .cs-two-col { grid-template-columns: 1fr; }
-      .cs-screens-grid { grid-template-columns: 1fr; }
-      .cs-meta-row { flex-wrap: wrap; gap: 20px; }
-    }
-
-    /* ═══════════════════════════
-       ABOUT PAGE
-    ═══════════════════════════ */
-
-    .about-page-header {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 56px 56px 52px;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 24px;
-    }
-
-    .about-page-header h1 {
-      font-size: 48px;
-      font-weight: 400;
-      letter-spacing: -0.04em;
-      line-height: 1.1;
-    }
-
-    .about-header-actions { flex-shrink: 0; }
-
-    .cv-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--white);
-      background: var(--black);
-      padding: 10px 20px;
-      text-decoration: none;
-      transition: background 0.15s, color 0.15s;
-      letter-spacing: 0.01em;
-    }
-
-    .cv-btn:hover { background: var(--accent); color: var(--black); }
-
-    /* experience list */
-    .exp-list { display: flex; flex-direction: column; gap: 32px; margin-bottom: 20px; }
-
-    .exp-item { display: flex; gap: 32px; }
-
-    .exp-meta { width: 120px; flex-shrink: 0; }
-
-    .exp-year { font-size: 12px; color: var(--gray); letter-spacing: 0.02em; }
-
-    .exp-role {
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--black);
-      margin-bottom: 3px;
-    }
-
-    .exp-company { font-size: 13px; color: var(--gray); margin-bottom: 8px; }
-
-    .exp-desc { font-size: 13px; color: var(--gray); line-height: 1.7; max-width: 400px; }
-
-    .exp-note { font-size: 13px; color: var(--gray); }
-
-    .inline-link {
-      color: var(--black);
-      text-decoration: none;
-      border-bottom: 1px solid var(--border);
-      transition: border-color 0.15s, color 0.15s;
-    }
-
-    .inline-link:hover { color: var(--accent); border-color: var(--accent); }
-
-    .about-full { padding: 56px 0 80px; }
-
-    .about-full .section-row { margin-bottom: 52px; }
-    .about-full .section-row:last-child { margin-bottom: 0; }
-
-    .about-body p {
-      font-size: 15px;
-      color: var(--black);
-      line-height: 1.85;
-      max-width: 560px;
-      margin-bottom: 20px;
-      opacity: 0.85;
-    }
-
-    .about-body p:last-child { margin-bottom: 0; }
-
-    .about-body h2 {
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: var(--black);
-      margin-bottom: 16px;
-      opacity: 0.45;
-    }
-
-    .skill-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px 20px;
-    }
-
-    .skill {
-      font-size: 13px;
-      color: var(--gray);
-      padding-bottom: 4px;
-      border-bottom: 1px solid var(--border);
-      transition: color 0.15s, border-color 0.15s;
-      cursor: default;
-    }
-
-    .skill:hover { color: var(--black); border-color: var(--accent); }
-
-    .tools-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .tool {
-      font-size: 12px;
-      color: var(--gray);
-      padding: 5px 12px;
-      border: 1px solid var(--border);
-      transition: border-color 0.15s, color 0.15s;
-    }
-
-    .tool:hover { border-color: var(--accent); color: var(--black); }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 640px) {
-      nav { padding: 0 20px; }
-      .hero { padding: 60px 20px 56px; flex-direction: column-reverse; gap: 32px; }
-      .hero h1 { font-size: 36px; }
-      .hero-photo { width: 100%; height: 260px; }
-      .carousel-header, .carousel-controls { padding-left: 20px; padding-right: 20px; }
-      .carousel-wrapper { padding: 0 20px; }
-      .carousel-card { width: 300px; }
-      .c-thumb { height: 200px; }
-      .wrap, .back-bar, .page-header, .about-page-header, .avail-row, .footer-inner { padding-left: 20px; padding-right: 20px; }
-      .section-row { flex-direction: column; gap: 20px; }
-      .col-label { width: auto; }
-      .project-grid { grid-template-columns: 1fr; }
-      .avail-row { flex-direction: column; align-items: flex-start; gap: 20px; }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- TOAST -->
-  <div class="toast" id="toast">Email copied to clipboard</div>
-
-  <div id="app-panel">
-
-  <!-- NAV -->
-  <nav>
-    <button class="nav-logo" onclick="navigate('home')">Varsha Bhide</button>
-    <div class="nav-links">
-      <button onclick="navigate('home')" data-page="home">Home</button>
-      <button onclick="navigate('projects')" data-page="projects">Work</button>
-      <button onclick="navigate('about')" data-page="about">About</button>
-      <button class="nav-contact" onclick="copyEmail()">Get in touch →</button>
-      <button class="theme-toggle" onclick="toggleDark()" id="themeBtn">☽ Dark</button>
-    </div>
-  </nav>
-
-  <!-- ══════════════════════════════════════════
-       HOME
-  ══════════════════════════════════════════ -->
-  <div id="page-home" class="page active">
-
-    <section class="hero">
-      <div class="hero-text">
-        <h1>I'm <span class="name">Varsha Bhide</span>,<br>a product designer</h1>
-        <p class="hero-sub">Building thoughtful systems and experiences — from design tokens to full products. Focused on scalable design systems and UX strategy.</p>
-        <button class="btn-text" onclick="navigate('about')">About me →</button>
-      </div>
-      <div class="hero-photo">
-        <img src="varsha-photo.png" alt="Varsha Bhide">
-      </div>
-    </section>
-
-    <section class="carousel-section">
-      <div class="carousel-header">
-        <span class="carousel-label">Featured work</span>
-        <button class="carousel-all" onclick="navigate('projects')">All projects →</button>
-      </div>
-
-      <div class="carousel-wrapper" id="carousel">
-        <div class="carousel-track">
-
-          <button onclick="navigate('thematic')" class="carousel-card" style="text-align:left; border:none; font-family:inherit; cursor:pointer; background:var(--white);">
-            <div class="c-thumb t1"><span class="c-thumb-label">Design system</span></div>
-            <div class="c-body">
-              <div><p class="c-title">Thematic.design</p><p class="c-meta">Design system · Atomic design · Components</p></div>
-              <span class="c-year">2024</span>
-            </div>
-            <span class="card-arrow">↗</span>
-          </button>
-
-          <a href="https://www.figma.com/file/bqywswoCuY52EdGbXbFBKR/Portfolio?type=design&node-id=1%3A2&mode=design" target="_blank" rel="noopener" class="carousel-card">
-            <div class="c-thumb t2"><span class="c-thumb-label">Research</span></div>
-            <div class="c-body">
-              <div><p class="c-title">Design systems atom definition</p><p class="c-meta">Colors · Typography · Elevations · Icons</p></div>
-              <span class="c-year">2024</span>
-            </div>
-            <span class="card-arrow">↗</span>
-          </a>
-
-          <button onclick="navigate('tokens')" class="carousel-card" style="text-align:left; border:none; font-family:inherit; cursor:pointer; background:var(--white);">
-            <div class="c-thumb t3"><span class="c-thumb-label">Strategy</span></div>
-            <div class="c-body">
-              <div><p class="c-title">Design Tokens</p><p class="c-meta">What, why and how · Token taxonomy · Pipeline</p></div>
-              <span class="c-year">2023</span>
-            </div>
-            <span class="card-arrow">→</span>
-          </button>
-
-          <button onclick="navigate('eps')" class="carousel-card" style="text-align:left; border:none; font-family:inherit; cursor:pointer; background:var(--white);">
-            <div class="c-thumb t4"><span class="c-thumb-label">Healthcare · UX</span></div>
-            <div class="c-body">
-              <div><p class="c-title">Electronic Patient Service</p><p class="c-meta">Healthcare · Insurance eligibility · EHR</p></div>
-              <span class="c-year">2023</span>
-            </div>
-            <span class="card-arrow">↗</span>
-          </button>
-
-        </div>
-      </div>
-
-      <div class="carousel-controls">
-        <button class="chevron-btn" id="prevBtn" aria-label="Previous" disabled>
-          <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-        </button>
-        <button class="chevron-btn" id="nextBtn" aria-label="Next">
-          <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
-        </button>
-        <div class="drag-hint" id="dragHint">
-          <div class="drag-line"></div>
-          <span>drag to explore</span>
-          <div class="drag-line"></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="home-about">
-      <div class="wrap">
-        <div class="section-row">
-          <div class="col-label"><span>About</span></div>
-          <div class="col-content">
-            <div class="about-preview">
-              <p>UI/UX designer with 9+ years of experience, specialising in design systems and digital experiences for the pharmaceutical industry.</p>
-              <p>I blend functionality, aesthetics and brand identity — turning complexity into clarity, one system at a time.</p>
-              <div class="read-more">
-                <button class="btn-text" onclick="navigate('about')">Read more →</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <hr class="divider">
-    <div class="avail-row">
-      <div>
-        <div class="avail-dot"><span class="dot"></span>Available for new projects</div>
-        <p class="avail-sub">Open to freelance and full-time opportunities</p>
-      </div>
-      <button class="avail-cta" onclick="copyEmail()">Get in touch →</button>
-    </div>
-    <hr class="divider">
-
-    <footer>
-      <div class="footer-inner">
-        <span class="footer-text">© 2024 Varsha Bhide</span>
-        <div class="footer-links">
-          <a href="https://www.linkedin.com/in/varsha-bhide-93240b92/" target="_blank">LinkedIn</a>
-          <a href="#" onclick="copyEmail(); return false;">Email</a>
-        </div>
-      </div>
-    </footer>
-
-  </div>
-
-  <!-- ══════════════════════════════════════════
-       ALL PROJECTS
-  ══════════════════════════════════════════ -->
-  <div id="page-projects" class="page">
-
-    <div class="back-bar">
-      <button class="back-btn" onclick="navigate('home')">
-        <span class="back-arrow">←</span> Home
-      </button>
-    </div>
-
-    <div class="page-header">
-      <h1>All projects</h1>
-      <p>Design system work and product design — built with care.</p>
-    </div>
-
-    <section class="work-section">
-      <div class="wrap">
-
-        <div class="filter-tabs">
-          <button class="tab active" data-filter="all">All</button>
-          <button class="tab" data-filter="design-system">Design system</button>
-          <button class="tab" data-filter="product">Product</button>
-        </div>
-
-        <div class="cat-group" id="grp-ds">
-          <div class="cat-header">
-            <span class="cat-title">Design system</span>
-            <div class="cat-line"></div>
-          </div>
-          <div class="project-grid">
-
-            <button onclick="navigate('thematic')" class="grid-card" style="text-align:left; width:100%; border:none; font-family:inherit; cursor:pointer;">
-              <div class="g-thumb t1"><span class="g-thumb-label">Design system</span></div>
-              <div class="g-body">
-                <div><p class="g-title">Thematic.design</p><p class="g-meta">Design system · Atomic design · Components</p></div>
-                <span class="g-year">2024</span>
-              </div>
-              <span class="card-arrow">↗</span>
-            </button>
-
-            <a href="https://www.figma.com/file/bqywswoCuY52EdGbXbFBKR/Portfolio?type=design&node-id=1%3A2&mode=design" target="_blank" rel="noopener" class="grid-card">
-              <div class="g-thumb t2"><span class="g-thumb-label">Research</span></div>
-              <div class="g-body">
-                <div><p class="g-title">Design systems atom definition</p><p class="g-meta">Foundations · Tokens · Semantic naming</p></div>
-                <span class="g-year">2024</span>
-              </div>
-              <span class="card-arrow">↗</span>
-            </a>
-
-            <button onclick="navigate('tokens')" class="grid-card" style="text-align:left; width:100%; border:none; font-family:inherit; cursor:pointer;">
-              <div class="g-thumb t3"><span class="g-thumb-label">Strategy</span></div>
-              <div class="g-body">
-                <div><p class="g-title">Design Tokens</p><p class="g-meta">Token strategy · Cross-platform · Documentation</p></div>
-                <span class="g-year">2023</span>
-              </div>
-              <span class="card-arrow">→</span>
-            </button>
-
-            <div class="grid-card coming">
-              <div class="g-thumb"><span class="g-thumb-label">Coming soon</span></div>
-              <div class="g-body">
-                <div><p class="g-title">New project</p><p class="g-meta">Design system</p></div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        <div class="cat-group" id="grp-prod">
-          <div class="cat-header">
-            <span class="cat-title">Product</span>
-            <div class="cat-line"></div>
-          </div>
-          <div class="project-grid">
-
-            <button onclick="navigate('eps')" class="grid-card" style="text-align:left; width:100%; border:none; font-family:inherit; cursor:pointer;">
-              <div class="g-thumb t4"><span class="g-thumb-label">Healthcare · UX</span></div>
-              <div class="g-body">
-                <div><p class="g-title">Electronic Patient Service</p><p class="g-meta">Healthcare · UX research · End-to-end design</p></div>
-                <span class="g-year">2023</span>
-              </div>
-              <span class="card-arrow">↗</span>
-            </button>
-
-            <div class="grid-card coming">
-              <div class="g-thumb"><span class="g-thumb-label">Coming soon</span></div>
-              <div class="g-body">
-                <div><p class="g-title">New project</p><p class="g-meta">Product</p></div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <hr class="divider">
-    <div class="avail-row">
-      <div>
-        <div class="avail-dot"><span class="dot"></span>Available for new projects</div>
-        <p class="avail-sub">Open to freelance and full-time opportunities</p>
-      </div>
-      <button class="avail-cta" onclick="copyEmail()">Get in touch →</button>
-    </div>
-    <hr class="divider">
-
-    <footer>
-      <div class="footer-inner">
-        <span class="footer-text">© 2024 Varsha Bhide</span>
-        <div class="footer-links">
-          <a href="https://www.linkedin.com/in/varsha-bhide-93240b92/" target="_blank">LinkedIn</a>
-          <a href="#" onclick="copyEmail(); return false;">Email</a>
-        </div>
-      </div>
-    </footer>
-
-  </div>
-
-  <!-- ══════════════════════════════════════════
-       ABOUT
-  ══════════════════════════════════════════ -->
-  <div id="page-about" class="page">
-
-    <div class="back-bar">
-      <button class="back-btn" onclick="navigate('home')">
-        <span class="back-arrow">←</span> Home
-      </button>
-    </div>
-
-    <div class="about-page-header">
-      <h1>About me</h1>
-      <div class="about-header-actions">
-        <a href="varsha-cv.pdf" download class="cv-btn">Download CV ↓</a>
-      </div>
-    </div>
-
-    <section class="about-full">
-      <div class="wrap">
-
-        <!-- Bio -->
-        <div class="section-row" style="margin-bottom: 52px;">
-          <div class="col-label"><span>Bio</span></div>
-          <div class="col-content">
-            <div class="about-body">
-              <p>Hello! I'm a UI/UX designer with a passion for crafting seamless digital experiences, specialising in designing robust design systems and websites for major players in the pharmaceutical industry. Self-driven with a curiosity to continually learn and enhance my skills.</p>
-              <p>With 9+ years of experience in UI/UX, I've dedicated the past 2.5 years to the unique challenges of pharmaceutical industries' digital presence — navigating compliance intricacies and user-centric design principles, utilising top UX methodologies such as user research, user journey mapping and user testing.</p>
-              <p>My focal point lies in meticulously creating design systems and design tokens — blending functionality, aesthetics and brand identity to ensure design systems meet industry standards, growing systematically and thriving in multiple environments.</p>
-              <p>I thrive on collaboration, working closely with design and development teams to ensure projects are seamlessly integrated. I'm committed to staying ahead of industry trends and embracing emerging design methodologies — consistently pushing the boundaries of what's achievable.</p>
-            </div>
-          </div>
-        </div>
-
-        <hr class="divider" style="margin-bottom: 52px;">
-
-        <!-- Experience -->
-        <div class="section-row" style="margin-bottom: 52px;">
-          <div class="col-label"><span>Experience</span></div>
-          <div class="col-content">
-            <div class="exp-list">
-
-              <div class="exp-item">
-                <div class="exp-meta"><span class="exp-year">May 2024 — Present</span></div>
-                <div class="exp-detail">
-                  <p class="exp-role">Senior Interaction Designer</p>
-                  <p class="exp-company">OpenText · Full-time · Bengaluru, Hybrid</p>
-                  <p class="exp-desc">Interaction design and visual design for enterprise products.</p>
-                </div>
-              </div>
-
-              <div class="exp-item">
-                <div class="exp-meta"><span class="exp-year">Oct 2023 — May 2024</span></div>
-                <div class="exp-detail">
-                  <p class="exp-role">Lead UI/UX</p>
-                  <p class="exp-company">Indegene · Full-time · Bengaluru</p>
-                  <p class="exp-desc">Led the design system spanning multiple brands. Overseeing design tokens integration and platform-agnostic design characteristics.</p>
-                </div>
-              </div>
-
-              <div class="exp-item">
-                <div class="exp-meta"><span class="exp-year">Jun 2021 — Oct 2023</span></div>
-                <div class="exp-detail">
-                  <p class="exp-role">Senior UI/UX</p>
-                  <p class="exp-company">Indegene · Remote</p>
-                  <p class="exp-desc">Built design systems for pharmaceutical firms, created websites with focus on UX, collaborated with product owners and developers. Introduced design tokens to enhance platform-agnostic design.</p>
-                </div>
-              </div>
-
-              <div class="exp-item">
-                <div class="exp-meta"><span class="exp-year">Nov 2017 — Jun 2021</span></div>
-                <div class="exp-detail">
-                  <p class="exp-role">Visual Designer</p>
-                  <p class="exp-company">SAFEHALO Products · Freelance · Bengaluru</p>
-                  <p class="exp-desc">Brand development across video, marketing materials and application visual design.</p>
-                </div>
-              </div>
-
-              <div class="exp-item">
-                <div class="exp-meta"><span class="exp-year">Apr 2018 — Oct 2020</span></div>
-                <div class="exp-detail">
-                  <p class="exp-role">Career break — Personal goal pursuit</p>
-                  <p class="exp-company">Printmaking</p>
-                  <p class="exp-desc">Studied under a globally acclaimed artist and printmaking instructor, expanding aesthetic skills and creative horizons.</p>
-                </div>
-              </div>
-
-              <div class="exp-item">
-                <div class="exp-meta"><span class="exp-year">Jan 2014 — May 2015</span></div>
-                <div class="exp-detail">
-                  <p class="exp-role">Visual Designer</p>
-                  <p class="exp-company">Aditi Technologies · Full-time · Bengaluru</p>
-                  <p class="exp-desc">Visual design projects with emphasis on user research, information architecture and user journey mapping.</p>
-                </div>
-              </div>
-
-              <div class="exp-item">
-                <div class="exp-meta"><span class="exp-year">Jun 2013 — Jan 2014</span></div>
-                <div class="exp-detail">
-                  <p class="exp-role">Graphic Designer</p>
-                  <p class="exp-company">Wipro Technologies · Full-time · Bengaluru</p>
-                  <p class="exp-desc">Graphic design for one of India's leading technology companies.</p>
-                </div>
-              </div>
-
-            </div>
-            <p class="exp-note">Full experience on <a href="https://www.linkedin.com/in/varsha-bhide-93240b92/" target="_blank" class="inline-link">LinkedIn →</a></p>
-          </div>
-        </div>
-
-        <hr class="divider" style="margin-bottom: 52px;">
-
-        <!-- Skills -->
-        <div class="section-row" style="margin-bottom: 52px;">
-          <div class="col-label"><span>Skills</span></div>
-          <div class="col-content">
-            <div class="about-body">
-              <div class="skill-list">
-                <span class="skill">Design systems</span>
-                <span class="skill">Design tokens</span>
-                <span class="skill">UX strategy</span>
-                <span class="skill">User research</span>
-                <span class="skill">User journey mapping</span>
-                <span class="skill">User testing</span>
-                <span class="skill">Visual design</span>
-                <span class="skill">Interaction design</span>
-                <span class="skill">Component libraries</span>
-                <span class="skill">Prototyping</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <hr class="divider" style="margin-bottom: 52px;">
-
-        <!-- Tools -->
-        <div class="section-row">
-          <div class="col-label"><span>Tools</span></div>
-          <div class="col-content">
-            <div class="tools-list">
-              <span class="tool">Figma</span>
-              <span class="tool">FigJam</span>
-              <span class="tool">Notion</span>
-              <span class="tool">Storybook</span>
-              <span class="tool">VS Code</span>
-              <span class="tool">HTML / CSS</span>
-              <span class="tool">Zeroheight</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <hr class="divider">
-    <div class="avail-row">
-      <div>
-        <div class="avail-dot"><span class="dot"></span>Available for new projects</div>
-        <p class="avail-sub">Open to freelance and full-time opportunities</p>
-      </div>
-      <button class="avail-cta" onclick="copyEmail()">Get in touch →</button>
-    </div>
-    <hr class="divider">
-
-    <footer>
-      <div class="footer-inner">
-        <span class="footer-text">© 2024 Varsha Bhide</span>
-        <div class="footer-links">
-          <a href="https://www.linkedin.com/in/varsha-bhide-93240b92/" target="_blank">LinkedIn</a>
-          <a href="#" onclick="copyEmail(); return false;">Email</a>
-        </div>
-      </div>
-    </footer>
-
-  </div>
-
-  <!-- ══════════════════════════════════════════
-       CASE STUDY — ELECTRONIC PATIENT SERVICE
-  ══════════════════════════════════════════ -->
-  <div id="page-eps" class="page">
-
-    <div class="back-bar">
-      <button class="back-btn" onclick="navigate('projects')">
-        <span class="back-arrow">←</span> Work
-      </button>
-    </div>
-
-    <div class="cs-wrap">
-
-      <!-- Hero -->
-      <div class="cs-hero">
-        <div class="cs-tags">
-          <span class="cs-tag">Healthcare</span>
-          <span class="cs-tag">UX Design</span>
-          <span class="cs-tag">Product</span>
-          <span class="cs-tag">2023</span>
-        </div>
-        <h1 class="cs-title">Electronic Patient Service</h1>
-        <div class="cs-meta-row">
-          <div class="cs-meta-item">
-            <span class="cs-meta-label">Role</span>
-            <span class="cs-meta-value">Senior UI/UX Designer</span>
-          </div>
-          <div class="cs-meta-item">
-            <span class="cs-meta-label">Company</span>
-            <span class="cs-meta-value">Indegene</span>
-          </div>
-          <div class="cs-meta-item">
-            <span class="cs-meta-label">Year</span>
-            <span class="cs-meta-value">2023</span>
-          </div>
-          <div class="cs-meta-item">
-            <span class="cs-meta-label">Type</span>
-            <span class="cs-meta-value">Web Application</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Overview -->
-      <div class="cs-section">
-        <p class="cs-section-label">Overview</p>
-        <div class="cs-body">
-          <p>Introducing the Electronic Patient Insurance Checker — a web application that streamlines the treatment process with real-time insurance verification. Transitioning from traditional physical records to Electronic Health Records (EHR) as a strategic decision aimed at enhancing efficiency, accuracy, sustainability, and overall patient care.</p>
-        </div>
-        <div class="cs-img-block">
-          <img src="eps-hero.png" alt="Electronic Patient Service — hero banner">
-        </div>
-      </div>
-
-      <!-- Background -->
-      <div class="cs-section">
-        <p class="cs-section-label">Background</p>
-        <div class="cs-body">
-          <p>Major health insurance providers are designated to offer coverage for specific drugs to recipients. However, a significant hurdle lies in the intricate eligibility determination process, leading to a slow enrollment rate.</p>
-          <p>As a prominent consulting firm in the healthcare sector, the objective was to develop a web application for Healthcare Providers (HCPs) to facilitate eligibility checks — enabling HCPs and care providers to effortlessly access this information, ensuring patients receive the care they deserve and bridging existing gaps.</p>
-        </div>
-        <div class="cs-img-block">
-          <img src="eps-dashboard.png" alt="EPS Dashboard mockup">
-        </div>
-      </div>
-
-      <!-- Problem Statement -->
-      <div class="cs-section">
-        <p class="cs-section-label">Problem Statement</p>
-        <div class="cs-body">
-          <p>Create a web application that is interactive, streamlining the eligibility determination process for a specific drug and guaranteeing high acceptance rates.</p>
-        </div>
-      </div>
-
-      <!-- UX Strategy -->
-      <div class="cs-section">
-        <p class="cs-section-label">UX Strategy</p>
-        <div class="cs-body">
-          <p>The design process focused on enhancing the usability, accessibility, and simplification of the application filling process for Healthcare Providers (HCPs) to achieve the desired results. The designs aimed to streamline the process, making it intuitive, engaging, and ensuring a seamless experience for users.</p>
-        </div>
-        <div class="cs-img-block">
-          <img src="eps-workflow.png" alt="Application workflow / Information architecture">
-        </div>
-      </div>
-
-      <!-- Persona -->
-      <div class="cs-section">
-        <p class="cs-section-label">Persona</p>
-        <div class="cs-img-block">
-          <img src="eps-persona.png" alt="User persona">
-        </div>
-      </div>
-
-      <!-- Infograph -->
-      <div class="cs-section">
-        <p class="cs-section-label">Research Insights</p>
-        <div class="cs-img-block">
-          <img src="eps-infograph.png" alt="Research infograph">
-        </div>
-      </div>
-
-      <!-- Key Findings & Design Decisions -->
-      <div class="cs-section">
-        <p class="cs-section-label">Research & Decisions</p>
-        <div class="cs-two-col">
-          <div>
-            <p class="cs-col-head">Key Findings</p>
-            <ul class="cs-list">
-              <li>Elaborate and comprehensive application document creating friction</li>
-              <li>Increased rejection rates due to inconsistent or missing information</li>
-              <li>Absence of coverage predictions and cumbersome application process hinder progress</li>
-              <li>Uncertainty around workflow causing drop-offs</li>
-            </ul>
-          </div>
-          <div>
-            <p class="cs-col-head">Design Decisions</p>
-            <ul class="cs-list">
-              <li>Application simplified by organising into digestible bite-size sections</li>
-              <li>Prompts added when questions are unanswered or answers are irrelevant</li>
-              <li>Steps to reach the "benefit report" identified and personalised per application status</li>
-              <li>Application guides users through the entire process to achieve the desired result</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Focus Areas -->
-      <div class="cs-section">
-        <p class="cs-section-label">Focus Areas</p>
-        <div class="cs-two-col">
-          <div>
-            <p class="cs-col-head">Healthcare Providers (HCPs)</p>
-            <ul class="cs-list">
-              <li>Gathering accurate information from applicants and caregivers</li>
-              <li>Eliminating redundant data entry across sections</li>
-              <li>Decreasing time needed to complete application</li>
-              <li>Streamlining workload management with delegation option at any point</li>
-            </ul>
-          </div>
-          <div>
-            <p class="cs-col-head">Applicants</p>
-            <ul class="cs-list">
-              <li>Encourage friendly and approachable interactions</li>
-              <li>Streamline the application process</li>
-              <li>Engage the applicant actively throughout</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Wireframes -->
-      <div class="cs-section">
-        <p class="cs-section-label">Wireframes</p>
-        <div class="cs-img-block">
-          <img src="eps-wireframes.png" alt="Lo-fidelity wireframes">
-        </div>
-      </div>
-
-      <!-- Live Prototype -->
-      <div class="cs-section">
-        <p class="cs-section-label">Interactive Prototype</p>
-        <div class="cs-proto-wrap">
-          <iframe
-            src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FbqywswoCuY52EdGbXbFBKR%2FPortfolio%3Fpage-id%3D0%253A1%26type%3Ddesign%26node-id%3D1-11580%26viewport%3D582%252C409%252C0.03%26t%3DNNWzQhnngEyXUYJh-1%26scaling%3Dscale-down%26starting-point-node-id%3D1%253A4146"
-            allowfullscreen
-            loading="lazy"
-            title="Electronic Patient Service — Interactive Prototype">
-          </iframe>
-        </div>
-        <p class="cs-screen-label" style="text-align:center; margin-top:12px;">Click through the prototype above — Coverage prediction · Enrollment · Prior authorization · Benefit verification</p>
-      </div>
-
-      <!-- Conclusion -->
-      <div class="cs-conclusion">
-        <p>This project involved designing an end-to-end healthcare web application that simplified a complex insurance eligibility process for both Healthcare Providers and patients — reducing friction, improving acceptance rates, and enabling guided, personalised workflows.</p>
-        <a class="cs-figma-link" href="https://www.figma.com/file/bqywswoCuY52EdGbXbFBKR/Portfolio?type=design&node-id=0%3A1&mode=design" target="_blank" rel="noopener">
-          View in Figma ↗
-        </a>
-      </div>
-
-    </div><!-- /cs-wrap -->
-  </div><!-- /page-eps -->
-
-  <!-- ══════════════════════════════════════════
-       CASE STUDY — THEMATIC.DESIGN
-  ══════════════════════════════════════════ -->
-  <div id="page-thematic" class="page">
-
-    <div class="back-bar">
-      <button class="back-btn" onclick="navigate('projects')">
-        <span class="back-arrow">←</span> Work
-      </button>
-    </div>
-
-    <div class="cs-wrap">
-
-      <!-- Hero -->
-      <div class="cs-hero">
-        <div class="cs-tags">
-          <span class="cs-tag">Design System</span>
-          <span class="cs-tag">Atomic Design</span>
-          <span class="cs-tag">Components</span>
-          <span class="cs-tag">2024</span>
-        </div>
-        <h1 class="cs-title">Thematic.design</h1>
-        <div class="cs-meta-row">
-          <div class="cs-meta-item">
-            <span class="cs-meta-label">Role</span>
-            <span class="cs-meta-value">Senior UI/UX Designer</span>
-          </div>
-          <div class="cs-meta-item">
-            <span class="cs-meta-label">Company</span>
-            <span class="cs-meta-value">Indegene</span>
-          </div>
-          <div class="cs-meta-item">
-            <span class="cs-meta-label">Year</span>
-            <span class="cs-meta-value">2024</span>
-          </div>
-          <div class="cs-meta-item">
-            <span class="cs-meta-label">Type</span>
-            <span class="cs-meta-value">Design System</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Hero image -->
-      <div class="cs-section">
-        <div class="cs-img-block">
-          <img src="td-hero.png" alt="Thematic.design hero">
-        </div>
-      </div>
-
-      <!-- Overview -->
-      <div class="cs-section">
-        <p class="cs-section-label">Overview</p>
-        <div class="cs-body">
-          <p>In the dynamic world of design, where digital landscapes evolve at a breathtaking pace, ensuring a cohesive and harmonious user experience is paramount.</p>
-          <p>Thematic.Design is a comprehensive framework meticulously crafted to foster consistency, streamline workflows, and elevate the overall aesthetic and functional quality of digital products. At its core, the design system is more than just a collection of guidelines — it's a living, breathing organism that empowers design teams to create compelling user-centric experiences. It encapsulates brand ethos, design principles, and a shared language that resonates across every pixel and interaction.</p>
-        </div>
-      </div>
-
-      <!-- Atomic Design -->
-      <div class="cs-section">
-        <p class="cs-section-label">Atomic Design Principle</p>
-        <div class="cs-body">
-          <p>Atomic Design is a methodology created by Brad Frost, providing direction on building interface design systems more deliberately and with explicit order and hierarchy.</p>
-        </div>
-        <div class="cs-img-block">
-          <img src="td-atomic.png" alt="Atomic Design Principle diagram">
-        </div>
-      </div>
-
-      <!-- Atoms -->
-      <div class="cs-section">
-        <p class="cs-section-label">Atoms</p>
-        <div class="cs-body">
-          <p>The atoms of the design system represent the foundational elements that serve as building blocks for more complex components. These include basic elements like typography, colors, elevations, spacing, and icons.</p>
-        </div>
-        <div class="cs-img-block">
-          <img src="td-atoms.png" alt="Design system atoms — all frames">
-        </div>
-      </div>
-
-      <!-- Components -->
-      <div class="cs-section">
-        <p class="cs-section-label">What's ready</p>
-        <div class="cs-two-col">
-          <div>
-            <p class="cs-col-head">Atoms</p>
-            <ul class="cs-list">
-              <li>Colors</li>
-              <li>Imagery</li>
-              <li>Typography</li>
-              <li>Elevations</li>
-            </ul>
-          </div>
-          <div>
-            <p class="cs-col-head">Components & Patterns</p>
-            <ul class="cs-list">
-              <li>Header</li>
-              <li>Accordion</li>
-              <li>Image hotspot</li>
-              <li>ISI (Important Safety Information)</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Screens grid -->
-      <div class="cs-section">
-        <p class="cs-section-label">System in detail</p>
-        <div class="cs-screens-grid">
-          <div class="cs-screen-item">
-            <div class="cs-img-block">
-              <img src="td-components.png" alt="All components overview">
-            </div>
-            <p class="cs-screen-label">All components — fully documented and ready to view</p>
-          </div>
-          <div class="cs-screen-item">
-            <div class="cs-img-block">
-              <img src="td-prototype.png" alt="Prototyped for seamless viewing">
-            </div>
-            <p class="cs-screen-label">Prototyped for a seamless in-file viewing experience</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Conclusion -->
-      <div class="cs-conclusion">
-        <p>Thematic.design is a front-facing design system file where all atoms and components are fully documented and prototyped for the best user experience. More pages are currently undergoing enhancements and will be unveiled soon.</p>
-        <a class="cs-figma-link" href="https://www.figma.com/file/GP04zWAdSpeiXnmo1Hk3DI/Thematic.Design?type=design&node-id=1%3A68&mode=design" target="_blank" rel="noopener">
-          View in Figma ↗
-        </a>
-      </div>
-
-    </div><!-- /cs-wrap -->
-  </div><!-- /page-thematic -->
-
-
-  <!-- ══════════════════════════════════════════
-       ARTICLE — DESIGN TOKENS
-  ══════════════════════════════════════════ -->
-  <div id="page-tokens" class="page">
-
-    <div class="back-bar">
-      <button class="back-btn" onclick="navigate('projects')">← All Projects</button>
-    </div>
-
-    <div class="cs-wrap">
-
-      <!-- Header -->
-      <div class="cs-header">
-        <div class="cs-tags">
-          <span class="cs-tag">Design System</span>
-          <span class="cs-tag">Design Tokens</span>
-          <span class="cs-tag">Strategy</span>
-          <span class="cs-tag">2023</span>
-        </div>
-        <h1 class="cs-title">Design Tokens</h1>
-        <p class="cs-subtitle">A deep-dive into what design tokens are, why they matter, and how to structure, name, and deploy them effectively across a scalable design system.</p>
-        <div class="cs-meta-row">
-          <div class="cs-meta-item"><span class="cs-meta-label">Role</span><span class="cs-meta-val">Senior UI/UX Designer</span></div>
-          <div class="cs-meta-item"><span class="cs-meta-label">Company</span><span class="cs-meta-val">Indegene</span></div>
-          <div class="cs-meta-item"><span class="cs-meta-label">Type</span><span class="cs-meta-val">Thought Leadership · Article</span></div>
-        </div>
-      </div>
-
-      <!-- Hero image -->
-      <div class="cs-img-block" style="margin-bottom:48px;">
-        <img src="dt-thumbnail.png" alt="Design Tokens article thumbnail">
-      </div>
-
-      <!-- What is a design token -->
-      <div class="cs-section">
-        <h2 class="cs-h2">What is a design token?</h2>
-        <p class="cs-body">Design tokens are named entities that store visual design attributes — an agnostic, human-readable abstraction of visual styles that sync with all style files in the system. They allow teams to create a scalable and consistent visual system for UI development, replacing hard-coded values like hex codes and pixel values with meaningful names.</p>
-        <div class="cs-img-block" style="margin-top:24px;">
-          <img src="dt-what.png" alt="What is a design token diagram">
-        </div>
-      </div>
-
-      <!-- Why use tokens -->
-      <div class="cs-section">
-        <h2 class="cs-h2">Why use a design token?</h2>
-        <div class="cs-img-block" style="margin-top:16px;">
-          <img src="dt-why.png" alt="Why use design tokens">
-        </div>
-      </div>
-
-      <!-- Versatile -->
-      <div class="cs-section">
-        <h2 class="cs-h2">Design tokens are versatile</h2>
-        <p class="cs-body">Because tokens are platform-agnostic, they are independent of any specific tech stack. A single source of truth can be implemented across web, iOS, Android, and other platforms simultaneously.</p>
-        <div class="cs-img-block" style="margin-top:24px;">
-          <img src="dt-versatile.png" alt="Design tokens are platform agnostic">
-        </div>
-      </div>
-
-      <!-- Three-tier structure -->
-      <div class="cs-section">
-        <h2 class="cs-h2">Three-tier token structure</h2>
-        <p class="cs-body">Tokens are organized into three layers, each with increasing specificity and isolation — base tokens, alias tokens, and component tokens. Each layer references the one below it, creating a clean hierarchy that makes global changes predictable and targeted changes precise.</p>
-        <div class="cs-img-block" style="margin-top:24px;">
-          <img src="dt-three-tier.png" alt="Three tier token structure diagram">
-        </div>
-      </div>
-
-      <!-- Styles vs Tokens -->
-      <div class="cs-section">
-        <h2 class="cs-h2">Difference between styles and design tokens</h2>
-        <div class="cs-img-block" style="margin-top:16px;">
-          <img src="dt-vs-styles.png" alt="Styles vs design tokens comparison">
-        </div>
-      </div>
-
-      <!-- Types of values -->
-      <div class="cs-section">
-        <h2 class="cs-h2">Types of values that can be stored</h2>
-        <div class="cs-img-block" style="margin-top:16px;">
-          <img src="dt-types.png" alt="Types of values in design tokens">
-        </div>
-      </div>
-
-      <!-- Token Strategy -->
-      <div class="cs-section">
-        <h2 class="cs-h2">Token Strategy</h2>
-        <p class="cs-body">By simply observing a token name, both designers and developers should intuitively understand its purpose — without needing documentation. The strategy involves grouping components categorically, assigning each to a specific category to inform the token naming convention.</p>
-        <div class="cs-body" style="margin-top:16px;">
-          <strong>Benefits of this approach:</strong>
-          <ul style="margin-top:8px; padding-left:20px; display:flex; flex-direction:column; gap:6px;">
-            <li>Consolidating repetitive tokens into a single category significantly decreases total token count</li>
-            <li>Better manageability and clear visual hierarchies, reducing cognitive load</li>
-            <li>Reducing token inventory by up to fifty percent</li>
-            <li>Enhanced control over design operations with standardized tokens</li>
-          </ul>
-        </div>
-        <div class="cs-img-block" style="margin-top:24px;">
-          <img src="dt-strategy.png" alt="Token strategy diagram">
-        </div>
-      </div>
-
-      <!-- Token Taxonomy -->
-      <div class="cs-section">
-        <h2 class="cs-h2">Token Taxonomy</h2>
-        <p class="cs-body">Efficiently deploying design tokens is crucial — without a clear taxonomy, token generation quickly becomes unwieldy and leads to an unmanageable inventory. A well-structured taxonomy makes naming conventions intuitive and consistent across the entire design system.</p>
-        <div class="cs-img-block" style="margin-top:24px;">
-          <img src="dt-taxonomy.png" alt="Token taxonomy diagram">
-        </div>
-        <div class="cs-img-block" style="margin-top:16px;">
-          <img src="dt-taxonomy-exp.png" alt="Token taxonomy expanded">
-        </div>
-      </div>
-
-      <!-- Base and alias tokens -->
-      <div class="cs-section">
-        <h2 class="cs-h2">Base and alias tokens</h2>
-        <p class="cs-body">Each alias token is designated with a distinct purpose, meaning, and function. Unlike base tokens, alias tokens are exclusively used within predefined contexts or instances. Naming conventions for alias tokens should balance abstraction with clarity — accommodating various values while conveying their intended use.</p>
-        <div class="cs-img-block" style="margin-top:24px;">
-          <img src="dt-base-alias.png" alt="Base and alias tokens">
-        </div>
-        <div class="cs-img-block" style="margin-top:16px;">
-          <img src="dt-alias-usage.png" alt="Alias token usage">
-        </div>
-      </div>
-
-      <!-- Token isolation -->
-      <div class="cs-section">
-        <h2 class="cs-h2">Token updates and isolation</h2>
-        <p class="cs-body">The hierarchical structure of design tokens facilitates the concept of isolation and control within a design system. Each tier has a different scope of impact when updated.</p>
-        <div class="cs-img-block" style="margin-top:24px;">
-          <img src="dt-isolation.png" alt="Token isolation overview">
-        </div>
-        <div class="cs-screen-grid" style="margin-top:16px;">
-          <div class="cs-screen-item">
-            <div class="cs-img-block">
-              <img src="dt-base-isolation.png" alt="Base token isolation — zero isolation">
-            </div>
-            <p class="cs-screen-label">Base tokens — zero isolation, changes affect the entire system</p>
-          </div>
-          <div class="cs-screen-item">
-            <div class="cs-img-block">
-              <img src="dt-alias-isolation.png" alt="Alias token isolation — moderate isolation">
-            </div>
-            <p class="cs-screen-label">Alias tokens — moderate isolation, changes affect defined contexts</p>
-          </div>
-        </div>
-        <div class="cs-img-block" style="margin-top:16px;">
-          <img src="dt-comp-isolation.png" alt="Component token isolation — full isolation">
-        </div>
-        <p class="cs-screen-label" style="margin-top:8px; text-align:center;">Component tokens — highest isolation, changes affect only that component</p>
-      </div>
-
-      <!-- Token Pipeline -->
-      <div class="cs-section">
-        <h2 class="cs-h2">Token pipeline and workflow</h2>
-        <p class="cs-body">The process utilises the open-source <strong>Figma Token Studio</strong> plugin to generate tokens and export them to GitHub in JSON format. The tokens are then analyzed through <strong>Style Dictionary</strong> on GitHub and converted to CSS variables for use in code — creating an end-to-end automated token pipeline.</p>
-        <div class="cs-img-block" style="margin-top:24px;">
-          <img src="dt-pipeline.png" alt="Token pipeline and workflow">
-        </div>
-      </div>
-
-      <!-- Conclusion -->
-      <div class="cs-conclusion">
-        <p>Design tokens are the keystones of a harmonious and scalable design system — providing a unified language for consistency and adaptability in the ever-evolving landscape of UI design. To observe the implementation of design tokens in the atom section of the design system, read the full article on Notion.</p>
-        <a class="cs-figma-link" href="https://www.notion.so/varshabhide/Design-Tokens-7b21108a68404dd9a81ffb9ec2c94fd1" target="_blank" rel="noopener">
-          Read full article ↗
-        </a>
-      </div>
-
-    </div><!-- /cs-wrap -->
-  </div><!-- /page-tokens -->
-
-  <script>
-    // ── NAVIGATION ──
-    function navigate(pageId) {
-      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-      document.getElementById('page-' + pageId).classList.add('active');
-      document.querySelectorAll('.nav-links [data-page]').forEach(b => b.classList.remove('nav-current'));
-      const active = document.querySelector(`.nav-links [data-page="${pageId}"]`);
-      if (active) active.classList.add('nav-current');
-      window.scrollTo({ top: 0, behavior: 'instant' });
-      history.pushState({ page: pageId }, '', '#' + pageId);
-    }
-
-    window.addEventListener('popstate', e => {
-      if (e.state?.page) navigate(e.state.page);
-    });
-
-    // load from hash on page open
-    const hash = location.hash.replace('#', '');
-    if (['home', 'projects', 'about', 'eps', 'thematic', 'tokens'].includes(hash)) navigate(hash);
-
-    // ── COPY EMAIL ──
-    function copyEmail() {
-      navigator.clipboard.writeText('varsha.ab@gmail.com').then(() => {
-        const toast = document.getElementById('toast');
-        toast.classList.add('show');
-        setTimeout(() => toast.classList.remove('show'), 2500);
-      });
-    }
-
-    // ── CAROUSEL ──
-    const carousel  = document.getElementById('carousel');
-    const prevBtn   = document.getElementById('prevBtn');
-    const nextBtn   = document.getElementById('nextBtn');
-    const dragHint  = document.getElementById('dragHint');
-    const CARD_W    = 440 + 24;
-    let isDown = false, startX, scrollLeft0, hasDragged = false, dragDelta = 0;
-
-    const hintTimer = setTimeout(() => {
-      if (!hasDragged) dragHint.classList.add('visible');
-    }, 4000);
-
-    function dismissHint() {
-      if (hasDragged) return;
-      hasDragged = true;
-      dragHint.classList.remove('visible');
-      clearTimeout(hintTimer);
-    }
-
-    function updateChevrons() {
-      prevBtn.disabled = carousel.scrollLeft <= 0;
-      nextBtn.disabled = carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth - 2;
-    }
-
-    carousel.addEventListener('scroll', updateChevrons);
-    updateChevrons();
-
-    prevBtn.addEventListener('click', () => { carousel.scrollBy({ left: -CARD_W, behavior: 'smooth' }); dismissHint(); });
-    nextBtn.addEventListener('click', () => { carousel.scrollBy({ left:  CARD_W, behavior: 'smooth' }); dismissHint(); });
-
-    carousel.addEventListener('mousedown', e => {
-      isDown = true; dragDelta = carousel.scrollLeft;
-      carousel.style.cursor = 'grabbing';
-      startX = e.pageX - carousel.offsetLeft;
-      scrollLeft0 = carousel.scrollLeft;
-      dismissHint();
-    });
-
-    carousel.addEventListener('mouseleave', () => { isDown = false; carousel.style.cursor = 'grab'; });
-    carousel.addEventListener('mouseup',    () => { isDown = false; carousel.style.cursor = 'grab'; });
-
-    carousel.addEventListener('mousemove', e => {
-      if (!isDown) return;
-      e.preventDefault();
-      carousel.scrollLeft = scrollLeft0 - (e.pageX - carousel.offsetLeft - startX) * 1.4;
-    });
-
-    carousel.querySelectorAll('.carousel-card').forEach(card => {
-      card.addEventListener('click', e => {
-        if (Math.abs(carousel.scrollLeft - dragDelta) > 6) e.preventDefault();
-      });
-    });
-
-    let tStartX, tScrollLeft;
-    carousel.addEventListener('touchstart', e => {
-      tStartX = e.touches[0].pageX - carousel.offsetLeft;
-      tScrollLeft = carousel.scrollLeft;
-      dismissHint();
-    }, { passive: true });
-
-    carousel.addEventListener('touchmove', e => {
-      carousel.scrollLeft = tScrollLeft - (e.touches[0].pageX - carousel.offsetLeft - tStartX) * 1.4;
-    }, { passive: true });
-
-    // ── DARK MODE ──
-    function toggleDark() {
-      const isDark = document.body.classList.toggle('dark');
-      document.getElementById('themeBtn').textContent = isDark ? '☀︎ Light' : '☽ Dark';
-      localStorage.setItem('theme', isDark ? 'dark' : 'light');
-    }
-
-    // restore preference
-    if (localStorage.getItem('theme') === 'dark') {
-      document.body.classList.add('dark');
-      document.getElementById('themeBtn').textContent = '☀︎ Light';
-    }
-
-    // ── FILTER TABS ──
-    document.querySelectorAll('.filter-tabs .tab').forEach(tab => {
-      tab.addEventListener('click', () => {
-        tab.closest('.filter-tabs').querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-        const f = tab.dataset.filter;
-        document.getElementById('grp-ds').classList.toggle('hidden',   f === 'product');
-        document.getElementById('grp-prod').classList.toggle('hidden', f === 'design-system');
-      });
-    });
-  </script>
-
-  </div><!-- /app-panel -->
-</body>
-</html>
+{
+  "$metadata": {
+    "tokenSetOrder": [
+      "base-color",
+      "base-font",
+      "base-spacing",
+      "base-radius",
+      "base-shadow",
+      "base-border",
+      "base-duration",
+      "base-easing",
+      "brand-cobalt",
+      "brand-terra",
+      "alias-color",
+      "alias-typography",
+      "alias-spacing",
+      "alias-radius",
+      "alias-elevation",
+      "alias-motion",
+      "alias-focus",
+      "alias-border",
+      "component-button",
+      "component-input",
+      "component-feedback",
+      "component-nav"
+    ]
+  },
+  "base-color": {
+    "black": {
+      "$value": "#000000",
+      "$type": "color"
+    },
+    "white": {
+      "$value": "#ffffff",
+      "$type": "color"
+    },
+    "gray": {
+      "75": {
+        "$value": "#f5f5f3",
+        "$type": "color"
+      },
+      "100": {
+        "$value": "#eeeeec",
+        "$type": "color"
+      },
+      "200": {
+        "$value": "#e3e3e0",
+        "$type": "color"
+      },
+      "300": {
+        "$value": "#d5d5d5",
+        "$type": "color"
+      },
+      "400": {
+        "$value": "#b1b1b1",
+        "$type": "color"
+      },
+      "500": {
+        "$value": "#909090",
+        "$type": "color"
+      },
+      "600": {
+        "$value": "#6d6d6d",
+        "$type": "color"
+      },
+      "700": {
+        "$value": "#464646",
+        "$type": "color"
+      },
+      "900": {
+        "$value": "#222222",
+        "$type": "color"
+      }
+    },
+    "blue": {
+      "100": {
+        "$value": "#c4c5f4",
+        "$type": "color"
+      },
+      "200": {
+        "$value": "#aaacf0",
+        "$type": "color"
+      },
+      "300": {
+        "$value": "#9194eb",
+        "$type": "color"
+      },
+      "400": {
+        "$value": "#6e71e6",
+        "$type": "color"
+      },
+      "500": {
+        "$value": "#3a3dee",
+        "$type": "color"
+      },
+      "600": {
+        "$value": "#1c21dc",
+        "$type": "color"
+      },
+      "700": {
+        "$value": "#171cbe",
+        "$type": "color"
+      },
+      "800": {
+        "$value": "#1518a6",
+        "$type": "color"
+      },
+      "900": {
+        "$value": "#111487",
+        "$type": "color"
+      }
+    },
+    "red": {
+      "100": {
+        "$value": "#ffe2e2",
+        "$type": "color"
+      },
+      "200": {
+        "$value": "#ffb9bb",
+        "$type": "color"
+      },
+      "300": {
+        "$value": "#ff999c",
+        "$type": "color"
+      },
+      "400": {
+        "$value": "#f55658",
+        "$type": "color"
+      },
+      "600": {
+        "$value": "#d21a26",
+        "$type": "color"
+      },
+      "700": {
+        "$value": "#ab121b",
+        "$type": "color"
+      },
+      "800": {
+        "$value": "#81070d",
+        "$type": "color"
+      },
+      "900": {
+        "$value": "#640204",
+        "$type": "color"
+      }
+    },
+    "green": {
+      "100": {
+        "$value": "#dcfce7",
+        "$type": "color"
+      },
+      "200": {
+        "$value": "#bbf7d0",
+        "$type": "color"
+      },
+      "300": {
+        "$value": "#86efac",
+        "$type": "color"
+      },
+      "400": {
+        "$value": "#4ade80",
+        "$type": "color"
+      },
+      "600": {
+        "$value": "#16a34a",
+        "$type": "color"
+      },
+      "700": {
+        "$value": "#15803d",
+        "$type": "color"
+      },
+      "800": {
+        "$value": "#166534",
+        "$type": "color"
+      },
+      "900": {
+        "$value": "#14532d",
+        "$type": "color"
+      }
+    },
+    "teal": {
+      "100": {
+        "$value": "#ccfbf1",
+        "$type": "color"
+      },
+      "200": {
+        "$value": "#99f6e4",
+        "$type": "color"
+      },
+      "300": {
+        "$value": "#5eead4",
+        "$type": "color"
+      },
+      "400": {
+        "$value": "#2dd4bf",
+        "$type": "color"
+      },
+      "500": {
+        "$value": "#14b8a6",
+        "$type": "color"
+      },
+      "600": {
+        "$value": "#0d9488",
+        "$type": "color"
+      },
+      "700": {
+        "$value": "#0f766e",
+        "$type": "color"
+      },
+      "800": {
+        "$value": "#115e59",
+        "$type": "color"
+      },
+      "900": {
+        "$value": "#134e4a",
+        "$type": "color"
+      }
+    },
+    "rose": {
+      "100": {
+        "$value": "#fdf2f8",
+        "$type": "color"
+      },
+      "200": {
+        "$value": "#fce7f3",
+        "$type": "color"
+      },
+      "300": {
+        "$value": "#fbcfe8",
+        "$type": "color"
+      },
+      "400": {
+        "$value": "#f9a8d4",
+        "$type": "color"
+      },
+      "500": {
+        "$value": "#f472b6",
+        "$type": "color"
+      },
+      "600": {
+        "$value": "#db2777",
+        "$type": "color"
+      },
+      "700": {
+        "$value": "#be185d",
+        "$type": "color"
+      },
+      "800": {
+        "$value": "#9d174d",
+        "$type": "color"
+      },
+      "900": {
+        "$value": "#831843",
+        "$type": "color"
+      }
+    },
+    "slate": {
+      "50": {
+        "$value": "#f8fafc",
+        "$type": "color"
+      },
+      "100": {
+        "$value": "#f1f5f9",
+        "$type": "color"
+      },
+      "200": {
+        "$value": "#e2e8f0",
+        "$type": "color"
+      },
+      "300": {
+        "$value": "#cbd5e1",
+        "$type": "color"
+      },
+      "400": {
+        "$value": "#94a3b8",
+        "$type": "color"
+      },
+      "500": {
+        "$value": "#64748b",
+        "$type": "color"
+      },
+      "600": {
+        "$value": "#475569",
+        "$type": "color"
+      },
+      "700": {
+        "$value": "#334155",
+        "$type": "color"
+      },
+      "800": {
+        "$value": "#1e293b",
+        "$type": "color"
+      },
+      "900": {
+        "$value": "#0f172a",
+        "$type": "color"
+      }
+    },
+    "emerald": {
+      "100": {
+        "$value": "#ecfdf5",
+        "$type": "color"
+      },
+      "200": {
+        "$value": "#d1fae5",
+        "$type": "color"
+      },
+      "300": {
+        "$value": "#a7f3d0",
+        "$type": "color"
+      },
+      "400": {
+        "$value": "#6ee7b7",
+        "$type": "color"
+      },
+      "500": {
+        "$value": "#34d399",
+        "$type": "color"
+      },
+      "600": {
+        "$value": "#166534",
+        "$type": "color"
+      },
+      "700": {
+        "$value": "#14532d",
+        "$type": "color"
+      },
+      "800": {
+        "$value": "#0f3d22",
+        "$type": "color"
+      },
+      "900": {
+        "$value": "#0a2718",
+        "$type": "color"
+      }
+    },
+    "sienna": {
+      "100": {
+        "$value": "#fff7ed",
+        "$type": "color"
+      },
+      "200": {
+        "$value": "#ffedd5",
+        "$type": "color"
+      },
+      "300": {
+        "$value": "#fed7aa",
+        "$type": "color"
+      },
+      "400": {
+        "$value": "#fdba74",
+        "$type": "color"
+      },
+      "500": {
+        "$value": "#c2521a",
+        "$type": "color"
+      },
+      "600": {
+        "$value": "#a3400f",
+        "$type": "color"
+      },
+      "700": {
+        "$value": "#823010",
+        "$type": "color"
+      },
+      "800": {
+        "$value": "#61210b",
+        "$type": "color"
+      },
+      "900": {
+        "$value": "#401407",
+        "$type": "color"
+      }
+    },
+    "gold": {
+      "100": {
+        "$value": "#fffbeb",
+        "$type": "color"
+      },
+      "200": {
+        "$value": "#fef3c7",
+        "$type": "color"
+      },
+      "300": {
+        "$value": "#fde68a",
+        "$type": "color"
+      },
+      "400": {
+        "$value": "#fcd34d",
+        "$type": "color"
+      },
+      "500": {
+        "$value": "#f59e0b",
+        "$type": "color"
+      },
+      "600": {
+        "$value": "#b45309",
+        "$type": "color"
+      },
+      "700": {
+        "$value": "#92400e",
+        "$type": "color"
+      },
+      "800": {
+        "$value": "#6e3008",
+        "$type": "color"
+      },
+      "900": {
+        "$value": "#451d05",
+        "$type": "color"
+      }
+    },
+    "sand": {
+      "50": {
+        "$value": "#fdfcf8",
+        "$type": "color"
+      },
+      "100": {
+        "$value": "#f5f2ea",
+        "$type": "color"
+      },
+      "200": {
+        "$value": "#e8e2d5",
+        "$type": "color"
+      },
+      "300": {
+        "$value": "#cec6b4",
+        "$type": "color"
+      },
+      "400": {
+        "$value": "#a89e8c",
+        "$type": "color"
+      },
+      "500": {
+        "$value": "#7a7265",
+        "$type": "color"
+      },
+      "600": {
+        "$value": "#504a40",
+        "$type": "color"
+      },
+      "700": {
+        "$value": "#35302a",
+        "$type": "color"
+      },
+      "800": {
+        "$value": "#1e1a15",
+        "$type": "color"
+      },
+      "900": {
+        "$value": "#0d0b09",
+        "$type": "color"
+      }
+    },
+    "success": {
+      "100": {
+        "$value": "#f0fdf4",
+        "$type": "color"
+      },
+      "200": {
+        "$value": "#dcfce7",
+        "$type": "color"
+      },
+      "300": {
+        "$value": "#bbf7d0",
+        "$type": "color"
+      },
+      "400": {
+        "$value": "#86efac",
+        "$type": "color"
+      },
+      "500": {
+        "$value": "#4ade80",
+        "$type": "color"
+      },
+      "600": {
+        "$value": "#16a34a",
+        "$type": "color"
+      },
+      "700": {
+        "$value": "#15803d",
+        "$type": "color"
+      },
+      "800": {
+        "$value": "#166534",
+        "$type": "color"
+      },
+      "900": {
+        "$value": "#14532d",
+        "$type": "color"
+      }
+    },
+    "error": {
+      "100": {
+        "$value": "#fff5f5",
+        "$type": "color"
+      },
+      "200": {
+        "$value": "#fee2e2",
+        "$type": "color"
+      },
+      "300": {
+        "$value": "#fecaca",
+        "$type": "color"
+      },
+      "400": {
+        "$value": "#fca5a5",
+        "$type": "color"
+      },
+      "500": {
+        "$value": "#f87171",
+        "$type": "color"
+      },
+      "600": {
+        "$value": "#dc2626",
+        "$type": "color"
+      },
+      "700": {
+        "$value": "#b91c1c",
+        "$type": "color"
+      },
+      "800": {
+        "$value": "#991b1b",
+        "$type": "color"
+      },
+      "900": {
+        "$value": "#7f1d1d",
+        "$type": "color"
+      }
+    },
+    "warning": {
+      "100": {
+        "$value": "#fffbeb",
+        "$type": "color"
+      },
+      "200": {
+        "$value": "#fef3c7",
+        "$type": "color"
+      },
+      "300": {
+        "$value": "#fde68a",
+        "$type": "color"
+      },
+      "400": {
+        "$value": "#fcd34d",
+        "$type": "color"
+      },
+      "500": {
+        "$value": "#fbbf24",
+        "$type": "color"
+      },
+      "600": {
+        "$value": "#d97706",
+        "$type": "color"
+      },
+      "700": {
+        "$value": "#b45309",
+        "$type": "color"
+      },
+      "800": {
+        "$value": "#92400e",
+        "$type": "color"
+      },
+      "900": {
+        "$value": "#78350f",
+        "$type": "color"
+      }
+    },
+    "info": {
+      "100": {
+        "$value": "#f0f9ff",
+        "$type": "color"
+      },
+      "200": {
+        "$value": "#e0f2fe",
+        "$type": "color"
+      },
+      "300": {
+        "$value": "#bae6fd",
+        "$type": "color"
+      },
+      "400": {
+        "$value": "#7dd3fc",
+        "$type": "color"
+      },
+      "500": {
+        "$value": "#38bdf8",
+        "$type": "color"
+      },
+      "600": {
+        "$value": "#0284c7",
+        "$type": "color"
+      },
+      "700": {
+        "$value": "#0369a1",
+        "$type": "color"
+      },
+      "800": {
+        "$value": "#075985",
+        "$type": "color"
+      },
+      "900": {
+        "$value": "#0c4a6e",
+        "$type": "color"
+      }
+    }
+  },
+  "base-font": {
+    "family": {
+      "primary": {
+        "$value": "'Open Sans', sans-serif",
+        "$type": "fontFamilies"
+      }
+    },
+    "weight": {
+      "regular": {
+        "$value": "400",
+        "$type": "fontWeights"
+      },
+      "medium": {
+        "$value": "500",
+        "$type": "fontWeights"
+      },
+      "semibold": {
+        "$value": "600",
+        "$type": "fontWeights"
+      },
+      "bold": {
+        "$value": "700",
+        "$type": "fontWeights"
+      }
+    },
+    "size": {
+      "100": {
+        "$value": "0.625rem",
+        "$type": "fontSizes"
+      },
+      "200": {
+        "$value": "0.75rem",
+        "$type": "fontSizes"
+      },
+      "300": {
+        "$value": "0.875rem",
+        "$type": "fontSizes"
+      },
+      "400": {
+        "$value": "1rem",
+        "$type": "fontSizes"
+      },
+      "500": {
+        "$value": "1.875rem",
+        "$type": "fontSizes"
+      },
+      "600": {
+        "$value": "2rem",
+        "$type": "fontSizes"
+      },
+      "700": {
+        "$value": "2.25rem",
+        "$type": "fontSizes"
+      },
+      "800": {
+        "$value": "2.625rem",
+        "$type": "fontSizes"
+      },
+      "900": {
+        "$value": "3rem",
+        "$type": "fontSizes"
+      }
+    },
+    "line-height": {
+      "relaxed": {
+        "$value": "1.5",
+        "$type": "lineHeights"
+      },
+      "tight": {
+        "$value": "1.25",
+        "$type": "lineHeights"
+      }
+    }
+  },
+  "base-spacing": {
+    "1": {
+      "$value": "4",
+      "$type": "dimension"
+    },
+    "2": {
+      "$value": "8",
+      "$type": "dimension"
+    },
+    "3": {
+      "$value": "12",
+      "$type": "dimension"
+    },
+    "4": {
+      "$value": "16",
+      "$type": "dimension"
+    },
+    "5": {
+      "$value": "24",
+      "$type": "dimension"
+    },
+    "6": {
+      "$value": "32",
+      "$type": "dimension"
+    },
+    "7": {
+      "$value": "40",
+      "$type": "dimension"
+    },
+    "8": {
+      "$value": "48",
+      "$type": "dimension"
+    },
+    "9": {
+      "$value": "64",
+      "$type": "dimension"
+    },
+    "10": {
+      "$value": "80",
+      "$type": "dimension"
+    }
+  },
+  "base-radius": {
+    "none": {
+      "$value": "0",
+      "$type": "dimension"
+    },
+    "xs": {
+      "$value": "2",
+      "$type": "dimension"
+    },
+    "sm": {
+      "$value": "4",
+      "$type": "dimension"
+    },
+    "md": {
+      "$value": "6",
+      "$type": "dimension"
+    },
+    "lg": {
+      "$value": "8",
+      "$type": "dimension"
+    },
+    "xl": {
+      "$value": "10",
+      "$type": "dimension"
+    },
+    "xxl": {
+      "$value": "14",
+      "$type": "dimension"
+    },
+    "full": {
+      "$value": "9999",
+      "$type": "dimension"
+    }
+  },
+  "base-shadow": {
+    "01": {
+      "$value": {
+        "x": "0",
+        "y": "1",
+        "blur": "2",
+        "spread": "0",
+        "color": "rgba(0,0,0,0.05)",
+        "type": "dropShadow"
+      },
+      "$type": "boxShadow"
+    },
+    "02": {
+      "$value": [
+        {
+          "x": "0",
+          "y": "1",
+          "blur": "3",
+          "spread": "0",
+          "color": "rgba(0,0,0,0.06)",
+          "type": "dropShadow"
+        },
+        {
+          "x": "0",
+          "y": "4",
+          "blur": "16",
+          "spread": "0",
+          "color": "rgba(0,0,0,0.05)",
+          "type": "dropShadow"
+        }
+      ],
+      "$type": "boxShadow"
+    },
+    "03": {
+      "$value": [
+        {
+          "x": "0",
+          "y": "2",
+          "blur": "4",
+          "spread": "0",
+          "color": "rgba(0,0,0,0.07)",
+          "type": "dropShadow"
+        },
+        {
+          "x": "0",
+          "y": "6",
+          "blur": "20",
+          "spread": "0",
+          "color": "rgba(0,0,0,0.06)",
+          "type": "dropShadow"
+        }
+      ],
+      "$type": "boxShadow"
+    },
+    "04": {
+      "$value": [
+        {
+          "x": "0",
+          "y": "4",
+          "blur": "6",
+          "spread": "0",
+          "color": "rgba(0,0,0,0.07)",
+          "type": "dropShadow"
+        },
+        {
+          "x": "0",
+          "y": "10",
+          "blur": "30",
+          "spread": "0",
+          "color": "rgba(0,0,0,0.08)",
+          "type": "dropShadow"
+        }
+      ],
+      "$type": "boxShadow"
+    },
+    "05": {
+      "$value": [
+        {
+          "x": "0",
+          "y": "8",
+          "blur": "16",
+          "spread": "0",
+          "color": "rgba(0,0,0,0.10)",
+          "type": "dropShadow"
+        },
+        {
+          "x": "0",
+          "y": "20",
+          "blur": "48",
+          "spread": "0",
+          "color": "rgba(0,0,0,0.10)",
+          "type": "dropShadow"
+        }
+      ],
+      "$type": "boxShadow"
+    }
+  },
+  "base-border": {
+    "width": {
+      "$value": "1",
+      "$type": "dimension"
+    },
+    "style": {
+      "$value": "solid",
+      "$type": "other"
+    }
+  },
+  "base-duration": {
+    "instant": {
+      "$value": "0",
+      "$type": "other"
+    },
+    "fast": {
+      "$value": "100",
+      "$type": "other"
+    },
+    "normal": {
+      "$value": "200",
+      "$type": "other"
+    },
+    "slow": {
+      "$value": "300",
+      "$type": "other"
+    },
+    "slower": {
+      "$value": "500",
+      "$type": "other"
+    }
+  },
+  "base-easing": {
+    "linear": {
+      "$value": "linear",
+      "$type": "other"
+    },
+    "ease-in": {
+      "$value": "cubic-bezier(0.4, 0, 1, 1)",
+      "$type": "other"
+    },
+    "ease-out": {
+      "$value": "cubic-bezier(0, 0, 0.2, 1)",
+      "$type": "other"
+    },
+    "ease-in-out": {
+      "$value": "cubic-bezier(0.4, 0, 0.2, 1)",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "cubic-bezier(0.34, 1.56, 0.64, 1)",
+      "$type": "other"
+    }
+  },
+  "brand-cobalt": {
+    "primary": {
+      "100": {
+        "$value": "{base-color.blue.100}",
+        "$type": "color"
+      },
+      "200": {
+        "$value": "{base-color.blue.200}",
+        "$type": "color"
+      },
+      "300": {
+        "$value": "{base-color.blue.300}",
+        "$type": "color"
+      },
+      "400": {
+        "$value": "{base-color.blue.400}",
+        "$type": "color"
+      },
+      "500": {
+        "$value": "{base-color.blue.500}",
+        "$type": "color"
+      },
+      "600": {
+        "$value": "{base-color.blue.600}",
+        "$type": "color"
+      },
+      "700": {
+        "$value": "{base-color.blue.700}",
+        "$type": "color"
+      },
+      "800": {
+        "$value": "{base-color.blue.800}",
+        "$type": "color"
+      },
+      "900": {
+        "$value": "{base-color.blue.900}",
+        "$type": "color"
+      }
+    },
+    "secondary": {
+      "100": {
+        "$value": "{base-color.teal.100}",
+        "$type": "color"
+      },
+      "200": {
+        "$value": "{base-color.teal.200}",
+        "$type": "color"
+      },
+      "300": {
+        "$value": "{base-color.teal.300}",
+        "$type": "color"
+      },
+      "400": {
+        "$value": "{base-color.teal.400}",
+        "$type": "color"
+      },
+      "500": {
+        "$value": "{base-color.teal.500}",
+        "$type": "color"
+      },
+      "600": {
+        "$value": "{base-color.teal.600}",
+        "$type": "color"
+      },
+      "700": {
+        "$value": "{base-color.teal.700}",
+        "$type": "color"
+      },
+      "800": {
+        "$value": "{base-color.teal.800}",
+        "$type": "color"
+      },
+      "900": {
+        "$value": "{base-color.teal.900}",
+        "$type": "color"
+      }
+    },
+    "tertiary": {
+      "100": {
+        "$value": "{base-color.rose.100}",
+        "$type": "color"
+      },
+      "200": {
+        "$value": "{base-color.rose.200}",
+        "$type": "color"
+      },
+      "300": {
+        "$value": "{base-color.rose.300}",
+        "$type": "color"
+      },
+      "400": {
+        "$value": "{base-color.rose.400}",
+        "$type": "color"
+      },
+      "500": {
+        "$value": "{base-color.rose.500}",
+        "$type": "color"
+      },
+      "600": {
+        "$value": "{base-color.rose.600}",
+        "$type": "color"
+      },
+      "700": {
+        "$value": "{base-color.rose.700}",
+        "$type": "color"
+      },
+      "800": {
+        "$value": "{base-color.rose.800}",
+        "$type": "color"
+      },
+      "900": {
+        "$value": "{base-color.rose.900}",
+        "$type": "color"
+      }
+    },
+    "neutral": {
+      "50": {
+        "$value": "{base-color.slate.50}",
+        "$type": "color"
+      },
+      "100": {
+        "$value": "{base-color.slate.100}",
+        "$type": "color"
+      },
+      "200": {
+        "$value": "{base-color.slate.200}",
+        "$type": "color"
+      },
+      "300": {
+        "$value": "{base-color.slate.300}",
+        "$type": "color"
+      },
+      "400": {
+        "$value": "{base-color.slate.400}",
+        "$type": "color"
+      },
+      "500": {
+        "$value": "{base-color.slate.500}",
+        "$type": "color"
+      },
+      "600": {
+        "$value": "{base-color.slate.600}",
+        "$type": "color"
+      },
+      "700": {
+        "$value": "{base-color.slate.700}",
+        "$type": "color"
+      },
+      "800": {
+        "$value": "{base-color.slate.800}",
+        "$type": "color"
+      },
+      "900": {
+        "$value": "{base-color.slate.900}",
+        "$type": "color"
+      }
+    }
+  },
+  "brand-terra": {
+    "primary": {
+      "100": {
+        "$value": "{base-color.emerald.100}",
+        "$type": "color"
+      },
+      "200": {
+        "$value": "{base-color.emerald.200}",
+        "$type": "color"
+      },
+      "300": {
+        "$value": "{base-color.emerald.300}",
+        "$type": "color"
+      },
+      "400": {
+        "$value": "{base-color.emerald.400}",
+        "$type": "color"
+      },
+      "500": {
+        "$value": "{base-color.emerald.500}",
+        "$type": "color"
+      },
+      "600": {
+        "$value": "{base-color.emerald.600}",
+        "$type": "color"
+      },
+      "700": {
+        "$value": "{base-color.emerald.700}",
+        "$type": "color"
+      },
+      "800": {
+        "$value": "{base-color.emerald.800}",
+        "$type": "color"
+      },
+      "900": {
+        "$value": "{base-color.emerald.900}",
+        "$type": "color"
+      }
+    },
+    "secondary": {
+      "100": {
+        "$value": "{base-color.sienna.100}",
+        "$type": "color"
+      },
+      "200": {
+        "$value": "{base-color.sienna.200}",
+        "$type": "color"
+      },
+      "300": {
+        "$value": "{base-color.sienna.300}",
+        "$type": "color"
+      },
+      "400": {
+        "$value": "{base-color.sienna.400}",
+        "$type": "color"
+      },
+      "500": {
+        "$value": "{base-color.sienna.500}",
+        "$type": "color"
+      },
+      "600": {
+        "$value": "{base-color.sienna.600}",
+        "$type": "color"
+      },
+      "700": {
+        "$value": "{base-color.sienna.700}",
+        "$type": "color"
+      },
+      "800": {
+        "$value": "{base-color.sienna.800}",
+        "$type": "color"
+      },
+      "900": {
+        "$value": "{base-color.sienna.900}",
+        "$type": "color"
+      }
+    },
+    "tertiary": {
+      "100": {
+        "$value": "{base-color.gold.100}",
+        "$type": "color"
+      },
+      "200": {
+        "$value": "{base-color.gold.200}",
+        "$type": "color"
+      },
+      "300": {
+        "$value": "{base-color.gold.300}",
+        "$type": "color"
+      },
+      "400": {
+        "$value": "{base-color.gold.400}",
+        "$type": "color"
+      },
+      "500": {
+        "$value": "{base-color.gold.500}",
+        "$type": "color"
+      },
+      "600": {
+        "$value": "{base-color.gold.600}",
+        "$type": "color"
+      },
+      "700": {
+        "$value": "{base-color.gold.700}",
+        "$type": "color"
+      },
+      "800": {
+        "$value": "{base-color.gold.800}",
+        "$type": "color"
+      },
+      "900": {
+        "$value": "{base-color.gold.900}",
+        "$type": "color"
+      }
+    },
+    "neutral": {
+      "50": {
+        "$value": "{base-color.sand.50}",
+        "$type": "color"
+      },
+      "100": {
+        "$value": "{base-color.sand.100}",
+        "$type": "color"
+      },
+      "200": {
+        "$value": "{base-color.sand.200}",
+        "$type": "color"
+      },
+      "300": {
+        "$value": "{base-color.sand.300}",
+        "$type": "color"
+      },
+      "400": {
+        "$value": "{base-color.sand.400}",
+        "$type": "color"
+      },
+      "500": {
+        "$value": "{base-color.sand.500}",
+        "$type": "color"
+      },
+      "600": {
+        "$value": "{base-color.sand.600}",
+        "$type": "color"
+      },
+      "700": {
+        "$value": "{base-color.sand.700}",
+        "$type": "color"
+      },
+      "800": {
+        "$value": "{base-color.sand.800}",
+        "$type": "color"
+      },
+      "900": {
+        "$value": "{base-color.sand.900}",
+        "$type": "color"
+      }
+    }
+  },
+  "alias-color": {
+    "text": {
+      "primary": {
+        "$value": "{base-color.black}",
+        "$type": "color"
+      },
+      "secondary": {
+        "$value": "{base-color.gray.900}",
+        "$type": "color"
+      },
+      "tertiary": {
+        "$value": "{base-color.gray.700}",
+        "$type": "color"
+      },
+      "subtle": {
+        "$value": "{base-color.gray.600}",
+        "$type": "color"
+      },
+      "disabled": {
+        "$value": "{base-color.gray.500}",
+        "$type": "color"
+      },
+      "inverse": {
+        "$value": "{base-color.white}",
+        "$type": "color"
+      },
+      "brand": {
+        "$value": "{brand-cobalt.primary.900}",
+        "$type": "color"
+      },
+      "error": {
+        "$value": "{base-color.error.700}",
+        "$type": "color"
+      },
+      "success": {
+        "$value": "{base-color.success.700}",
+        "$type": "color"
+      },
+      "warning": {
+        "$value": "{base-color.warning.700}",
+        "$type": "color"
+      },
+      "info": {
+        "$value": "{base-color.info.700}",
+        "$type": "color"
+      }
+    },
+    "background": {
+      "primary": {
+        "$value": "{base-color.white}",
+        "$type": "color"
+      },
+      "secondary": {
+        "$value": "{base-color.gray.75}",
+        "$type": "color"
+      },
+      "tertiary": {
+        "$value": "{base-color.gray.100}",
+        "$type": "color"
+      },
+      "brand": {
+        "$value": "{brand-cobalt.primary.800}",
+        "$type": "color"
+      },
+      "brand-dark": {
+        "$value": "{brand-cobalt.primary.900}",
+        "$type": "color"
+      },
+      "hover": {
+        "$value": "{brand-cobalt.primary.100}",
+        "$type": "color"
+      }
+    },
+    "stroke": {
+      "default": {
+        "$value": "{base-color.gray.300}",
+        "$type": "color"
+      },
+      "active": {
+        "$value": "{brand-cobalt.primary.600}",
+        "$type": "color"
+      },
+      "disabled": {
+        "$value": "{base-color.gray.400}",
+        "$type": "color"
+      },
+      "brand": {
+        "$value": "{brand-cobalt.primary.800}",
+        "$type": "color"
+      },
+      "success": {
+        "$value": "{base-color.success.600}",
+        "$type": "color"
+      },
+      "info": {
+        "$value": "{base-color.info.600}",
+        "$type": "color"
+      },
+      "error": {
+        "$value": "{base-color.error.600}",
+        "$type": "color"
+      },
+      "warning": {
+        "$value": "{base-color.warning.600}",
+        "$type": "color"
+      }
+    },
+    "icon": {
+      "primary": {
+        "$value": "{base-color.gray.900}",
+        "$type": "color"
+      },
+      "secondary": {
+        "$value": "{base-color.gray.700}",
+        "$type": "color"
+      },
+      "disabled": {
+        "$value": "{base-color.gray.400}",
+        "$type": "color"
+      },
+      "brand": {
+        "$value": "{brand-cobalt.primary.700}",
+        "$type": "color"
+      }
+    },
+    "feedback": {
+      "success": {
+        "fg": {
+          "$value": "{base-color.success.800}",
+          "$type": "color"
+        },
+        "bg": {
+          "$value": "{base-color.success.100}",
+          "$type": "color"
+        },
+        "stroke": {
+          "$value": "{base-color.success.400}",
+          "$type": "color"
+        }
+      },
+      "info": {
+        "fg": {
+          "$value": "{base-color.info.800}",
+          "$type": "color"
+        },
+        "bg": {
+          "$value": "{base-color.info.100}",
+          "$type": "color"
+        },
+        "stroke": {
+          "$value": "{base-color.info.400}",
+          "$type": "color"
+        }
+      },
+      "warning": {
+        "fg": {
+          "$value": "{base-color.warning.800}",
+          "$type": "color"
+        },
+        "bg": {
+          "$value": "{base-color.warning.100}",
+          "$type": "color"
+        },
+        "stroke": {
+          "$value": "{base-color.warning.400}",
+          "$type": "color"
+        }
+      },
+      "error": {
+        "fg": {
+          "$value": "{base-color.error.800}",
+          "$type": "color"
+        },
+        "bg": {
+          "$value": "{base-color.error.100}",
+          "$type": "color"
+        },
+        "stroke": {
+          "$value": "{base-color.error.400}",
+          "$type": "color"
+        }
+      }
+    },
+    "action": {
+      "destructive": {
+        "bg": {
+          "default": {
+            "$value": "{base-color.error.600}",
+            "$type": "color"
+          },
+          "hover": {
+            "$value": "{base-color.error.700}",
+            "$type": "color"
+          },
+          "active": {
+            "$value": "{base-color.error.800}",
+            "$type": "color"
+          }
+        }
+      }
+    }
+  },
+  "alias-typography": {
+    "heading": {
+      "1": {
+        "family": {
+          "$value": "{base-font.family.primary}",
+          "$type": "fontFamilies"
+        },
+        "size": {
+          "$value": "{base-font.size.900}",
+          "$type": "fontSizes"
+        },
+        "weight": {
+          "$value": "{base-font.weight.bold}",
+          "$type": "fontWeights"
+        },
+        "line-height": {
+          "$value": "{base-font.line-height.relaxed}",
+          "$type": "lineHeights"
+        }
+      },
+      "2": {
+        "family": {
+          "$value": "{base-font.family.primary}",
+          "$type": "fontFamilies"
+        },
+        "size": {
+          "$value": "{base-font.size.800}",
+          "$type": "fontSizes"
+        },
+        "weight": {
+          "$value": "{base-font.weight.bold}",
+          "$type": "fontWeights"
+        },
+        "line-height": {
+          "$value": "{base-font.line-height.relaxed}",
+          "$type": "lineHeights"
+        }
+      },
+      "3": {
+        "family": {
+          "$value": "{base-font.family.primary}",
+          "$type": "fontFamilies"
+        },
+        "size": {
+          "$value": "{base-font.size.700}",
+          "$type": "fontSizes"
+        },
+        "weight": {
+          "$value": "{base-font.weight.bold}",
+          "$type": "fontWeights"
+        },
+        "line-height": {
+          "$value": "{base-font.line-height.relaxed}",
+          "$type": "lineHeights"
+        }
+      },
+      "4": {
+        "family": {
+          "$value": "{base-font.family.primary}",
+          "$type": "fontFamilies"
+        },
+        "size": {
+          "$value": "{base-font.size.600}",
+          "$type": "fontSizes"
+        },
+        "weight": {
+          "$value": "{base-font.weight.bold}",
+          "$type": "fontWeights"
+        },
+        "line-height": {
+          "$value": "{base-font.line-height.relaxed}",
+          "$type": "lineHeights"
+        }
+      },
+      "5": {
+        "family": {
+          "$value": "{base-font.family.primary}",
+          "$type": "fontFamilies"
+        },
+        "size": {
+          "$value": "{base-font.size.500}",
+          "$type": "fontSizes"
+        },
+        "weight": {
+          "$value": "{base-font.weight.bold}",
+          "$type": "fontWeights"
+        },
+        "line-height": {
+          "$value": "{base-font.line-height.relaxed}",
+          "$type": "lineHeights"
+        }
+      },
+      "6": {
+        "family": {
+          "$value": "{base-font.family.primary}",
+          "$type": "fontFamilies"
+        },
+        "size": {
+          "$value": "{base-font.size.500}",
+          "$type": "fontSizes"
+        },
+        "weight": {
+          "$value": "{base-font.weight.semibold}",
+          "$type": "fontWeights"
+        },
+        "line-height": {
+          "$value": "{base-font.line-height.relaxed}",
+          "$type": "lineHeights"
+        }
+      }
+    },
+    "body": {
+      "1": {
+        "family": {
+          "$value": "{base-font.family.primary}",
+          "$type": "fontFamilies"
+        },
+        "size": {
+          "$value": "{base-font.size.400}",
+          "$type": "fontSizes"
+        },
+        "weight": {
+          "$value": "{base-font.weight.regular}",
+          "$type": "fontWeights"
+        },
+        "line-height": {
+          "$value": "{base-font.line-height.relaxed}",
+          "$type": "lineHeights"
+        }
+      },
+      "2": {
+        "family": {
+          "$value": "{base-font.family.primary}",
+          "$type": "fontFamilies"
+        },
+        "size": {
+          "$value": "{base-font.size.300}",
+          "$type": "fontSizes"
+        },
+        "weight": {
+          "$value": "{base-font.weight.regular}",
+          "$type": "fontWeights"
+        },
+        "line-height": {
+          "$value": "{base-font.line-height.relaxed}",
+          "$type": "lineHeights"
+        }
+      },
+      "3": {
+        "family": {
+          "$value": "{base-font.family.primary}",
+          "$type": "fontFamilies"
+        },
+        "size": {
+          "$value": "{base-font.size.200}",
+          "$type": "fontSizes"
+        },
+        "weight": {
+          "$value": "{base-font.weight.regular}",
+          "$type": "fontWeights"
+        },
+        "line-height": {
+          "$value": "{base-font.line-height.relaxed}",
+          "$type": "lineHeights"
+        }
+      }
+    },
+    "button": {
+      "family": {
+        "$value": "{base-font.family.primary}",
+        "$type": "fontFamilies"
+      },
+      "size": {
+        "$value": "{base-font.size.300}",
+        "$type": "fontSizes"
+      },
+      "weight": {
+        "$value": "{base-font.weight.medium}",
+        "$type": "fontWeights"
+      },
+      "line-height": {
+        "$value": "{base-font.line-height.tight}",
+        "$type": "lineHeights"
+      }
+    },
+    "caption": {
+      "1": {
+        "family": {
+          "$value": "{base-font.family.primary}",
+          "$type": "fontFamilies"
+        },
+        "size": {
+          "$value": "{base-font.size.200}",
+          "$type": "fontSizes"
+        },
+        "weight": {
+          "$value": "{base-font.weight.regular}",
+          "$type": "fontWeights"
+        },
+        "line-height": {
+          "$value": "{base-font.line-height.tight}",
+          "$type": "lineHeights"
+        }
+      },
+      "2": {
+        "family": {
+          "$value": "{base-font.family.primary}",
+          "$type": "fontFamilies"
+        },
+        "size": {
+          "$value": "{base-font.size.100}",
+          "$type": "fontSizes"
+        },
+        "weight": {
+          "$value": "{base-font.weight.regular}",
+          "$type": "fontWeights"
+        },
+        "line-height": {
+          "$value": "{base-font.line-height.tight}",
+          "$type": "lineHeights"
+        }
+      }
+    },
+    "label": {
+      "family": {
+        "$value": "{base-font.family.primary}",
+        "$type": "fontFamilies"
+      },
+      "size": {
+        "$value": "{base-font.size.300}",
+        "$type": "fontSizes"
+      },
+      "weight": {
+        "$value": "{base-font.weight.medium}",
+        "$type": "fontWeights"
+      },
+      "line-height": {
+        "$value": "{base-font.line-height.tight}",
+        "$type": "lineHeights"
+      }
+    },
+    "helper": {
+      "family": {
+        "$value": "{base-font.family.primary}",
+        "$type": "fontFamilies"
+      },
+      "size": {
+        "$value": "{base-font.size.200}",
+        "$type": "fontSizes"
+      },
+      "weight": {
+        "$value": "{base-font.weight.regular}",
+        "$type": "fontWeights"
+      },
+      "line-height": {
+        "$value": "{base-font.line-height.tight}",
+        "$type": "lineHeights"
+      }
+    },
+    "badge": {
+      "family": {
+        "$value": "{base-font.family.primary}",
+        "$type": "fontFamilies"
+      },
+      "size": {
+        "$value": "{base-font.size.100}",
+        "$type": "fontSizes"
+      },
+      "weight": {
+        "$value": "{base-font.weight.medium}",
+        "$type": "fontWeights"
+      },
+      "line-height": {
+        "$value": "{base-font.line-height.tight}",
+        "$type": "lineHeights"
+      }
+    }
+  },
+  "alias-spacing": {
+    "inline": {
+      "xs": {
+        "$value": "{base-spacing.1}",
+        "$type": "dimension"
+      },
+      "sm": {
+        "$value": "{base-spacing.2}",
+        "$type": "dimension"
+      },
+      "md": {
+        "$value": "{base-spacing.3}",
+        "$type": "dimension"
+      }
+    },
+    "stack": {
+      "xs": {
+        "$value": "{base-spacing.2}",
+        "$type": "dimension"
+      },
+      "sm": {
+        "$value": "{base-spacing.3}",
+        "$type": "dimension"
+      },
+      "md": {
+        "$value": "{base-spacing.4}",
+        "$type": "dimension"
+      },
+      "lg": {
+        "$value": "{base-spacing.5}",
+        "$type": "dimension"
+      }
+    },
+    "padding": {
+      "xs": {
+        "$value": "{base-spacing.2}",
+        "$type": "dimension"
+      },
+      "sm": {
+        "$value": "{base-spacing.3}",
+        "$type": "dimension"
+      },
+      "md": {
+        "$value": "{base-spacing.4}",
+        "$type": "dimension"
+      },
+      "lg": {
+        "$value": "{base-spacing.5}",
+        "$type": "dimension"
+      }
+    },
+    "section": {
+      "md": {
+        "$value": "{base-spacing.6}",
+        "$type": "dimension"
+      },
+      "lg": {
+        "$value": "{base-spacing.8}",
+        "$type": "dimension"
+      }
+    },
+    "page": {
+      "md": {
+        "$value": "{base-spacing.9}",
+        "$type": "dimension"
+      },
+      "lg": {
+        "$value": "{base-spacing.10}",
+        "$type": "dimension"
+      }
+    }
+  },
+  "alias-radius": {
+    "none": {
+      "$value": "{base-radius.none}",
+      "$type": "dimension"
+    },
+    "xs": {
+      "$value": "{base-radius.xs}",
+      "$type": "dimension"
+    },
+    "sm": {
+      "$value": "{base-radius.sm}",
+      "$type": "dimension"
+    },
+    "md": {
+      "$value": "{base-radius.md}",
+      "$type": "dimension"
+    },
+    "lg": {
+      "$value": "{base-radius.lg}",
+      "$type": "dimension"
+    },
+    "xl": {
+      "$value": "{base-radius.xl}",
+      "$type": "dimension"
+    },
+    "xxl": {
+      "$value": "{base-radius.xxl}",
+      "$type": "dimension"
+    },
+    "full": {
+      "$value": "{base-radius.full}",
+      "$type": "dimension"
+    }
+  },
+  "alias-elevation": {
+    "1": {
+      "$value": "{base-shadow.01}",
+      "$type": "boxShadow"
+    },
+    "2": {
+      "$value": "{base-shadow.02}",
+      "$type": "boxShadow"
+    },
+    "3": {
+      "$value": "{base-shadow.03}",
+      "$type": "boxShadow"
+    },
+    "4": {
+      "$value": "{base-shadow.04}",
+      "$type": "boxShadow"
+    },
+    "5": {
+      "$value": "{base-shadow.05}",
+      "$type": "boxShadow"
+    }
+  },
+  "alias-motion": {
+    "transition": {
+      "fast": {
+        "$value": "{base-duration.fast}",
+        "$type": "other"
+      },
+      "normal": {
+        "$value": "{base-duration.normal}",
+        "$type": "other"
+      },
+      "slow": {
+        "$value": "{base-duration.slow}",
+        "$type": "other"
+      },
+      "spring": {
+        "$value": "{base-duration.slow}",
+        "$type": "other"
+      }
+    },
+    "easing": {
+      "default": {
+        "$value": "{base-easing.ease-out}",
+        "$type": "other"
+      },
+      "spring": {
+        "$value": "{base-easing.spring}",
+        "$type": "other"
+      },
+      "fade": {
+        "$value": "{base-easing.ease-in-out}",
+        "$type": "other"
+      }
+    }
+  },
+  "alias-focus": {
+    "ring": {
+      "color": {
+        "$value": "{brand-cobalt.primary.600}",
+        "$type": "color"
+      },
+      "offset": {
+        "$value": "{base-radius.xs}",
+        "$type": "dimension"
+      },
+      "width": {
+        "$value": "{base-border.width}",
+        "$type": "dimension"
+      }
+    }
+  },
+  "alias-border": {
+    "width": {
+      "$value": "{base-border.width}",
+      "$type": "dimension"
+    }
+  },
+  "component-button": {
+    "primary": {
+      "color": {
+        "bg": {
+          "default": {
+            "$value": "{alias-color.background.brand}",
+            "$type": "color"
+          },
+          "hover": {
+            "$value": "{alias-color.background.brand-dark}",
+            "$type": "color"
+          },
+          "active": {
+            "$value": "{alias-color.background.brand-dark}",
+            "$type": "color"
+          },
+          "disabled": {
+            "$value": "{alias-color.background.tertiary}",
+            "$type": "color"
+          }
+        },
+        "text": {
+          "default": {
+            "$value": "{alias-color.text.inverse}",
+            "$type": "color"
+          },
+          "disabled": {
+            "$value": "{alias-color.text.disabled}",
+            "$type": "color"
+          }
+        },
+        "stroke": {
+          "default": {
+            "$value": "transparent",
+            "$type": "color"
+          },
+          "focus": {
+            "$value": "{alias-focus.ring.color}",
+            "$type": "color"
+          }
+        }
+      },
+      "typography": {
+        "family": {
+          "$value": "{alias-typography.button.family}",
+          "$type": "fontFamilies"
+        },
+        "size": {
+          "$value": "{alias-typography.button.size}",
+          "$type": "fontSizes"
+        },
+        "weight": {
+          "$value": "{alias-typography.button.weight}",
+          "$type": "fontWeights"
+        },
+        "line-height": {
+          "$value": "{alias-typography.button.line-height}",
+          "$type": "lineHeights"
+        }
+      },
+      "dimension": {
+        "padding-x": {
+          "$value": "{alias-spacing.padding.lg}",
+          "$type": "dimension"
+        },
+        "padding-y": {
+          "$value": "{alias-spacing.padding.sm}",
+          "$type": "dimension"
+        },
+        "radius": {
+          "$value": "{alias-radius.md}",
+          "$type": "dimension"
+        }
+      },
+      "elevation": {
+        "default": {
+          "$value": "none",
+          "$type": "boxShadow"
+        }
+      }
+    },
+    "secondary": {
+      "color": {
+        "bg": {
+          "default": {
+            "$value": "transparent",
+            "$type": "color"
+          },
+          "hover": {
+            "$value": "{alias-color.background.hover}",
+            "$type": "color"
+          },
+          "active": {
+            "$value": "{alias-color.background.hover}",
+            "$type": "color"
+          },
+          "disabled": {
+            "$value": "transparent",
+            "$type": "color"
+          }
+        },
+        "text": {
+          "default": {
+            "$value": "{alias-color.text.brand}",
+            "$type": "color"
+          },
+          "disabled": {
+            "$value": "{alias-color.text.disabled}",
+            "$type": "color"
+          }
+        },
+        "stroke": {
+          "default": {
+            "$value": "{alias-color.stroke.brand}",
+            "$type": "color"
+          },
+          "disabled": {
+            "$value": "{alias-color.stroke.disabled}",
+            "$type": "color"
+          },
+          "focus": {
+            "$value": "{alias-focus.ring.color}",
+            "$type": "color"
+          }
+        }
+      },
+      "typography": {
+        "family": {
+          "$value": "{alias-typography.button.family}",
+          "$type": "fontFamilies"
+        },
+        "size": {
+          "$value": "{alias-typography.button.size}",
+          "$type": "fontSizes"
+        },
+        "weight": {
+          "$value": "{alias-typography.button.weight}",
+          "$type": "fontWeights"
+        },
+        "line-height": {
+          "$value": "{alias-typography.button.line-height}",
+          "$type": "lineHeights"
+        }
+      },
+      "dimension": {
+        "padding-x": {
+          "$value": "{alias-spacing.padding.lg}",
+          "$type": "dimension"
+        },
+        "padding-y": {
+          "$value": "{alias-spacing.padding.sm}",
+          "$type": "dimension"
+        },
+        "radius": {
+          "$value": "{alias-radius.md}",
+          "$type": "dimension"
+        }
+      },
+      "elevation": {
+        "default": {
+          "$value": "none",
+          "$type": "boxShadow"
+        }
+      }
+    },
+    "ghost": {
+      "color": {
+        "bg": {
+          "default": {
+            "$value": "transparent",
+            "$type": "color"
+          },
+          "hover": {
+            "$value": "{alias-color.background.tertiary}",
+            "$type": "color"
+          },
+          "active": {
+            "$value": "{alias-color.background.tertiary}",
+            "$type": "color"
+          },
+          "disabled": {
+            "$value": "transparent",
+            "$type": "color"
+          }
+        },
+        "text": {
+          "default": {
+            "$value": "{alias-color.text.brand}",
+            "$type": "color"
+          },
+          "disabled": {
+            "$value": "{alias-color.text.disabled}",
+            "$type": "color"
+          }
+        },
+        "stroke": {
+          "default": {
+            "$value": "transparent",
+            "$type": "color"
+          },
+          "focus": {
+            "$value": "{alias-focus.ring.color}",
+            "$type": "color"
+          }
+        }
+      },
+      "typography": {
+        "family": {
+          "$value": "{alias-typography.button.family}",
+          "$type": "fontFamilies"
+        },
+        "size": {
+          "$value": "{alias-typography.button.size}",
+          "$type": "fontSizes"
+        },
+        "weight": {
+          "$value": "{alias-typography.button.weight}",
+          "$type": "fontWeights"
+        },
+        "line-height": {
+          "$value": "{alias-typography.button.line-height}",
+          "$type": "lineHeights"
+        }
+      },
+      "dimension": {
+        "padding-x": {
+          "$value": "{alias-spacing.padding.lg}",
+          "$type": "dimension"
+        },
+        "padding-y": {
+          "$value": "{alias-spacing.padding.sm}",
+          "$type": "dimension"
+        },
+        "radius": {
+          "$value": "{alias-radius.md}",
+          "$type": "dimension"
+        }
+      },
+      "elevation": {
+        "default": {
+          "$value": "none",
+          "$type": "boxShadow"
+        }
+      }
+    },
+    "destructive": {
+      "color": {
+        "bg": {
+          "default": {
+            "$value": "{alias-color.action.destructive.bg.default}",
+            "$type": "color"
+          },
+          "hover": {
+            "$value": "{alias-color.action.destructive.bg.hover}",
+            "$type": "color"
+          },
+          "active": {
+            "$value": "{alias-color.action.destructive.bg.active}",
+            "$type": "color"
+          },
+          "disabled": {
+            "$value": "{alias-color.background.tertiary}",
+            "$type": "color"
+          }
+        },
+        "text": {
+          "default": {
+            "$value": "{alias-color.text.inverse}",
+            "$type": "color"
+          },
+          "disabled": {
+            "$value": "{alias-color.text.disabled}",
+            "$type": "color"
+          }
+        },
+        "stroke": {
+          "default": {
+            "$value": "transparent",
+            "$type": "color"
+          },
+          "focus": {
+            "$value": "{alias-focus.ring.color}",
+            "$type": "color"
+          }
+        }
+      },
+      "typography": {
+        "family": {
+          "$value": "{alias-typography.button.family}",
+          "$type": "fontFamilies"
+        },
+        "size": {
+          "$value": "{alias-typography.button.size}",
+          "$type": "fontSizes"
+        },
+        "weight": {
+          "$value": "{alias-typography.button.weight}",
+          "$type": "fontWeights"
+        },
+        "line-height": {
+          "$value": "{alias-typography.button.line-height}",
+          "$type": "lineHeights"
+        }
+      },
+      "dimension": {
+        "padding-x": {
+          "$value": "{alias-spacing.padding.lg}",
+          "$type": "dimension"
+        },
+        "padding-y": {
+          "$value": "{alias-spacing.padding.sm}",
+          "$type": "dimension"
+        },
+        "radius": {
+          "$value": "{alias-radius.md}",
+          "$type": "dimension"
+        }
+      },
+      "elevation": {
+        "default": {
+          "$value": "none",
+          "$type": "boxShadow"
+        }
+      }
+    }
+  },
+  "component-input": {
+    "field": {
+      "color": {
+        "bg": {
+          "default": {
+            "$value": "{alias-color.background.primary}",
+            "$type": "color"
+          },
+          "disabled": {
+            "$value": "{alias-color.background.tertiary}",
+            "$type": "color"
+          }
+        },
+        "stroke": {
+          "default": {
+            "$value": "{alias-color.stroke.default}",
+            "$type": "color"
+          },
+          "hover": {
+            "$value": "{alias-color.stroke.active}",
+            "$type": "color"
+          },
+          "focus": {
+            "$value": "{alias-color.stroke.active}",
+            "$type": "color"
+          },
+          "error": {
+            "$value": "{alias-color.stroke.error}",
+            "$type": "color"
+          },
+          "disabled": {
+            "$value": "{alias-color.stroke.disabled}",
+            "$type": "color"
+          }
+        },
+        "text": {
+          "value": {
+            "$value": "{alias-color.text.primary}",
+            "$type": "color"
+          },
+          "placeholder": {
+            "$value": "{alias-color.text.subtle}",
+            "$type": "color"
+          },
+          "disabled": {
+            "$value": "{alias-color.text.disabled}",
+            "$type": "color"
+          }
+        },
+        "icon": {
+          "leading": {
+            "$value": "{alias-color.icon.secondary}",
+            "$type": "color"
+          },
+          "trailing": {
+            "$value": "{alias-color.icon.secondary}",
+            "$type": "color"
+          },
+          "disabled": {
+            "$value": "{alias-color.icon.disabled}",
+            "$type": "color"
+          }
+        }
+      },
+      "typography": {
+        "value": {
+          "family": {
+            "$value": "{alias-typography.body.1.family}",
+            "$type": "fontFamilies"
+          },
+          "size": {
+            "$value": "{alias-typography.body.1.size}",
+            "$type": "fontSizes"
+          },
+          "weight": {
+            "$value": "{alias-typography.body.1.weight}",
+            "$type": "fontWeights"
+          },
+          "line-height": {
+            "$value": "{alias-typography.body.1.line-height}",
+            "$type": "lineHeights"
+          }
+        }
+      },
+      "dimension": {
+        "padding-x": {
+          "$value": "{alias-spacing.padding.md}",
+          "$type": "dimension"
+        },
+        "padding-y": {
+          "$value": "{alias-spacing.padding.sm}",
+          "$type": "dimension"
+        },
+        "radius": {
+          "$value": "{alias-radius.md}",
+          "$type": "dimension"
+        },
+        "stroke-width": {
+          "$value": "{alias-border.width}",
+          "$type": "dimension"
+        },
+        "min-height": {
+          "$value": "{alias-spacing.section.md}",
+          "$type": "dimension"
+        },
+        "icon-size": {
+          "$value": "{alias-spacing.stack.md}",
+          "$type": "dimension"
+        }
+      },
+      "elevation": {
+        "default": {
+          "$value": "none",
+          "$type": "boxShadow"
+        },
+        "focus": {
+          "$value": "{alias-elevation.1}",
+          "$type": "boxShadow"
+        }
+      }
+    },
+    "label": {
+      "color": {
+        "text": {
+          "default": {
+            "$value": "{alias-color.text.secondary}",
+            "$type": "color"
+          },
+          "required": {
+            "$value": "{alias-color.text.error}",
+            "$type": "color"
+          }
+        }
+      },
+      "typography": {
+        "family": {
+          "$value": "{alias-typography.label.family}",
+          "$type": "fontFamilies"
+        },
+        "size": {
+          "$value": "{alias-typography.label.size}",
+          "$type": "fontSizes"
+        },
+        "weight": {
+          "$value": "{alias-typography.label.weight}",
+          "$type": "fontWeights"
+        },
+        "line-height": {
+          "$value": "{alias-typography.label.line-height}",
+          "$type": "lineHeights"
+        }
+      },
+      "dimension": {
+        "gap-y": {
+          "$value": "{alias-spacing.inline.xs}",
+          "$type": "dimension"
+        }
+      }
+    },
+    "helper": {
+      "color": {
+        "text": {
+          "default": {
+            "$value": "{alias-color.text.subtle}",
+            "$type": "color"
+          },
+          "error": {
+            "$value": "{alias-color.text.error}",
+            "$type": "color"
+          },
+          "success": {
+            "$value": "{alias-color.text.success}",
+            "$type": "color"
+          }
+        },
+        "icon": {
+          "error": {
+            "$value": "{alias-color.text.error}",
+            "$type": "color"
+          },
+          "success": {
+            "$value": "{alias-color.text.success}",
+            "$type": "color"
+          }
+        }
+      },
+      "typography": {
+        "family": {
+          "$value": "{alias-typography.helper.family}",
+          "$type": "fontFamilies"
+        },
+        "size": {
+          "$value": "{alias-typography.helper.size}",
+          "$type": "fontSizes"
+        },
+        "weight": {
+          "$value": "{alias-typography.helper.weight}",
+          "$type": "fontWeights"
+        },
+        "line-height": {
+          "$value": "{alias-typography.helper.line-height}",
+          "$type": "lineHeights"
+        }
+      },
+      "dimension": {
+        "gap-y": {
+          "$value": "{alias-spacing.inline.xs}",
+          "$type": "dimension"
+        },
+        "icon-size": {
+          "$value": "{alias-spacing.stack.sm}",
+          "$type": "dimension"
+        }
+      }
+    },
+    "checkbox": {
+      "color": {
+        "bg": {
+          "default": {
+            "$value": "{alias-color.background.primary}",
+            "$type": "color"
+          },
+          "checked": {
+            "$value": "{alias-color.background.brand}",
+            "$type": "color"
+          },
+          "indeterminate": {
+            "$value": "{alias-color.background.brand}",
+            "$type": "color"
+          },
+          "disabled": {
+            "$value": "{alias-color.background.tertiary}",
+            "$type": "color"
+          },
+          "checked-disabled": {
+            "$value": "{alias-color.stroke.disabled}",
+            "$type": "color"
+          }
+        },
+        "stroke": {
+          "default": {
+            "$value": "{alias-color.stroke.default}",
+            "$type": "color"
+          },
+          "checked": {
+            "$value": "{alias-color.background.brand}",
+            "$type": "color"
+          },
+          "focus": {
+            "$value": "{alias-focus.ring.color}",
+            "$type": "color"
+          },
+          "disabled": {
+            "$value": "{alias-color.stroke.disabled}",
+            "$type": "color"
+          }
+        },
+        "icon": {
+          "default": {
+            "$value": "{alias-color.text.inverse}",
+            "$type": "color"
+          },
+          "disabled": {
+            "$value": "{alias-color.text.inverse}",
+            "$type": "color"
+          }
+        }
+      },
+      "dimension": {
+        "size": {
+          "$value": "{alias-spacing.stack.md}",
+          "$type": "dimension"
+        },
+        "radius": {
+          "$value": "{alias-radius.xs}",
+          "$type": "dimension"
+        },
+        "stroke-width": {
+          "$value": "{alias-border.width}",
+          "$type": "dimension"
+        },
+        "focus-offset": {
+          "$value": "{alias-focus.ring.offset}",
+          "$type": "dimension"
+        },
+        "gap-x": {
+          "$value": "{alias-spacing.inline.sm}",
+          "$type": "dimension"
+        }
+      }
+    },
+    "radio": {
+      "color": {
+        "bg": {
+          "default": {
+            "$value": "{alias-color.background.primary}",
+            "$type": "color"
+          },
+          "checked": {
+            "$value": "{alias-color.background.primary}",
+            "$type": "color"
+          },
+          "disabled": {
+            "$value": "{alias-color.background.tertiary}",
+            "$type": "color"
+          }
+        },
+        "stroke": {
+          "default": {
+            "$value": "{alias-color.stroke.default}",
+            "$type": "color"
+          },
+          "checked": {
+            "$value": "{alias-color.background.brand}",
+            "$type": "color"
+          },
+          "focus": {
+            "$value": "{alias-focus.ring.color}",
+            "$type": "color"
+          },
+          "disabled": {
+            "$value": "{alias-color.stroke.disabled}",
+            "$type": "color"
+          }
+        },
+        "dot": {
+          "checked": {
+            "$value": "{alias-color.background.brand}",
+            "$type": "color"
+          },
+          "checked-disabled": {
+            "$value": "{alias-color.stroke.disabled}",
+            "$type": "color"
+          }
+        }
+      },
+      "dimension": {
+        "size": {
+          "$value": "{alias-spacing.stack.md}",
+          "$type": "dimension"
+        },
+        "dot-size": {
+          "$value": "{alias-spacing.inline.sm}",
+          "$type": "dimension"
+        },
+        "stroke-width": {
+          "$value": "{alias-border.width}",
+          "$type": "dimension"
+        },
+        "focus-offset": {
+          "$value": "{alias-focus.ring.offset}",
+          "$type": "dimension"
+        },
+        "gap-x": {
+          "$value": "{alias-spacing.inline.sm}",
+          "$type": "dimension"
+        }
+      }
+    }
+  },
+  "component-feedback": {
+    "alert": {
+      "success": {
+        "color": {
+          "bg": {
+            "$value": "{alias-color.feedback.success.bg}",
+            "$type": "color"
+          },
+          "stroke": {
+            "$value": "{alias-color.feedback.success.stroke}",
+            "$type": "color"
+          },
+          "text": {
+            "title": {
+              "$value": "{alias-color.feedback.success.fg}",
+              "$type": "color"
+            },
+            "body": {
+              "$value": "{alias-color.feedback.success.fg}",
+              "$type": "color"
+            }
+          },
+          "icon": {
+            "$value": "{alias-color.feedback.success.fg}",
+            "$type": "color"
+          }
+        }
+      },
+      "error": {
+        "color": {
+          "bg": {
+            "$value": "{alias-color.feedback.error.bg}",
+            "$type": "color"
+          },
+          "stroke": {
+            "$value": "{alias-color.feedback.error.stroke}",
+            "$type": "color"
+          },
+          "text": {
+            "title": {
+              "$value": "{alias-color.feedback.error.fg}",
+              "$type": "color"
+            },
+            "body": {
+              "$value": "{alias-color.feedback.error.fg}",
+              "$type": "color"
+            }
+          },
+          "icon": {
+            "$value": "{alias-color.feedback.error.fg}",
+            "$type": "color"
+          }
+        }
+      },
+      "warning": {
+        "color": {
+          "bg": {
+            "$value": "{alias-color.feedback.warning.bg}",
+            "$type": "color"
+          },
+          "stroke": {
+            "$value": "{alias-color.feedback.warning.stroke}",
+            "$type": "color"
+          },
+          "text": {
+            "title": {
+              "$value": "{alias-color.feedback.warning.fg}",
+              "$type": "color"
+            },
+            "body": {
+              "$value": "{alias-color.feedback.warning.fg}",
+              "$type": "color"
+            }
+          },
+          "icon": {
+            "$value": "{alias-color.feedback.warning.fg}",
+            "$type": "color"
+          }
+        }
+      },
+      "info": {
+        "color": {
+          "bg": {
+            "$value": "{alias-color.feedback.info.bg}",
+            "$type": "color"
+          },
+          "stroke": {
+            "$value": "{alias-color.feedback.info.stroke}",
+            "$type": "color"
+          },
+          "text": {
+            "title": {
+              "$value": "{alias-color.feedback.info.fg}",
+              "$type": "color"
+            },
+            "body": {
+              "$value": "{alias-color.feedback.info.fg}",
+              "$type": "color"
+            }
+          },
+          "icon": {
+            "$value": "{alias-color.feedback.info.fg}",
+            "$type": "color"
+          }
+        }
+      },
+      "shared": {
+        "dimension": {
+          "padding": {
+            "$value": "{alias-spacing.padding.md}",
+            "$type": "dimension"
+          },
+          "gap-icon": {
+            "$value": "{alias-spacing.inline.sm}",
+            "$type": "dimension"
+          },
+          "radius": {
+            "$value": "{alias-radius.md}",
+            "$type": "dimension"
+          },
+          "stroke-width": {
+            "$value": "{alias-border.width}",
+            "$type": "dimension"
+          },
+          "icon-size": {
+            "$value": "{alias-spacing.stack.md}",
+            "$type": "dimension"
+          }
+        },
+        "elevation": {
+          "$value": "none",
+          "$type": "boxShadow"
+        },
+        "typography": {
+          "title": {
+            "family": {
+              "$value": "{alias-typography.body.1.family}",
+              "$type": "fontFamilies"
+            },
+            "size": {
+              "$value": "{alias-typography.body.1.size}",
+              "$type": "fontSizes"
+            },
+            "weight": {
+              "$value": "{alias-typography.body.1.weight}",
+              "$type": "fontWeights"
+            },
+            "line-height": {
+              "$value": "{alias-typography.body.1.line-height}",
+              "$type": "lineHeights"
+            }
+          },
+          "body": {
+            "family": {
+              "$value": "{alias-typography.body.2.family}",
+              "$type": "fontFamilies"
+            },
+            "size": {
+              "$value": "{alias-typography.body.2.size}",
+              "$type": "fontSizes"
+            },
+            "weight": {
+              "$value": "{alias-typography.body.2.weight}",
+              "$type": "fontWeights"
+            },
+            "line-height": {
+              "$value": "{alias-typography.body.2.line-height}",
+              "$type": "lineHeights"
+            }
+          }
+        }
+      }
+    },
+    "badge": {
+      "success": {
+        "color": {
+          "bg": {
+            "$value": "{alias-color.feedback.success.bg}",
+            "$type": "color"
+          },
+          "text": {
+            "$value": "{alias-color.feedback.success.fg}",
+            "$type": "color"
+          }
+        }
+      },
+      "error": {
+        "color": {
+          "bg": {
+            "$value": "{alias-color.feedback.error.bg}",
+            "$type": "color"
+          },
+          "text": {
+            "$value": "{alias-color.feedback.error.fg}",
+            "$type": "color"
+          }
+        }
+      },
+      "warning": {
+        "color": {
+          "bg": {
+            "$value": "{alias-color.feedback.warning.bg}",
+            "$type": "color"
+          },
+          "text": {
+            "$value": "{alias-color.feedback.warning.fg}",
+            "$type": "color"
+          }
+        }
+      },
+      "info": {
+        "color": {
+          "bg": {
+            "$value": "{alias-color.feedback.info.bg}",
+            "$type": "color"
+          },
+          "text": {
+            "$value": "{alias-color.feedback.info.fg}",
+            "$type": "color"
+          }
+        }
+      },
+      "neutral": {
+        "color": {
+          "bg": {
+            "$value": "{alias-color.background.tertiary}",
+            "$type": "color"
+          },
+          "text": {
+            "$value": "{alias-color.text.secondary}",
+            "$type": "color"
+          }
+        }
+      },
+      "brand": {
+        "color": {
+          "bg": {
+            "$value": "{alias-color.background.brand}",
+            "$type": "color"
+          },
+          "text": {
+            "$value": "{alias-color.text.inverse}",
+            "$type": "color"
+          }
+        }
+      },
+      "shared": {
+        "typography": {
+          "family": {
+            "$value": "{alias-typography.badge.family}",
+            "$type": "fontFamilies"
+          },
+          "size": {
+            "$value": "{alias-typography.badge.size}",
+            "$type": "fontSizes"
+          },
+          "weight": {
+            "$value": "{alias-typography.badge.weight}",
+            "$type": "fontWeights"
+          },
+          "line-height": {
+            "$value": "{alias-typography.badge.line-height}",
+            "$type": "lineHeights"
+          }
+        },
+        "dimension": {
+          "padding-x": {
+            "$value": "{alias-spacing.inline.sm}",
+            "$type": "dimension"
+          },
+          "padding-y": {
+            "$value": "{alias-spacing.inline.xs}",
+            "$type": "dimension"
+          },
+          "radius": {
+            "$value": "{alias-radius.full}",
+            "$type": "dimension"
+          },
+          "gap-icon": {
+            "$value": "{alias-spacing.inline.xs}",
+            "$type": "dimension"
+          }
+        }
+      }
+    },
+    "toast": {
+      "success": {
+        "color": {
+          "bg": {
+            "$value": "{alias-color.background.primary}",
+            "$type": "color"
+          },
+          "stroke": {
+            "$value": "{alias-color.feedback.success.stroke}",
+            "$type": "color"
+          },
+          "text": {
+            "$value": "{alias-color.text.primary}",
+            "$type": "color"
+          },
+          "icon": {
+            "$value": "{alias-color.feedback.success.fg}",
+            "$type": "color"
+          }
+        }
+      },
+      "error": {
+        "color": {
+          "bg": {
+            "$value": "{alias-color.background.primary}",
+            "$type": "color"
+          },
+          "stroke": {
+            "$value": "{alias-color.feedback.error.stroke}",
+            "$type": "color"
+          },
+          "text": {
+            "$value": "{alias-color.text.primary}",
+            "$type": "color"
+          },
+          "icon": {
+            "$value": "{alias-color.feedback.error.fg}",
+            "$type": "color"
+          }
+        }
+      },
+      "warning": {
+        "color": {
+          "bg": {
+            "$value": "{alias-color.background.primary}",
+            "$type": "color"
+          },
+          "stroke": {
+            "$value": "{alias-color.feedback.warning.stroke}",
+            "$type": "color"
+          },
+          "text": {
+            "$value": "{alias-color.text.primary}",
+            "$type": "color"
+          },
+          "icon": {
+            "$value": "{alias-color.feedback.warning.fg}",
+            "$type": "color"
+          }
+        }
+      },
+      "info": {
+        "color": {
+          "bg": {
+            "$value": "{alias-color.background.primary}",
+            "$type": "color"
+          },
+          "stroke": {
+            "$value": "{alias-color.feedback.info.stroke}",
+            "$type": "color"
+          },
+          "text": {
+            "$value": "{alias-color.text.primary}",
+            "$type": "color"
+          },
+          "icon": {
+            "$value": "{alias-color.feedback.info.fg}",
+            "$type": "color"
+          }
+        }
+      },
+      "shared": {
+        "dimension": {
+          "padding": {
+            "$value": "{alias-spacing.padding.md}",
+            "$type": "dimension"
+          },
+          "gap-icon": {
+            "$value": "{alias-spacing.inline.sm}",
+            "$type": "dimension"
+          },
+          "radius": {
+            "$value": "{alias-radius.lg}",
+            "$type": "dimension"
+          },
+          "stroke-width": {
+            "$value": "{alias-border.width}",
+            "$type": "dimension"
+          },
+          "min-width": {
+            "$value": "{alias-spacing.page.md}",
+            "$type": "dimension"
+          },
+          "icon-size": {
+            "$value": "{alias-spacing.stack.md}",
+            "$type": "dimension"
+          }
+        },
+        "elevation": {
+          "$value": "{alias-elevation.3}",
+          "$type": "boxShadow"
+        },
+        "typography": {
+          "title": {
+            "family": {
+              "$value": "{alias-typography.body.1.family}",
+              "$type": "fontFamilies"
+            },
+            "size": {
+              "$value": "{alias-typography.body.1.size}",
+              "$type": "fontSizes"
+            },
+            "weight": {
+              "$value": "{alias-typography.body.1.weight}",
+              "$type": "fontWeights"
+            },
+            "line-height": {
+              "$value": "{alias-typography.body.1.line-height}",
+              "$type": "lineHeights"
+            }
+          },
+          "body": {
+            "family": {
+              "$value": "{alias-typography.body.2.family}",
+              "$type": "fontFamilies"
+            },
+            "size": {
+              "$value": "{alias-typography.body.2.size}",
+              "$type": "fontSizes"
+            },
+            "weight": {
+              "$value": "{alias-typography.body.2.weight}",
+              "$type": "fontWeights"
+            },
+            "line-height": {
+              "$value": "{alias-typography.body.2.line-height}",
+              "$type": "lineHeights"
+            }
+          }
+        }
+      }
+    },
+    "banner": {
+      "success": {
+        "color": {
+          "bg": {
+            "$value": "{alias-color.feedback.success.bg}",
+            "$type": "color"
+          },
+          "stroke": {
+            "$value": "{alias-color.feedback.success.stroke}",
+            "$type": "color"
+          },
+          "text": {
+            "title": {
+              "$value": "{alias-color.feedback.success.fg}",
+              "$type": "color"
+            },
+            "body": {
+              "$value": "{alias-color.text.primary}",
+              "$type": "color"
+            }
+          },
+          "icon": {
+            "$value": "{alias-color.feedback.success.fg}",
+            "$type": "color"
+          }
+        }
+      },
+      "error": {
+        "color": {
+          "bg": {
+            "$value": "{alias-color.feedback.error.bg}",
+            "$type": "color"
+          },
+          "stroke": {
+            "$value": "{alias-color.feedback.error.stroke}",
+            "$type": "color"
+          },
+          "text": {
+            "title": {
+              "$value": "{alias-color.feedback.error.fg}",
+              "$type": "color"
+            },
+            "body": {
+              "$value": "{alias-color.text.primary}",
+              "$type": "color"
+            }
+          },
+          "icon": {
+            "$value": "{alias-color.feedback.error.fg}",
+            "$type": "color"
+          }
+        }
+      },
+      "warning": {
+        "color": {
+          "bg": {
+            "$value": "{alias-color.feedback.warning.bg}",
+            "$type": "color"
+          },
+          "stroke": {
+            "$value": "{alias-color.feedback.warning.stroke}",
+            "$type": "color"
+          },
+          "text": {
+            "title": {
+              "$value": "{alias-color.feedback.warning.fg}",
+              "$type": "color"
+            },
+            "body": {
+              "$value": "{alias-color.text.primary}",
+              "$type": "color"
+            }
+          },
+          "icon": {
+            "$value": "{alias-color.feedback.warning.fg}",
+            "$type": "color"
+          }
+        }
+      },
+      "info": {
+        "color": {
+          "bg": {
+            "$value": "{alias-color.feedback.info.bg}",
+            "$type": "color"
+          },
+          "stroke": {
+            "$value": "{alias-color.feedback.info.stroke}",
+            "$type": "color"
+          },
+          "text": {
+            "title": {
+              "$value": "{alias-color.feedback.info.fg}",
+              "$type": "color"
+            },
+            "body": {
+              "$value": "{alias-color.text.primary}",
+              "$type": "color"
+            }
+          },
+          "icon": {
+            "$value": "{alias-color.feedback.info.fg}",
+            "$type": "color"
+          }
+        }
+      },
+      "shared": {
+        "dimension": {
+          "padding-x": {
+            "$value": "{alias-spacing.padding.lg}",
+            "$type": "dimension"
+          },
+          "padding-y": {
+            "$value": "{alias-spacing.padding.sm}",
+            "$type": "dimension"
+          },
+          "gap-icon": {
+            "$value": "{alias-spacing.inline.sm}",
+            "$type": "dimension"
+          },
+          "stroke-width": {
+            "$value": "{alias-border.width}",
+            "$type": "dimension"
+          },
+          "icon-size": {
+            "$value": "{alias-spacing.stack.md}",
+            "$type": "dimension"
+          }
+        },
+        "elevation": {
+          "$value": "none",
+          "$type": "boxShadow"
+        },
+        "typography": {
+          "title": {
+            "family": {
+              "$value": "{alias-typography.body.1.family}",
+              "$type": "fontFamilies"
+            },
+            "size": {
+              "$value": "{alias-typography.body.1.size}",
+              "$type": "fontSizes"
+            },
+            "weight": {
+              "$value": "{alias-typography.body.1.weight}",
+              "$type": "fontWeights"
+            },
+            "line-height": {
+              "$value": "{alias-typography.body.1.line-height}",
+              "$type": "lineHeights"
+            }
+          },
+          "body": {
+            "family": {
+              "$value": "{alias-typography.body.2.family}",
+              "$type": "fontFamilies"
+            },
+            "size": {
+              "$value": "{alias-typography.body.2.size}",
+              "$type": "fontSizes"
+            },
+            "weight": {
+              "$value": "{alias-typography.body.2.weight}",
+              "$type": "fontWeights"
+            },
+            "line-height": {
+              "$value": "{alias-typography.body.2.line-height}",
+              "$type": "lineHeights"
+            }
+          }
+        }
+      }
+    }
+  },
+  "component-nav": {
+    "card": {
+      "color": {
+        "bg": {
+          "$value": "{alias-color.background.primary}",
+          "$type": "color"
+        },
+        "stroke": {
+          "$value": "{alias-color.stroke.default}",
+          "$type": "color"
+        },
+        "heading": {
+          "$value": "{alias-color.text.primary}",
+          "$type": "color"
+        },
+        "body": {
+          "$value": "{alias-color.text.secondary}",
+          "$type": "color"
+        }
+      },
+      "dimension": {
+        "padding": {
+          "$value": "{alias-spacing.padding.lg}",
+          "$type": "dimension"
+        },
+        "gap-inner": {
+          "$value": "{alias-spacing.stack.sm}",
+          "$type": "dimension"
+        },
+        "radius": {
+          "$value": "{alias-radius.lg}",
+          "$type": "dimension"
+        },
+        "stroke-width": {
+          "$value": "{alias-border.width}",
+          "$type": "dimension"
+        }
+      },
+      "elevation": {
+        "default": {
+          "$value": "{alias-elevation.1}",
+          "$type": "boxShadow"
+        },
+        "hover": {
+          "$value": "{alias-elevation.2}",
+          "$type": "boxShadow"
+        }
+      },
+      "typography": {
+        "heading": {
+          "family": {
+            "$value": "{alias-typography.heading.6.family}",
+            "$type": "fontFamilies"
+          },
+          "size": {
+            "$value": "{alias-typography.heading.6.size}",
+            "$type": "fontSizes"
+          },
+          "weight": {
+            "$value": "{alias-typography.heading.6.weight}",
+            "$type": "fontWeights"
+          },
+          "line-height": {
+            "$value": "{alias-typography.heading.6.line-height}",
+            "$type": "lineHeights"
+          }
+        },
+        "body": {
+          "family": {
+            "$value": "{alias-typography.body.2.family}",
+            "$type": "fontFamilies"
+          },
+          "size": {
+            "$value": "{alias-typography.body.2.size}",
+            "$type": "fontSizes"
+          },
+          "weight": {
+            "$value": "{alias-typography.body.2.weight}",
+            "$type": "fontWeights"
+          },
+          "line-height": {
+            "$value": "{alias-typography.body.2.line-height}",
+            "$type": "lineHeights"
+          }
+        }
+      }
+    },
+    "sidebar": {
+      "color": {
+        "bg": {
+          "$value": "{alias-color.background.secondary}",
+          "$type": "color"
+        },
+        "stroke": {
+          "$value": "{alias-color.stroke.default}",
+          "$type": "color"
+        },
+        "item": {
+          "bg": {
+            "default": {
+              "$value": "transparent",
+              "$type": "color"
+            },
+            "hover": {
+              "$value": "{alias-color.background.tertiary}",
+              "$type": "color"
+            },
+            "active": {
+              "$value": "{alias-color.background.hover}",
+              "$type": "color"
+            }
+          },
+          "text": {
+            "default": {
+              "$value": "{alias-color.text.secondary}",
+              "$type": "color"
+            },
+            "hover": {
+              "$value": "{alias-color.text.primary}",
+              "$type": "color"
+            },
+            "active": {
+              "$value": "{alias-color.text.brand}",
+              "$type": "color"
+            }
+          },
+          "icon": {
+            "default": {
+              "$value": "{alias-color.icon.secondary}",
+              "$type": "color"
+            },
+            "hover": {
+              "$value": "{alias-color.icon.primary}",
+              "$type": "color"
+            },
+            "active": {
+              "$value": "{alias-color.icon.brand}",
+              "$type": "color"
+            }
+          },
+          "stroke": {
+            "active": {
+              "$value": "{alias-color.stroke.brand}",
+              "$type": "color"
+            }
+          }
+        },
+        "section-label": {
+          "$value": "{alias-color.text.subtle}",
+          "$type": "color"
+        }
+      },
+      "dimension": {
+        "width": {
+          "$value": "{alias-spacing.page.md}",
+          "$type": "dimension"
+        },
+        "item-height": {
+          "$value": "{alias-spacing.section.md}",
+          "$type": "dimension"
+        },
+        "padding-x": {
+          "$value": "{alias-spacing.padding.md}",
+          "$type": "dimension"
+        },
+        "padding-y": {
+          "$value": "{alias-spacing.padding.xs}",
+          "$type": "dimension"
+        },
+        "icon-size": {
+          "$value": "{alias-spacing.stack.md}",
+          "$type": "dimension"
+        },
+        "gap-icon": {
+          "$value": "{alias-spacing.inline.sm}",
+          "$type": "dimension"
+        },
+        "indicator-width": {
+          "$value": "{alias-border.width}",
+          "$type": "dimension"
+        },
+        "radius": {
+          "$value": "{alias-radius.md}",
+          "$type": "dimension"
+        }
+      },
+      "typography": {
+        "item": {
+          "family": {
+            "$value": "{alias-typography.body.1.family}",
+            "$type": "fontFamilies"
+          },
+          "size": {
+            "$value": "{alias-typography.body.1.size}",
+            "$type": "fontSizes"
+          },
+          "weight": {
+            "$value": "{alias-typography.body.1.weight}",
+            "$type": "fontWeights"
+          },
+          "line-height": {
+            "$value": "{alias-typography.body.1.line-height}",
+            "$type": "lineHeights"
+          }
+        },
+        "section-label": {
+          "family": {
+            "$value": "{alias-typography.helper.family}",
+            "$type": "fontFamilies"
+          },
+          "size": {
+            "$value": "{alias-typography.helper.size}",
+            "$type": "fontSizes"
+          },
+          "weight": {
+            "$value": "{alias-typography.label.weight}",
+            "$type": "fontWeights"
+          },
+          "line-height": {
+            "$value": "{alias-typography.helper.line-height}",
+            "$type": "lineHeights"
+          }
+        }
+      }
+    },
+    "header": {
+      "color": {
+        "bg": {
+          "$value": "{alias-color.background.brand}",
+          "$type": "color"
+        },
+        "stroke": {
+          "$value": "{alias-color.stroke.brand}",
+          "$type": "color"
+        },
+        "text": {
+          "brand": {
+            "$value": "{alias-color.text.inverse}",
+            "$type": "color"
+          },
+          "nav": {
+            "$value": "{alias-color.text.inverse}",
+            "$type": "color"
+          }
+        },
+        "icon": {
+          "$value": "{alias-color.text.inverse}",
+          "$type": "color"
+        }
+      },
+      "dimension": {
+        "height": {
+          "$value": "{alias-spacing.section.lg}",
+          "$type": "dimension"
+        },
+        "padding-x": {
+          "$value": "{alias-spacing.padding.lg}",
+          "$type": "dimension"
+        },
+        "padding-y": {
+          "$value": "{alias-spacing.padding.xs}",
+          "$type": "dimension"
+        },
+        "gap": {
+          "$value": "{alias-spacing.inline.md}",
+          "$type": "dimension"
+        },
+        "logo-size": {
+          "$value": "{alias-spacing.stack.lg}",
+          "$type": "dimension"
+        }
+      },
+      "elevation": {
+        "$value": "{alias-elevation.1}",
+        "$type": "boxShadow"
+      },
+      "typography": {
+        "nav-item": {
+          "family": {
+            "$value": "{alias-typography.body.1.family}",
+            "$type": "fontFamilies"
+          },
+          "size": {
+            "$value": "{alias-typography.body.1.size}",
+            "$type": "fontSizes"
+          },
+          "weight": {
+            "$value": "{alias-typography.body.1.weight}",
+            "$type": "fontWeights"
+          },
+          "line-height": {
+            "$value": "{alias-typography.body.1.line-height}",
+            "$type": "lineHeights"
+          }
+        }
+      }
+    },
+    "tabs": {
+      "color": {
+        "bg": {
+          "$value": "transparent",
+          "$type": "color"
+        },
+        "stroke": {
+          "$value": "{alias-color.stroke.default}",
+          "$type": "color"
+        },
+        "item": {
+          "text": {
+            "default": {
+              "$value": "{alias-color.text.subtle}",
+              "$type": "color"
+            },
+            "hover": {
+              "$value": "{alias-color.text.primary}",
+              "$type": "color"
+            },
+            "active": {
+              "$value": "{alias-color.text.brand}",
+              "$type": "color"
+            }
+          },
+          "bg": {
+            "default": {
+              "$value": "transparent",
+              "$type": "color"
+            },
+            "hover": {
+              "$value": "{alias-color.background.tertiary}",
+              "$type": "color"
+            },
+            "active": {
+              "$value": "transparent",
+              "$type": "color"
+            }
+          },
+          "indicator": {
+            "$value": "{alias-color.stroke.active}",
+            "$type": "color"
+          }
+        }
+      },
+      "dimension": {
+        "padding-x": {
+          "$value": "{alias-spacing.padding.md}",
+          "$type": "dimension"
+        },
+        "padding-y": {
+          "$value": "{alias-spacing.padding.sm}",
+          "$type": "dimension"
+        },
+        "gap": {
+          "$value": "{alias-spacing.inline.xs}",
+          "$type": "dimension"
+        },
+        "indicator-height": {
+          "$value": "{alias-border.width}",
+          "$type": "dimension"
+        },
+        "radius": {
+          "$value": "{alias-radius.sm}",
+          "$type": "dimension"
+        }
+      },
+      "typography": {
+        "item": {
+          "family": {
+            "$value": "{alias-typography.body.1.family}",
+            "$type": "fontFamilies"
+          },
+          "size": {
+            "$value": "{alias-typography.body.1.size}",
+            "$type": "fontSizes"
+          },
+          "weight": {
+            "$value": "{alias-typography.body.1.weight}",
+            "$type": "fontWeights"
+          },
+          "line-height": {
+            "$value": "{alias-typography.body.1.line-height}",
+            "$type": "lineHeights"
+          }
+        }
+      }
+    },
+    "pagination": {
+      "color": {
+        "bg": {
+          "default": {
+            "$value": "transparent",
+            "$type": "color"
+          },
+          "hover": {
+            "$value": "{alias-color.background.tertiary}",
+            "$type": "color"
+          },
+          "active": {
+            "$value": "{alias-color.background.brand}",
+            "$type": "color"
+          },
+          "disabled": {
+            "$value": "transparent",
+            "$type": "color"
+          }
+        },
+        "text": {
+          "default": {
+            "$value": "{alias-color.text.secondary}",
+            "$type": "color"
+          },
+          "active": {
+            "$value": "{alias-color.text.inverse}",
+            "$type": "color"
+          },
+          "disabled": {
+            "$value": "{alias-color.text.disabled}",
+            "$type": "color"
+          }
+        },
+        "stroke": {
+          "default": {
+            "$value": "{alias-color.stroke.default}",
+            "$type": "color"
+          },
+          "active": {
+            "$value": "{alias-color.background.brand}",
+            "$type": "color"
+          }
+        }
+      },
+      "dimension": {
+        "size": {
+          "$value": "{alias-spacing.section.md}",
+          "$type": "dimension"
+        },
+        "radius": {
+          "$value": "{alias-radius.md}",
+          "$type": "dimension"
+        },
+        "gap": {
+          "$value": "{alias-spacing.inline.xs}",
+          "$type": "dimension"
+        },
+        "stroke-width": {
+          "$value": "{alias-border.width}",
+          "$type": "dimension"
+        }
+      },
+      "typography": {
+        "family": {
+          "$value": "{alias-typography.body.2.family}",
+          "$type": "fontFamilies"
+        },
+        "size": {
+          "$value": "{alias-typography.body.2.size}",
+          "$type": "fontSizes"
+        },
+        "weight": {
+          "$value": "{alias-typography.body.2.weight}",
+          "$type": "fontWeights"
+        },
+        "line-height": {
+          "$value": "{alias-typography.body.2.line-height}",
+          "$type": "lineHeights"
+        }
+      }
+    },
+    "breadcrumb": {
+      "color": {
+        "text": {
+          "default": {
+            "$value": "{alias-color.text.subtle}",
+            "$type": "color"
+          },
+          "hover": {
+            "$value": "{alias-color.text.secondary}",
+            "$type": "color"
+          },
+          "active": {
+            "$value": "{alias-color.text.primary}",
+            "$type": "color"
+          },
+          "separator": {
+            "$value": "{alias-color.text.subtle}",
+            "$type": "color"
+          }
+        },
+        "icon": {
+          "$value": "{alias-color.icon.secondary}",
+          "$type": "color"
+        }
+      },
+      "dimension": {
+        "gap": {
+          "$value": "{alias-spacing.inline.xs}",
+          "$type": "dimension"
+        },
+        "separator-gap": {
+          "$value": "{alias-spacing.inline.xs}",
+          "$type": "dimension"
+        }
+      },
+      "typography": {
+        "family": {
+          "$value": "{alias-typography.body.2.family}",
+          "$type": "fontFamilies"
+        },
+        "size": {
+          "$value": "{alias-typography.body.2.size}",
+          "$type": "fontSizes"
+        },
+        "weight": {
+          "$value": "{alias-typography.body.2.weight}",
+          "$type": "fontWeights"
+        },
+        "line-height": {
+          "$value": "{alias-typography.body.2.line-height}",
+          "$type": "lineHeights"
+        }
+      }
+    }
+  }
+}
