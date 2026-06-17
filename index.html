@@ -1422,12 +1422,14 @@
               <span class="card-arrow">→</span>
             </button>
 
-            <div class="grid-card coming">
-              <div class="g-thumb"><span class="g-thumb-label">Coming soon</span></div>
+            <button onclick="navigate('dsdoc')" class="grid-card" style="text-align:left; width:100%; border:none; font-family:inherit; cursor:pointer;">
+              <div class="g-thumb t1" style="background-image:url('td-components.png'); background-size:cover; background-position:center;"></div>
               <div class="g-body">
-                <div><p class="g-title">New project</p><p class="g-meta">Design system</p></div>
+                <div><p class="g-title">Design System Documentation</p><p class="g-meta">Atomic design · Components · Figma documentation</p></div>
+                <span class="g-year">2023</span>
               </div>
-            </div>
+              <span class="card-arrow">→</span>
+            </button>
 
           </div>
         </div>
@@ -2726,6 +2728,122 @@
     </div><!-- /cs-wrap -->
   </div><!-- /page-atoms -->
 
+  <!-- ═══════════════════════════════════════ DESIGN SYSTEM DOCS ═══ -->
+  <div id="page-dsdoc" class="page">
+    <div class="back-bar">
+      <button class="back-btn" onclick="navigate('projects')">← Work</button>
+    </div>
+    <div class="cs-wrap">
+
+      <div class="cs-hero">
+        <div class="cs-tags">
+          <span class="cs-tag">Design System</span>
+          <span class="cs-tag">Documentation</span>
+          <span class="cs-tag">Atomic Design</span>
+          <span class="cs-tag">2023</span>
+        </div>
+        <h1 class="cs-title">Design System Documentation</h1>
+        <p class="cs-subtitle">A comprehensive framework meticulously crafted to foster consistency, streamline workflows, and elevate the overall aesthetic and functional quality of digital products.</p>
+        <div class="cs-meta-row">
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Role</span>
+            <span class="cs-meta-value">Senior UI/UX Designer</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Type</span>
+            <span class="cs-meta-value">Design System</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Year</span>
+            <span class="cs-meta-value">2023</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Thumbnail -->
+      <div class="cs-img-block" style="margin-bottom:48px;">
+        <img src="td-hero-atoms.png" alt="Design System Documentation — Thematic.design overview">
+      </div>
+
+      <!-- Overview -->
+      <div class="cs-section">
+        <p class="cs-section-label">Overview</p>
+        <h2 class="cs-h2">A living design system for consistent digital experiences</h2>
+        <p class="cs-body">In the dynamic world of design, where digital landscapes evolve at a breathtaking pace, ensuring a cohesive and harmonious user experience is paramount. Thematic.Design is a comprehensive framework meticulously crafted to foster consistency, streamline workflows, and elevate the overall aesthetic and functional quality of digital products.</p>
+        <p class="cs-body">At its core, the design system is more than just a collection of guidelines — it's a living, breathing organism that empowers design teams to create compelling user-centric experiences. It encapsulates brand ethos, design principles, and a shared language that resonates across every pixel and interaction.</p>
+      </div>
+
+      <!-- Atomic Design Principle -->
+      <div class="cs-section">
+        <p class="cs-section-label">Methodology</p>
+        <h2 class="cs-h2">Atomic Design Principle</h2>
+        <p class="cs-body">Atomic Design is a methodology created by Brad Frost seeking to provide direction on building interface design systems more deliberately and with explicit order and hierarchy. Structured from atoms → molecules → organisms → templates → pages, every decision at the foundational level cascades consistently upward — ensuring the smallest design choices scale into coherent, complex interfaces.</p>
+        <div class="cs-img-block" style="margin-top:32px;">
+          <img src="td-atomic.png" alt="Atomic design hierarchy — Atoms, Molecules, Organisms, Templates, Pages">
+        </div>
+      </div>
+
+      <!-- Atoms -->
+      <div class="cs-section">
+        <p class="cs-section-label">Foundation</p>
+        <h2 class="cs-h2">Atoms — the building blocks</h2>
+        <p class="cs-body">The atoms of a design system represent the foundational elements that serve as the building blocks for creating more complex components and structures. These atoms are the smallest units in the design system, including basic elements like typography, colours, elevations, spacing, and icons — each meticulously defined to ensure every component that builds upon them is consistent and fail-safe.</p>
+        <div class="cs-img-block" style="margin-top:32px;">
+          <img src="td-atoms.png" alt="Design system atoms — typography, colours, elevations, spacing, icons">
+        </div>
+      </div>
+
+      <!-- Components -->
+      <div class="cs-section">
+        <p class="cs-section-label">Components</p>
+        <h2 class="cs-h2">Documented and prototyped for the best experience</h2>
+        <p class="cs-body">Thematic.Design is a front-facing Figma file where all atoms and components are fully documented and prototyped. Each component page covers usage guidelines, variants, states, and interactive prototypes — giving designers and developers a single source of truth with zero ambiguity.</p>
+        <div class="cs-two-col" style="margin-top:32px;">
+          <div class="cs-img-block">
+            <img src="td-components.png" alt="All components — ready to view pages">
+            <p class="cs-img-caption" style="margin-top:8px;">Component library — all pages ready to view</p>
+          </div>
+          <div class="cs-img-block">
+            <img src="td-prototype.png" alt="Prototyped for seamless viewing experience">
+            <p class="cs-img-caption" style="margin-top:8px;">Prototyped for seamless in-Figma navigation</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Coverage -->
+      <div class="cs-section">
+        <p class="cs-section-label">Coverage</p>
+        <h2 class="cs-h2">What's documented</h2>
+        <div class="cs-two-col" style="margin-top:24px;">
+          <div>
+            <p class="cs-col-head">Atom layer</p>
+            <ul class="cs-list">
+              <li>Colours</li>
+              <li>Imagery</li>
+              <li>Typography</li>
+              <li>Elevations</li>
+            </ul>
+          </div>
+          <div>
+            <p class="cs-col-head">Components &amp; Patterns</p>
+            <ul class="cs-list">
+              <li>Header</li>
+              <li>Accordion</li>
+              <li>Image hotspot</li>
+              <li>ISI (Important Safety Information)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Conclusion -->
+      <div class="cs-conclusion">
+        <p>A living documentation file covering the full atom layer — colours, typography, elevations, spacing, and icons — alongside key components and patterns, fully prototyped for seamless navigation and review within Figma.</p>
+      </div>
+
+    </div><!-- /cs-wrap -->
+  </div><!-- /page-dsdoc -->
+
   <!-- ═══════════════════════════════════════ ATTENDANCE ═══ -->
   <div id="page-attendance" class="page">
     <div class="back-bar">
@@ -2946,7 +3064,7 @@
 
     // load from hash on page open
     const hash = location.hash.replace('#', '');
-    if (['home', 'projects', 'about', 'eps', 'thematic', 'tokens', 'atoms', 'attendance'].includes(hash)) navigate(hash);
+    if (['home', 'projects', 'about', 'eps', 'thematic', 'tokens', 'atoms', 'dsdoc', 'attendance'].includes(hash)) navigate(hash);
 
     // ── CONFETTI ──
     function downloadWithConfetti(btn) {
