@@ -413,7 +413,7 @@
 
     .carousel-label {
       font-size: 11px;
-      color: var(--gray);
+      color: var(--black);
       text-transform: uppercase;
       letter-spacing: 0.1em;
       font-weight: 500;
@@ -1288,28 +1288,10 @@
             <span class="card-arrow">↗</span>
           </button>
 
-          <button onclick="navigate('atoms')" class="carousel-card" style="text-align:left; border:none; font-family:inherit; cursor:pointer; background:var(--white);">
-            <div class="c-thumb t2"><span class="c-thumb-label">Research</span></div>
-            <div class="c-body">
-              <div><p class="c-title">Design systems atom definition</p><p class="c-meta">Colors · Typography · Elevations · Icons</p></div>
-              <span class="c-year">2024</span>
-            </div>
-            <span class="card-arrow">→</span>
-          </button>
-
-          <button onclick="navigate('tokens')" class="carousel-card" style="text-align:left; border:none; font-family:inherit; cursor:pointer; background:var(--white);">
-            <div class="c-thumb t3"><span class="c-thumb-label">Strategy</span></div>
-            <div class="c-body">
-              <div><p class="c-title">Design Tokens</p><p class="c-meta">What, why and how · Token taxonomy · Pipeline</p></div>
-              <span class="c-year">2023</span>
-            </div>
-            <span class="card-arrow">→</span>
-          </button>
-
           <button onclick="navigate('attendance')" class="carousel-card" style="text-align:left; border:none; font-family:inherit; cursor:pointer; background:var(--white);">
             <div class="c-thumb t5"><span class="c-thumb-label">Facility Mgmt</span></div>
             <div class="c-body">
-              <div><p class="c-title">Safehalo Attendance Monitor</p><p class="c-meta">Product design + Build · 9 screens · Live on Vercel</p></div>
+              <div><p class="c-title">Attendance Management System</p><p class="c-meta">Product design + Build · 9 screens · Live on Vercel</p></div>
               <span class="c-year">2024</span>
             </div>
             <span class="card-arrow">↗</span>
@@ -1529,10 +1511,11 @@
           <div class="col-label"><span>Bio</span></div>
           <div class="col-content">
             <div class="about-body">
-              <p>Hello! I'm a UI/UX designer with a passion for crafting seamless digital experiences, specialising in designing robust design systems and websites for major players in the pharmaceutical industry. Self-driven with a curiosity to continually learn and enhance my skills.</p>
-              <p>With 9+ years of experience in UI/UX, I've dedicated the past 2.5 years to the unique challenges of pharmaceutical industries' digital presence — navigating compliance intricacies and user-centric design principles, utilising top UX methodologies such as user research, user journey mapping and user testing.</p>
-              <p>My focal point lies in meticulously creating design systems and design tokens — blending functionality, aesthetics and brand identity to ensure design systems meet industry standards, growing systematically and thriving in multiple environments.</p>
-              <p>I thrive on collaboration, working closely with design and development teams to ensure projects are seamlessly integrated. I'm committed to staying ahead of industry trends and embracing emerging design methodologies — consistently pushing the boundaries of what's achievable.</p>
+              <p>I'm a UI/UX Designer with 8+ years of experience creating enterprise and customer-facing digital products that simplify complex workflows and deliver intuitive, scalable user experiences.</p>
+              <p>My work spans enterprise software, healthcare, pharmaceutical platforms, and content services, where I've partnered with cross-functional teams to transform challenging business processes into accessible and user-centered solutions. Most recently at OpenText, I lead interaction design initiatives for Vendor Invoice Management (VIM), leveraging a strong understanding of Accounts Payable processes and SAP S/4HANA workflows, while also contributing to OpenText's in-house eSignature platform, helping enhance enterprise applications through thoughtful interaction design and usability-driven decision making.</p>
+              <p>A significant part of my career has been dedicated to building and scaling design systems. From multi-brand pharmaceutical ecosystems to enterprise product platforms, I've led the creation of component libraries, design tokens, and scalable design foundations that enable teams to deliver consistent experiences across products and channels. I enjoy solving not only interface problems but also the systems challenges that help organisations design and build more effectively.</p>
+              <p>I am passionate about accessibility, design quality, and creating products that work for everyone. Whether defining interaction patterns, shaping design systems, or collaborating with product and engineering teams, I am driven by the belief that great design brings clarity to complexity and creates meaningful outcomes for both users and businesses.</p>
+              <p>Always curious and eager to learn, I continue to explore emerging technologies and AI-assisted design workflows that help teams move faster, think more creatively, and deliver better experiences at scale.</p>
             </div>
           </div>
         </div>
@@ -2763,7 +2746,7 @@
           <span class="cs-tag">Product Design + Build</span>
           <span class="cs-tag">2024</span>
         </div>
-        <h1 class="cs-title">Safehalo Attendance Monitor</h1>
+        <h1 class="cs-title">Attendance Management System</h1>
         <p class="cs-subtitle">A web-based attendance platform that consolidates employee setup, shift &amp; leave management, daily marking, conflict detection, and monthly roster planning into one coherent tool — designed, built, and deployed end to end.</p>
         <div class="cs-meta-row">
           <div class="cs-meta-item">
@@ -2787,7 +2770,7 @@
 
       <!-- Thumbnail -->
       <div class="cs-img-block">
-        <img src="am-thumbnail.png" alt="Safehalo Attendance — product overview">
+        <img src="am-thumbnail.png" alt="Attendance Management System — product overview">
       </div>
 
       <!-- Overview -->
@@ -2795,7 +2778,7 @@
         <p class="cs-section-label">Overview</p>
         <h2 class="cs-h2">One tool for the whole attendance lifecycle</h2>
         <p class="cs-body">Facility management teams in large properties — hotels, estates, campuses — typically track attendance in spreadsheets, paper registers, or disconnected tools. The result is predictable: no single view of who is present or on leave on any given day, leave approvals and attendance marking living in separate places so conflicts go undetected, roster planning done manually, and supervisors chasing multiple sources just to find what needs attention.</p>
-        <p class="cs-body">Safehalo Attendance was designed to consolidate all of this into one coherent product covering the full lifecycle: employee setup, shift and leave management, daily attendance marking, conflict detection, and monthly roster planning.</p>
+        <p class="cs-body">The Attendance Management System was designed to consolidate all of this into one coherent product covering the full lifecycle: employee setup, shift and leave management, daily attendance marking, conflict detection, and monthly roster planning.</p>
 
         <div class="cs-img-block">
           <img src="am-flow-happy-path.png" alt="Happy path — main attendance flow from employee arrival to approval">
@@ -2834,23 +2817,38 @@
       <div class="cs-section">
         <p class="cs-section-label">Feature — Dashboard</p>
         <h2 class="cs-h2">Actionable first — not vanity metrics</h2>
-        <p class="cs-body">The landing screen is designed around what a supervisor needs to do today, not what the system wants to report. A backlog tile surfaces employees with unresolved attendance items (absent, unverified, conflict). A highlights strip shows today's quick numbers. A new-employee checklist provides contextual onboarding for post-hire setup steps. Three primary quick-action buttons — Mark Attendance, Review Leaves, Open Roster — are surfaced as first-class controls.</p>
+        <p class="cs-body">The landing screen is designed around what a supervisor needs to do today, not what the system wants to report. Three key numbers surface today's exceptions — late arrivals, unverified absences, and half-days — as read-only signals. The Backlog badge shows unresolved items from past days that need attention before month-end. The org breakdown table gives a department-level view of attendance percentages and raw P / A / L counts at a glance.</p>
         <div class="cs-img-block">
-          <img src="am-dashboard.png" alt="Dashboard — backlog tiles, highlights strip, quick actions">
+          <img src="am-dashboard-annotated.png" alt="Dashboard — annotated overview of key UI regions">
         </div>
-        <p class="cs-img-caption">Dashboard — backlog tiles surface unresolved items; quick actions reduce navigation depth</p>
+        <p class="cs-img-caption">Dashboard annotated — three exception numbers, backlog badge, org breakdown table, and setup-to-complete widget</p>
+        <div class="cs-img-block" style="margin-top:32px;">
+          <img src="am-dashboard.png" alt="Dashboard — live view showing EcoWorld with 304 employees, 256 present, 31 absent, 17 on leave">
+        </div>
+        <p class="cs-img-caption">Dashboard live — EcoWorld facility, 304 employees. Department-level attendance percentages and P / A / L counts update in real time</p>
       </div>
 
       <!-- Attendance & Leave Edit Flow -->
       <div class="cs-section">
         <p class="cs-section-label">Feature — Attendance</p>
         <h2 class="cs-h2">Edit drawer with conflict detection built in</h2>
-        <p class="cs-body">The attendance screen uses a master-detail layout with per-department accordion grouping. A dedicated Backlog tab separates unresolved items from the daily log. The edit drawer handles inline attendance editing, a leave type selector (Sick / Casual), and a stepper for multi-day leave entry. The system flags when an employee is marked Present but also has an approved leave on the same day — the conflict is surfaced immediately, not buried in a report.</p>
-
+        <p class="cs-body">The attendance screen uses a master-detail layout with per-department grouping in the left rail. The Today tab shows every employee's live status — Present, Absent, Late, On Leave, Half-day — alongside kiosk check-in / check-out times and hours worked. Clicking Edit opens a right-side drawer with the employee's last 7-day history, a Mark As dropdown, manual check-in / check-out overrides, and a mandatory reason field.</p>
         <div class="cs-img-block">
+          <img src="am-attendance-today.png" alt="Attendance — Today tab showing per-department employee list with status badges">
+        </div>
+        <p class="cs-img-caption">Attendance Today view — Security department, 142 employees. Status badges (Present, Absent, Late, On Leave, Half-day) with kiosk times and hours</p>
+        <div class="cs-img-block" style="margin-top:32px;">
+          <img src="am-attendance-drawer.png" alt="Attendance — Edit drawer open showing 7-day history, Mark As dropdown, manual check-in override">
+        </div>
+        <p class="cs-img-caption">Edit drawer — kiosk data, 7-day history dots, Mark As selector, manual check-in / check-out override, and activity log</p>
+        <div class="cs-img-block" style="margin-top:32px;">
+          <img src="am-attendance-backlog.png" alt="Attendance — Backlog tab showing gap days and conflicts requiring resolution">
+        </div>
+        <p class="cs-img-caption">Backlog tab — gap days (dates where attendance was never marked) and conflict records separated into two filterable groups</p>
+        <div class="cs-img-block" style="margin-top:32px;">
           <img src="am-flow-leave-edit.png" alt="User flow — Manager saves edited leave on the drawer">
         </div>
-        <p class="cs-img-caption">User flow — Manager edits a leave record from the drawer; system recalculates kiosk status and flags any conflicts</p>
+        <p class="cs-img-caption">Leave edit flow — manager opens drawer, selects leave type, system recalculates kiosk status and flags conflicts automatically</p>
       </div>
 
       <!-- Leaves -->
@@ -2889,9 +2887,24 @@
         <p class="cs-img-caption">Gap day path — automated detection, per-employee loop for marking / skipping, and four edge cases including urgency changes and booking bridge events</p>
 
         <div class="cs-img-block" style="margin-top: 32px;">
-          <img src="am-roster.png" alt="Roster — month view, bulk weekly-off, save with undo">
+          <img src="am-roster.png" alt="Roster — June 2026 month view with W, WO, SL, CL cells per employee">
         </div>
-        <p class="cs-img-caption">Roster month view — sticky columns, bulk action bar, save-with-undo toast</p>
+        <p class="cs-img-caption">Roster month view — Housekeeping department, June 2026. W = Working, WO = Weekly off, SL = Sick leave, CL = Casual leave. Summary column per employee on the right</p>
+      </div>
+
+      <!-- Employees -->
+      <div class="cs-section">
+        <p class="cs-section-label">Feature — Employees</p>
+        <h2 class="cs-h2">Active and past employees — no data deleted</h2>
+        <p class="cs-body">The Employees screen separates Active and Past staff into two tabs, preserving historical records without deletion. Each employee row shows their ID, department, role with seniority level, branch, and assigned shift. Adding a new employee is a 3-step modal — Identity (personal details), Assignment (department, role, shift), and Review — with mandatory field validation and role options filtered by the selected department.</p>
+        <div class="cs-img-block">
+          <img src="am-employees.png" alt="Employees list — Active tab showing ID, name, department, role, branch and shift">
+        </div>
+        <p class="cs-img-caption">Employees list — Active tab with seniority level badges (Beginner, Mid, Senior) and per-employee branch and shift assignment</p>
+        <div class="cs-img-block" style="margin-top:32px;">
+          <img src="am-employees-add.png" alt="Add Employee modal — 3-step stepper with Identity, Assignment, Review steps">
+        </div>
+        <p class="cs-img-caption">Add Employee — 3-step stepper. Step 1: Identity (ID, name, phone, email, gender, date of joining). Step 2: Assignment. Step 3: Review before confirm</p>
       </div>
 
       <!-- Design Decisions -->
@@ -3059,3 +3072,4 @@
   </div><!-- /app-panel -->
 </body>
 </html>
+
