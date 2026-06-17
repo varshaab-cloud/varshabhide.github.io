@@ -2831,6 +2831,10 @@
         <h2 class="cs-h2">Actionable first — not vanity metrics</h2>
         <p class="cs-body">The landing screen is designed around what a supervisor needs to do today, not what the system wants to report. Three key numbers surface today's exceptions — late arrivals, unverified absences, and half-days — as read-only signals. The Backlog badge shows unresolved items from past days that need attention before month-end. The org breakdown table gives a department-level view of attendance percentages and raw P / A / L counts at a glance.</p>
         <div class="cs-img-block">
+          <img src="am-dashboard.png" alt="Dashboard home screen — today's highlights, org breakdown table, backlog badge">
+        </div>
+        <p class="cs-img-caption">Dashboard home — three exception counters (late, unverified absent, half-day), Backlog badge for unresolved past items, and org breakdown table with department-level P / A / L counts</p>
+        <div class="cs-img-block" style="margin-top:32px;">
           <img src="am-attendance-today.png" alt="Attendance screen — Today tab showing per-department employee list with status badges">
         </div>
         <p class="cs-img-caption">Attendance Today view — Security department, 142 employees. Present, Absent, Late, On Leave, and Half-day statuses with kiosk times and hours</p>
@@ -2858,6 +2862,17 @@
           <img src="am-attendance-backlog.png" alt="Attendance — Backlog tab showing gap days and conflicts requiring resolution">
         </div>
         <p class="cs-img-caption">Backlog tab — gap days (dates where attendance was never marked) and conflict records separated into two filterable groups</p>
+        <p class="cs-body" style="margin-top:24px;">The Backlog tab is a supervisor's end-of-month catch-up tool. It surfaces two categories automatically: gap days — dates in the past where attendance was never marked — and conflict records, where an employee is both marked Present and has an approved leave on the same date. Both require a resolution action before the monthly report can be closed. Items accumulate here as conflicts and gaps are detected, so nothing slips through unnoticed.</p>
+        <div class="cs-img-block" style="margin-top:32px; position:relative;">
+          <img src="am-flow-conflict.png" alt="User flow — Conflict detection and resolution path" onclick="openFlowZoom(this)" style="cursor:zoom-in;">
+          <button class="flow-zoom-btn" onclick="openFlowZoom(this.previousElementSibling)">⤢ Zoom</button>
+        </div>
+        <p class="cs-img-caption">Conflict path — trigger events, drawer-based resolution flow, and four distinct edge cases</p>
+        <div class="cs-img-block" style="margin-top:32px; position:relative;">
+          <img src="am-flow-gap-day.png" alt="User flow — Gap day path automated" onclick="openFlowZoom(this)" style="cursor:zoom-in;">
+          <button class="flow-zoom-btn" onclick="openFlowZoom(this.previousElementSibling)">⤢ Zoom</button>
+        </div>
+        <p class="cs-img-caption">Gap day flow — automated detection, per-employee loop for marking / skipping, and four edge cases including urgency changes and booking bridge events</p>
       </div>
 
       <!-- Leaves -->
@@ -2865,23 +2880,15 @@
         <p class="cs-section-label">Feature — Leaves</p>
         <h2 class="cs-h2">Calendar-first, with two entry paths</h2>
         <p class="cs-body">The leaves screen replaces a flat list with a month calendar. Chips per day show department and count, with click-to-expand popups listing affected employees. The leave modal handles approve / reject with a mandatory rejection reason, and warns when cancelling an approved leave. Sick leave and casual leave are tracked and displayed separately throughout.</p>
-        <div class="cs-img-block" style="position:relative;">
+        <div class="cs-img-block">
+          <img src="am-leave-timeoff.png" alt="Leave and Time Off — calendar view with department chips and leave modal">
+        </div>
+        <p class="cs-img-caption">Leaves calendar — month view with per-day department chips, click-to-expand employee list, approve / reject modal with mandatory rejection reason</p>
+        <div class="cs-img-block" style="margin-top:32px; position:relative;">
           <img src="am-flow-sick-casual-leave.png" alt="User flow — Adding Sick leave (two entry point) and Casual leave (single entry point)" onclick="openFlowZoom(this)" style="cursor:zoom-in;">
           <button class="flow-zoom-btn" onclick="openFlowZoom(this.previousElementSibling)">⤢ Zoom</button>
         </div>
         <p class="cs-img-caption">User flow — Adding sick leave (two entry points via Attendance page + Leaves page) and casual leave (single entry point)</p>
-      </div>
-
-      <!-- Conflict Detection -->
-      <div class="cs-section">
-        <p class="cs-section-label">Feature — Conflict Detection</p>
-        <h2 class="cs-h2">Never let Present + approved leave coexist silently</h2>
-        <p class="cs-body">A core requirement: the system must catch its own contradictions. When an employee is marked Present and also has an approved leave on the same day, a conflict is created and logged. The resolution flow lets a manager open the drawer, select a conflict status, add a reason, and mark it resolved — with edge cases for no-kiosk employees, out-of-scope conflicts, and booking bridge events all mapped out explicitly.</p>
-        <div class="cs-img-block" style="position:relative;">
-          <img src="am-flow-conflict.png" alt="User flow — Conflict detection and resolution path" onclick="openFlowZoom(this)" style="cursor:zoom-in;">
-          <button class="flow-zoom-btn" onclick="openFlowZoom(this.previousElementSibling)">⤢ Zoom</button>
-        </div>
-        <p class="cs-img-caption">Conflict path — trigger events, drawer-based resolution flow, and four distinct edge cases</p>
       </div>
 
       <!-- Roster -->
@@ -2893,11 +2900,6 @@
           <img src="am-roster.png" alt="Roster — June 2026 month view with W, WO, SL, CL cells per employee">
         </div>
         <p class="cs-img-caption">Roster month view — Housekeeping department, June 2026. W = Working, WO = Weekly off, SL = Sick leave, CL = Casual leave. Summary column per employee on the right</p>
-        <div class="cs-img-block" style="margin-top:32px; position:relative;">
-          <img src="am-flow-gap-day.png" alt="User flow — Gap day path automated" onclick="openFlowZoom(this)" style="cursor:zoom-in;">
-          <button class="flow-zoom-btn" onclick="openFlowZoom(this.previousElementSibling)">⤢ Zoom</button>
-        </div>
-        <p class="cs-img-caption">Gap day flow — automated detection, per-employee loop for marking / skipping, and four edge cases including urgency changes and booking bridge events</p>
       </div>
 
       <!-- Design Decisions -->
