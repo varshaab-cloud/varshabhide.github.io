@@ -1022,8 +1022,9 @@
     }
     .flow-lightbox.open { display: flex; }
     .flow-lightbox-inner {
-      width: 92vw;
-      height: 88vh;
+      width: 76vw;
+      max-width: 1100px;
+      height: 80vh;
       overflow: auto;
       background: #fff;
       border-radius: 10px;
@@ -1034,9 +1035,8 @@
     body.dark .flow-lightbox-inner { background: #1a1a1a; }
     .flow-lightbox-inner img {
       display: block;
-      width: auto;
+      width: 100%;
       height: auto;
-      min-width: 100%;
       max-width: none;
     }
     .flow-lightbox-close {
