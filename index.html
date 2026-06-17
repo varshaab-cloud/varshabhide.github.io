@@ -1499,7 +1499,7 @@
     <div class="about-page-header">
       <h1>About me</h1>
       <div class="about-header-actions">
-        <a href="varsha-cv.pdf" download class="cv-btn" onclick="launchConfetti(this)">Download CV ↓</a>
+        <button type="button" class="cv-btn" onclick="downloadWithConfetti(this)">Download CV ↓</button>
       </div>
     </div>
 
@@ -2949,6 +2949,19 @@
     if (['home', 'projects', 'about', 'eps', 'thematic', 'tokens', 'atoms', 'attendance'].includes(hash)) navigate(hash);
 
     // ── CONFETTI ──
+    function downloadWithConfetti(btn) {
+      launchConfetti(btn);
+      // Small delay so confetti is visible before download bar appears
+      setTimeout(() => {
+        const a = document.createElement('a');
+        a.href = 'varsha-cv.pdf';
+        a.download = 'Varsha_Bhide_Resume.pdf';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      }, 400);
+    }
+
     function launchConfetti(btn) {
       const canvas = document.createElement('canvas');
       canvas.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:99999;';
@@ -2957,33 +2970,31 @@
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
 
-      // Burst origin — centre of button
       const rect = btn.getBoundingClientRect();
       const ox = rect.left + rect.width / 2;
       const oy = rect.top + rect.height / 2;
 
-      const COLORS = ['#FF6B6B','#FFD93D','#6BCB77','#4D96FF','#FF922B','#CC5DE8','#F06595','#20C997','#FCC419','#74C0FC'];
+      const COLORS = ['#FF6B6B','#FFD93D','#6BCB77','#4D96FF','#FF922B','#CC5DE8','#F06595','#20C997','#FCC419','#74C0FC','#FF4757','#ECCC68'];
       const SHAPES = ['rect','circle','strip'];
 
-      const particles = Array.from({length: 140}, () => {
+      const particles = Array.from({length: 200}, () => {
         const angle = Math.random() * Math.PI * 2;
-        const speed = 6 + Math.random() * 14;
+        const speed = 8 + Math.random() * 18;
         return {
           x: ox, y: oy,
           vx: Math.cos(angle) * speed,
-          vy: Math.sin(angle) * speed - 6,
-          gravity: 0.35 + Math.random() * 0.2,
+          vy: Math.sin(angle) * speed - 10,
+          gravity: 0.3 + Math.random() * 0.25,
           rotation: Math.random() * Math.PI * 2,
-          rotSpeed: (Math.random() - 0.5) * 0.25,
-          size: 6 + Math.random() * 10,
+          rotSpeed: (Math.random() - 0.5) * 0.3,
+          size: 8 + Math.random() * 12,
           color: COLORS[Math.floor(Math.random() * COLORS.length)],
           shape: SHAPES[Math.floor(Math.random() * SHAPES.length)],
           opacity: 1,
-          decay: 0.013 + Math.random() * 0.008
+          decay: 0.008 + Math.random() * 0.006
         };
       });
 
-      let frame;
       function draw() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         let alive = false;
@@ -2993,7 +3004,6 @@
           p.x += p.vx; p.y += p.vy; p.vy += p.gravity;
           p.vx *= 0.99; p.rotation += p.rotSpeed;
           p.opacity -= p.decay;
-
           ctx.save();
           ctx.globalAlpha = Math.max(0, p.opacity);
           ctx.fillStyle = p.color;
@@ -3010,10 +3020,10 @@
           }
           ctx.restore();
         });
-        if (alive) frame = requestAnimationFrame(draw);
+        if (alive) requestAnimationFrame(draw);
         else canvas.remove();
       }
-      draw();
+      requestAnimationFrame(draw);
     }
 
     // ── FLOW ZOOM ──
