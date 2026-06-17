@@ -978,18 +978,14 @@
       margin: 24px 0 8px;
     }
     .flow-scroll {
-      overflow-x: auto;
       border: 1px solid var(--border);
       border-radius: 8px;
       background: var(--light);
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: thin;
     }
     .flow-scroll img {
       display: block;
+      width: 100%;
       height: auto;
-      min-width: 100%;
-      max-width: none;
       cursor: zoom-in;
     }
     .flow-zoom-btn {
@@ -1026,20 +1022,22 @@
     }
     .flow-lightbox.open { display: flex; }
     .flow-lightbox-inner {
-      max-width: 95vw;
-      max-height: 90vh;
+      width: 92vw;
+      height: 88vh;
       overflow: auto;
       background: #fff;
       border-radius: 10px;
       position: relative;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
     }
     body.dark .flow-lightbox-inner { background: #1a1a1a; }
     .flow-lightbox-inner img {
       display: block;
       width: auto;
       height: auto;
-      min-width: 800px;
-      max-height: 82vh;
+      min-width: 100%;
+      max-width: none;
     }
     .flow-lightbox-close {
       position: absolute;
@@ -2844,11 +2842,8 @@
         <h2 class="cs-h2">Edit drawer with conflict detection built in</h2>
         <p class="cs-body">The attendance screen uses a master-detail layout with per-department accordion grouping. A dedicated Backlog tab separates unresolved items from the daily log. The edit drawer handles inline attendance editing, a leave type selector (Sick / Casual), and a stepper for multi-day leave entry. The system flags when an employee is marked Present but also has an approved leave on the same day — the conflict is surfaced immediately, not buried in a report.</p>
 
-        <div class="flow-wrap">
-          <div class="flow-scroll">
-            <img src="am-flow-leave-edit.png" alt="User flow — Manager saves edited leave on the drawer" onclick="openFlowZoom(this)">
-          </div>
-          <button class="flow-zoom-btn" onclick="openFlowZoom(this.previousElementSibling.querySelector('img'))">⤢ Zoom</button>
+        <div class="cs-img-block">
+          <img src="am-flow-leave-edit.png" alt="User flow — Manager saves edited leave on the drawer">
         </div>
         <p class="cs-img-caption">User flow — Manager edits a leave record from the drawer; system recalculates kiosk status and flags any conflicts</p>
       </div>
@@ -2859,11 +2854,8 @@
         <h2 class="cs-h2">Calendar-first, with two entry paths</h2>
         <p class="cs-body">The leaves screen replaces a flat list with a month calendar. Chips per day show department and count, with click-to-expand popups listing affected employees. The leave modal handles approve / reject with a mandatory rejection reason, and warns when cancelling an approved leave. Sick leave and casual leave are tracked and displayed separately throughout.</p>
 
-        <div class="flow-wrap">
-          <div class="flow-scroll">
-            <img src="am-flow-sick-casual-leave.png" alt="User flow — Adding Sick leave (two entry point) and Casual leave (single entry point)" onclick="openFlowZoom(this)">
-          </div>
-          <button class="flow-zoom-btn" onclick="openFlowZoom(this.previousElementSibling.querySelector('img'))">⤢ Zoom</button>
+        <div class="cs-img-block">
+          <img src="am-flow-sick-casual-leave.png" alt="User flow — Adding Sick leave (two entry point) and Casual leave (single entry point)">
         </div>
         <p class="cs-img-caption">User flow — Adding sick leave (two entry points via Attendance page + Leaves page) and casual leave (single entry point)</p>
       </div>
@@ -2874,11 +2866,8 @@
         <h2 class="cs-h2">Never let Present + approved leave coexist silently</h2>
         <p class="cs-body">A core requirement: the system must catch its own contradictions. When an employee is marked Present and also has an approved leave on the same day, a conflict is created and logged. The resolution flow lets a manager open the drawer, select a conflict status, add a reason, and mark it resolved — with edge cases for no-kiosk employees, out-of-scope conflicts, and booking bridge events all mapped out explicitly.</p>
 
-        <div class="flow-wrap">
-          <div class="flow-scroll">
-            <img src="am-flow-conflict.png" alt="User flow — Conflict detection and resolution path" onclick="openFlowZoom(this)">
-          </div>
-          <button class="flow-zoom-btn" onclick="openFlowZoom(this.previousElementSibling.querySelector('img'))">⤢ Zoom</button>
+        <div class="cs-img-block">
+          <img src="am-flow-conflict.png" alt="User flow — Conflict detection and resolution path">
         </div>
         <p class="cs-img-caption">Conflict path — trigger events, drawer-based resolution flow, and four distinct edge cases</p>
       </div>
@@ -2889,11 +2878,8 @@
         <h2 class="cs-h2">Month × week grid with WO-priority logic</h2>
         <p class="cs-body">The roster screen is the most complex: a grid of employees × days with inline editing, two views (compact month / expanded week), bulk weekly-off selection with a floating action bar, conflict indicators where leave clashes with working patterns, and save-with-undo using snapshot-based state capture. A key domain rule is WO-priority: if an employee has approved leave on their weekly off day, the day counts as WO not SL/CL, so leave balance isn't deducted. The gap day path automates detection and resolution of these scenarios.</p>
 
-        <div class="flow-wrap">
-          <div class="flow-scroll">
-            <img src="am-flow-gap-day.png" alt="User flow — Gap day path automated" onclick="openFlowZoom(this)">
-          </div>
-          <button class="flow-zoom-btn" onclick="openFlowZoom(this.previousElementSibling.querySelector('img'))">⤢ Zoom</button>
+        <div class="cs-img-block">
+          <img src="am-flow-gap-day.png" alt="User flow — Gap day path automated">
         </div>
         <p class="cs-img-caption">Gap day path — automated detection, per-employee loop for marking / skipping, and four edge cases including urgency changes and booking bridge events</p>
 
