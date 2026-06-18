@@ -1899,6 +1899,48 @@
         </div>
       </div>
 
+      <!-- Token Architecture — 3-tier summary (below Overview) -->
+      <div class="cs-section">
+        <p class="cs-section-label">Token Architecture</p>
+        <div style="background:var(--light); border:1px solid var(--border); border-radius:12px; padding:28px 28px;">
+
+          <div style="display:flex; align-items:flex-start; gap:20px;">
+            <div style="flex-shrink:0; width:120px;">
+              <div style="border:1px solid var(--border); border-radius:8px; padding:10px 14px; background:var(--white); text-align:center;">
+                <div style="font-size:13px; font-weight:600; color:var(--black);">Base</div>
+                <div style="font-size:11px; color:var(--gray); margin-top:3px;">140 tokens</div>
+              </div>
+            </div>
+            <div style="padding-top:8px; font-size:13px; color:var(--gray); line-height:1.65;">Raw primitive values — hex colours, pixel dimensions. Brand-agnostic. Never used directly in components.</div>
+          </div>
+
+          <div style="margin-left:60px; width:1px; height:22px; background:var(--border);"></div>
+
+          <div style="display:flex; align-items:flex-start; gap:20px;">
+            <div style="flex-shrink:0; width:120px;">
+              <div style="border:1px solid #9194eb; border-radius:8px; padding:10px 14px; background:#e8eaff; text-align:center;">
+                <div style="font-size:13px; font-weight:600; color:#1c21dc;">Alias</div>
+                <div style="font-size:11px; color:#6e71e6; margin-top:3px;">172 tokens</div>
+              </div>
+            </div>
+            <div style="padding-top:8px; font-size:13px; color:var(--gray); line-height:1.65;">Semantic roles — <code style="font-size:11.5px; background:rgba(0,0,0,0.06); padding:1px 5px; border-radius:3px;">background-brand</code>, <code style="font-size:11.5px; background:rgba(0,0,0,0.06); padding:1px 5px; border-radius:3px;">spacing-padding-md</code>. The layer designers and engineers use day-to-day.</div>
+          </div>
+
+          <div style="margin-left:60px; width:1px; height:22px; background:var(--border);"></div>
+
+          <div style="display:flex; align-items:flex-start; gap:20px;">
+            <div style="flex-shrink:0; width:120px;">
+              <div style="border:1px solid var(--border); border-radius:8px; padding:10px 14px; background:var(--white); text-align:center;">
+                <div style="font-size:13px; font-weight:600; color:var(--black);">Component</div>
+                <div style="font-size:11px; color:var(--gray); margin-top:3px;">1,039 tokens</div>
+              </div>
+            </div>
+            <div style="padding-top:8px; font-size:13px; color:var(--gray); line-height:1.65;">Implementation-specific slots. Enables brand overrides and theming without touching component code.</div>
+          </div>
+
+        </div>
+      </div>
+
       <!-- Phase 1 — Design Language -->
       <div class="cs-section">
         <p class="cs-section-label">Phase 1 — Design Language</p>
@@ -1924,9 +1966,34 @@
             </ul>
           </div>
         </div>
-        <!-- IMAGE: Taste profile / design principles visual -->
-        <div class="cs-img-block placeholder" style="margin-top:24px;">
-          <p class="cs-img-placeholder-label">Image — Taste profile / design principles</p>
+        <!-- Taste profile → design decisions table -->
+        <div style="margin-top:32px; border:1px solid var(--border); border-radius:12px; overflow:hidden;">
+          <table style="width:100%; border-collapse:collapse; font-size:13px; line-height:1.6;">
+            <thead>
+              <tr style="background:var(--light);">
+                <th style="padding:12px 18px; text-align:left; font-size:11px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--gray); width:36%; border-bottom:1px solid var(--border);">Brief said</th>
+                <th style="padding:12px 18px; text-align:left; font-size:11px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--gray); border-bottom:1px solid var(--border);">System did</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:16px 18px; vertical-align:top; color:var(--gray); font-style:italic; line-height:1.55;">"Restraint over abundance — one accent colour, generous whitespace, let the data speak."</td>
+                <td style="padding:16px 18px; vertical-align:top; line-height:1.65;">A single brand colour is reserved for primary actions and active states only. Everything else stays neutral. Spacing tokens enforce breathing room at every level so the interface never feels packed.</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border); background:var(--light);">
+                <td style="padding:16px 18px; vertical-align:top; color:var(--gray); font-style:italic; line-height:1.55;">"Warm neutrals, never pure grey. Trustworthy, not hospital."</td>
+                <td style="padding:16px 18px; vertical-align:top; line-height:1.65;">Every background and border token has a warm stone undertone baked in. The system has no pure, lifeless greys anywhere in the palette — warmth is a constraint, not a choice made screen by screen.</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:16px 18px; vertical-align:top; color:var(--gray); font-style:italic; line-height:1.55;">"Earned emphasis — if everything shouts, nothing is heard."</td>
+                <td style="padding:16px 18px; vertical-align:top; line-height:1.65;">Feedback colours are scoped to semantic tokens and only surface when there is something real to communicate. A token audit runs before every commit, making accidental emphasis impossible to ship.</td>
+              </tr>
+              <tr>
+                <td style="padding:16px 18px; vertical-align:top; color:var(--gray); font-style:italic; line-height:1.55;">"Craft at the detail level — the polish is in details people feel but don't consciously notice."</td>
+                <td style="padding:16px 18px; vertical-align:top; line-height:1.65;">Shadows are built as a two-layer system so elevation feels natural rather than decorative. Borders are translucent, not solid. Radius is a six-step scale referenced by every component, never set arbitrarily.</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
 
@@ -2198,6 +2265,56 @@
             </ul>
           </div>
         </div>
+
+        <!-- SS1 — System at a glance stats -->
+        <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--border); border:1px solid var(--border); border-radius:12px; overflow:hidden; margin-top:32px;">
+          <div style="background:var(--white); padding:28px 16px; text-align:center;">
+            <div style="font-size:38px; font-weight:700; color:var(--black); letter-spacing:-0.02em; line-height:1;">48</div>
+            <div style="font-size:11px; color:var(--gray); margin-top:6px; letter-spacing:0.05em; text-transform:uppercase;">Components</div>
+          </div>
+          <div style="background:var(--white); padding:28px 16px; text-align:center;">
+            <div style="font-size:38px; font-weight:700; color:var(--black); letter-spacing:-0.02em; line-height:1;">1,351</div>
+            <div style="font-size:11px; color:var(--gray); margin-top:6px; letter-spacing:0.05em; text-transform:uppercase;">Tokens</div>
+          </div>
+          <div style="background:var(--white); padding:28px 16px; text-align:center;">
+            <div style="font-size:38px; font-weight:700; color:var(--black); letter-spacing:-0.02em; line-height:1;">15</div>
+            <div style="font-size:11px; color:var(--gray); margin-top:6px; letter-spacing:0.05em; text-transform:uppercase;">AI Patterns</div>
+          </div>
+          <div style="background:var(--white); padding:28px 16px; text-align:center;">
+            <div style="font-size:38px; font-weight:700; color:var(--black); letter-spacing:-0.02em; line-height:1;">3</div>
+            <div style="font-size:11px; color:var(--gray); margin-top:6px; letter-spacing:0.05em; text-transform:uppercase;">Token Tiers</div>
+          </div>
+        </div>
+
+        <!-- SS3 — What we built -->
+        <div style="margin-top:32px; border:1px solid var(--border); border-radius:12px; overflow:hidden;">
+          <table style="width:100%; border-collapse:collapse; font-size:13px;">
+            <thead>
+              <tr style="background:var(--light);">
+                <th colspan="2" style="padding:12px 18px; text-align:left; font-size:11px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--accent); border-bottom:1px solid var(--border);">What we built</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:16px 18px; vertical-align:top; font-weight:600; color:var(--black); width:28%; line-height:1.5;">Core components</td>
+                <td style="padding:16px 18px; vertical-align:top; color:var(--gray); line-height:1.65;">48 production-ready components across forms, data display, navigation, overlays, and feedback. Every component passes WCAG 2.1 AA, has keyboard interactions documented, and references only token values.</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border); background:var(--light);">
+                <td style="padding:16px 18px; vertical-align:top; font-weight:600; color:var(--black); line-height:1.5;">AI / Conversation patterns</td>
+                <td style="padding:16px 18px; vertical-align:top; color:var(--gray); line-height:1.65;">15 AI-specific components — MessageBubble, ChatInput, StreamingText, AgentStatus, ActionPlan, StreamOfThought, DisclosureBadge, and more. Grounded in The Shape of AI and AI UX Patterns libraries.</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:16px 18px; vertical-align:top; font-weight:600; color:var(--black); line-height:1.5;">Foundation documentation</td>
+                <td style="padding:16px 18px; vertical-align:top; color:var(--gray); line-height:1.65;">Colour, typography, spacing, shape, elevation, and motion all have dedicated Storybook pages showing every available token with resolved values and usage guidance.</td>
+              </tr>
+              <tr>
+                <td style="padding:16px 18px; vertical-align:top; font-weight:600; color:var(--black); line-height:1.5;">Token audit tooling</td>
+                <td style="padding:16px 18px; vertical-align:top; color:var(--gray); line-height:1.65;">A zero-errors-before-commit rule enforced by a custom audit script. No hardcoded values anywhere in the component library.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
       </div>
 
       <!-- Phase 3 — Component Library -->
