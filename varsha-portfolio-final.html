@@ -3088,7 +3088,88 @@
         <p class="cs-body">Facility management teams in large properties — hotels, estates, campuses — typically track attendance in spreadsheets, paper registers, or disconnected tools. The result is predictable: no single view of who is present or on leave on any given day, leave approvals and attendance marking living in separate places so conflicts go undetected, roster planning done manually, and supervisors chasing multiple sources just to find what needs attention.</p>
         <p class="cs-body">The Attendance Management System was designed to consolidate all of this into one coherent product covering the full lifecycle: employee setup, shift and leave management, daily attendance marking, conflict detection, and monthly roster planning.</p>
         <div class="cs-img-block" style="margin-top:32px;">
-          <img src="am-lifecycle.png" alt="Attendance lifecycle — 6-step system overview: Employee Setup, Roster Planning, Daily Attendance, Leave Management, Conflict Detection, Dashboard">
+          <!-- Lifecycle diagram — inline SVG replacing am-lifecycle.png -->
+          <svg viewBox="0 0 700 278" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Attendance lifecycle — 6-step system: Employee Setup, Roster Planning, Daily Attendance, Leave Management, Conflict Detection, Dashboard" style="display:block;width:100%;border-radius:8px;border:1px solid #e5e7eb;">
+            <defs>
+              <marker id="am-arr" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+                <path d="M0,0 L8,3 L0,6 Z" fill="#333"/>
+              </marker>
+              <marker id="am-arr-g" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+                <path d="M0,0 L8,3 L0,6 Z" fill="#bbb"/>
+              </marker>
+            </defs>
+            <rect width="700" height="278" fill="#ffffff"/>
+
+            <!-- ── TOP ROW ── -->
+            <!-- 01 Employee Setup: x=50 y=28 w=160 h=90 -->
+            <rect x="50" y="28" width="160" height="90" rx="7" fill="#fff" stroke="#1a1a1a" stroke-width="1.5"/>
+            <text x="58" y="46" font-size="9" font-family="ui-sans-serif,system-ui,sans-serif" fill="#999">01</text>
+            <text x="130" y="66" font-size="13" font-weight="600" font-family="ui-sans-serif,system-ui,sans-serif" fill="#111" text-anchor="middle">Employee Setup</text>
+            <text x="130" y="82" font-size="10.5" font-family="ui-sans-serif,system-ui,sans-serif" fill="#555" text-anchor="middle">Personal · Role · Shift</text>
+            <text x="130" y="97" font-size="10.5" font-family="ui-sans-serif,system-ui,sans-serif" fill="#555" text-anchor="middle">Roster onboarding</text>
+
+            <!-- 02 Roster Planning: x=270 y=28 w=160 h=90 -->
+            <rect x="270" y="28" width="160" height="90" rx="7" fill="#fff" stroke="#1a1a1a" stroke-width="1.5"/>
+            <text x="278" y="46" font-size="9" font-family="ui-sans-serif,system-ui,sans-serif" fill="#999">02</text>
+            <text x="350" y="66" font-size="13" font-weight="600" font-family="ui-sans-serif,system-ui,sans-serif" fill="#111" text-anchor="middle">Roster Planning</text>
+            <text x="350" y="82" font-size="10.5" font-family="ui-sans-serif,system-ui,sans-serif" fill="#555" text-anchor="middle">Month / week grid · Weekly off</text>
+            <text x="350" y="97" font-size="10.5" font-family="ui-sans-serif,system-ui,sans-serif" fill="#555" text-anchor="middle">Bulk WO · Save with undo</text>
+
+            <!-- 03 Daily Attendance: x=490 y=28 w=160 h=90 -->
+            <rect x="490" y="28" width="160" height="90" rx="7" fill="#fff" stroke="#1a1a1a" stroke-width="1.5"/>
+            <text x="498" y="46" font-size="9" font-family="ui-sans-serif,system-ui,sans-serif" fill="#999">03</text>
+            <text x="570" y="66" font-size="13" font-weight="600" font-family="ui-sans-serif,system-ui,sans-serif" fill="#111" text-anchor="middle">Daily Attendance</text>
+            <text x="570" y="82" font-size="10.5" font-family="ui-sans-serif,system-ui,sans-serif" fill="#555" text-anchor="middle">Present · Absent · Leave</text>
+            <text x="570" y="97" font-size="10.5" font-family="ui-sans-serif,system-ui,sans-serif" fill="#555" text-anchor="middle">Kiosk check-in · Edit drawer</text>
+
+            <!-- ── BOTTOM ROW ── -->
+            <!-- 06 Dashboard: x=50 y=162 w=160 h=90 -->
+            <rect x="50" y="162" width="160" height="90" rx="7" fill="#fff" stroke="#1a1a1a" stroke-width="1.5"/>
+            <text x="58" y="180" font-size="9" font-family="ui-sans-serif,system-ui,sans-serif" fill="#999">06</text>
+            <text x="130" y="200" font-size="13" font-weight="600" font-family="ui-sans-serif,system-ui,sans-serif" fill="#111" text-anchor="middle">Dashboard</text>
+            <text x="130" y="216" font-size="10.5" font-family="ui-sans-serif,system-ui,sans-serif" fill="#555" text-anchor="middle">Today's highlights</text>
+            <text x="130" y="231" font-size="10.5" font-family="ui-sans-serif,system-ui,sans-serif" fill="#555" text-anchor="middle">Org breakdown · Backlog</text>
+
+            <!-- 05 Conflict Detection: x=270 y=162 w=160 h=90 -->
+            <rect x="270" y="162" width="160" height="90" rx="7" fill="#fff" stroke="#1a1a1a" stroke-width="1.5"/>
+            <text x="278" y="180" font-size="9" font-family="ui-sans-serif,system-ui,sans-serif" fill="#999">05</text>
+            <text x="350" y="200" font-size="13" font-weight="600" font-family="ui-sans-serif,system-ui,sans-serif" fill="#111" text-anchor="middle">Conflict Detection</text>
+            <text x="350" y="216" font-size="10.5" font-family="ui-sans-serif,system-ui,sans-serif" fill="#555" text-anchor="middle">Leave ↔ Attendance clash</text>
+            <text x="350" y="231" font-size="10.5" font-family="ui-sans-serif,system-ui,sans-serif" fill="#555" text-anchor="middle">Backlog · Gap days flagged</text>
+
+            <!-- 04 Leave Management: x=490 y=162 w=160 h=90 -->
+            <rect x="490" y="162" width="160" height="90" rx="7" fill="#fff" stroke="#1a1a1a" stroke-width="1.5"/>
+            <text x="498" y="180" font-size="9" font-family="ui-sans-serif,system-ui,sans-serif" fill="#999">04</text>
+            <text x="570" y="200" font-size="13" font-weight="600" font-family="ui-sans-serif,system-ui,sans-serif" fill="#111" text-anchor="middle">Leave Management</text>
+            <text x="570" y="216" font-size="10.5" font-family="ui-sans-serif,system-ui,sans-serif" fill="#555" text-anchor="middle">SL / CL · Calendar view</text>
+            <text x="570" y="231" font-size="10.5" font-family="ui-sans-serif,system-ui,sans-serif" fill="#555" text-anchor="middle">Approve · Reject · Reverse</text>
+
+            <!-- ── ARROWS ── -->
+            <!-- 01→02 "sets up": right of box1 → left of box2 -->
+            <line x1="212" y1="73" x2="267" y2="73" stroke="#333" stroke-width="1" marker-end="url(#am-arr)"/>
+            <text x="239" y="67" font-size="9" font-family="ui-sans-serif,system-ui,sans-serif" fill="#666" text-anchor="middle">sets up</text>
+
+            <!-- 02→03 "informs": right of box2 → left of box3 -->
+            <line x1="432" y1="73" x2="487" y2="73" stroke="#333" stroke-width="1" marker-end="url(#am-arr)"/>
+            <text x="459" y="67" font-size="9" font-family="ui-sans-serif,system-ui,sans-serif" fill="#666" text-anchor="middle">informs</text>
+
+            <!-- 03→04 "feeds": bottom of box3 → top of box4 (vertical) -->
+            <line x1="570" y1="120" x2="570" y2="159" stroke="#333" stroke-width="1" marker-end="url(#am-arr)"/>
+            <text x="586" y="144" font-size="9" font-family="ui-sans-serif,system-ui,sans-serif" fill="#666">feeds</text>
+
+            <!-- 04→05 "checks": left of box4 → right of box5 (leftward) -->
+            <line x1="488" y1="207" x2="433" y2="207" stroke="#333" stroke-width="1" marker-end="url(#am-arr)"/>
+            <text x="460" y="201" font-size="9" font-family="ui-sans-serif,system-ui,sans-serif" fill="#666" text-anchor="middle">checks</text>
+
+            <!-- 05→06 "surfaces": left of box5 → right of box6 (leftward) -->
+            <line x1="268" y1="207" x2="213" y2="207" stroke="#333" stroke-width="1" marker-end="url(#am-arr)"/>
+            <text x="240" y="201" font-size="9" font-family="ui-sans-serif,system-ui,sans-serif" fill="#666" text-anchor="middle">surfaces</text>
+
+            <!-- "new hire triggers" – dashed line + rotated label -->
+            <line x1="30" y1="152" x2="30" y2="82" stroke="#bbb" stroke-width="0.75" stroke-dasharray="3,3"/>
+            <line x1="30" y1="82" x2="47" y2="82" stroke="#bbb" stroke-width="0.75" stroke-dasharray="3,3" marker-end="url(#am-arr-g)"/>
+            <text transform="translate(21,140) rotate(-90)" font-size="9" font-family="ui-sans-serif,system-ui,sans-serif" fill="#bbb" text-anchor="middle">new hire triggers</text>
+          </svg>
         </div>
       </div>
 
