@@ -751,7 +751,8 @@
     }
 
     .cs-meta-value {
-      font-size: 13px;
+      font-size: 14px;
+      font-weight: 500;
       color: var(--black);
     }
 
@@ -761,21 +762,22 @@
 
     .cs-section-label {
       font-size: 11px;
+      font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--gray);
-      margin-bottom: 16px;
-      padding-bottom: 12px;
+      color: var(--accent);
+      margin-bottom: 20px;
+      padding-bottom: 14px;
       border-bottom: 1px solid var(--border);
     }
 
     .cs-body {
       font-size: 15px;
-      line-height: 1.75;
+      line-height: 1.8;
       color: var(--black);
     }
 
-    .cs-body p { margin-bottom: 14px; }
+    .cs-body p { margin-bottom: 20px; }
     .cs-body p:last-child { margin-bottom: 0; }
 
     .cs-two-col {
@@ -785,8 +787,8 @@
     }
 
     .cs-col-head {
-      font-size: 13px;
-      font-weight: 500;
+      font-size: 14px;
+      font-weight: 700;
       letter-spacing: -0.01em;
       color: var(--black);
       margin-bottom: 14px;
@@ -798,12 +800,12 @@
       margin: 0;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 14px;
     }
 
     .cs-list li {
       font-size: 14px;
-      line-height: 1.5;
+      line-height: 1.7;
       color: var(--black);
       padding-left: 16px;
       position: relative;
@@ -915,9 +917,9 @@
 
     .cs-conclusion p {
       font-size: 15px;
-      line-height: 1.7;
+      line-height: 1.85;
       color: var(--black);
-      margin-bottom: 24px;
+      margin-bottom: 28px;
     }
 
     /* ── Flow diagram zoom ── */
@@ -1006,18 +1008,18 @@
     }
 
     .cs-h2 {
-      font-size: 22px;
-      font-weight: 500;
+      font-size: 24px;
+      font-weight: 600;
       letter-spacing: -0.02em;
       color: var(--black);
       margin-bottom: 16px;
-      line-height: 1.3;
+      line-height: 1.25;
     }
 
     .cs-subtitle {
-      font-size: 17px;
+      font-size: 18px;
       color: var(--gray);
-      line-height: 1.7;
+      line-height: 1.65;
       max-width: 640px;
       margin-bottom: 32px;
     }
@@ -1881,7 +1883,7 @@
           </div>
           <div class="cs-meta-item">
             <span class="cs-meta-label">Live</span>
-            <span class="cs-meta-value"><a href="https://thematic.design" target="_blank" rel="noopener" style="color:inherit; text-decoration:none;">Request demo ↗</a></span>
+            <span class="cs-meta-value"><button onclick="copyEmailDemo()" style="background:none;border:none;cursor:pointer;font-family:inherit;font-size:14px;font-weight:500;color:var(--black);padding:0;">Request demo ↗</button></span>
           </div>
         </div>
       </div>
@@ -2641,9 +2643,9 @@
       <!-- Conclusion -->
       <div class="cs-conclusion">
         <p>Thematic began as an experiment in creating a more structured design system. It became something broader: a design language. By combining a principled visual foundation, a scalable token architecture, a comprehensive component library, multi-brand support, thorough documentation, and automated governance, the system provides a shared framework that can be understood by designers, developers, and increasingly, AI tools. The result is not simply a collection of components — it is a system designed to make decisions predictable, scalable, and understandable regardless of whether the next contributor is a person or a machine.</p>
-        <a class="cs-figma-link" href="https://thematic.design" target="_blank" rel="noopener">
+        <button class="cs-figma-link" onclick="copyEmailDemo()">
           Request demo ↗
-        </a>
+        </button>
       </div>
 
     </div><!-- /cs-wrap -->
@@ -3391,8 +3393,18 @@
     function copyEmail() {
       navigator.clipboard.writeText('varsha.ab@gmail.com').then(() => {
         const toast = document.getElementById('toast');
+        toast.textContent = 'Email copied to clipboard';
         toast.classList.add('show');
         setTimeout(() => toast.classList.remove('show'), 2500);
+      });
+    }
+
+    function copyEmailDemo() {
+      navigator.clipboard.writeText('varsha.ab@gmail.com').then(() => {
+        const toast = document.getElementById('toast');
+        toast.textContent = 'Email copied — drop a line to request a demo';
+        toast.classList.add('show');
+        setTimeout(() => { toast.classList.remove('show'); toast.textContent = 'Email copied to clipboard'; }, 3000);
       });
     }
 
