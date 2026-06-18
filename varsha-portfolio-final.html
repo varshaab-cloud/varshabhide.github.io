@@ -142,6 +142,38 @@
       transform: translateX(-50%) translateY(0);
     }
 
+    /* ── BACK TO TOP ── */
+    #back-to-top {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--white);
+      color: var(--black);
+      font-size: 16px;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.2s, transform 0.2s, background 0.15s;
+      pointer-events: none;
+      z-index: 900;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    #back-to-top.visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    #back-to-top:hover { background: var(--light); }
+    #back-to-top:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
     /* ── BACK BUTTON ── */
     .back-bar {
       max-width: 960px;
@@ -1235,6 +1267,7 @@
 
   <!-- TOAST -->
   <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true">Email copied to clipboard</div>
+  <button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top" title="Back to top">↑</button>
 
   <div id="app-panel">
 
@@ -1940,7 +1973,7 @@
               </tr>
               <tr style="border-bottom:1px solid var(--border); background:var(--light);">
                 <td style="padding:16px 18px; vertical-align:top; font-weight:600; color:var(--black); line-height:1.5;">AI / Conversation patterns</td>
-                <td style="padding:16px 18px; vertical-align:top; color:var(--gray); line-height:1.65;">15 AI-specific components — MessageBubble, ChatInput, StreamingText, AgentStatus, ActionPlan, StreamOfThought, DisclosureBadge, and more. Grounded in The Shape of AI and AI UX Patterns libraries.</td>
+                <td style="padding:16px 18px; vertical-align:top; color:var(--gray); line-height:1.65;">15 AI-specific components — MessageBubble, ChatInput, StreamingText, AgentStatus, ActionPlan, StreamOfThought, DisclosureBadge, and more.</td>
               </tr>
               <tr style="border-bottom:1px solid var(--border);">
                 <td style="padding:16px 18px; vertical-align:top; font-weight:600; color:var(--black); line-height:1.5;">Foundation documentation</td>
@@ -3222,6 +3255,19 @@
     window.addEventListener('popstate', e => {
       if (e.state?.page) navigate(e.state.page);
     });
+
+    // ── BACK TO TOP ──
+    (function() {
+      const btn = document.getElementById('back-to-top');
+      const CS_PAGES = ['eps','thematic','tokens','atoms','dsdoc','attendance'];
+      function updateBtnVisibility() {
+        const hash = location.hash.replace('#','');
+        const onCS = CS_PAGES.includes(hash);
+        btn.classList.toggle('visible', onCS && window.scrollY > 400);
+      }
+      window.addEventListener('scroll', updateBtnVisibility, { passive: true });
+      window.addEventListener('hashchange', updateBtnVisibility);
+    })();
 
     // load from hash on page open
     const hash = location.hash.replace('#', '');
