@@ -3481,10 +3481,6 @@
 
         </div><!-- /tour-wrap -->
 
-        <div class="cs-img-block" style="margin-top:28px;">
-          <img src="am-onboarding.png" alt="Attendance Management System — welcome modal and guided tooltip tour in context">
-        </div>
-        <p class="cs-img-caption">First-run guided tour — welcome modal (left) and step 1 tooltip anchored to the sidebar (right)</p>
       </div><!-- /first-run onboarding -->
 
       <!-- Employees -->
@@ -3611,6 +3607,42 @@
               <span style="font-size:10px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:var(--gray); background:var(--light); border:1px solid var(--border); padding:2px 8px; border-radius:4px;">Roster</span>
             </div>
             <p style="font-size:13px; line-height:1.7; color:var(--gray); margin:0;">The roster grid scrolls horizontally across 31 day columns while keeping employee names and the summary column pinned. Each sticky layer has an explicit z-index so column headers overlap body cells cleanly — all within a single overflow-auto container.</p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Closing Reflections -->
+      <div class="cs-section">
+        <p class="cs-section-label">Closing Reflections</p>
+        <h2 class="cs-h2">Five principles that shaped every decision</h2>
+        <p class="cs-body">They are not feature decisions — they are the lens through which every interaction, prompt, and flow was evaluated.</p>
+
+        <div style="display:flex; flex-direction:column; gap:0; margin-top:24px; border:1px solid var(--border); border-radius:10px; overflow:hidden;">
+
+          <div style="padding:20px 24px; border-bottom:1px solid var(--border);">
+            <p style="font-size:15px; font-weight:700; color:var(--black); margin:0 0 8px;">Confirmations</p>
+            <p style="font-size:13px; line-height:1.75; color:var(--gray); margin:0;">Users should always know what will happen before it happens. Consequential actions — saving a record, closing a request, making a change that affects downstream data — are preceded by a moment that surfaces the outcome and asks for intent. Confirmation is not friction; it is the system's way of making sure the person acted deliberately.</p>
+          </div>
+
+          <div style="padding:20px 24px; border-bottom:1px solid var(--border);">
+            <p style="font-size:15px; font-weight:700; color:var(--black); margin:0 0 8px;">Human-like guidance</p>
+            <p style="font-size:13px; line-height:1.75; color:var(--gray); margin:0;">Instructions, prompts, and labels should read the way a knowledgeable colleague would speak them. Not system language, not jargon, not passive constructions — plain, direct, second-person guidance that names what to do and why it matters. The closer the language is to how a person would explain something, the less the user has to interpret before acting.</p>
+          </div>
+
+          <div style="padding:20px 24px; border-bottom:1px solid var(--border);">
+            <p style="font-size:15px; font-weight:700; color:var(--black); margin:0 0 8px;">Visible trust markers</p>
+            <p style="font-size:13px; line-height:1.75; color:var(--gray); margin:0;">A system earns trust by being honest about its own state. This means surfacing problems rather than hiding them, showing what is unresolved alongside what is complete, and confirming when an action has taken effect. Trust is not built by making the system look clean — it is built by making its reliability legible.</p>
+          </div>
+
+          <div style="padding:20px 24px; border-bottom:1px solid var(--border);">
+            <p style="font-size:15px; font-weight:700; color:var(--black); margin:0 0 8px;">Assisted flows</p>
+            <p style="font-size:13px; line-height:1.75; color:var(--gray); margin:0;">Complex tasks should be structured so the system carries the sequence, not the user. When a task has a required order, enforce it. When a task spans multiple steps, show progress and hold context between them. The user's job is to make decisions; the system's job is to make sure those decisions happen in the right order with the right information at hand.</p>
+          </div>
+
+          <div style="padding:20px 24px;">
+            <p style="font-size:15px; font-weight:700; color:var(--black); margin:0 0 8px;">Easy reversibility</p>
+            <p style="font-size:13px; line-height:1.75; color:var(--gray); margin:0;">Errors are inevitable, especially in high-frequency operational systems. The design should assume mistakes will be made and make correction straightforward. Where an action can be undone, provide the path. Where it cannot, name the constraint clearly before the action is taken — not after. Reversibility is not a safety net; it is a prerequisite for confident use.</p>
           </div>
 
         </div>
