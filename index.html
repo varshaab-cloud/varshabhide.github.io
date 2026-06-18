@@ -3246,33 +3246,21 @@
       <div class="cs-section">
         <p class="cs-section-label">Information Architecture</p>
         <h2 class="cs-h2">Four layers, one direction of flow</h2>
-        <p class="cs-body">Attendance Management System is organised into four layers that reflect the natural sequence of how a facility management operation is set up and run.</p>
+        <div style="margin-top:20px; display:flex; flex-direction:column; gap:10px;">
 
-        <div style="margin-top:28px; display:flex; flex-direction:column; gap:24px;">
+          <p style="font-size:14px; line-height:1.75; color:var(--gray); margin:0;">Attendance Management System is organised into four layers that reflect the natural sequence of how a facility management operation is set up and run.</p>
 
-          <div>
-            <p style="font-size:16px; font-weight:600; color:var(--black); margin:0 0 8px;">Foundation</p>
-            <p style="font-size:14px; line-height:1.75; color:var(--gray); margin:0;">Contains everything that must exist before the system can be used — departments and roles, shifts, branches, vendors, and employees. These are configuration decisions made once and rarely revisited, but every downstream function depends on them being in place.</p>
-          </div>
+          <p style="font-size:14px; line-height:1.75; color:var(--gray); margin:0;"><span style="font-weight:700; color:var(--black);">Foundation</span> — Contains everything that must exist before the system can be used — departments and roles, shifts, branches, vendors, and employees. These are configuration decisions made once and rarely revisited, but every downstream function depends on them being in place.</p>
 
-          <div>
-            <p style="font-size:16px; font-weight:600; color:var(--black); margin:0 0 8px;">Planning</p>
-            <p style="font-size:14px; line-height:1.75; color:var(--gray); margin:0;">Where the monthly roster is built. Shift patterns and weekly offs are assigned here before the month begins, and the roster becomes the reference point that the attendance and leave systems read from.</p>
-          </div>
+          <p style="font-size:14px; line-height:1.75; color:var(--gray); margin:0;"><span style="font-weight:700; color:var(--black);">Planning</span> — Where the monthly roster is built. Shift patterns and weekly offs are assigned here before the month begins, and the roster becomes the reference point that the attendance and leave systems read from.</p>
 
-          <div>
-            <p style="font-size:16px; font-weight:600; color:var(--black); margin:0 0 8px;">Operations</p>
-            <p style="font-size:14px; line-height:1.75; color:var(--gray); margin:0;">Where the daily work happens. Attendance and Leave and Time Off are the two most-used sections of the application — marking who is present, resolving gaps, and managing leave requests. These two modules are deliberately separate but linked: a leave approval in one automatically updates a record in the other.</p>
-          </div>
+          <p style="font-size:14px; line-height:1.75; color:var(--gray); margin:0;"><span style="font-weight:700; color:var(--black);">Operations</span> — Where the daily work happens. Attendance and Leave and Time Off are the two most-used sections — marking who is present, resolving gaps, and managing leave requests. These two modules are deliberately separate but linked: a leave approval in one automatically updates a record in the other.</p>
 
-          <div>
-            <p style="font-size:16px; font-weight:600; color:var(--black); margin:0 0 8px;">Overview</p>
-            <p style="font-size:14px; line-height:1.75; color:var(--gray); margin:0;">The Dashboard — a read-only surface that aggregates the state of the entire operation into a single view. It does not originate data; it reflects it. Because it sits above all other layers, it can surface problems from any of them in one place.</p>
-          </div>
+          <p style="font-size:14px; line-height:1.75; color:var(--gray); margin:0;"><span style="font-weight:700; color:var(--black);">Overview</span> — The Dashboard, a read-only surface that aggregates the state of the entire operation into a single view. It does not originate data; it reflects it. Because it sits above all other layers, it can surface problems from any of them in one place.</p>
+
+          <p style="font-size:14px; line-height:1.75; color:var(--gray); margin:0; padding-top:12px; border-top:1px solid var(--border);">The dependency flows downward. Foundation configures Planning. Planning informs Operations. Operations surfaces to Overview. A change at any layer ripples upward — a new employee added in Foundation needs a roster entry in Planning before they can appear correctly in Operations.</p>
 
         </div>
-
-        <p class="cs-body" style="margin-top:28px; padding-top:24px; border-top:1px solid var(--border);">The dependency flows downward. Foundation configures Planning. Planning informs Operations. Operations surfaces to Overview. A change at any layer ripples upward — a new employee added in Foundation needs a roster entry in Planning before they can appear correctly in Operations.</p>
 
         <div style="margin-top:28px; font-family:inherit;">
 
