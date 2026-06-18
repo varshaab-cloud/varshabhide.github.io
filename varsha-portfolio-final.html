@@ -29,62 +29,13 @@
     :root {
       --accent:  #EFAB9B;
       --black:   #111111;
-      --gray:    #888888;
+      --gray:    #767676;
       --light:   #f5f5f5;
       --border:  #e8e8e8;
       --white:   #ffffff;
     }
 
     /* ── DARK MODE ── */
-    body.dark {
-      --black:   #f0f0f0;
-      --gray:    #b0b0b0;
-      --light:   #1e1e1e;
-      --border:  #303030;
-      --white:   #121212;
-      background-color: #0a0a0a;
-      background-image: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
-      background-size: 18px 18px;
-    }
-
-    body.dark .g-thumb.t1 { background: #281e1a; }
-    body.dark .g-thumb.t2 { background: #182022; }
-    body.dark .g-thumb.t3 { background: #232018; }
-    body.dark .g-thumb.t4 { background: #182018; }
-    body.dark .g-thumb.t5 { background: #1e1828; }
-    body.dark .c-thumb.t1 { background: #281e1a; }
-    body.dark .c-thumb.t2 { background: #182022; }
-    body.dark .c-thumb.t3 { background: #232018; }
-    body.dark .c-thumb.t4 { background: #182018; }
-    body.dark .grid-card { background: #1a1a1a; }
-    body.dark .grid-card:hover { background: #222222; }
-    body.dark .carousel-card { background: #1a1a1a; }
-    body.dark .cs-img-block { background: #1a1a1a; }
-    body.dark .cs-conclusion { background: #1a1a1a; }
-    body.dark .chevron-btn { background: #1e1e1e; }
-    body.dark nav { background: #121212; }
-
-    /* dark mode toggle pill */
-    .theme-toggle {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 12px;
-      background: var(--light);
-      border: 1px solid var(--border);
-      cursor: pointer;
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--gray);
-      letter-spacing: 0.04em;
-      transition: background 0.15s, border-color 0.15s, color 0.15s;
-      flex-shrink: 0;
-      font-family: inherit;
-      white-space: nowrap;
-    }
-
-    .theme-toggle:hover { border-color: var(--accent); color: var(--black); }
-    body.dark .theme-toggle { background: #1e1e1e; }
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
@@ -334,7 +285,7 @@
     .hero {
       max-width: 960px;
       margin: 0 auto;
-      padding: 100px 56px 88px;
+      padding: 50px 56px 38px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -356,9 +307,6 @@
       object-fit: contain;
     }
 
-    body.dark .hero-photo img {
-      filter: invert(1);
-    }
 
     .hero h1 {
       font-size: 60px;
@@ -803,7 +751,8 @@
     }
 
     .cs-meta-value {
-      font-size: 13px;
+      font-size: 14px;
+      font-weight: 500;
       color: var(--black);
     }
 
@@ -813,21 +762,22 @@
 
     .cs-section-label {
       font-size: 11px;
+      font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--gray);
-      margin-bottom: 16px;
-      padding-bottom: 12px;
+      color: var(--accent);
+      margin-bottom: 20px;
+      padding-bottom: 14px;
       border-bottom: 1px solid var(--border);
     }
 
     .cs-body {
       font-size: 15px;
-      line-height: 1.75;
+      line-height: 1.8;
       color: var(--black);
     }
 
-    .cs-body p { margin-bottom: 14px; }
+    .cs-body p { margin-bottom: 20px; }
     .cs-body p:last-child { margin-bottom: 0; }
 
     .cs-two-col {
@@ -837,8 +787,8 @@
     }
 
     .cs-col-head {
-      font-size: 13px;
-      font-weight: 500;
+      font-size: 14px;
+      font-weight: 700;
       letter-spacing: -0.01em;
       color: var(--black);
       margin-bottom: 14px;
@@ -850,12 +800,12 @@
       margin: 0;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 14px;
     }
 
     .cs-list li {
       font-size: 14px;
-      line-height: 1.5;
+      line-height: 1.7;
       color: var(--black);
       padding-left: 16px;
       position: relative;
@@ -967,9 +917,9 @@
 
     .cs-conclusion p {
       font-size: 15px;
-      line-height: 1.7;
+      line-height: 1.85;
       color: var(--black);
-      margin-bottom: 24px;
+      margin-bottom: 28px;
     }
 
     /* ── Flow diagram zoom ── */
@@ -1007,7 +957,7 @@
       z-index: 2;
     }
     .flow-zoom-btn:hover { background: #fff; border-color: #bbb; }
-    body.dark .flow-zoom-btn { background: rgba(30,30,30,0.92); color: #f0f0f0; }
+
 
     /* ── Zoom lightbox ── */
     .flow-lightbox {
@@ -1032,7 +982,7 @@
       -webkit-overflow-scrolling: touch;
       scrollbar-width: thin;
     }
-    body.dark .flow-lightbox-inner { background: #1a1a1a; }
+
     .flow-lightbox-inner img {
       display: block;
       height: calc(80vh - 48px);
@@ -1058,18 +1008,18 @@
     }
 
     .cs-h2 {
-      font-size: 22px;
-      font-weight: 500;
+      font-size: 24px;
+      font-weight: 600;
       letter-spacing: -0.02em;
       color: var(--black);
       margin-bottom: 16px;
-      line-height: 1.3;
+      line-height: 1.25;
     }
 
     .cs-subtitle {
-      font-size: 17px;
+      font-size: 18px;
       color: var(--gray);
-      line-height: 1.7;
+      line-height: 1.65;
       max-width: 640px;
       margin-bottom: 32px;
     }
@@ -1217,6 +1167,52 @@
 
     .tool:hover { border-color: var(--accent); color: var(--black); }
 
+    /* ── SKIP NAV LINK ── */
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 16px;
+      background: #1518A6;
+      color: #fff;
+      padding: 8px 16px;
+      font-size: 13px;
+      font-weight: 500;
+      z-index: 10001;
+      text-decoration: none;
+      font-family: inherit;
+      transition: top 0.1s;
+    }
+    .skip-link:focus { top: 8px; }
+
+    /* ── FOCUS VISIBLE ── */
+    *:focus-visible {
+      outline: 2px solid #1518A6;
+      outline-offset: 2px;
+    }
+
+    /* ── FOOTER EMAIL BUTTON ── */
+    .footer-email-btn {
+      font-size: 12px;
+      color: var(--gray);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      padding: 0;
+      transition: color 0.15s;
+    }
+    .footer-email-btn:hover { color: var(--accent); }
+
+    /* ── HERO BACKGROUND ── */
+    .hero {
+      background-image: url('hero-bg.png');
+      background-size: 100% auto;
+      background-position: center bottom;
+      background-repeat: no-repeat;
+      background-color: #F8F5EF;
+    }
+
+
     /* ── RESPONSIVE ── */
     @media (max-width: 640px) {
       nav { padding: 0 20px; }
@@ -1238,9 +1234,12 @@
 <body>
 
   <!-- TOAST -->
-  <div class="toast" id="toast">Email copied to clipboard</div>
+  <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true">Email copied to clipboard</div>
 
   <div id="app-panel">
+
+  <!-- SKIP NAV -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
   <!-- NAV -->
   <nav>
@@ -1249,8 +1248,8 @@
       <button onclick="navigate('home')" data-page="home">Home</button>
       <button onclick="navigate('projects')" data-page="projects">Work</button>
       <button onclick="navigate('about')" data-page="about">About</button>
-      <button class="nav-contact" onclick="copyEmail()">Get in touch →</button>
-      <button class="theme-toggle" onclick="toggleDark()" id="themeBtn">☽ Dark</button>
+      <button class="nav-contact" onclick="copyEmail()" aria-label="Copy email address to clipboard">Get in touch →</button>
+
     </div>
   </nav>
 
@@ -1259,7 +1258,7 @@
   ══════════════════════════════════════════ -->
   <div id="page-home" class="page active">
 
-    <section class="hero">
+    <section class="hero" id="main-content">
       <div class="hero-text">
         <h1>I'm <span class="name">Varsha Bhide</span>,<br>a designer who thinks in systems</h1>
         <p class="hero-sub">Specialising in interaction design and design systems — shaping how products feel and how teams scale them. From flows and micro-interactions to tokens and component libraries.</p>
@@ -1292,7 +1291,7 @@
             <div class="c-thumb t5" style="background-image:url('am-thumb.png'); background-size:cover; background-position:center;"></div>
             <div class="c-body">
               <div><p class="c-title">Attendance Management System</p><p class="c-meta">Product design + Build · 9 screens · Live on Vercel</p></div>
-              <span class="c-year">2024</span>
+              <span class="c-year">2026</span>
             </div>
             <span class="card-arrow">↗</span>
           </button>
@@ -1353,10 +1352,10 @@
 
     <footer>
       <div class="footer-inner">
-        <span class="footer-text">© 2024 Varsha Bhide</span>
+        <span class="footer-text">© 2026 Varsha Bhide</span>
         <div class="footer-links">
           <a href="https://www.linkedin.com/in/varsha-bhide-93240b92/" target="_blank">LinkedIn</a>
-          <a href="#" onclick="copyEmail(); return false;">Email</a>
+          <button class="footer-email-btn" onclick="copyEmail()">varsha.ab@gmail.com</button>
         </div>
       </div>
     </footer>
@@ -1454,7 +1453,7 @@
               <div class="g-thumb t5" style="background-image:url('am-thumb.png'); background-size:cover; background-position:center;"></div>
               <div class="g-body">
                 <div><p class="g-title">Attendance Management System</p><p class="g-meta">Product design + Build · Next.js · Design System</p></div>
-                <span class="g-year">2024</span>
+                <span class="g-year">2026</span>
               </div>
               <span class="card-arrow">↗</span>
             </button>
@@ -1477,10 +1476,10 @@
 
     <footer>
       <div class="footer-inner">
-        <span class="footer-text">© 2024 Varsha Bhide</span>
+        <span class="footer-text">© 2026 Varsha Bhide</span>
         <div class="footer-links">
           <a href="https://www.linkedin.com/in/varsha-bhide-93240b92/" target="_blank">LinkedIn</a>
-          <a href="#" onclick="copyEmail(); return false;">Email</a>
+          <button class="footer-email-btn" onclick="copyEmail()">varsha.ab@gmail.com</button>
         </div>
       </div>
     </footer>
@@ -1654,10 +1653,10 @@
 
     <footer>
       <div class="footer-inner">
-        <span class="footer-text">© 2024 Varsha Bhide</span>
+        <span class="footer-text">© 2026 Varsha Bhide</span>
         <div class="footer-links">
           <a href="https://www.linkedin.com/in/varsha-bhide-93240b92/" target="_blank">LinkedIn</a>
-          <a href="#" onclick="copyEmail(); return false;">Email</a>
+          <button class="footer-email-btn" onclick="copyEmail()">varsha.ab@gmail.com</button>
         </div>
       </div>
     </footer>
@@ -1686,6 +1685,7 @@
           <span class="cs-tag">2023</span>
         </div>
         <h1 class="cs-title">Electronic Patient Service</h1>
+        <p class="cs-subtitle">Designing a guided insurance eligibility workflow for Healthcare Providers — simplifying a complex, paper-heavy process into a real-time, personalised application that reduced friction and improved patient acceptance rates.</p>
         <div class="cs-meta-row">
           <div class="cs-meta-item">
             <span class="cs-meta-label">Role</span>
@@ -1709,6 +1709,7 @@
       <!-- Overview -->
       <div class="cs-section">
         <p class="cs-section-label">Overview</p>
+        <h2 class="cs-h2">Real-time insurance verification for healthcare providers</h2>
         <div class="cs-body">
           <p>Introducing the Electronic Patient Insurance Checker — a web application that streamlines the treatment process with real-time insurance verification. Transitioning from traditional physical records to Electronic Health Records (EHR) as a strategic decision aimed at enhancing efficiency, accuracy, sustainability, and overall patient care.</p>
         </div>
@@ -1720,6 +1721,7 @@
       <!-- Background -->
       <div class="cs-section">
         <p class="cs-section-label">Background</p>
+        <h2 class="cs-h2">Slow enrollment, complex eligibility, gaps in patient care</h2>
         <div class="cs-body">
           <p>Major health insurance providers are designated to offer coverage for specific drugs to recipients. However, a significant hurdle lies in the intricate eligibility determination process, leading to a slow enrollment rate.</p>
           <p>As a prominent consulting firm in the healthcare sector, the objective was to develop a web application for Healthcare Providers (HCPs) to facilitate eligibility checks — enabling HCPs and care providers to effortlessly access this information, ensuring patients receive the care they deserve and bridging existing gaps.</p>
@@ -1732,6 +1734,7 @@
       <!-- Problem Statement -->
       <div class="cs-section">
         <p class="cs-section-label">Problem Statement</p>
+        <h2 class="cs-h2">A process so complex it increases rejection rates</h2>
         <div class="cs-body">
           <p>Create a web application that is interactive, streamlining the eligibility determination process for a specific drug and guaranteeing high acceptance rates.</p>
         </div>
@@ -1740,6 +1743,7 @@
       <!-- UX Strategy -->
       <div class="cs-section">
         <p class="cs-section-label">UX Strategy</p>
+        <h2 class="cs-h2">Simplify, guide, and personalise at every step</h2>
         <div class="cs-body">
           <p>The design process focused on enhancing the usability, accessibility, and simplification of the application filling process for Healthcare Providers (HCPs) to achieve the desired results. The designs aimed to streamline the process, making it intuitive, engaging, and ensuring a seamless experience for users.</p>
         </div>
@@ -1884,7 +1888,7 @@
           </div>
           <div class="cs-meta-item">
             <span class="cs-meta-label">Live</span>
-            <span class="cs-meta-value"><a href="https://thematic.design" target="_blank" rel="noopener" style="color:inherit; text-decoration:none;">thematic.design ↗</a></span>
+            <span class="cs-meta-value"><button onclick="copyEmailDemo()" style="background:none;border:none;cursor:pointer;font-family:inherit;font-size:14px;font-weight:500;color:var(--black);padding:0;">Request demo ↗</button></span>
           </div>
         </div>
       </div>
@@ -1897,8 +1901,57 @@
           <p>The goal wasn't to build another component library. It was to create a system that could scale across products, support multiple brands, remain easy for teams to adopt, and provide enough structure for AI tools to reason about design decisions without ambiguity.</p>
           <p>What emerged was Thematic — a token-driven design system consisting of 1,351 design tokens, 54 enterprise-ready components, multi-brand theming, comprehensive documentation, and a governance model designed to keep the system maintainable as it grows.</p>
         </div>
-        <div class="cs-img-block">
-          <img src="td-hero.png" alt="Thematic.design 2026 — hero overview">
+      </div>
+
+      <!-- Stats + What we built (below Overview) -->
+      <div class="cs-section">
+        <!-- Stats strip -->
+        <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--border); border:1px solid var(--border); border-radius:12px; overflow:hidden;">
+          <div style="background:var(--white); padding:28px 16px; text-align:center;">
+            <div style="font-size:38px; font-weight:700; color:var(--black); letter-spacing:-0.02em; line-height:1;">48</div>
+            <div style="font-size:11px; color:var(--gray); margin-top:6px; letter-spacing:0.05em; text-transform:uppercase;">Components</div>
+          </div>
+          <div style="background:var(--white); padding:28px 16px; text-align:center;">
+            <div style="font-size:38px; font-weight:700; color:var(--black); letter-spacing:-0.02em; line-height:1;">1,351</div>
+            <div style="font-size:11px; color:var(--gray); margin-top:6px; letter-spacing:0.05em; text-transform:uppercase;">Tokens</div>
+          </div>
+          <div style="background:var(--white); padding:28px 16px; text-align:center;">
+            <div style="font-size:38px; font-weight:700; color:var(--black); letter-spacing:-0.02em; line-height:1;">15</div>
+            <div style="font-size:11px; color:var(--gray); margin-top:6px; letter-spacing:0.05em; text-transform:uppercase;">AI Patterns</div>
+          </div>
+          <div style="background:var(--white); padding:28px 16px; text-align:center;">
+            <div style="font-size:38px; font-weight:700; color:var(--black); letter-spacing:-0.02em; line-height:1;">3</div>
+            <div style="font-size:11px; color:var(--gray); margin-top:6px; letter-spacing:0.05em; text-transform:uppercase;">Token Tiers</div>
+          </div>
+        </div>
+
+        <!-- What we built table -->
+        <div style="margin-top:16px; border:1px solid var(--border); border-radius:12px; overflow:hidden;">
+          <table style="width:100%; border-collapse:collapse; font-size:13px;">
+            <thead>
+              <tr style="background:var(--light);">
+                <th colspan="2" style="padding:12px 18px; text-align:left; font-size:11px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--accent); border-bottom:1px solid var(--border);">What we built</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:16px 18px; vertical-align:top; font-weight:600; color:var(--black); width:28%; line-height:1.5;">Core components</td>
+                <td style="padding:16px 18px; vertical-align:top; color:var(--gray); line-height:1.65;">48 production-ready components across forms, data display, navigation, overlays, and feedback. Every component passes WCAG 2.1 AA, has keyboard interactions documented, and references only token values.</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border); background:var(--light);">
+                <td style="padding:16px 18px; vertical-align:top; font-weight:600; color:var(--black); line-height:1.5;">AI / Conversation patterns</td>
+                <td style="padding:16px 18px; vertical-align:top; color:var(--gray); line-height:1.65;">15 AI-specific components — MessageBubble, ChatInput, StreamingText, AgentStatus, ActionPlan, StreamOfThought, DisclosureBadge, and more. Grounded in The Shape of AI and AI UX Patterns libraries.</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:16px 18px; vertical-align:top; font-weight:600; color:var(--black); line-height:1.5;">Foundation documentation</td>
+                <td style="padding:16px 18px; vertical-align:top; color:var(--gray); line-height:1.65;">Colour, typography, spacing, shape, elevation, and motion all have dedicated Storybook pages showing every available token with resolved values and usage guidance.</td>
+              </tr>
+              <tr>
+                <td style="padding:16px 18px; vertical-align:top; font-weight:600; color:var(--black); line-height:1.5;">Token audit tooling</td>
+                <td style="padding:16px 18px; vertical-align:top; color:var(--gray); line-height:1.65;">A zero-errors-before-commit rule enforced by a custom audit script. No hardcoded values anywhere in the component library.</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
 
@@ -1927,9 +1980,34 @@
             </ul>
           </div>
         </div>
-        <!-- IMAGE: Taste profile / design principles visual -->
-        <div class="cs-img-block placeholder" style="margin-top:24px;">
-          <p class="cs-img-placeholder-label">Image — Taste profile / design principles</p>
+        <!-- Taste profile → design decisions table -->
+        <div style="margin-top:32px; border:1px solid var(--border); border-radius:12px; overflow:hidden;">
+          <table style="width:100%; border-collapse:collapse; font-size:13px; line-height:1.6;">
+            <thead>
+              <tr style="background:var(--light);">
+                <th style="padding:12px 18px; text-align:left; font-size:11px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--gray); width:36%; border-bottom:1px solid var(--border);">Brief said</th>
+                <th style="padding:12px 18px; text-align:left; font-size:11px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--gray); border-bottom:1px solid var(--border);">System did</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:16px 18px; vertical-align:top; color:var(--gray); font-style:italic; line-height:1.55;">"Restraint over abundance — one accent colour, generous whitespace, let the data speak."</td>
+                <td style="padding:16px 18px; vertical-align:top; line-height:1.65;">A single brand colour is reserved for primary actions and active states only. Everything else stays neutral. Spacing tokens enforce breathing room at every level so the interface never feels packed.</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border); background:var(--light);">
+                <td style="padding:16px 18px; vertical-align:top; color:var(--gray); font-style:italic; line-height:1.55;">"Warm neutrals, never pure grey. Trustworthy, not hospital."</td>
+                <td style="padding:16px 18px; vertical-align:top; line-height:1.65;">Every background and border token has a warm stone undertone baked in. The system has no pure, lifeless greys anywhere in the palette — warmth is a constraint, not a choice made screen by screen.</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:16px 18px; vertical-align:top; color:var(--gray); font-style:italic; line-height:1.55;">"Earned emphasis — if everything shouts, nothing is heard."</td>
+                <td style="padding:16px 18px; vertical-align:top; line-height:1.65;">Feedback colours are scoped to semantic tokens and only surface when there is something real to communicate. A token audit runs before every commit, making accidental emphasis impossible to ship.</td>
+              </tr>
+              <tr>
+                <td style="padding:16px 18px; vertical-align:top; color:var(--gray); font-style:italic; line-height:1.55;">"Craft at the detail level — the polish is in details people feel but don't consciously notice."</td>
+                <td style="padding:16px 18px; vertical-align:top; line-height:1.65;">Shadows are built as a two-layer system so elevation feels natural rather than decorative. Borders are translucent, not solid. Radius is a six-step scale referenced by every component, never set arbitrarily.</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
 
@@ -1944,6 +2022,45 @@
           <p>A key rule was established early: product code never references base tokens directly. All implementation flows through the semantic and component layers — ensuring consistency, maintainability, and effortless themeability.</p>
           <p>As the system matured, the naming convention was refined to a structured format: <code>--component-{name}-{tier}-{property}-{state}</code>. With predictable patterns, both humans and AI tools can identify the correct token without ambiguity.</p>
         </div>
+        <!-- Token Architecture 3-tier card -->
+        <div style="margin-top:24px; background:var(--light); border:1px solid var(--border); border-radius:12px; padding:28px 28px;">
+
+          <div style="display:flex; align-items:flex-start; gap:20px;">
+            <div style="flex-shrink:0; width:120px;">
+              <div style="border:1px solid var(--border); border-radius:8px; padding:10px 14px; background:var(--white); text-align:center;">
+                <div style="font-size:13px; font-weight:600; color:var(--black);">Base</div>
+                <div style="font-size:11px; color:var(--gray); margin-top:3px;">140 tokens</div>
+              </div>
+            </div>
+            <div style="padding-top:8px; font-size:13px; color:var(--gray); line-height:1.65;">Raw primitive values — hex colours, pixel dimensions. Brand-agnostic. Never used directly in components.</div>
+          </div>
+
+          <div style="margin-left:60px; width:1px; height:22px; background:var(--border);"></div>
+
+          <div style="display:flex; align-items:flex-start; gap:20px;">
+            <div style="flex-shrink:0; width:120px;">
+              <div style="border:1px solid #9194eb; border-radius:8px; padding:10px 14px; background:#e8eaff; text-align:center;">
+                <div style="font-size:13px; font-weight:600; color:#1c21dc;">Alias</div>
+                <div style="font-size:11px; color:#6e71e6; margin-top:3px;">172 tokens</div>
+              </div>
+            </div>
+            <div style="padding-top:8px; font-size:13px; color:var(--gray); line-height:1.65;">Semantic roles — <code style="font-size:11.5px; background:rgba(0,0,0,0.06); padding:1px 5px; border-radius:3px;">background-brand</code>, <code style="font-size:11.5px; background:rgba(0,0,0,0.06); padding:1px 5px; border-radius:3px;">spacing-padding-md</code>. The layer designers and engineers use day-to-day.</div>
+          </div>
+
+          <div style="margin-left:60px; width:1px; height:22px; background:var(--border);"></div>
+
+          <div style="display:flex; align-items:flex-start; gap:20px;">
+            <div style="flex-shrink:0; width:120px;">
+              <div style="border:1px solid var(--border); border-radius:8px; padding:10px 14px; background:var(--white); text-align:center;">
+                <div style="font-size:13px; font-weight:600; color:var(--black);">Component</div>
+                <div style="font-size:11px; color:var(--gray); margin-top:3px;">1,039 tokens</div>
+              </div>
+            </div>
+            <div style="padding-top:8px; font-size:13px; color:var(--gray); line-height:1.65;">Implementation-specific slots. Enables brand overrides and theming without touching component code.</div>
+          </div>
+
+        </div>
+
         <!-- Interactive token chain -->
         <div style="margin-top:24px; border:1px solid var(--border); border-radius:12px; overflow:hidden;">
           <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Inter',sans-serif;background:#fff;padding:24px 20px 32px;color:#111;max-width:100%;">
@@ -2201,6 +2318,8 @@
             </ul>
           </div>
         </div>
+
+
       </div>
 
       <!-- Phase 3 — Component Library -->
@@ -2243,9 +2362,56 @@
             </ul>
           </div>
         </div>
-        <!-- IMAGE: Sample components — states / variants -->
-        <div class="cs-img-block placeholder" style="margin-top:24px;">
-          <p class="cs-img-placeholder-label">Image — Component states / variants sample</p>
+        <!-- Component page anatomy -->
+        <div style="margin-top:32px; border:1px solid var(--border); border-radius:12px; overflow:hidden;">
+          <div style="padding:14px 20px; background:var(--light); border-bottom:1px solid var(--border);">
+            <p style="font-size:11px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--gray); margin:0;">Component page anatomy</p>
+            <p style="font-size:12px; color:var(--gray); margin:4px 0 0; line-height:1.5;">Every component doc page follows this structure, in this order. All sections are consistent across all 48 components.</p>
+          </div>
+          <table style="width:100%; border-collapse:collapse;">
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:16px 0 16px 18px; width:40px; vertical-align:middle; font-size:11px; font-weight:700; color:var(--gray); opacity:0.5; white-space:nowrap;">01</td>
+                <td style="padding:16px 14px; width:160px; vertical-align:middle; border-left:1px solid var(--border); font-size:13px; font-weight:600; color:var(--black);">H1 — Component name</td>
+                <td style="padding:16px 18px; vertical-align:middle; border-left:1px solid var(--border); font-size:13px; color:var(--gray); line-height:1.65;">One line. Matches the import exactly — no tagline, no ambiguity between doc and code.<br><code style="display:inline-block; margin-top:6px; font-size:11.5px; background:rgba(0,0,0,0.05); padding:2px 7px; border-radius:4px; color:var(--accent);">MessageBubble</code></td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:16px 0 16px 18px; vertical-align:middle; font-size:11px; font-weight:700; color:var(--gray); opacity:0.5;">02</td>
+                <td style="padding:16px 14px; vertical-align:middle; border-left:1px solid var(--border); font-size:13px; font-weight:600; color:var(--black);">Live canvas</td>
+                <td style="padding:16px 18px; vertical-align:middle; border-left:1px solid var(--border); font-size:13px; color:var(--gray); line-height:1.65;">Rendered Canvas showing the canonical "all variants" story. Gives the reader an immediate visual reference before reading anything.</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:16px 0 16px 18px; vertical-align:middle; font-size:11px; font-weight:700; color:var(--gray); opacity:0.5;">03</td>
+                <td style="padding:16px 14px; vertical-align:middle; border-left:1px solid var(--border); font-size:13px; font-weight:600; color:var(--black);">Description</td>
+                <td style="padding:16px 18px; vertical-align:middle; border-left:1px solid var(--border); font-size:13px; color:var(--gray); line-height:1.65;">2–3 sentences. What the component is, what it renders, what the consumer's responsibility is. Written for engineers, not designers. Plain prose, no bullets.</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:16px 0 16px 18px; vertical-align:middle; font-size:11px; font-weight:700; color:var(--gray); opacity:0.5;">04</td>
+                <td style="padding:16px 14px; vertical-align:middle; border-left:1px solid var(--border); font-size:13px; font-weight:600; color:var(--black);">Variants</td>
+                <td style="padding:16px 18px; vertical-align:middle; border-left:1px solid var(--border); font-size:13px; color:var(--gray); line-height:1.65;">One paragraph per variant. Name in bold, role described, visual distinction explained.<br><span style="display:inline-flex; gap:6px; flex-wrap:wrap; margin-top:8px;"><code style="font-size:11px; background:rgba(0,0,0,0.05); padding:2px 7px; border-radius:4px;">assistant</code><code style="font-size:11px; background:rgba(0,0,0,0.05); padding:2px 7px; border-radius:4px;">user</code><code style="font-size:11px; background:rgba(0,0,0,0.05); padding:2px 7px; border-radius:4px;">system</code></span></td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:16px 0 16px 18px; vertical-align:middle; font-size:11px; font-weight:700; color:var(--gray); opacity:0.5;">05</td>
+                <td style="padding:16px 14px; vertical-align:middle; border-left:1px solid var(--border); font-size:13px; font-weight:600; color:var(--black);">States</td>
+                <td style="padding:16px 18px; vertical-align:middle; border-left:1px solid var(--border); font-size:13px; color:var(--gray); line-height:1.65;">Each non-default state gets its own live canvas and a 1–2 line explanation covering what triggers it and what changes visually.<br><span style="display:inline-flex; gap:6px; flex-wrap:wrap; margin-top:8px;"><code style="font-size:11px; background:rgba(0,0,0,0.05); padding:2px 7px; border-radius:4px;">streaming</code><code style="font-size:11px; background:rgba(0,0,0,0.05); padding:2px 7px; border-radius:4px;">error</code><code style="font-size:11px; background:rgba(0,0,0,0.05); padding:2px 7px; border-radius:4px;">edited</code><code style="font-size:11px; background:rgba(0,0,0,0.05); padding:2px 7px; border-radius:4px;">loading</code></span></td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:16px 0 16px 18px; vertical-align:middle; font-size:11px; font-weight:700; color:var(--gray); opacity:0.5;">06</td>
+                <td style="padding:16px 14px; vertical-align:middle; border-left:1px solid var(--border); font-size:13px; font-weight:600; color:var(--black);">Composition</td>
+                <td style="padding:16px 18px; vertical-align:middle; border-left:1px solid var(--border); font-size:13px; color:var(--gray); line-height:1.65;">What the component renders internally, which props wire external dependencies, and what the consumer owns. Prevents surprises during implementation.</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border); background:#fdf8f8;">
+                <td style="padding:16px 0 16px 18px; vertical-align:middle; font-size:11px; font-weight:700; color:var(--accent);">07</td>
+                <td style="padding:16px 14px; vertical-align:middle; border-left:1px solid var(--border); font-size:13px; font-weight:600; color:var(--black);">Accessibility <span style="display:inline-block; margin-left:6px; font-size:10px; font-weight:700; background:#fdecea; color:#c0392b; padding:1px 6px; border-radius:3px; letter-spacing:0.04em; text-transform:uppercase; vertical-align:middle;">mandatory</span></td>
+                <td style="padding:16px 18px; vertical-align:middle; border-left:1px solid var(--border); font-size:13px; color:var(--gray); line-height:1.65;">Required ARIA roles, keyboard behaviour, screen reader announcements, and developer responsibilities. This section exists on every component without exception.</td>
+              </tr>
+              <tr>
+                <td style="padding:16px 0 16px 18px; vertical-align:middle; font-size:11px; font-weight:700; color:var(--gray); opacity:0.5;">08</td>
+                <td style="padding:16px 14px; vertical-align:middle; border-left:1px solid var(--border); font-size:13px; font-weight:600; color:var(--black);">Playground</td>
+                <td style="padding:16px 18px; vertical-align:middle; border-left:1px solid var(--border); font-size:13px; color:var(--gray); line-height:1.65;">Interactive Controls panel wired to the Playground story. Lets the reader adjust props and see the component respond without leaving the doc page.</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
 
@@ -2310,10 +2476,14 @@
             document.getElementById('cs-lightbox-img').alt = alt;
             lb.style.display = 'flex';
             document.body.style.overflow = 'hidden';
+            lb._trigger = document.activeElement;
+            lb.querySelector('button').focus();
           }
           function closeLightbox() {
-            document.getElementById('cs-lightbox').style.display = 'none';
+            const lb = document.getElementById('cs-lightbox');
+            lb.style.display = 'none';
             document.body.style.overflow = '';
+            if (lb._trigger) lb._trigger.focus();
           }
           document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
         </script>
@@ -2355,6 +2525,7 @@
           </div>
           <p class="cs-img-caption" style="margin-top:10px; font-size:13px; color:var(--text-secondary); text-align:center;">Storybook Foundation overview — 1,351 tokens across Colour, Typography, Spacing, Shape, Elevation and Motion</p>
         </div>
+
       </div>
 
       <!-- Phase 6 — Governance -->
@@ -2408,18 +2579,14 @@
             </ul>
           </div>
         </div>
-        <!-- IMAGE: Storybook sidebar / live site screenshot -->
-        <div class="cs-img-block placeholder" style="margin-top:24px;">
-          <p class="cs-img-placeholder-label">Image — Storybook component page / thematic.design live</p>
-        </div>
       </div>
 
       <!-- Conclusion -->
       <div class="cs-conclusion">
         <p>Thematic began as an experiment in creating a more structured design system. It became something broader: a design language. By combining a principled visual foundation, a scalable token architecture, a comprehensive component library, multi-brand support, thorough documentation, and automated governance, the system provides a shared framework that can be understood by designers, developers, and increasingly, AI tools. The result is not simply a collection of components — it is a system designed to make decisions predictable, scalable, and understandable regardless of whether the next contributor is a person or a machine.</p>
-        <a class="cs-figma-link" href="https://thematic.design" target="_blank" rel="noopener">
-          View live at thematic.design ↗
-        </a>
+        <button class="cs-figma-link" onclick="copyEmailDemo()">
+          Request demo ↗
+        </button>
       </div>
 
     </div><!-- /cs-wrap -->
@@ -2852,7 +3019,7 @@
         <div class="cs-tags">
           <span class="cs-tag">Facility Management</span>
           <span class="cs-tag">Product Design + Build</span>
-          <span class="cs-tag">2024</span>
+          <span class="cs-tag">2026</span>
         </div>
         <h1 class="cs-title">Attendance Management System</h1>
         <p class="cs-subtitle">A web-based attendance platform that consolidates employee setup, shift &amp; leave management, daily marking, conflict detection, and monthly roster planning into one coherent tool — designed, built, and deployed end to end.</p>
@@ -3140,25 +3307,45 @@
 
     // ── FLOW ZOOM ──
     function openFlowZoom(img) {
+      const lb = document.getElementById('flowLightbox');
       document.getElementById('flowLightboxImg').src = img.src;
       document.getElementById('flowLightboxImg').alt = img.alt;
-      document.getElementById('flowLightbox').classList.add('open');
+      lb.classList.add('open');
+      lb._trigger = document.activeElement;
+      const closeBtn = lb.querySelector('.flow-lightbox-close');
+      if (closeBtn) closeBtn.focus();
     }
     function closeFlowZoom(e) {
-      if (e.target === document.getElementById('flowLightbox')) {
-        document.getElementById('flowLightbox').classList.remove('open');
+      const lb = document.getElementById('flowLightbox');
+      if (e.target === lb) {
+        lb.classList.remove('open');
+        if (lb._trigger) lb._trigger.focus();
       }
     }
     document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') document.getElementById('flowLightbox').classList.remove('open');
+      if (e.key === 'Escape') {
+        const lb = document.getElementById('flowLightbox');
+        lb.classList.remove('open');
+        if (lb._trigger) lb._trigger.focus();
+      }
     });
 
     // ── COPY EMAIL ──
     function copyEmail() {
       navigator.clipboard.writeText('varsha.ab@gmail.com').then(() => {
         const toast = document.getElementById('toast');
+        toast.textContent = 'Email copied to clipboard';
         toast.classList.add('show');
         setTimeout(() => toast.classList.remove('show'), 2500);
+      });
+    }
+
+    function copyEmailDemo() {
+      navigator.clipboard.writeText('varsha.ab@gmail.com').then(() => {
+        const toast = document.getElementById('toast');
+        toast.textContent = 'Email copied — drop a line to request a demo';
+        toast.classList.add('show');
+        setTimeout(() => { toast.classList.remove('show'); toast.textContent = 'Email copied to clipboard'; }, 3000);
       });
     }
 
@@ -3226,18 +3413,6 @@
       carousel.scrollLeft = tScrollLeft - (e.touches[0].pageX - carousel.offsetLeft - tStartX) * 1.4;
     }, { passive: true });
 
-    // ── DARK MODE ──
-    function toggleDark() {
-      const isDark = document.body.classList.toggle('dark');
-      document.getElementById('themeBtn').textContent = isDark ? '☀︎ Light' : '☽ Dark';
-      localStorage.setItem('theme', isDark ? 'dark' : 'light');
-    }
-
-    // restore preference
-    if (localStorage.getItem('theme') === 'dark') {
-      document.body.classList.add('dark');
-      document.getElementById('themeBtn').textContent = '☀︎ Light';
-    }
 
     // ── FILTER TABS ──
     document.querySelectorAll('.filter-tabs .tab').forEach(tab => {
