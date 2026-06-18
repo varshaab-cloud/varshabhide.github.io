@@ -1874,6 +1874,63 @@
         <p class="cs-screen-label" style="text-align:center; margin-top:12px;">Click through the prototype above — Coverage prediction · Enrollment · Prior authorization · Benefit verification</p>
       </div>
 
+      <!-- Design Decisions -->
+      <div class="cs-section">
+        <p class="cs-section-label">Design Decisions</p>
+        <h2 class="cs-h2">Six principles that shaped the experience</h2>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:28px;">
+
+          <div style="border:1px solid var(--border); border-radius:10px; padding:20px;">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
+              <p style="font-size:13px; font-weight:700; color:var(--black); margin:0;">Confirmations</p>
+              <span style="font-size:10px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:var(--gray); background:var(--light); border:1px solid var(--border); padding:2px 8px; border-radius:4px;">Application flow</span>
+            </div>
+            <p style="font-size:13px; line-height:1.7; color:var(--gray); margin:0;">Each completed section surfaces a summary before the user moves on. The application never advances silently — the HCP always sees what was captured and can correct it before proceeding.</p>
+          </div>
+
+          <div style="border:1px solid var(--border); border-radius:10px; padding:20px;">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
+              <p style="font-size:13px; font-weight:700; color:var(--black); margin:0;">Human-like guidance</p>
+              <span style="font-size:10px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:var(--gray); background:var(--light); border:1px solid var(--border); padding:2px 8px; border-radius:4px;">Question prompts</span>
+            </div>
+            <p style="font-size:13px; line-height:1.7; color:var(--gray); margin:0;">Contextual prompts appear when a question is left unanswered or an answer is inconsistent. Rather than showing a generic error, the system explains what it needs and why — the way a knowledgeable colleague would.</p>
+          </div>
+
+          <div style="border:1px solid var(--border); border-radius:10px; padding:20px;">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
+              <p style="font-size:13px; font-weight:700; color:var(--black); margin:0;">Visible trust markers</p>
+              <span style="font-size:10px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:var(--gray); background:var(--light); border:1px solid var(--border); padding:2px 8px; border-radius:4px;">Benefit report</span>
+            </div>
+            <p style="font-size:13px; line-height:1.7; color:var(--gray); margin:0;">Coverage prediction and prior authorisation status are shown proactively — not hidden behind a final submit. HCPs can see the likely outcome before they finish, making the decision to continue or correct feel informed, not a leap of faith.</p>
+          </div>
+
+          <div style="border:1px solid var(--border); border-radius:10px; padding:20px;">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
+              <p style="font-size:13px; font-weight:700; color:var(--black); margin:0;">Assisted flows</p>
+              <span style="font-size:10px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:var(--gray); background:var(--light); border:1px solid var(--border); padding:2px 8px; border-radius:4px;">Sections · Delegation</span>
+            </div>
+            <p style="font-size:13px; line-height:1.7; color:var(--gray); margin:0;">The application is broken into bite-size sections so the HCP is never confronted with the full document at once. A delegation option lets a second person take over mid-application — no progress is lost, no duplication required.</p>
+          </div>
+
+          <div style="border:1px solid var(--border); border-radius:10px; padding:20px;">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
+              <p style="font-size:13px; font-weight:700; color:var(--black); margin:0;">Easy reversibility</p>
+              <span style="font-size:10px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:var(--gray); background:var(--light); border:1px solid var(--border); padding:2px 8px; border-radius:4px;">Navigation · Save</span>
+            </div>
+            <p style="font-size:13px; line-height:1.7; color:var(--gray); margin:0;">Users can return to any previous section without losing what they entered. Mandatory fields are flagged inline as you go — not in a batch error at the end — so corrections are small and local, not a full restart.</p>
+          </div>
+
+          <div style="border:1px solid var(--border); border-radius:10px; padding:20px;">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
+              <p style="font-size:13px; font-weight:700; color:var(--black); margin:0;">Language that reduces fear</p>
+              <span style="font-size:10px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:var(--gray); background:var(--light); border:1px solid var(--border); padding:2px 8px; border-radius:4px;">Microcopy</span>
+            </div>
+            <p style="font-size:13px; line-height:1.7; color:var(--gray); margin:0;">Insurance and eligibility terminology is replaced with plain-language equivalents throughout. Error messages say what is needed, not what went wrong. Every label, prompt, and status is written to inform — not to intimidate.</p>
+          </div>
+
+        </div>
+      </div>
+
       <!-- Conclusion -->
       <div class="cs-conclusion">
         <p>This project involved designing an end-to-end healthcare web application that simplified a complex insurance eligibility process for both Healthcare Providers and patients — reducing friction, improving acceptance rates, and enabling guided, personalised workflows.</p>
