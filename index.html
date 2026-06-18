@@ -3376,101 +3376,95 @@
         <p class="cs-body">The Attendance Management System addresses this with a guided tooltip tour that runs automatically on a manager's first visit to the application. It walks through the seven areas they'll return to every day — in the order they're meant to be set up — so the product itself does the onboarding.</p>
 
         <style>
-          .tour-wrap { margin-top: 32px; background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 28px 28px 20px; }
-          .tour-guide-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray); margin: 0 0 18px; }
-          .tour-welcome { border: 1.5px solid var(--black); border-radius: 10px; padding: 20px 22px; margin-bottom: 28px; }
-          .tour-welcome-eyebrow { font-size: 10.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray); margin: 0 0 8px; }
-          .tour-welcome-title { font-size: 17px; font-weight: 700; color: var(--black); margin: 0 0 8px; }
-          .tour-welcome-body { font-size: 13px; line-height: 1.6; color: var(--gray); margin: 0 0 16px; }
-          .tour-welcome-actions { display: flex; gap: 10px; align-items: center; }
-          .tour-btn-primary { font-size: 12.5px; font-weight: 700; background: var(--black); color: #fff; border: none; border-radius: 6px; padding: 8px 18px; cursor: default; }
-          .tour-btn-ghost { font-size: 12.5px; font-weight: 500; background: transparent; color: var(--black); border: 1.5px solid var(--border); border-radius: 6px; padding: 8px 18px; cursor: default; }
-          .tour-timeline { position: relative; padding-left: 28px; }
-          .tour-timeline::before { content: ''; position: absolute; left: 13px; top: 0; bottom: 0; width: 1px; background: var(--border); }
-          .tour-stop { position: relative; margin-bottom: 22px; display: flex; gap: 20px; align-items: flex-start; }
-          .tour-stop:last-child { margin-bottom: 0; }
-          .tour-num { width: 26px; height: 26px; border-radius: 50%; border: 1.5px solid var(--border); background: var(--white); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: var(--black); flex-shrink: 0; position: absolute; left: -28px; top: 0; z-index: 1; }
-          .tour-stop-content { padding-top: 2px; }
-          .tour-stop-tag { font-size: 9.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray); background: var(--light); border: 1px solid var(--border); border-radius: 4px; padding: 1.5px 7px; display: inline-block; margin-bottom: 5px; }
-          .tour-stop-title { font-size: 13.5px; font-weight: 700; color: var(--black); margin: 0 0 4px; }
-          .tour-stop-body { font-size: 12.5px; line-height: 1.6; color: var(--gray); margin: 0; }
-          .tour-complete { background: var(--black); border-radius: 8px; padding: 14px 18px; margin-top: 28px; }
-          .tour-complete-title { font-size: 13px; font-weight: 700; color: #fff; margin: 0 0 4px; }
-          .tour-complete-body { font-size: 12.5px; line-height: 1.55; color: rgba(255,255,255,0.65); margin: 0; }
+          .tour-wrap { margin-top: 28px; background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 22px 22px 18px; }
+          .tour-guide-label { font-size: 10.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray); margin: 0 0 14px; }
+          .tour-welcome { border: 1.5px solid var(--black); border-radius: 8px; padding: 14px 16px; margin-bottom: 18px; display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+          .tour-welcome-text { flex: 1; min-width: 200px; }
+          .tour-welcome-eyebrow { font-size: 9.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray); margin: 0 0 4px; }
+          .tour-welcome-title { font-size: 14px; font-weight: 700; color: var(--black); margin: 0 0 4px; }
+          .tour-welcome-body { font-size: 12px; line-height: 1.55; color: var(--gray); margin: 0; }
+          .tour-welcome-actions { display: flex; gap: 8px; align-items: center; flex-shrink: 0; }
+          .tour-btn-primary { font-size: 11.5px; font-weight: 700; background: var(--black); color: #fff; border: none; border-radius: 5px; padding: 6px 14px; cursor: default; }
+          .tour-btn-ghost { font-size: 11.5px; font-weight: 500; background: transparent; color: var(--black); border: 1.5px solid var(--border); border-radius: 5px; padding: 6px 14px; cursor: default; }
+          .tour-stops-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+          .tour-stop { display: flex; gap: 10px; align-items: flex-start; padding: 10px 12px; border: 1px solid var(--border); border-radius: 7px; }
+          .tour-num { width: 20px; height: 20px; border-radius: 50%; border: 1.5px solid var(--border); background: var(--white); display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; color: var(--black); flex-shrink: 0; margin-top: 1px; }
+          .tour-stop-content { }
+          .tour-stop-tag { font-size: 9px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--gray); display: block; margin-bottom: 2px; }
+          .tour-stop-title { font-size: 12px; font-weight: 700; color: var(--black); margin: 0 0 2px; }
+          .tour-stop-body { font-size: 11.5px; line-height: 1.55; color: var(--gray); margin: 0; }
+          .tour-complete { background: var(--black); border-radius: 7px; padding: 11px 14px; margin-top: 10px; }
+          .tour-complete-title { font-size: 12px; font-weight: 700; color: #fff; margin: 0 0 3px; }
+          .tour-complete-body { font-size: 11.5px; line-height: 1.5; color: rgba(255,255,255,0.6); margin: 0; }
         </style>
 
         <div class="tour-wrap">
           <p class="tour-guide-label">Guided Tour — 7 stops</p>
 
-          <!-- Welcome modal -->
+          <!-- Welcome modal (compact horizontal) -->
           <div class="tour-welcome">
-            <p class="tour-welcome-eyebrow">Stop 0 · Welcome Modal</p>
-            <p class="tour-welcome-title">Welcome to Safehalo Attendance</p>
-            <p class="tour-welcome-body">Manage your team's attendance, leaves, and roster — all in one place. We'll walk you through the key areas in under a minute.</p>
+            <div class="tour-welcome-text">
+              <p class="tour-welcome-eyebrow">Stop 0 · Welcome Modal</p>
+              <p class="tour-welcome-title">Welcome to Attendance Management System</p>
+              <p class="tour-welcome-body">Manage your team's attendance, leaves, and roster — all in one place.</p>
+            </div>
             <div class="tour-welcome-actions">
               <button class="tour-btn-primary">Take the tour</button>
               <button class="tour-btn-ghost">Skip</button>
             </div>
           </div>
 
-          <!-- Timeline -->
-          <div class="tour-timeline">
-
+          <!-- Stops grid — 2 cols -->
+          <div class="tour-stops-grid">
             <div class="tour-stop">
               <div class="tour-num">1</div>
               <div class="tour-stop-content">
                 <span class="tour-stop-tag">Sidebar</span>
                 <p class="tour-stop-title">Navigation</p>
-                <p class="tour-stop-body">Everything you need is in the sidebar. Start with setup — Departments, Shifts, Branches — then move to your team and daily operations.</p>
+                <p class="tour-stop-body">Start with setup — Departments, Shifts, Branches — then move to daily operations.</p>
               </div>
             </div>
-
             <div class="tour-stop">
               <div class="tour-num">2</div>
               <div class="tour-stop-content">
                 <span class="tour-stop-tag">Dashboard</span>
                 <p class="tour-stop-title">Your daily command centre</p>
-                <p class="tour-stop-body">Today's highlights, attendance KPIs, and quick actions all in one view. Come here first every morning.</p>
+                <p class="tour-stop-body">Today's highlights, KPIs, and quick actions. Come here first every morning.</p>
               </div>
             </div>
-
             <div class="tour-stop">
               <div class="tour-num">3</div>
               <div class="tour-stop-content">
                 <span class="tour-stop-tag">Departments &amp; Roles</span>
                 <p class="tour-stop-title">Set up your org structure</p>
-                <p class="tour-stop-body">Create your departments and roles first — employees can't be assigned without them.</p>
+                <p class="tour-stop-body">Create departments and roles first — employees can't be assigned without them.</p>
               </div>
             </div>
-
             <div class="tour-stop">
               <div class="tour-num">4</div>
               <div class="tour-stop-content">
                 <span class="tour-stop-tag">Employees</span>
                 <p class="tour-stop-title">Add your team</p>
-                <p class="tour-stop-body">Use the 3-step Add Employee flow. After saving, you'll be prompted to set their weekly off in Roster.</p>
+                <p class="tour-stop-body">3-step Add Employee flow. After saving, you'll be prompted to set their weekly off.</p>
               </div>
             </div>
-
             <div class="tour-stop">
               <div class="tour-num">5</div>
               <div class="tour-stop-content">
                 <span class="tour-stop-tag">Roster</span>
                 <p class="tour-stop-title">Set weekly offs</p>
-                <p class="tour-stop-body">Assign each employee's weekly off day. This locks those days from attendance marking and prevents kiosk errors.</p>
+                <p class="tour-stop-body">Assign each employee's weekly off. Locks those days from marking and prevents kiosk errors.</p>
               </div>
             </div>
-
             <div class="tour-stop">
               <div class="tour-num">6</div>
               <div class="tour-stop-content">
                 <span class="tour-stop-tag">Attendance</span>
                 <p class="tour-stop-title">Mark daily attendance</p>
-                <p class="tour-stop-body">Employees are grouped by department. Mark status, correct check-in times, and resolve conflicts — all from this page.</p>
+                <p class="tour-stop-body">Employees grouped by department. Mark status, correct times, resolve conflicts — all here.</p>
               </div>
             </div>
-
-            <div class="tour-stop">
+            <div class="tour-stop" style="grid-column: 1 / -1;">
               <div class="tour-num">7</div>
               <div class="tour-stop-content">
                 <span class="tour-stop-tag">Leave and Time Off</span>
@@ -3478,8 +3472,7 @@
                 <p class="tour-stop-body">Raise and approve leave requests here. Approved leaves automatically update the attendance record — no double entry.</p>
               </div>
             </div>
-
-          </div><!-- /tour-timeline -->
+          </div><!-- /tour-stops-grid -->
 
           <div class="tour-complete">
             <p class="tour-complete-title">Tour complete</p>
@@ -3487,6 +3480,11 @@
           </div>
 
         </div><!-- /tour-wrap -->
+
+        <div class="cs-img-block" style="margin-top:28px;">
+          <img src="am-onboarding.png" alt="Attendance Management System — welcome modal and guided tooltip tour in context">
+        </div>
+        <p class="cs-img-caption">First-run guided tour — welcome modal (left) and step 1 tooltip anchored to the sidebar (right)</p>
       </div><!-- /first-run onboarding -->
 
       <!-- Employees -->
