@@ -2018,6 +2018,45 @@
           <p>A key rule was established early: product code never references base tokens directly. All implementation flows through the semantic and component layers — ensuring consistency, maintainability, and effortless themeability.</p>
           <p>As the system matured, the naming convention was refined to a structured format: <code>--component-{name}-{tier}-{property}-{state}</code>. With predictable patterns, both humans and AI tools can identify the correct token without ambiguity.</p>
         </div>
+        <!-- Token Architecture 3-tier card -->
+        <div style="margin-top:24px; background:var(--light); border:1px solid var(--border); border-radius:12px; padding:28px 28px;">
+
+          <div style="display:flex; align-items:flex-start; gap:20px;">
+            <div style="flex-shrink:0; width:120px;">
+              <div style="border:1px solid var(--border); border-radius:8px; padding:10px 14px; background:var(--white); text-align:center;">
+                <div style="font-size:13px; font-weight:600; color:var(--black);">Base</div>
+                <div style="font-size:11px; color:var(--gray); margin-top:3px;">140 tokens</div>
+              </div>
+            </div>
+            <div style="padding-top:8px; font-size:13px; color:var(--gray); line-height:1.65;">Raw primitive values — hex colours, pixel dimensions. Brand-agnostic. Never used directly in components.</div>
+          </div>
+
+          <div style="margin-left:60px; width:1px; height:22px; background:var(--border);"></div>
+
+          <div style="display:flex; align-items:flex-start; gap:20px;">
+            <div style="flex-shrink:0; width:120px;">
+              <div style="border:1px solid #9194eb; border-radius:8px; padding:10px 14px; background:#e8eaff; text-align:center;">
+                <div style="font-size:13px; font-weight:600; color:#1c21dc;">Alias</div>
+                <div style="font-size:11px; color:#6e71e6; margin-top:3px;">172 tokens</div>
+              </div>
+            </div>
+            <div style="padding-top:8px; font-size:13px; color:var(--gray); line-height:1.65;">Semantic roles — <code style="font-size:11.5px; background:rgba(0,0,0,0.06); padding:1px 5px; border-radius:3px;">background-brand</code>, <code style="font-size:11.5px; background:rgba(0,0,0,0.06); padding:1px 5px; border-radius:3px;">spacing-padding-md</code>. The layer designers and engineers use day-to-day.</div>
+          </div>
+
+          <div style="margin-left:60px; width:1px; height:22px; background:var(--border);"></div>
+
+          <div style="display:flex; align-items:flex-start; gap:20px;">
+            <div style="flex-shrink:0; width:120px;">
+              <div style="border:1px solid var(--border); border-radius:8px; padding:10px 14px; background:var(--white); text-align:center;">
+                <div style="font-size:13px; font-weight:600; color:var(--black);">Component</div>
+                <div style="font-size:11px; color:var(--gray); margin-top:3px;">1,039 tokens</div>
+              </div>
+            </div>
+            <div style="padding-top:8px; font-size:13px; color:var(--gray); line-height:1.65;">Implementation-specific slots. Enables brand overrides and theming without touching component code.</div>
+          </div>
+
+        </div>
+
         <!-- Interactive token chain -->
         <div style="margin-top:24px; border:1px solid var(--border); border-radius:12px; overflow:hidden;">
           <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Inter',sans-serif;background:#fff;padding:24px 20px 32px;color:#111;max-width:100%;">
@@ -2276,44 +2315,6 @@
           </div>
         </div>
 
-        <!-- Token Architecture 3-tier card -->
-        <div style="margin-top:32px; background:var(--light); border:1px solid var(--border); border-radius:12px; padding:28px 28px;">
-
-          <div style="display:flex; align-items:flex-start; gap:20px;">
-            <div style="flex-shrink:0; width:120px;">
-              <div style="border:1px solid var(--border); border-radius:8px; padding:10px 14px; background:var(--white); text-align:center;">
-                <div style="font-size:13px; font-weight:600; color:var(--black);">Base</div>
-                <div style="font-size:11px; color:var(--gray); margin-top:3px;">140 tokens</div>
-              </div>
-            </div>
-            <div style="padding-top:8px; font-size:13px; color:var(--gray); line-height:1.65;">Raw primitive values — hex colours, pixel dimensions. Brand-agnostic. Never used directly in components.</div>
-          </div>
-
-          <div style="margin-left:60px; width:1px; height:22px; background:var(--border);"></div>
-
-          <div style="display:flex; align-items:flex-start; gap:20px;">
-            <div style="flex-shrink:0; width:120px;">
-              <div style="border:1px solid #9194eb; border-radius:8px; padding:10px 14px; background:#e8eaff; text-align:center;">
-                <div style="font-size:13px; font-weight:600; color:#1c21dc;">Alias</div>
-                <div style="font-size:11px; color:#6e71e6; margin-top:3px;">172 tokens</div>
-              </div>
-            </div>
-            <div style="padding-top:8px; font-size:13px; color:var(--gray); line-height:1.65;">Semantic roles — <code style="font-size:11.5px; background:rgba(0,0,0,0.06); padding:1px 5px; border-radius:3px;">background-brand</code>, <code style="font-size:11.5px; background:rgba(0,0,0,0.06); padding:1px 5px; border-radius:3px;">spacing-padding-md</code>. The layer designers and engineers use day-to-day.</div>
-          </div>
-
-          <div style="margin-left:60px; width:1px; height:22px; background:var(--border);"></div>
-
-          <div style="display:flex; align-items:flex-start; gap:20px;">
-            <div style="flex-shrink:0; width:120px;">
-              <div style="border:1px solid var(--border); border-radius:8px; padding:10px 14px; background:var(--white); text-align:center;">
-                <div style="font-size:13px; font-weight:600; color:var(--black);">Component</div>
-                <div style="font-size:11px; color:var(--gray); margin-top:3px;">1,039 tokens</div>
-              </div>
-            </div>
-            <div style="padding-top:8px; font-size:13px; color:var(--gray); line-height:1.65;">Implementation-specific slots. Enables brand overrides and theming without touching component code.</div>
-          </div>
-
-        </div>
 
       </div>
 
