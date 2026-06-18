@@ -3246,21 +3246,12 @@
       <div class="cs-section">
         <p class="cs-section-label">Information Architecture</p>
         <h2 class="cs-h2">Four layers, one direction of flow</h2>
-        <div style="margin-top:20px; display:flex; flex-direction:column; gap:10px;">
-
-          <p style="font-size:14px; line-height:1.75; color:var(--gray); margin:0;">Attendance Management System is organised into four layers that reflect the natural sequence of how a facility management operation is set up and run.</p>
-
-          <p style="font-size:14px; line-height:1.75; color:var(--gray); margin:0;"><span style="font-weight:700; color:var(--black);">Foundation</span> — Contains everything that must exist before the system can be used — departments and roles, shifts, branches, vendors, and employees. These are configuration decisions made once and rarely revisited, but every downstream function depends on them being in place.</p>
-
-          <p style="font-size:14px; line-height:1.75; color:var(--gray); margin:0;"><span style="font-weight:700; color:var(--black);">Planning</span> — Where the monthly roster is built. Shift patterns and weekly offs are assigned here before the month begins, and the roster becomes the reference point that the attendance and leave systems read from.</p>
-
-          <p style="font-size:14px; line-height:1.75; color:var(--gray); margin:0;"><span style="font-weight:700; color:var(--black);">Operations</span> — Where the daily work happens. Attendance and Leave and Time Off are the two most-used sections — marking who is present, resolving gaps, and managing leave requests. These two modules are deliberately separate but linked: a leave approval in one automatically updates a record in the other.</p>
-
-          <p style="font-size:14px; line-height:1.75; color:var(--gray); margin:0;"><span style="font-weight:700; color:var(--black);">Overview</span> — The Dashboard, a read-only surface that aggregates the state of the entire operation into a single view. It does not originate data; it reflects it. Because it sits above all other layers, it can surface problems from any of them in one place.</p>
-
-          <p style="font-size:14px; line-height:1.75; color:var(--gray); margin:0; padding-top:12px; border-top:1px solid var(--border);">The dependency flows downward. Foundation configures Planning. Planning informs Operations. Operations surfaces to Overview. A change at any layer ripples upward — a new employee added in Foundation needs a roster entry in Planning before they can appear correctly in Operations.</p>
-
-        </div>
+        <p class="cs-body">Attendance Management System is organised into four layers that reflect the natural sequence of how a facility management operation is set up and run.</p>
+        <p class="cs-body"><strong>Foundation</strong> — Contains everything that must exist before the system can be used — departments and roles, shifts, branches, vendors, and employees. These are configuration decisions made once and rarely revisited, but every downstream function depends on them being in place.</p>
+        <p class="cs-body"><strong>Planning</strong> — Where the monthly roster is built. Shift patterns and weekly offs are assigned here before the month begins, and the roster becomes the reference point that the attendance and leave systems read from.</p>
+        <p class="cs-body"><strong>Operations</strong> — Where the daily work happens. Attendance and Leave and Time Off are the two most-used sections — marking who is present, resolving gaps, and managing leave requests. These two modules are deliberately separate but linked: a leave approval in one automatically updates a record in the other.</p>
+        <p class="cs-body"><strong>Overview</strong> — The Dashboard, a read-only surface that aggregates the state of the entire operation into a single view. It does not originate data; it reflects it. Because it sits above all other layers, it can surface problems from any of them in one place.</p>
+        <p class="cs-body" style="padding-top:20px; border-top:1px solid var(--border);">The dependency flows downward. Foundation configures Planning. Planning informs Operations. Operations surfaces to Overview. A change at any layer ripples upward — a new employee added in Foundation needs a roster entry in Planning before they can appear correctly in Operations.</p>
 
         <div style="margin-top:28px; font-family:inherit;">
 
@@ -3694,27 +3685,27 @@
 
           <div style="padding:20px 24px; border-bottom:1px solid var(--border);">
             <p style="font-size:15px; font-weight:700; color:var(--black); margin:0 0 8px;">Confirmations</p>
-            <p style="font-size:13px; line-height:1.75; color:var(--gray); margin:0;">Users should always know what will happen before it happens. Consequential actions — saving a record, closing a request, making a change that affects downstream data — are preceded by a moment that surfaces the outcome and asks for intent. Confirmation is not friction; it is the system's way of making sure the person acted deliberately.</p>
+            <p style="font-size:13px; line-height:1.7; color:var(--gray); margin:0;">Users should always know what will happen before it happens. Consequential actions — saving a record, closing a request, making a change that affects downstream data — are preceded by a moment that surfaces the outcome and asks for intent. Confirmation is not friction; it is the system's way of making sure the person acted deliberately.</p>
           </div>
 
           <div style="padding:20px 24px; border-bottom:1px solid var(--border);">
             <p style="font-size:15px; font-weight:700; color:var(--black); margin:0 0 8px;">Human-like guidance</p>
-            <p style="font-size:13px; line-height:1.75; color:var(--gray); margin:0;">Instructions, prompts, and labels should read the way a knowledgeable colleague would speak them. Not system language, not jargon, not passive constructions — plain, direct, second-person guidance that names what to do and why it matters. The closer the language is to how a person would explain something, the less the user has to interpret before acting.</p>
+            <p style="font-size:13px; line-height:1.7; color:var(--gray); margin:0;">Instructions, prompts, and labels should read the way a knowledgeable colleague would speak them. Not system language, not jargon, not passive constructions — plain, direct, second-person guidance that names what to do and why it matters. The closer the language is to how a person would explain something, the less the user has to interpret before acting.</p>
           </div>
 
           <div style="padding:20px 24px; border-bottom:1px solid var(--border);">
             <p style="font-size:15px; font-weight:700; color:var(--black); margin:0 0 8px;">Visible trust markers</p>
-            <p style="font-size:13px; line-height:1.75; color:var(--gray); margin:0;">A system earns trust by being honest about its own state. This means surfacing problems rather than hiding them, showing what is unresolved alongside what is complete, and confirming when an action has taken effect. Trust is not built by making the system look clean — it is built by making its reliability legible.</p>
+            <p style="font-size:13px; line-height:1.7; color:var(--gray); margin:0;">A system earns trust by being honest about its own state. This means surfacing problems rather than hiding them, showing what is unresolved alongside what is complete, and confirming when an action has taken effect. Trust is not built by making the system look clean — it is built by making its reliability legible.</p>
           </div>
 
           <div style="padding:20px 24px; border-bottom:1px solid var(--border);">
             <p style="font-size:15px; font-weight:700; color:var(--black); margin:0 0 8px;">Assisted flows</p>
-            <p style="font-size:13px; line-height:1.75; color:var(--gray); margin:0;">Complex tasks should be structured so the system carries the sequence, not the user. When a task has a required order, enforce it. When a task spans multiple steps, show progress and hold context between them. The user's job is to make decisions; the system's job is to make sure those decisions happen in the right order with the right information at hand.</p>
+            <p style="font-size:13px; line-height:1.7; color:var(--gray); margin:0;">Complex tasks should be structured so the system carries the sequence, not the user. When a task has a required order, enforce it. When a task spans multiple steps, show progress and hold context between them. The user's job is to make decisions; the system's job is to make sure those decisions happen in the right order with the right information at hand.</p>
           </div>
 
           <div style="padding:20px 24px;">
             <p style="font-size:15px; font-weight:700; color:var(--black); margin:0 0 8px;">Easy reversibility</p>
-            <p style="font-size:13px; line-height:1.75; color:var(--gray); margin:0;">Errors are inevitable, especially in high-frequency operational systems. The design should assume mistakes will be made and make correction straightforward. Where an action can be undone, provide the path. Where it cannot, name the constraint clearly before the action is taken — not after. Reversibility is not a safety net; it is a prerequisite for confident use.</p>
+            <p style="font-size:13px; line-height:1.7; color:var(--gray); margin:0;">Errors are inevitable, especially in high-frequency operational systems. The design should assume mistakes will be made and make correction straightforward. Where an action can be undone, provide the path. Where it cannot, name the constraint clearly before the action is taken — not after. Reversibility is not a safety net; it is a prerequisite for confident use.</p>
           </div>
 
         </div>
