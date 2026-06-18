@@ -3415,10 +3415,41 @@
       <div class="cs-section">
         <p class="cs-section-label">Design Decisions</p>
         <h2 class="cs-h2">Opinionated choices that encode the domain</h2>
-        <p class="cs-body"><strong>Token-first styling.</strong> All colours reference CSS custom properties (`var(--alias-color-text-primary)`) rather than hardcoded hex. This keeps the entire UI themeable and makes the design system single-source across every screen.</p>
-        <p class="cs-body"><strong>Undo instead of confirm.</strong> Rather than a confirmation dialog before saving, the app uses snapshot-capture + toast-undo. On save, the previous state is captured; the toast offers "Undo" for 4.5 seconds. This reduces friction for confident saves while keeping an escape hatch.</p>
-        <p class="cs-body"><strong>WO-priority leave logic.</strong> Facility staff are contractually entitled to a weekly off day. If sick leave is approved on that day, it shouldn't consume leave balance. The roster enforces this automatically — any day matching the employee's weekly off pattern is stored as WO regardless of approved leave, with a tooltip informing the supervisor why.</p>
-        <p class="cs-body"><strong>Sticky table architecture.</strong> The roster uses `position: sticky` with explicit pixel offsets to prevent layout shifts when day columns scroll. Each sticky column has a matching z-index level so headers overlap body cells cleanly, with a single overflow-auto container handling both axes.</p>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:28px;">
+
+          <div style="border:1px solid var(--border); border-radius:10px; padding:20px;">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
+              <p style="font-size:13px; font-weight:700; color:var(--black); margin:0;">Token-first styling</p>
+              <span style="font-size:10px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:var(--gray); background:var(--light); border:1px solid var(--border); padding:2px 8px; border-radius:4px;">All screens</span>
+            </div>
+            <p style="font-size:13px; line-height:1.7; color:var(--gray); margin:0;">Every colour in the UI references a CSS custom property rather than a hardcoded hex value. This makes the entire product themeable from a single source and ensures the design system stays consistent as the screen count grows.</p>
+          </div>
+
+          <div style="border:1px solid var(--border); border-radius:10px; padding:20px;">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
+              <p style="font-size:13px; font-weight:700; color:var(--black); margin:0;">Undo instead of confirm</p>
+              <span style="font-size:10px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:var(--gray); background:var(--light); border:1px solid var(--border); padding:2px 8px; border-radius:4px;">Roster · Attendance</span>
+            </div>
+            <p style="font-size:13px; line-height:1.7; color:var(--gray); margin:0;">On save, the app captures a state snapshot and offers "Undo" via a toast for 4.5 seconds — instead of blocking the action with a confirmation dialog. Confident edits go through immediately; the escape hatch is there if needed.</p>
+          </div>
+
+          <div style="border:1px solid var(--border); border-radius:10px; padding:20px;">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
+              <p style="font-size:13px; font-weight:700; color:var(--black); margin:0;">WO-priority leave logic</p>
+              <span style="font-size:10px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:var(--gray); background:var(--light); border:1px solid var(--border); padding:2px 8px; border-radius:4px;">Roster · Leaves</span>
+            </div>
+            <p style="font-size:13px; line-height:1.7; color:var(--gray); margin:0;">Facility staff are contractually entitled to a weekly off day. If sick leave falls on that day, the system stores it as WO — not SL — so leave balance isn't deducted. A tooltip on the roster cell tells the supervisor exactly why, removing ambiguity.</p>
+          </div>
+
+          <div style="border:1px solid var(--border); border-radius:10px; padding:20px;">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
+              <p style="font-size:13px; font-weight:700; color:var(--black); margin:0;">Sticky table architecture</p>
+              <span style="font-size:10px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:var(--gray); background:var(--light); border:1px solid var(--border); padding:2px 8px; border-radius:4px;">Roster</span>
+            </div>
+            <p style="font-size:13px; line-height:1.7; color:var(--gray); margin:0;">The roster grid scrolls horizontally across 31 day columns while keeping employee names and the summary column pinned. Each sticky layer has an explicit z-index so column headers overlap body cells cleanly — all within a single overflow-auto container.</p>
+          </div>
+
+        </div>
       </div>
 
       <!-- Outcomes -->
