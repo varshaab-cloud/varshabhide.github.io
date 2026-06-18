@@ -3675,47 +3675,6 @@
         <p class="cs-img-caption">Roster month view — Housekeeping department, June 2026. W = Working, WO = Weekly off, SL = Sick leave, CL = Casual leave. Summary column per employee on the right</p>
       </div>
 
-      <!-- Design Decisions -->
-      <div class="cs-section">
-        <p class="cs-section-label">Design Decisions</p>
-        <h2 class="cs-h2">Opinionated choices that encode the domain</h2>
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:28px;">
-
-          <div style="border:1px solid var(--border); border-radius:10px; padding:20px;">
-            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
-              <p style="font-size:13px; font-weight:700; color:var(--black); margin:0;">Token-first styling</p>
-              <span style="font-size:10px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:var(--gray); background:var(--light); border:1px solid var(--border); padding:2px 8px; border-radius:4px;">All screens</span>
-            </div>
-            <p style="font-size:13px; line-height:1.7; color:var(--gray); margin:0;">Every colour in the UI references a CSS custom property rather than a hardcoded hex value. This makes the entire product themeable from a single source and ensures the design system stays consistent as the screen count grows.</p>
-          </div>
-
-          <div style="border:1px solid var(--border); border-radius:10px; padding:20px;">
-            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
-              <p style="font-size:13px; font-weight:700; color:var(--black); margin:0;">Undo instead of confirm</p>
-              <span style="font-size:10px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:var(--gray); background:var(--light); border:1px solid var(--border); padding:2px 8px; border-radius:4px;">Roster · Attendance</span>
-            </div>
-            <p style="font-size:13px; line-height:1.7; color:var(--gray); margin:0;">On save, the app captures a state snapshot and offers "Undo" via a toast for 4.5 seconds — instead of blocking the action with a confirmation dialog. Confident edits go through immediately; the escape hatch is there if needed.</p>
-          </div>
-
-          <div style="border:1px solid var(--border); border-radius:10px; padding:20px;">
-            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
-              <p style="font-size:13px; font-weight:700; color:var(--black); margin:0;">WO-priority leave logic</p>
-              <span style="font-size:10px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:var(--gray); background:var(--light); border:1px solid var(--border); padding:2px 8px; border-radius:4px;">Roster · Leaves</span>
-            </div>
-            <p style="font-size:13px; line-height:1.7; color:var(--gray); margin:0;">Facility staff are contractually entitled to a weekly off day. If sick leave falls on that day, the system stores it as WO — not SL — so leave balance isn't deducted. A tooltip on the roster cell tells the supervisor exactly why, removing ambiguity.</p>
-          </div>
-
-          <div style="border:1px solid var(--border); border-radius:10px; padding:20px;">
-            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
-              <p style="font-size:13px; font-weight:700; color:var(--black); margin:0;">Sticky table architecture</p>
-              <span style="font-size:10px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:var(--gray); background:var(--light); border:1px solid var(--border); padding:2px 8px; border-radius:4px;">Roster</span>
-            </div>
-            <p style="font-size:13px; line-height:1.7; color:var(--gray); margin:0;">The roster grid scrolls horizontally across 31 day columns while keeping employee names and the summary column pinned. Each sticky layer has an explicit z-index so column headers overlap body cells cleanly — all within a single overflow-auto container.</p>
-          </div>
-
-        </div>
-      </div>
-
       <!-- Closing Reflections -->
       <div class="cs-section">
         <p class="cs-section-label">Closing Reflections</p>
