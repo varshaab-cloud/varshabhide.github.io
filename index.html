@@ -3251,6 +3251,12 @@
       <div class="cs-section">
         <p class="cs-section-label">Information Architecture</p>
         <h2 class="cs-h2">Four layers, one direction of flow</h2>
+        <p class="cs-body">Attendance Management System is organised into four layers that reflect the natural sequence of how a facility management operation is set up and run.</p>
+        <p class="cs-body">The first layer, Foundation, contains everything that must exist before the system can be used — departments and roles, shifts, branches, vendors, and employees. These are configuration decisions made once and rarely revisited, but every downstream function depends on them being in place.</p>
+        <p class="cs-body">The second layer, Planning, is where the monthly roster is built. Shift patterns and weekly offs are assigned here before the month begins, and the roster becomes the reference point that the attendance and leave systems read from.</p>
+        <p class="cs-body">The third layer, Operations, is where the daily work happens. Attendance and Leave and Time Off are the two most-used sections of the application — marking who is present, resolving gaps, and managing leave requests. These two modules are deliberately separate but linked: a leave approval in one automatically updates a record in the other.</p>
+        <p class="cs-body">The fourth layer, Overview, is the Dashboard — a read-only surface that aggregates the state of the entire operation into a single view. It does not originate data; it reflects it. Because it sits above all other layers, it can surface problems from any of them in one place.</p>
+        <p class="cs-body">The dependency flows downward. Foundation configures Planning. Planning informs Operations. Operations surfaces to Overview. A change at any layer ripples upward — a new employee added in Foundation needs a roster entry in Planning before they can appear correctly in Operations.</p>
 
         <div style="margin-top:28px; font-family:inherit;">
 
