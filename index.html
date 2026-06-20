@@ -142,6 +142,100 @@
       transform: translateX(-50%) translateY(0);
     }
 
+    /* ── READ MODE BAR ── */
+    .cs-read-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 0;
+      position: sticky;
+      top: 56px;
+      background: var(--white);
+      z-index: 200;
+    }
+    .cs-read-time {
+      font-size: 12px;
+      color: var(--gray);
+      letter-spacing: 0.01em;
+    }
+    .cs-read-time strong {
+      color: var(--black);
+      font-weight: 600;
+    }
+    .cs-read-modes { display: flex; gap: 4px; }
+    .cs-read-btn {
+      font-size: 11.5px;
+      font-weight: 500;
+      padding: 5px 13px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--gray);
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+    }
+    .cs-read-btn.active {
+      background: var(--black);
+      color: var(--white);
+      border-color: var(--black);
+    }
+    .cs-read-btn:hover:not(.active) { background: var(--light); color: var(--black); }
+
+    /* TL;DR section — hidden in full mode, shown in quick */
+    .cs-tldr { display: none; }
+    .quick-mode .cs-tldr { display: block; }
+
+    /* Detail sections — shown in full mode, hidden in quick */
+    .cs-detail-section { display: block; }
+    .quick-mode .cs-detail-section { display: none; }
+
+    .cs-tldr-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 24px;
+    }
+    .cs-tldr-cell {
+      background: var(--white);
+      padding: 20px 22px;
+    }
+    .cs-tldr-cell-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin: 0 0 8px;
+    }
+    .cs-tldr-cell-text {
+      font-size: 13.5px;
+      line-height: 1.7;
+      color: var(--black);
+      margin: 0;
+    }
+    .cs-tldr-full-link {
+      margin-top: 20px;
+      font-size: 13px;
+      color: var(--gray);
+    }
+    .cs-tldr-full-link button {
+      background: none;
+      border: none;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--black);
+      cursor: pointer;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      padding: 0;
+    }
+
     /* ── BACK TO TOP ── */
     #back-to-top {
       position: fixed;
@@ -1753,6 +1847,40 @@
         </div>
       </div>
 
+      <!-- Read mode bar -->
+      <div class="cs-read-bar">
+        <span class="cs-read-time"><strong>EPS</strong> · Full read: 3 min</span>
+        <div class="cs-read-modes">
+          <button class="cs-read-btn active" data-mode="full" onclick="setReadMode('full','eps')">Full read</button>
+          <button class="cs-read-btn" data-mode="quick" onclick="setReadMode('quick','eps')">Quick overview</button>
+        </div>
+      </div>
+
+      <!-- TL;DR (quick mode only) -->
+      <div class="cs-tldr cs-section">
+        <p class="cs-section-label">TL;DR · 1 min read</p>
+        <h2 class="cs-h2">The short version</h2>
+        <div class="cs-tldr-grid">
+          <div class="cs-tldr-cell">
+            <p class="cs-tldr-cell-label">The problem</p>
+            <p class="cs-tldr-cell-text">Healthcare Providers navigating insurance eligibility for patients faced a paper-heavy, phone-based process — slow enrollment, complex criteria, and no real-time visibility into coverage. Friction at this stage directly reduced patient acceptance rates.</p>
+          </div>
+          <div class="cs-tldr-cell">
+            <p class="cs-tldr-cell-label">What was built</p>
+            <p class="cs-tldr-cell-text">A guided, personalised web application that simplified insurance eligibility into a real-time, step-by-step flow — replacing manual paperwork with an intelligent digital process tailored to each patient's situation.</p>
+          </div>
+          <div class="cs-tldr-cell">
+            <p class="cs-tldr-cell-label">Design principles</p>
+            <p class="cs-tldr-cell-text">Confirmations at every step before proceeding. Human-like guidance instead of system language. Visible trust markers showing coverage probability in real time. Easy reversibility — nothing locked in until the HCP is ready.</p>
+          </div>
+          <div class="cs-tldr-cell">
+            <p class="cs-tldr-cell-label">Outcome</p>
+            <p class="cs-tldr-cell-text">Reduced friction across the eligibility workflow and improved patient acceptance rates. A complex, multi-party process simplified into a flow a non-technical HCP can complete without training.</p>
+          </div>
+        </div>
+        <p class="cs-tldr-full-link">Want the full story? <button onclick="setReadMode('full','eps')">Read in full ↓</button></p>
+      </div>
+
       <!-- Background -->
       <div class="cs-section">
         <p class="cs-section-label">Background</p>
@@ -1788,7 +1916,7 @@
       </div>
 
       <!-- Persona -->
-      <div class="cs-section">
+      <div class="cs-section cs-detail-section">
         <p class="cs-section-label">Persona</p>
         <div class="cs-img-block">
           <img src="eps-persona.png" alt="User persona">
@@ -1796,7 +1924,7 @@
       </div>
 
       <!-- Infograph -->
-      <div class="cs-section">
+      <div class="cs-section cs-detail-section">
         <p class="cs-section-label">Research Insights</p>
         <div class="cs-img-block">
           <img src="eps-infograph.png" alt="Research infograph">
@@ -1804,7 +1932,7 @@
       </div>
 
       <!-- Key Findings & Design Decisions -->
-      <div class="cs-section">
+      <div class="cs-section cs-detail-section">
         <p class="cs-section-label">Research & Decisions</p>
         <div class="cs-two-col">
           <div>
@@ -1829,7 +1957,7 @@
       </div>
 
       <!-- Focus Areas -->
-      <div class="cs-section">
+      <div class="cs-section cs-detail-section">
         <p class="cs-section-label">Focus Areas</p>
         <div class="cs-two-col">
           <div>
@@ -1853,7 +1981,7 @@
       </div>
 
       <!-- Wireframes -->
-      <div class="cs-section">
+      <div class="cs-section cs-detail-section">
         <p class="cs-section-label">Wireframes</p>
         <div class="cs-img-block">
           <img src="eps-wireframes.png" alt="Lo-fidelity wireframes">
@@ -1861,7 +1989,7 @@
       </div>
 
       <!-- Live Prototype -->
-      <div class="cs-section">
+      <div class="cs-section cs-detail-section">
         <p class="cs-section-label">Interactive Prototype</p>
         <div class="cs-proto-wrap">
           <iframe
@@ -1973,6 +2101,40 @@
         </div>
       </div>
 
+      <!-- Read mode bar -->
+      <div class="cs-read-bar">
+        <span class="cs-read-time"><strong>Thematic.design</strong> · Full read: 9 min</span>
+        <div class="cs-read-modes">
+          <button class="cs-read-btn active" data-mode="full" onclick="setReadMode('full','thematic')">Full read</button>
+          <button class="cs-read-btn" data-mode="quick" onclick="setReadMode('quick','thematic')">Quick overview</button>
+        </div>
+      </div>
+
+      <!-- TL;DR (quick mode only) -->
+      <div class="cs-tldr cs-section">
+        <p class="cs-section-label">TL;DR · 2 min read</p>
+        <h2 class="cs-h2">The short version</h2>
+        <div class="cs-tldr-grid">
+          <div class="cs-tldr-cell">
+            <p class="cs-tldr-cell-label">The problem</p>
+            <p class="cs-tldr-cell-text">Design systems at scale break down when tokens aren't structured — teams hardcode values, themes drift between brands, and component updates cascade unpredictably. AI tools can't reason about design decisions without a clear, consistent structure.</p>
+          </div>
+          <div class="cs-tldr-cell">
+            <p class="cs-tldr-cell-label">What was built</p>
+            <p class="cs-tldr-cell-text">Thematic — a token-first design system with 1,351 design tokens across a three-tier architecture (primitive → semantic → component), 54 enterprise-ready components, multi-brand theming, and AI-assisted documentation.</p>
+          </div>
+          <div class="cs-tldr-cell">
+            <p class="cs-tldr-cell-label">Key decisions</p>
+            <p class="cs-tldr-cell-text">Token architecture designed for AI legibility as well as human use. Semantic tokens that describe purpose, not appearance. A taste profile system mapping brand personality to concrete design decisions. Storybook as the living documentation layer.</p>
+          </div>
+          <div class="cs-tldr-cell">
+            <p class="cs-tldr-cell-label">Outcome</p>
+            <p class="cs-tldr-cell-text">A production-ready design system serving enterprise product teams across multiple brands. 54 components, full token coverage, multi-brand theming, and a governance model that keeps the system maintainable as it grows.</p>
+          </div>
+        </div>
+        <p class="cs-tldr-full-link">Want the full story? <button onclick="setReadMode('full','thematic')">Read in full ↓</button></p>
+      </div>
+
       <!-- Overview -->
       <div class="cs-section">
         <p class="cs-section-label">Overview</p>
@@ -2036,7 +2198,7 @@
       </div>
 
       <!-- Phase 1 — Design Language -->
-      <div class="cs-section">
+      <div class="cs-section cs-detail-section">
         <p class="cs-section-label">Phase 1 — Design Language</p>
         <div class="cs-body">
           <p>Before a single token was created or a line of code was written, Thematic began with a question: what should this system feel like?</p>
@@ -2092,7 +2254,7 @@
       </div>
 
       <!-- Phase 2 — Token Architecture -->
-      <div class="cs-section">
+      <div class="cs-section cs-detail-section">
         <p class="cs-section-label">Phase 2 — Token Architecture</p>
         <div class="cs-body">
           <p>With the design language established, the next challenge was translating those principles into a scalable system. The architecture was built around a clear separation of concerns — a three-tier token model: Base → Alias → Component.</p>
@@ -2403,7 +2565,7 @@
       </div>
 
       <!-- Phase 3 — Component Library -->
-      <div class="cs-section">
+      <div class="cs-section cs-detail-section">
         <p class="cs-section-label">Phase 3 — Component Library</p>
         <div class="cs-body">
           <p>With the token architecture established, attention shifted to the component layer. Thematic was built on Next.js and Radix UI primitives, using an open-source component foundation that was re-skinned against Thematic's token architecture and extended with the variants, states, and flexibility required by enterprise workflows.</p>
@@ -2496,7 +2658,7 @@
       </div>
 
       <!-- Phase 4 — Multi-Brand -->
-      <div class="cs-section">
+      <div class="cs-section cs-detail-section">
         <p class="cs-section-label">Phase 4 — Multi-Brand Theming</p>
         <div class="cs-body">
           <p>Most enterprise design systems eventually face a branding challenge: supporting multiple products, business units, or acquired companies. Rather than treating this as a future problem, Thematic was designed from the beginning to support multiple brands.</p>
@@ -3128,6 +3290,40 @@
         <img src="am-thumb.png" alt="Attendance Management System — product overview">
       </div>
 
+      <!-- Read mode bar -->
+      <div class="cs-read-bar">
+        <span class="cs-read-time"><strong>Attendance Management System</strong> · Full read: 11 min</span>
+        <div class="cs-read-modes">
+          <button class="cs-read-btn active" data-mode="full" onclick="setReadMode('full','attendance')">Full read</button>
+          <button class="cs-read-btn" data-mode="quick" onclick="setReadMode('quick','attendance')">Quick overview</button>
+        </div>
+      </div>
+
+      <!-- TL;DR (quick mode only) -->
+      <div class="cs-tldr cs-section">
+        <p class="cs-section-label">TL;DR · 2 min read</p>
+        <h2 class="cs-h2">The short version</h2>
+        <div class="cs-tldr-grid">
+          <div class="cs-tldr-cell">
+            <p class="cs-tldr-cell-label">The problem</p>
+            <p class="cs-tldr-cell-text">Facility operations teams managing 300+ staff across multiple departments had no single system — attendance, leaves, and roster lived in disconnected spreadsheets. Conflicts went undetected and payroll errors were a monthly occurrence.</p>
+          </div>
+          <div class="cs-tldr-cell">
+            <p class="cs-tldr-cell-label">What was built</p>
+            <p class="cs-tldr-cell-text">A full-stack web platform covering the complete attendance lifecycle: employee setup, shift management, daily marking, leave approval with automatic conflict detection, and monthly roster planning — 9 screens, one coherent tool.</p>
+          </div>
+          <div class="cs-tldr-cell">
+            <p class="cs-tldr-cell-label">Key decisions</p>
+            <p class="cs-tldr-cell-text">WO-priority leave logic to protect leave balances. Undo instead of confirmation dialogs for confident saves. Sticky table architecture for a 31-day roster grid. A guided first-run tour replacing day-one training.</p>
+          </div>
+          <div class="cs-tldr-cell">
+            <p class="cs-tldr-cell-label">Outcome</p>
+            <p class="cs-tldr-cell-text">End-to-end attendance management in a single product with consistent design language across all screens. Token-based colours and shared layout primitives. Deployed live on Vercel with continuous delivery.</p>
+          </div>
+        </div>
+        <p class="cs-tldr-full-link">Want the full story? <button onclick="setReadMode('full','attendance')">Read in full ↓</button></p>
+      </div>
+
       <!-- Overview -->
       <div class="cs-section">
         <p class="cs-section-label">Overview</p>
@@ -3352,7 +3548,7 @@
       </div>
 
       <!-- Personas -->
-      <div class="cs-section">
+      <div class="cs-section cs-detail-section">
         <p class="cs-section-label">Personas</p>
 
         <style>
@@ -3473,7 +3669,7 @@
       </div><!-- /personas -->
 
       <!-- First-run Onboarding -->
-      <div class="cs-section">
+      <div class="cs-section cs-detail-section">
         <p class="cs-section-label">First-run Experience</p>
         <h2 class="cs-h2">A guided tour that replaces day-one orientation</h2>
         <p class="cs-body">Facility management software is typically handed to managers with minimal training.</p>
@@ -3588,7 +3784,7 @@
       </div><!-- /first-run onboarding -->
 
       <!-- Employees -->
-      <div class="cs-section">
+      <div class="cs-section cs-detail-section">
         <p class="cs-section-label">Feature — Employees</p>
         <h2 class="cs-h2">Active and past employees — no data deleted</h2>
         <p class="cs-body">Before any attendance can be tracked, employees need to be set up. The Employees screen separates Active and Past staff into two tabs, preserving historical records without deletion. Each employee row shows their ID, department, role with seniority level, branch, and assigned shift. Adding a new employee is a 3-step modal — Identity (personal details), Assignment (department, role, shift), and Review — with mandatory field validation and role options filtered by the selected department.</p>
@@ -3603,7 +3799,7 @@
       </div>
 
       <!-- Dashboard -->
-      <div class="cs-section">
+      <div class="cs-section cs-detail-section">
         <p class="cs-section-label">Feature — Dashboard</p>
         <h2 class="cs-h2">Actionable first — not vanity metrics</h2>
         <p class="cs-body">The landing screen is designed around what a supervisor needs to do today, not what the system wants to report. Three key numbers surface today's exceptions — late arrivals, unverified absences, and half-days — as read-only signals. The Backlog badge shows unresolved items from past days that need attention before month-end. The org breakdown table gives a department-level view of attendance percentages and raw P / A / L counts at a glance.</p>
@@ -3618,7 +3814,7 @@
       </div>
 
       <!-- Attendance -->
-      <div class="cs-section">
+      <div class="cs-section cs-detail-section">
         <p class="cs-section-label">Feature — Attendance</p>
         <h2 class="cs-h2">Edit drawer with conflict detection built in</h2>
         <p class="cs-body">The attendance screen uses a master-detail layout with per-department grouping in the left rail. The Today tab shows every employee's live status — Present, Absent, Late, On Leave, Half-day — alongside kiosk check-in / check-out times and hours worked. Clicking Edit opens a right-side drawer with the employee's last 7-day history, a Mark As dropdown, manual check-in / check-out overrides, and a mandatory reason field.</p>
@@ -3649,7 +3845,7 @@
       </div>
 
       <!-- Leaves -->
-      <div class="cs-section">
+      <div class="cs-section cs-detail-section">
         <p class="cs-section-label">Feature — Leaves</p>
         <h2 class="cs-h2">Calendar-first, with two entry paths</h2>
         <p class="cs-body">The leaves screen replaces a flat list with a month calendar. Chips per day show department and count, with click-to-expand popups listing affected employees. The leave modal handles approve / reject with a mandatory rejection reason, and warns when cancelling an approved leave. Sick leave and casual leave are tracked and displayed separately throughout.</p>
@@ -3665,7 +3861,7 @@
       </div>
 
       <!-- Roster -->
-      <div class="cs-section">
+      <div class="cs-section cs-detail-section">
         <p class="cs-section-label">Feature — Roster</p>
         <h2 class="cs-h2">Month × week grid with WO-priority logic</h2>
         <p class="cs-body">The roster screen is the most complex: a grid of employees × days with inline editing, two views (compact month / expanded week), bulk weekly-off selection with a floating action bar, conflict indicators where leave clashes with working patterns, and save-with-undo using snapshot-based state capture. A key domain rule is WO-priority: if an employee has approved leave on their weekly off day, the day counts as WO not SL/CL, so leave balance isn't deducted. The gap day path automates detection and resolution of these scenarios.</p>
@@ -3729,6 +3925,32 @@
   </div>
 
   <script>
+    // ── READ MODE ──
+    function setReadMode(mode, pageId) {
+      const page = document.getElementById('page-' + pageId);
+      if (!page) return;
+      if (mode === 'quick') {
+        page.classList.add('quick-mode');
+      } else {
+        page.classList.remove('quick-mode');
+      }
+      page.querySelectorAll('.cs-read-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.mode === mode);
+      });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Reset to full mode when navigating to a new page
+    function resetReadMode(pageId) {
+      const page = document.getElementById('page-' + pageId);
+      if (page) {
+        page.classList.remove('quick-mode');
+        page.querySelectorAll('.cs-read-btn').forEach(btn => {
+          btn.classList.toggle('active', btn.dataset.mode === 'full');
+        });
+      }
+    }
+
     // ── NAVIGATION ──
     function navigate(pageId) {
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
@@ -3738,6 +3960,7 @@
       if (active) active.classList.add('nav-current');
       window.scrollTo({ top: 0, behavior: 'instant' });
       history.pushState({ page: pageId }, '', '#' + pageId);
+      resetReadMode(pageId);
     }
 
     window.addEventListener('popstate', e => {
