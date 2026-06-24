@@ -2166,6 +2166,9 @@
             <span class="ep-section-tag">Component Library</span>
             <p class="ep-body-text">54 components built on Radix UI primitives, re-skinned against Thematic tokens. Every component passes WCAG 2.1 AA, documents all keyboard interactions, and references only token values — no hardcoded styles anywhere in the library.</p>
             <div style="margin-top:20px; border-radius:10px; overflow:hidden; border:1px solid var(--border);"><img src="td-ia.png" alt="Thematic information architecture" style="display:block; width:100%;"></div>
+            <div style="margin-top:12px; overflow-x:auto; overflow-y:hidden; border-radius:10px; border:1px solid var(--border); cursor:grab; -webkit-overflow-scrolling:touch;" id="compAllScroll">
+              <img src="td-components-all.png" alt="All Thematic components — Data Display, Messaging, Overlays, Forms and Input, Navigation, Loading" style="display:block; height:360px; width:auto; max-width:none;">
+            </div>
             <div class="ep-accordion" onclick="epToggleAccordion(this)">
               <div class="ep-accordion-header">
                 <span class="ep-accordion-label">Component categories</span>
@@ -2188,104 +2191,63 @@
           <div class="ep-block">
             <span class="ep-section-tag">Documentation</span>
             <p class="ep-body-text">Every component ships with a structured anatomy specification — a five-layer format designed to be read as clearly by an AI tool as by a developer. Intent, Rules, Relationships, Configuration, and Tokens each answer a different question, together forming a complete machine-parseable description that goes well beyond visual specs.</p>
-
-            <div id="td-anatomy-widget" style="margin-top:24px;">
-              <style>
-                #td-anatomy-widget .tda-tabs{display:flex;gap:6px;margin-bottom:20px;flex-wrap:wrap;}
-                #td-anatomy-widget .tda-tab{font-size:12px;font-weight:500;padding:6px 14px;border-radius:20px;border:1px solid var(--border);background:var(--light);color:var(--gray);cursor:pointer;font-family:inherit;transition:all 0.15s;}
-                #td-anatomy-widget .tda-tab.active{background:var(--black);color:var(--white);border-color:var(--black);}
-                #td-anatomy-widget .tda-pill{background:#3B82F6;color:#fff;font-size:14px;font-weight:600;padding:10px 32px;border-radius:12px;text-align:center;width:fit-content;margin:0 auto;font-family:inherit;letter-spacing:0.01em;display:block;}
-                #td-anatomy-widget .tda-arrow{display:flex;flex-direction:column;align-items:center;margin:3px 0;}
-                #td-anatomy-widget .tda-arrow-line{width:1px;height:14px;background:#ccc;}
-                #td-anatomy-widget .tda-arrow-head{width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-top:6px solid #ccc;}
-                #td-anatomy-widget .tda-card{border-radius:10px;border:1.5px solid;display:grid;grid-template-columns:155px 1px 1fr;}
-                #td-anatomy-widget .tda-card-left{padding:16px 14px;display:flex;align-items:flex-start;gap:10px;}
-                #td-anatomy-widget .tda-card-divider{width:1px;align-self:stretch;}
-                #td-anatomy-widget .tda-card-right{padding:16px 18px;}
-                #td-anatomy-widget .tda-num{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;}
-                #td-anatomy-widget .tda-title{font-size:13px;font-weight:700;line-height:1.2;}
-                #td-anatomy-widget .tda-sub{font-size:11px;color:var(--gray);margin-top:3px;line-height:1.4;}
-                #td-anatomy-widget .tda-line{font-size:12px;color:var(--gray);font-family:'SF Mono','Fira Mono','Consolas',monospace;line-height:1.95;}
-                @media(max-width:520px){
-                  #td-anatomy-widget .tda-card{grid-template-columns:1fr;}
-                  #td-anatomy-widget .tda-card-divider{display:none;}
-                  #td-anatomy-widget .tda-card-right{padding:0 14px 16px;}
-                }
-              </style>
-
-              <div class="tda-tabs">
-                <button class="tda-tab active" onclick="tdaSwitch('button',this)">Button</button>
-                <button class="tda-tab" onclick="tdaSwitch('input',this)">Input</button>
-                <button class="tda-tab" onclick="tdaSwitch('select',this)">Select</button>
-                <button class="tda-tab" onclick="tdaSwitch('dialog',this)">Dialog</button>
+            <div class="ep-accordion" onclick="epToggleAccordion(this)">
+              <div class="ep-accordion-header">
+                <span class="ep-accordion-label">Button — anatomy for AI readability</span>
+                <svg class="ep-accordion-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </div>
-
-              <div id="tda-pill" class="tda-pill">Button</div>
-              <div id="tda-layers"></div>
-
-              <script>
-              (function(){
-                var TDA={
-                  button:{label:'Button',layers:[
-                    {n:1,title:'Intent',sub:'why & when to use it',c:'#7C3AED',bg:'#EDE9FE',lines:['purpose: trigger an action','use: submit · confirm · open','avoid: static info · tab nav']},
-                    {n:2,title:'Rules',sub:'what it must obey',c:'#D97706',bg:'#FEF3C7',lines:['use_tokens_only','no_hardcoded_colors','no_hardcoded_spacing']},
-                    {n:3,title:'Relationships',sub:'what it works with',c:'#DC4E4E',bg:'#FEE2E2',lines:['with: Input · Select · Dialog · Form','children: Icon · Spinner']},
-                    {n:4,title:'Configuration',sub:"how it's set up",c:'#0D9488',bg:'#CCFBF1',lines:['appearance · size · type: string','loading · disabled: boolean','onClick: callback · ariaLabel: string']},
-                    {n:5,title:'Tokens',sub:'the concrete values',c:'#3B82F6',bg:'#DBEAFE',lines:['color-button-primary-*','spacing-button-padding-*','radius · elevation · transition']}
-                  ]},
-                  input:{label:'Input',layers:[
-                    {n:1,title:'Intent',sub:'why & when to use it',c:'#7C3AED',bg:'#EDE9FE',lines:['purpose: capture text from user','use: forms · search · filters','avoid: selection lists · toggles']},
-                    {n:2,title:'Rules',sub:'what it must obey',c:'#D97706',bg:'#FEF3C7',lines:['use_tokens_only','no_placeholder_as_label','required_error_state']},
-                    {n:3,title:'Relationships',sub:'what it works with',c:'#DC4E4E',bg:'#FEE2E2',lines:['with: Label · Form · Button','children: Icon · ClearButton · Spinner']},
-                    {n:4,title:'Configuration',sub:"how it's set up",c:'#0D9488',bg:'#CCFBF1',lines:['type · placeholder · size: string','disabled · readOnly · required: boolean','onChange: callback · value: string']},
-                    {n:5,title:'Tokens',sub:'the concrete values',c:'#3B82F6',bg:'#DBEAFE',lines:['color-input-border-*','spacing-input-padding-*','radius · focus-ring · transition']}
-                  ]},
-                  select:{label:'Select',layers:[
-                    {n:1,title:'Intent',sub:'why & when to use it',c:'#7C3AED',bg:'#EDE9FE',lines:['purpose: choose from predefined options','use: settings · filters · forms','avoid: >7 options · frequent switching']},
-                    {n:2,title:'Rules',sub:'what it must obey',c:'#D97706',bg:'#FEF3C7',lines:['use_tokens_only','keyboard_navigable','searchable_above_10_items']},
-                    {n:3,title:'Relationships',sub:'what it works with',c:'#DC4E4E',bg:'#FEE2E2',lines:['with: Label · Form · Button','children: SelectItem · Divider · Badge']},
-                    {n:4,title:'Configuration',sub:"how it's set up",c:'#0D9488',bg:'#CCFBF1',lines:['placeholder · size · variant: string','disabled · multiple · clearable: boolean','onChange: callback · value: string | array']},
-                    {n:5,title:'Tokens',sub:'the concrete values',c:'#3B82F6',bg:'#DBEAFE',lines:['color-select-border-*','spacing-select-padding-*','elevation-dropdown · transition']}
-                  ]},
-                  dialog:{label:'Dialog',layers:[
-                    {n:1,title:'Intent',sub:'why & when to use it',c:'#7C3AED',bg:'#EDE9FE',lines:['purpose: interrupt for critical input','use: confirm · destructive · complex forms','avoid: minor alerts · navigation']},
-                    {n:2,title:'Rules',sub:'what it must obey',c:'#D97706',bg:'#FEF3C7',lines:['use_tokens_only','trap_focus_on_open','close_on_esc · aria_modal_true']},
-                    {n:3,title:'Relationships',sub:'what it works with',c:'#DC4E4E',bg:'#FEE2E2',lines:['with: Button · Form · AlertDialog','children: DialogHeader · DialogBody · DialogFooter']},
-                    {n:4,title:'Configuration',sub:"how it's set up",c:'#0D9488',bg:'#CCFBF1',lines:['title · description: string','open · dismissible: boolean','onClose · onConfirm: callback']},
-                    {n:5,title:'Tokens',sub:'the concrete values',c:'#3B82F6',bg:'#DBEAFE',lines:['color-dialog-overlay-*','elevation-modal','spacing-dialog-padding-* · transition']}
-                  ]}
-                };
-                var arrowHTML='<div class="tda-arrow"><div class="tda-arrow-line"></div><div class="tda-arrow-head"></div></div>';
-                function render(key){
-                  var d=TDA[key];
-                  document.getElementById('tda-pill').textContent=d.label;
-                  var html='';
-                  d.layers.forEach(function(l,i){
-                    if(i>0) html+=arrowHTML;
-                    html+='<div class="tda-card" style="border-color:'+l.c+';">';
-                    html+='<div class="tda-card-left">';
-                    html+='<div class="tda-num" style="background:'+l.bg+';color:'+l.c+';">'+l.n+'</div>';
-                    html+='<div><div class="tda-title" style="color:'+l.c+';">'+l.title+'</div><div class="tda-sub">'+l.sub+'</div></div>';
-                    html+='</div>';
-                    html+='<div class="tda-card-divider" style="background:'+l.c+';opacity:0.2;"></div>';
-                    html+='<div class="tda-card-right"><div class="tda-line">'+l.lines.join('<br>')+'</div></div>';
-                    html+='</div>';
-                  });
-                  document.getElementById('tda-layers').innerHTML=html;
-                }
-                window.tdaSwitch=function(key,btn){
-                  document.querySelectorAll('#td-anatomy-widget .tda-tab').forEach(function(t){t.classList.remove('active');});
-                  if(btn) btn.classList.add('active');
-                  render(key);
-                };
-                // inject top arrow between pill and layers
-                var pill=document.getElementById('tda-pill');
-                var arrowEl=document.createElement('div');
-                arrowEl.innerHTML=arrowHTML;
-                pill.insertAdjacentElement('afterend',arrowEl);
-                render('button');
-              })();
-              </script>
+              <div class="ep-accordion-body" style="display:none;">
+                <div id="td-anatomy-widget">
+                  <style>
+                    #td-anatomy-widget .tda-pill{background:#3B82F6;color:#fff;font-size:14px;font-weight:600;padding:10px 32px;border-radius:12px;text-align:center;width:fit-content;margin:0 auto;font-family:inherit;letter-spacing:0.01em;display:block;}
+                    #td-anatomy-widget .tda-arrow{display:flex;flex-direction:column;align-items:center;margin:3px 0;}
+                    #td-anatomy-widget .tda-arrow-line{width:1px;height:14px;background:#ccc;}
+                    #td-anatomy-widget .tda-arrow-head{width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-top:6px solid #ccc;}
+                    #td-anatomy-widget .tda-card{border-radius:10px;border:1.5px solid;display:grid;grid-template-columns:155px 1px 1fr;}
+                    #td-anatomy-widget .tda-card-left{padding:16px 14px;display:flex;align-items:flex-start;gap:10px;}
+                    #td-anatomy-widget .tda-card-divider{width:1px;align-self:stretch;}
+                    #td-anatomy-widget .tda-card-right{padding:16px 18px;}
+                    #td-anatomy-widget .tda-num{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;}
+                    #td-anatomy-widget .tda-title{font-size:13px;font-weight:700;line-height:1.2;}
+                    #td-anatomy-widget .tda-sub{font-size:11px;color:var(--gray);margin-top:3px;line-height:1.4;}
+                    #td-anatomy-widget .tda-line{font-size:12px;color:var(--gray);font-family:'SF Mono','Fira Mono','Consolas',monospace;line-height:1.95;}
+                    @media(max-width:520px){
+                      #td-anatomy-widget .tda-card{grid-template-columns:1fr;}
+                      #td-anatomy-widget .tda-card-divider{display:none;}
+                      #td-anatomy-widget .tda-card-right{padding:0 14px 16px;}
+                    }
+                  </style>
+                  <div class="tda-pill">Button</div>
+                  <div id="tda-layers"></div>
+                  <script>
+                  (function(){
+                    var layers=[
+                      {n:1,title:'Intent',sub:'why & when to use it',c:'#7C3AED',bg:'#EDE9FE',lines:['purpose: trigger an action','use: submit · confirm · open','avoid: static info · tab nav']},
+                      {n:2,title:'Rules',sub:'what it must obey',c:'#D97706',bg:'#FEF3C7',lines:['use_tokens_only','no_hardcoded_colors','no_hardcoded_spacing']},
+                      {n:3,title:'Relationships',sub:'what it works with',c:'#DC4E4E',bg:'#FEE2E2',lines:['with: Input · Select · Dialog · Form','children: Icon · Spinner']},
+                      {n:4,title:'Configuration',sub:"how it's set up",c:'#0D9488',bg:'#CCFBF1',lines:['appearance · size · type: string','loading · disabled: boolean','onClick: callback · ariaLabel: string']},
+                      {n:5,title:'Tokens',sub:'the concrete values',c:'#3B82F6',bg:'#DBEAFE',lines:['color-button-primary-*','spacing-button-padding-*','radius · elevation · transition']}
+                    ];
+                    var arrow='<div class="tda-arrow"><div class="tda-arrow-line"></div><div class="tda-arrow-head"></div></div>';
+                    var html='';
+                    layers.forEach(function(l,i){
+                      if(i>0) html+=arrow;
+                      html+='<div class="tda-card" style="border-color:'+l.c+';">';
+                      html+='<div class="tda-card-left"><div class="tda-num" style="background:'+l.bg+';color:'+l.c+';">'+l.n+'</div>';
+                      html+='<div><div class="tda-title" style="color:'+l.c+';">'+l.title+'</div><div class="tda-sub">'+l.sub+'</div></div></div>';
+                      html+='<div class="tda-card-divider" style="background:'+l.c+';opacity:0.2;"></div>';
+                      html+='<div class="tda-card-right"><div class="tda-line">'+l.lines.join('<br>')+'</div></div></div>';
+                    });
+                    var el=document.getElementById('tda-layers');
+                    el.innerHTML=html;
+                    var pill=el.previousElementSibling;
+                    var arrowEl=document.createElement('div');
+                    arrowEl.innerHTML=arrow;
+                    pill.insertAdjacentElement('afterend',arrowEl);
+                  })();
+                  </script>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -3517,6 +3479,17 @@
       }
       requestAnimationFrame(draw);
     }
+
+    // ── COMPONENT SCROLL DRAG ──
+    (function(){
+      var el = document.getElementById('compAllScroll');
+      if (!el) return;
+      var isDown = false, startX, scrollLeft0;
+      el.addEventListener('mousedown', function(e){ isDown=true; startX=e.pageX-el.offsetLeft; scrollLeft0=el.scrollLeft; el.style.cursor='grabbing'; });
+      el.addEventListener('mouseleave', function(){ isDown=false; el.style.cursor='grab'; });
+      el.addEventListener('mouseup', function(){ isDown=false; el.style.cursor='grab'; });
+      el.addEventListener('mousemove', function(e){ if(!isDown) return; e.preventDefault(); el.scrollLeft = scrollLeft0-(e.pageX-el.offsetLeft-startX); });
+    })();
 
     // ── FLOW ZOOM ──
     function openFlowZoom(img) {
