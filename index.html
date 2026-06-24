@@ -1314,7 +1314,7 @@
         <div class="carousel-track">
 
           <button onclick="navigate('thematic')" class="carousel-card" style="text-align:left; border:none; font-family:inherit; cursor:pointer; background:var(--white);">
-            <div class="c-thumb t1" style="background-image:url('td-hero.png'); background-size:cover; background-position:center;"></div>
+            <div class="c-thumb t1" style="background-image:url('td-thumbnail.png'); background-size:cover; background-position:center;"></div>
             <div class="c-body">
               <div><p class="c-title">Thematic.design 2026</p><p class="c-meta">Design system · 54 components · AI-assisted</p></div>
               <span class="c-year">2026</span>
@@ -1430,7 +1430,7 @@
           <div class="project-grid">
 
             <button onclick="navigate('thematic')" class="grid-card" style="text-align:left; width:100%; border:none; font-family:inherit; cursor:pointer;">
-              <div class="g-thumb t1" style="background-image:url('td-hero.png'); background-size:cover; background-position:center;"></div>
+              <div class="g-thumb t1" style="background-image:url('td-thumbnail.png'); background-size:cover; background-position:center;"></div>
               <div class="g-body">
                 <div><p class="g-title">Thematic.design 2026</p><p class="g-meta">Design system · 54 components · AI-assisted</p></div>
                 <span class="g-year">2026</span>
@@ -3147,9 +3147,8 @@
           .ep-carousel { border:1px solid var(--border); border-radius:10px; overflow:hidden; margin-top:16px; }
           .ep-carousel-viewport { overflow:hidden; }
           .ep-carousel-track { display:flex; transition:transform 0.3s ease; }
-          .ep-carousel-slide { min-width:100%; flex-shrink:0; }
-          .ep-carousel-slide-inner { min-height:280px; display:flex; align-items:center; justify-content:center; background:var(--light); }
-          .ep-carousel-slide-inner span { font-size:12px; color:var(--gray); }
+          .ep-carousel-slide { min-width:100%; flex-shrink:0; line-height:0; background:var(--white); }
+          .ep-carousel-slide img { width:100%; height:440px; object-fit:contain; object-position:center; display:block; }
           .ep-carousel-controls { display:flex; align-items:center; justify-content:space-between; padding:11px 16px; border-top:1px solid var(--border); background:var(--white); }
           .ep-carousel-btn { background:none; border:1px solid var(--border); border-radius:6px; width:32px; height:32px; cursor:pointer; display:flex; align-items:center; justify-content:center; color:var(--gray); transition:background 0.15s; }
           .ep-carousel-btn:hover { background:var(--light); }
@@ -3600,11 +3599,11 @@
             <div class="ep-carousel" id="ep-foundation-carousel">
               <div class="ep-carousel-viewport">
                 <div class="ep-carousel-track">
-                  <div class="ep-carousel-slide"><img src="am-departments.png" alt="Foundation — Departments &amp; Roles" style="display:block; width:100%;"></div>
-                  <div class="ep-carousel-slide"><img src="am-shifts.png" alt="Foundation — Shifts" style="display:block; width:100%;"></div>
-                  <div class="ep-carousel-slide"><img src="am-branches.png" alt="Foundation — Branches" style="display:block; width:100%;"></div>
-                  <div class="ep-carousel-slide"><img src="am-vendors.png" alt="Foundation — Vendors" style="display:block; width:100%;"></div>
-                  <div class="ep-carousel-slide"><img src="am-employees.png" alt="Foundation — Employees" style="display:block; width:100%;"></div>
+                  <div class="ep-carousel-slide"><img src="am-departments.png" alt="Foundation — Departments &amp; Roles"></div>
+                  <div class="ep-carousel-slide"><img src="am-shifts.png" alt="Foundation — Shifts"></div>
+                  <div class="ep-carousel-slide"><img src="am-branches.png" alt="Foundation — Branches"></div>
+                  <div class="ep-carousel-slide"><img src="am-vendors.png" alt="Foundation — Vendors"></div>
+                  <div class="ep-carousel-slide"><img src="am-employees.png" alt="Foundation — Employees"></div>
                 </div>
               </div>
               <div class="ep-carousel-controls">
