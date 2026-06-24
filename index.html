@@ -3184,7 +3184,69 @@
             <p class="ep-body-text">The Attendance Management System is a web-based platform built for facility management teams overseeing large, multi-department workforces. Attendance, leave, and roster planning had no shared home — managers were working across spreadsheets, paper registers, and disconnected tools, with no way to detect when records conflicted. The system brings the full lifecycle into one product: from setting up employees and shifts to marking daily attendance, approving leaves, and planning the monthly roster. Designed, built, and deployed end to end.</p>
           </div>
 
-          <!-- ② Persona -->
+          <!-- ② Pain Points & Design Goals -->
+          <div class="ep-block">
+            <span class="ep-section-tag">Pain Points &amp; Design Goals</span>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:4px;">
+
+              <!-- Pain Points -->
+              <div style="border:1px solid var(--border); border-radius:10px; padding:20px 22px;">
+                <p style="font-size:12px; font-weight:700; color:var(--black); margin:0 0 14px; letter-spacing:0.01em;">Pain Points</p>
+                <div style="display:flex; flex-direction:column; gap:10px;">
+                  <div style="display:flex; gap:10px; align-items:flex-start;">
+                    <span style="font-size:11px; color:var(--gray); margin-top:2px; flex-shrink:0;">—</span>
+                    <p style="font-size:13px; line-height:1.6; color:var(--gray); margin:0;">No unified view of who is present or on leave on any given day</p>
+                  </div>
+                  <div style="display:flex; gap:10px; align-items:flex-start;">
+                    <span style="font-size:11px; color:var(--gray); margin-top:2px; flex-shrink:0;">—</span>
+                    <p style="font-size:13px; line-height:1.6; color:var(--gray); margin:0;">Leave approvals and attendance live separately — conflicts go undetected until month-end</p>
+                  </div>
+                  <div style="display:flex; gap:10px; align-items:flex-start;">
+                    <span style="font-size:11px; color:var(--gray); margin-top:2px; flex-shrink:0;">—</span>
+                    <p style="font-size:13px; line-height:1.6; color:var(--gray); margin:0;">Roster planning is manual with no way to flag shift conflicts before the month begins</p>
+                  </div>
+                  <div style="display:flex; gap:10px; align-items:flex-start;">
+                    <span style="font-size:11px; color:var(--gray); margin-top:2px; flex-shrink:0;">—</span>
+                    <p style="font-size:13px; line-height:1.6; color:var(--gray); margin:0;">Supervisors can't correct records for their own team without escalating to the manager</p>
+                  </div>
+                  <div style="display:flex; gap:10px; align-items:flex-start;">
+                    <span style="font-size:11px; color:var(--gray); margin-top:2px; flex-shrink:0;">—</span>
+                    <p style="font-size:13px; line-height:1.6; color:var(--gray); margin:0;">No in-product orientation — the system is handed to new managers with no guidance</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Design Goals -->
+              <div style="border:1px solid var(--border); border-radius:10px; padding:20px 22px; background:var(--light);">
+                <p style="font-size:12px; font-weight:700; color:var(--black); margin:0 0 14px; letter-spacing:0.01em;">Design Goals</p>
+                <div style="display:flex; flex-direction:column; gap:10px;">
+                  <div style="display:flex; gap:10px; align-items:flex-start;">
+                    <span style="font-size:11px; color:var(--gray); margin-top:2px; flex-shrink:0;">→</span>
+                    <p style="font-size:13px; line-height:1.6; color:var(--gray); margin:0;">Exception-first dashboard — surface what needs action each morning, not just statistics</p>
+                  </div>
+                  <div style="display:flex; gap:10px; align-items:flex-start;">
+                    <span style="font-size:11px; color:var(--gray); margin-top:2px; flex-shrink:0;">→</span>
+                    <p style="font-size:13px; line-height:1.6; color:var(--gray); margin:0;">Connect leave and attendance so conflicts are flagged automatically, not discovered later</p>
+                  </div>
+                  <div style="display:flex; gap:10px; align-items:flex-start;">
+                    <span style="font-size:11px; color:var(--gray); margin-top:2px; flex-shrink:0;">→</span>
+                    <p style="font-size:13px; line-height:1.6; color:var(--gray); margin:0;">Roster built on structured planning, with WO-priority and leave-conflict detection baked in</p>
+                  </div>
+                  <div style="display:flex; gap:10px; align-items:flex-start;">
+                    <span style="font-size:11px; color:var(--gray); margin-top:2px; flex-shrink:0;">→</span>
+                    <p style="font-size:13px; line-height:1.6; color:var(--gray); margin:0;">Role-based access — each user sees exactly what they need, nothing more</p>
+                  </div>
+                  <div style="display:flex; gap:10px; align-items:flex-start;">
+                    <span style="font-size:11px; color:var(--gray); margin-top:2px; flex-shrink:0;">→</span>
+                    <p style="font-size:13px; line-height:1.6; color:var(--gray); margin:0;">First-run guided tour built into the product replaces day-one orientation entirely</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- ③ Persona -->
           <div class="ep-block">
             <span class="ep-section-tag">Persona</span>
             <div style="display:flex; flex-direction:column; gap:10px;">
@@ -3301,69 +3363,6 @@
                   </div>
                 </div><!-- /persona-grid -->
               </div>
-            </div>
-
-          </div>
-
-          <!-- ③ Pain Points & Design Goals -->
-          <div class="ep-block">
-            <span class="ep-section-tag">Pain Points &amp; Design Goals</span>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:4px;">
-
-              <!-- Pain Points -->
-              <div style="border:1px solid var(--border); border-radius:10px; padding:20px 22px;">
-                <p style="font-size:12px; font-weight:700; color:var(--black); margin:0 0 14px; letter-spacing:0.01em;">Pain Points</p>
-                <div style="display:flex; flex-direction:column; gap:10px;">
-                  <div style="display:flex; gap:10px; align-items:flex-start;">
-                    <span style="font-size:11px; color:var(--gray); margin-top:2px; flex-shrink:0;">—</span>
-                    <p style="font-size:13px; line-height:1.6; color:var(--gray); margin:0;">No unified view of who is present or on leave on any given day</p>
-                  </div>
-                  <div style="display:flex; gap:10px; align-items:flex-start;">
-                    <span style="font-size:11px; color:var(--gray); margin-top:2px; flex-shrink:0;">—</span>
-                    <p style="font-size:13px; line-height:1.6; color:var(--gray); margin:0;">Leave approvals and attendance live separately — conflicts go undetected until month-end</p>
-                  </div>
-                  <div style="display:flex; gap:10px; align-items:flex-start;">
-                    <span style="font-size:11px; color:var(--gray); margin-top:2px; flex-shrink:0;">—</span>
-                    <p style="font-size:13px; line-height:1.6; color:var(--gray); margin:0;">Roster planning is manual with no way to flag shift conflicts before the month begins</p>
-                  </div>
-                  <div style="display:flex; gap:10px; align-items:flex-start;">
-                    <span style="font-size:11px; color:var(--gray); margin-top:2px; flex-shrink:0;">—</span>
-                    <p style="font-size:13px; line-height:1.6; color:var(--gray); margin:0;">Supervisors can't correct records for their own team without escalating to the manager</p>
-                  </div>
-                  <div style="display:flex; gap:10px; align-items:flex-start;">
-                    <span style="font-size:11px; color:var(--gray); margin-top:2px; flex-shrink:0;">—</span>
-                    <p style="font-size:13px; line-height:1.6; color:var(--gray); margin:0;">No in-product orientation — the system is handed to new managers with no guidance</p>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Design Goals -->
-              <div style="border:1px solid var(--border); border-radius:10px; padding:20px 22px; background:var(--light);">
-                <p style="font-size:12px; font-weight:700; color:var(--black); margin:0 0 14px; letter-spacing:0.01em;">Design Goals</p>
-                <div style="display:flex; flex-direction:column; gap:10px;">
-                  <div style="display:flex; gap:10px; align-items:flex-start;">
-                    <span style="font-size:11px; color:var(--gray); margin-top:2px; flex-shrink:0;">→</span>
-                    <p style="font-size:13px; line-height:1.6; color:var(--gray); margin:0;">Exception-first dashboard — surface what needs action each morning, not just statistics</p>
-                  </div>
-                  <div style="display:flex; gap:10px; align-items:flex-start;">
-                    <span style="font-size:11px; color:var(--gray); margin-top:2px; flex-shrink:0;">→</span>
-                    <p style="font-size:13px; line-height:1.6; color:var(--gray); margin:0;">Connect leave and attendance so conflicts are flagged automatically, not discovered later</p>
-                  </div>
-                  <div style="display:flex; gap:10px; align-items:flex-start;">
-                    <span style="font-size:11px; color:var(--gray); margin-top:2px; flex-shrink:0;">→</span>
-                    <p style="font-size:13px; line-height:1.6; color:var(--gray); margin:0;">Roster built on structured planning, with WO-priority and leave-conflict detection baked in</p>
-                  </div>
-                  <div style="display:flex; gap:10px; align-items:flex-start;">
-                    <span style="font-size:11px; color:var(--gray); margin-top:2px; flex-shrink:0;">→</span>
-                    <p style="font-size:13px; line-height:1.6; color:var(--gray); margin:0;">Role-based access — each user sees exactly what they need, nothing more</p>
-                  </div>
-                  <div style="display:flex; gap:10px; align-items:flex-start;">
-                    <span style="font-size:11px; color:var(--gray); margin-top:2px; flex-shrink:0;">→</span>
-                    <p style="font-size:13px; line-height:1.6; color:var(--gray); margin:0;">First-run guided tour built into the product replaces day-one orientation entirely</p>
-                  </div>
-                </div>
-              </div>
-
             </div>
           </div>
 
