@@ -400,20 +400,22 @@
     }
 
     .carousel-all {
-      font-size: 13px;
-      color: var(--gray);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--black);
       background: none;
-      border: none;
+      border: 1px solid var(--black);
+      border-radius: 20px;
       cursor: pointer;
       font-family: inherit;
       display: inline-flex;
       align-items: center;
-      gap: 4px;
-      padding: 0;
-      transition: gap 0.2s, color 0.15s;
+      gap: 6px;
+      padding: 7px 16px;
+      transition: background 0.15s, color 0.15s;
     }
 
-    .carousel-all:hover { gap: 10px; color: var(--black); }
+    .carousel-all:hover { background: var(--black); color: var(--white); }
 
     .carousel-wrapper {
       overflow-x: scroll;
