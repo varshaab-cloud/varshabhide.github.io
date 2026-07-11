@@ -1,0 +1,63 @@
+<svg viewBox="0 0 820 1400" xmlns="http://www.w3.org/2000/svg" role="img" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">
+<title>People Counting — POO happy path v2 with multi-stop verify loop</title>
+<desc>User flow: the POO reviews each unscheduled stop's video and verifies it, loops through all unscheduled stops, then does a final verify with the total count which generates one message with links to the Unscheduled tab, copied and sent via WhatsApp.</desc>
+<style>
+  .t{fill:#1c2430;font-weight:650;font-size:15px}
+  .s{fill:#6b7684;font-weight:400;font-size:12px}
+  .yes{fill:#1D9E75;font-size:12px;font-weight:700}
+  .no{fill:#D14520;font-size:12px;font-weight:700}
+  .loop{fill:#8a5cf6;font-size:12px;font-weight:700}
+  .flow{stroke:#97a2b0;stroke-width:1.6;fill:none}
+  .loopline{stroke:#8a5cf6;stroke-width:1.6;fill:none;stroke-dasharray:5 4}
+</style>
+<defs>
+  <marker id="arw" markerWidth="10" markerHeight="10" refX="7.5" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#97a2b0"/></marker>
+  <marker id="arwp" markerWidth="10" markerHeight="10" refX="7.5" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#8a5cf6"/></marker>
+</defs>
+<g transform="translate(566,30)">
+  <rect x="0" y="0" width="220" height="128" rx="10" fill="#ffffff" stroke="#e3e7ec"/>
+  <text x="14" y="24" class="t" font-size="12.5">Legend</text>
+  <rect x="14" y="34" width="26" height="15" rx="7.5" fill="#DCEAF9" stroke="#185FA5"/><text x="48" y="46" class="s">Start / End</text>
+  <rect x="14" y="56" width="26" height="15" rx="3" fill="#E6F1FB" stroke="#185FA5"/><text x="48" y="68" class="s">Screen</text>
+  <rect x="14" y="78" width="26" height="15" rx="7" fill="#F1F3F6" stroke="#c2cad6"/><text x="48" y="90" class="s">Action</text>
+  <path d="M27,100 L38,108 L27,116 L16,108 Z" fill="#fff" stroke="#6b7684"/><text x="48" y="113" class="s">Decision · purple = loop</text>
+</g>
+<g class="flow">
+  <line x1="300" y1="74" x2="300" y2="110" marker-end="url(#arw)"/>
+  <line x1="300" y1="164" x2="300" y2="196" marker-end="url(#arw)"/>
+  <line x1="300" y1="250" x2="300" y2="282" marker-end="url(#arw)"/>
+  <line x1="300" y1="336" x2="300" y2="368" marker-end="url(#arw)"/>
+  <line x1="300" y1="422" x2="300" y2="454" marker-end="url(#arw)"/>
+  <line x1="300" y1="508" x2="300" y2="528" marker-end="url(#arw)"/>
+  <line x1="300" y1="604" x2="300" y2="660" marker-end="url(#arw)"/>
+  <line x1="300" y1="714" x2="300" y2="738" marker-end="url(#arw)"/>
+  <line x1="300" y1="814" x2="300" y2="870" marker-end="url(#arw)"/>
+  <line x1="300" y1="924" x2="300" y2="956" marker-end="url(#arw)"/>
+  <line x1="300" y1="1010" x2="300" y2="1030" marker-end="url(#arw)"/>
+  <line x1="300" y1="1106" x2="300" y2="1162" marker-end="url(#arw)"/>
+  <line x1="300" y1="1216" x2="300" y2="1248" marker-end="url(#arw)"/>
+  <line x1="300" y1="1302" x2="300" y2="1338" marker-end="url(#arw)"/>
+</g>
+<rect x="170" y="30" width="260" height="44" rx="22" fill="#DCEAF9" stroke="#185FA5"/><text x="300" y="57" text-anchor="middle" class="t">POO opens SafePassenger</text>
+<rect x="170" y="110" width="260" height="54" rx="6" fill="#E6F1FB" stroke="#185FA5"/><text x="300" y="132" text-anchor="middle" class="t">Login</text><text x="300" y="150" text-anchor="middle" class="s">enters credentials</text>
+<rect x="170" y="196" width="260" height="54" rx="6" fill="#E6F1FB" stroke="#185FA5"/><text x="300" y="218" text-anchor="middle" class="t">Dashboard</text><text x="300" y="236" text-anchor="middle" class="s">KPIs + a few alerts</text>
+<rect x="170" y="282" width="260" height="54" rx="14" fill="#F1F3F6" stroke="#c2cad6"/><text x="300" y="304" text-anchor="middle" class="t">Clicks an alerted trip</text><text x="300" y="322" text-anchor="middle" class="s">from the alerts list</text>
+<rect x="170" y="368" width="260" height="54" rx="6" fill="#E6F1FB" stroke="#185FA5"/><text x="300" y="390" text-anchor="middle" class="t">Trip detail</text><text x="300" y="408" text-anchor="middle" class="s">map + left stop buttons</text>
+<rect x="170" y="454" width="260" height="54" rx="14" fill="#F1F3F6" stroke="#c2cad6"/><text x="300" y="476" text-anchor="middle" class="t">Opens a stop → views video</text><text x="300" y="494" text-anchor="middle" class="s">unscheduled boarding / drop</text>
+<path d="M300,528 L400,566 L300,604 L200,566 Z" fill="#fff" stroke="#6b7684" stroke-width="1.5"/><text x="300" y="563" text-anchor="middle" class="t" font-size="12.5">Genuine</text><text x="300" y="579" text-anchor="middle" class="t" font-size="12.5">unscheduled?</text><text x="312" y="638" class="yes">Yes</text>
+<line class="flow" x1="400" y1="566" x2="520" y2="566" marker-end="url(#arw)"/><text x="446" y="558" class="no">No</text>
+<rect x="520" y="539" width="200" height="54" rx="14" fill="#F1F3F6" stroke="#c2cad6"/><text x="620" y="561" text-anchor="middle" class="t" font-size="13.5">Skip this stop</text><text x="620" y="579" text-anchor="middle" class="s">not genuine</text>
+<path class="flow" d="M620,593 L620,776 L400,776" marker-end="url(#arw)"/>
+<rect x="170" y="660" width="260" height="54" rx="14" fill="#F1F3F6" stroke="#c2cad6"/><text x="300" y="682" text-anchor="middle" class="t">Verify this stop</text><text x="300" y="700" text-anchor="middle" class="s">logs the event</text>
+<path d="M300,738 L400,776 L300,814 L200,776 Z" fill="#fff" stroke="#6b7684" stroke-width="1.5"/><text x="300" y="773" text-anchor="middle" class="t" font-size="12.5">More stops</text><text x="300" y="789" text-anchor="middle" class="t" font-size="12.5">to review?</text><text x="308" y="848" class="no">No</text>
+<path class="loopline" d="M200,776 L120,776 L120,481 L170,481" marker-end="url(#arwp)"/><text x="70" y="640" class="loop">Yes ↑</text><text x="60" y="656" class="loop">next stop</text>
+<rect x="170" y="870" width="260" height="54" rx="14" fill="#FAE3B8" stroke="#BA7517" stroke-width="2"/><text x="300" y="892" text-anchor="middle" class="t">Final Verify (count)</text><text x="300" y="910" text-anchor="middle" class="s">e.g. Verify (5) → drafts message</text>
+<rect x="170" y="956" width="260" height="54" rx="6" fill="#E6F1FB" stroke="#185FA5"/><text x="300" y="978" text-anchor="middle" class="t">One message: total unscheduled</text><text x="300" y="996" text-anchor="middle" class="s">links to the Unscheduled tab</text>
+<path d="M300,1030 L400,1068 L300,1106 L200,1068 Z" fill="#fff" stroke="#6b7684" stroke-width="1.5"/><text x="300" y="1065" text-anchor="middle" class="t" font-size="12.5">Numbers</text><text x="300" y="1081" text-anchor="middle" class="t" font-size="12.5">correct?</text><text x="312" y="1140" class="yes">Yes</text>
+<line class="flow" x1="400" y1="1068" x2="520" y2="1068" marker-end="url(#arw)"/><text x="446" y="1060" class="no">No</text>
+<rect x="520" y="1041" width="200" height="54" rx="14" fill="#F1F3F6" stroke="#c2cad6"/><text x="620" y="1063" text-anchor="middle" class="t" font-size="13.5">Edit the draft</text><text x="620" y="1081" text-anchor="middle" class="s">fix wording / count</text>
+<path class="flow" d="M620,1041 L620,983 L432,983" marker-end="url(#arw)"/>
+<rect x="170" y="1162" width="260" height="54" rx="14" fill="#F1F3F6" stroke="#c2cad6"/><text x="300" y="1184" text-anchor="middle" class="t">Copies to clipboard</text><text x="300" y="1202" text-anchor="middle" class="s">one tap</text>
+<rect x="170" y="1248" width="260" height="54" rx="14" fill="#F1F3F6" stroke="#c2cad6"/><text x="300" y="1270" text-anchor="middle" class="t">Pastes &amp; sends in WhatsApp</text><text x="300" y="1288" text-anchor="middle" class="s">separate window → Bus Operator</text>
+<rect x="170" y="1338" width="260" height="44" rx="22" fill="#DCEAF9" stroke="#185FA5"/><text x="300" y="1365" text-anchor="middle" class="t">Trip → Verified (audit logged)</text>
+</svg>

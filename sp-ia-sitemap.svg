@@ -1,0 +1,107 @@
+<svg viewBox="0 0 960 560" xmlns="http://www.w3.org/2000/svg" role="img" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">
+<title>SafePassenger — People Counting information architecture (sitemap)</title>
+<desc>Redesigned IA: four top-level sections (Dashboard, Trips, Fleet, Settings) with the Trip details tab set, plus the role-based access split between POO and Bus Operator.</desc>
+<style>
+  .t{fill:#1c2430;font-weight:700;font-size:14px}
+  .h{fill:#1c2430;font-weight:700;font-size:13.5px}
+  .b{fill:#3a4552;font-weight:400;font-size:11px}
+  .s{fill:#6b7684;font-weight:400;font-size:11px}
+  .tab{fill:#185FA5;font-weight:650;font-size:11.5px}
+  .flow{stroke:#97a2b0;stroke-width:1.6;fill:none}
+  .dash{stroke:#8a5cf6;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+</style>
+<defs>
+  <marker id="arw" markerWidth="10" markerHeight="10" refX="7.5" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#97a2b0"/></marker>
+  <marker id="arwp" markerWidth="10" markerHeight="10" refX="7.5" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#8a5cf6"/></marker>
+</defs>
+
+<!-- root -->
+<rect x="390" y="16" width="180" height="40" rx="10" fill="#DCEAF9" stroke="#185FA5"/>
+<text x="480" y="41" text-anchor="middle" class="t">SafePassenger</text>
+
+<!-- connectors root -> sections -->
+<g class="flow">
+  <path d="M480,56 L480,76 L126,76 L126,96" marker-end="url(#arw)"/>
+  <path d="M480,56 L480,76 L362,76 L362,96" marker-end="url(#arw)"/>
+  <path d="M480,56 L480,76 L598,76 L598,96" marker-end="url(#arw)"/>
+  <path d="M480,56 L480,76 L834,76 L834,96" marker-end="url(#arw)"/>
+</g>
+
+<!-- Dashboard -->
+<rect x="21" y="96" width="210" height="204" rx="10" fill="#ffffff" stroke="#e3e7ec"/>
+<rect x="21" y="96" width="210" height="30" rx="10" fill="#DCEAF9"/>
+<rect x="21" y="116" width="210" height="10" fill="#DCEAF9"/>
+<text x="34" y="116" class="h">1 · Dashboard</text>
+<text x="34" y="148" class="s">LANDING — verification worklist</text>
+<text x="34" y="168" class="b">KPIs (clickable filters):</text>
+<text x="34" y="184" class="b">Live · Unsch. boarding ·</text>
+<text x="34" y="200" class="b">Unsch. drop · Tampering ·</text>
+<text x="34" y="216" class="b">Device health</text>
+<text x="34" y="238" class="b">Status: live · trip done</text>
+<text x="34" y="254" class="s">(standby hidden)</text>
+<text x="34" y="276" class="b">Table grouped Fleet → Bus</text>
+<text x="34" y="292" class="b">Row → Trip details</text>
+
+<!-- Trips -->
+<rect x="257" y="96" width="210" height="204" rx="10" fill="#ffffff" stroke="#e3e7ec"/>
+<rect x="257" y="96" width="210" height="30" rx="10" fill="#E6F1FB"/>
+<rect x="257" y="116" width="210" height="10" fill="#E6F1FB"/>
+<text x="270" y="116" class="h">2 · Trips</text>
+<text x="270" y="148" class="s">Trip reports + History merged</text>
+<text x="270" y="170" class="b">All trips (browse)</text>
+<text x="270" y="186" class="s">Fleet → Bus → Bus view</text>
+<text x="270" y="208" class="b">Bus view: trends · runs ·</text>
+<text x="270" y="224" class="b">tampering · device health</text>
+<text x="270" y="246" class="b">Schedules (recurring)</text>
+
+<!-- Fleet -->
+<rect x="493" y="96" width="210" height="204" rx="10" fill="#ffffff" stroke="#e3e7ec"/>
+<rect x="493" y="96" width="210" height="30" rx="10" fill="#E6F1FB"/>
+<rect x="493" y="116" width="210" height="10" fill="#E6F1FB"/>
+<text x="506" y="116" class="h">3 · Fleet</text>
+<text x="506" y="150" class="b">Buses (no. · status)</text>
+<text x="506" y="172" class="b">Routes</text>
+<text x="506" y="194" class="b">Drivers / Conductors</text>
+<text x="506" y="216" class="b">Devices (health · audit trail)</text>
+
+<!-- Settings -->
+<rect x="729" y="96" width="210" height="204" rx="10" fill="#ffffff" stroke="#e3e7ec"/>
+<rect x="729" y="96" width="210" height="30" rx="10" fill="#E6F1FB"/>
+<rect x="729" y="116" width="210" height="10" fill="#E6F1FB"/>
+<text x="742" y="116" class="h">4 · Settings</text>
+<text x="742" y="150" class="b">Notifications</text>
+<text x="742" y="166" class="s">in-app + WhatsApp</text>
+<text x="742" y="182" class="s">(future)</text>
+
+<!-- dashed connectors to Trip details -->
+<g class="dash">
+  <path d="M126,300 L126,332" marker-end="url(#arwp)"/>
+  <path d="M362,300 L362,332" marker-end="url(#arwp)"/>
+</g>
+
+<!-- Trip details -->
+<rect x="21" y="334" width="682" height="140" rx="10" fill="#F7FAFD" stroke="#185FA5"/>
+<text x="34" y="358" class="t">Trip details</text>
+<text x="118" y="358" class="s">— opened from a Dashboard alert (current trip) or a Bus-view run</text>
+<text x="34" y="384" class="tab">Map</text>
+<text x="120" y="384" class="tab">Unscheduled</text>
+<text x="230" y="384" class="tab">Stops</text>
+<text x="300" y="384" class="tab">Reservations</text>
+<text x="410" y="384" class="tab">Media</text>
+<text x="470" y="384" class="tab">Audio announcement</text>
+<text x="34" y="406" class="s">Map: route-fitted + stop timeline · Unscheduled: raw lat/long → stop names</text>
+<text x="34" y="424" class="s">Stops: Trip Stops + City Stats merged · Media: videos, filterable</text>
+<text x="34" y="450" class="b">Trimmed 11 → ~6 tabs — V1, Luggage videos dropped; Hourly count demoted</text>
+
+<!-- role legend -->
+<rect x="721" y="334" width="218" height="140" rx="10" fill="#ffffff" stroke="#e3e7ec"/>
+<text x="734" y="358" class="h">Role-based access</text>
+<text x="734" y="384" class="tab">POO (internal operator)</text>
+<text x="734" y="402" class="s">All managed fleets ·</text>
+<text x="734" y="418" class="s">verify / dismiss · manage</text>
+<text x="734" y="444" class="tab">Bus Operator (customer)</text>
+<text x="734" y="462" class="s">Own fleet · view + receive</text>
+
+<text x="21" y="512" class="s">Create / edit / delete / export = row or page actions inside each list — not separate destinations.</text>
+<text x="21" y="532" class="s">Deferred to back end (backlog): users &amp; roles · billing · device config · audio config.</text>
+</svg>

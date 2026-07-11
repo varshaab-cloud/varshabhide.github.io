@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>People Counting — Information Architecture (v1, editable)</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --panel:#ffffff; --ink:#1c2430; --muted:#6b7684;
+    --line:#e3e7ec; --accent:#2f6fed; --accent-soft:#eaf1fe;
+    --danger:#c0392b; --ok:#1e8e5a; --chip:#eef1f5;
+    --radius:10px; --mono:ui-monospace,SFMono-Regular,Menlo,monospace;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.4}
+  header{position:sticky;top:0;z-index:10;background:var(--panel);border-bottom:1px solid var(--line);
+    padding:14px 20px;display:flex;flex-wrap:wrap;align-items:center;gap:12px}
+  header h1{font-size:16px;margin:0;font-weight:650;letter-spacing:.2px}
+  header .sub{color:var(--muted);font-size:12.5px;margin-left:2px}
+  .spacer{flex:1}
+  .btn{border:1px solid var(--line);background:#fff;color:var(--ink);padding:7px 12px;border-radius:8px;
+    font-size:13px;cursor:pointer;font-weight:550}
+  .btn:hover{background:var(--chip)}
+  .btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .btn.primary:hover{filter:brightness(1.05)}
+  .btn.ghost{background:transparent}
+  main{max-width:1040px;margin:22px auto;padding:0 20px 80px}
+  .hint{color:var(--muted);font-size:12.5px;margin:0 0 16px}
+  .hint code{background:var(--chip);padding:1px 5px;border-radius:4px;font-family:var(--mono);font-size:11.5px}
+
+  ul.tree{list-style:none;margin:0;padding:0}
+  ul.tree ul{list-style:none;margin:0;padding-left:26px;border-left:1px dashed var(--line);margin-left:12px}
+  li.node{margin:6px 0;position:relative}
+  .row{display:flex;align-items:flex-start;gap:8px;background:var(--panel);border:1px solid var(--line);
+    border-radius:var(--radius);padding:8px 10px;transition:border-color .12s}
+  .row:hover{border-color:#c9d2de}
+  .row.depth0{border-left:4px solid var(--accent)}
+  .row.depth1{border-left:4px solid #8fb0f4}
+  .caret{cursor:pointer;color:var(--muted);width:16px;text-align:center;user-select:none;padding-top:2px;font-size:12px}
+  .caret.hidden{visibility:hidden}
+  .labels{flex:1;min-width:0}
+  .label{font-weight:600;outline:none;border-radius:4px;padding:1px 3px}
+  .row.depth0 .label{font-size:15.5px}
+  .note{color:var(--muted);font-size:12.5px;outline:none;border-radius:4px;padding:1px 3px;margin-top:2px;min-height:16px}
+  .label:focus,.note:focus{background:var(--accent-soft);box-shadow:0 0 0 1px var(--accent) inset}
+  .note:empty:before{content:attr(data-ph);color:#b4bcc7}
+  .actions{display:flex;gap:4px;opacity:0;transition:opacity .12s;flex-shrink:0}
+  .row:hover .actions,.row:focus-within .actions{opacity:1}
+  .grip{cursor:grab;color:#c0c8d2;padding-top:2px;font-size:13px;user-select:none;flex-shrink:0}
+  .grip:active{cursor:grabbing}
+  .row.dragging{opacity:.45}
+  .row.drop-before{box-shadow:0 -2px 0 var(--accent)}
+  .row.drop-after{box-shadow:0 2px 0 var(--accent)}
+  .row.drop-inside{box-shadow:0 0 0 2px var(--accent) inset;background:var(--accent-soft)}
+  .iconbtn{border:1px solid var(--line);background:#fff;border-radius:6px;width:26px;height:26px;cursor:pointer;
+    font-size:13px;color:var(--muted);display:flex;align-items:center;justify-content:center;padding:0}
+  .iconbtn:hover{background:var(--chip);color:var(--ink)}
+  .iconbtn.del:hover{background:#fdecea;color:var(--danger);border-color:#f3c6bf}
+  .badge{display:inline-block;background:var(--chip);color:var(--muted);font-size:10.5px;font-weight:600;
+    padding:1px 6px;border-radius:20px;margin-left:6px;vertical-align:middle;letter-spacing:.3px}
+  .collapsed > ul{display:none}
+  footer{max-width:1040px;margin:0 auto;padding:0 20px;color:var(--muted);font-size:12px}
+  dialog{border:none;border-radius:12px;padding:0;max-width:680px;width:92%;box-shadow:0 20px 60px rgba(0,0,0,.25)}
+  dialog::backdrop{background:rgba(20,28,40,.45)}
+  .dlg-head{padding:14px 18px;border-bottom:1px solid var(--line);display:flex;align-items:center}
+  .dlg-head h3{margin:0;font-size:15px}
+  .dlg-body{padding:16px 18px}
+  textarea{width:100%;height:300px;font-family:var(--mono);font-size:12px;border:1px solid var(--line);
+    border-radius:8px;padding:10px;resize:vertical}
+  .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;
+    padding:9px 16px;border-radius:8px;font-size:13px;opacity:0;pointer-events:none;transition:opacity .2s;z-index:50}
+  .toast.show{opacity:1}
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>People Counting — Information Architecture <span class="badge">v14 · editable</span></h1>
+    <div class="sub">Digitized from the hand-drawn draft. Edit inline · add/remove nodes · autosaves in this browser.</div>
+  </div>
+  <div class="spacer"></div>
+  <button class="btn" onclick="addRoot()">+ Section</button>
+  <button class="btn ghost" onclick="expandAll(true)">Expand all</button>
+  <button class="btn ghost" onclick="expandAll(false)">Collapse all</button>
+  <button class="btn" onclick="exportMarkdown()">Copy Markdown</button>
+  <button class="btn" onclick="showJSON()">Export / Import JSON</button>
+  <button class="btn ghost" onclick="resetTree()">Reset to v1</button>
+</header>
+
+<main>
+  <p class="hint">
+    Click any <b>title</b> or <b>note</b> to edit. Hover a row for actions:
+    <code>＋Ch</code> add child · <code>＋Sib</code> add sibling · <code>🗑</code> delete · <code>▸</code> collapse.
+    Everything autosaves locally; use <b>Export JSON</b> to keep a durable copy or hand it back to me.
+  </p>
+  <ul class="tree" id="tree"></ul>
+</main>
+
+<footer>People Counting · SafePassenger · IA source of truth for wireframing. Notes in grey are context, not nav labels.</footer>
+
+<dialog id="jsonDlg">
+  <div class="dlg-head"><h3>IA data (JSON)</h3><div class="spacer" style="flex:1"></div>
+    <button class="btn ghost" onclick="document.getElementById('jsonDlg').close()">Close</button></div>
+  <div class="dlg-body">
+    <textarea id="jsonArea" spellcheck="false"></textarea>
+    <div style="margin-top:10px;display:flex;gap:8px">
+      <button class="btn primary" onclick="importJSON()">Load this JSON</button>
+      <button class="btn" onclick="copyJSON()">Copy</button>
+    </div>
+  </div>
+</dialog>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ---- v1 IA, transcribed from the hand-drawn sketch (pages 6–7) ----
+const SEED = {
+  title: "SafePassenger — People Counting",
+  note: "Login → primary sections · Bus and Trips kept separate (no overlap)",
+  children: [
+    { title: "Dashboard", note: "Landing · verification hub", children: [
+      { title: "KPIs", note: "clickable filters", children: [
+        { title: "Unscheduled boarding", note: "" },
+        { title: "Unscheduled drop", note: "" },
+        { title: "Tampering", note: "device flags 'Tampering DETECTED' (can't tell turned vs covered) — POO confirms via video on Trip detail; flagged here, NOT in Device health", children: [] },
+        { title: "Device health", note: "CLICKABLE → opens the bus's Device health under Bus (bus no · signal · details · where it failed · GPS location)", children: [] },
+      ]},
+      { title: "Alerts (table)", note: "only unscheduled events surface here", children: [] },
+    ]},
+    { title: "Bus", note: "fleet list → bus detail (NO Trips here — Trips is its own section)", children: [
+      { title: "All busses (table)", note: "one table · columns: Bus number · Device status (BADGE: Active / Standby / Maintenance / Deprecated — Deprecated only if any exist) · Device health (Strong / Medium / Weak). Filter/sort by status. Click a bus → Bus page.", children: [
+        { title: "New bus added", note: "flagged explicitly when a bus is newly added", children: [] },
+      ]},
+      { title: "Bus page", note: "opens on a clicked bus — e.g. KA 04 PB 9080", children: [
+        { title: "Overview", note: "Trip route · Date run · Unscheduled boarding · Crew present", children: [] },
+        { title: "Analytics (tab)", note: "analytics for this particular bus", children: [] },
+        { title: "Device health (tab)", note: "signal Strong/Medium/Weak · details · WHERE it failed (GPS location · subsystem: camera / GPS) · history with DATE FILTER (Today/Yesterday/Last week/custom) · only UNATTRIBUTED issues live here · reclassify → Tampering if inspection shows camera covered/turned", children: [] },
+      ]},
+    ]},
+    { title: "Trips", note: "SEPARATE from Bus — no overlap · fleet-wide trip states", children: [
+      { title: "All trips", note: "GROUPS the two states below — Completed + Active", children: [
+        { title: "Completed", note: "all completed / analyzed trips — verified/not verified, alert/non-alert (everything shown on the dashboard); date filter; click → Trip detail", children: [
+          { title: "Trip detail", note: "Map (hero) + LEFT panel: stops as clickable buttons — Rest · Food · Unscheduled boarding · Unscheduled drop-off → click locates it on the Map", children: [
+            { title: "Tab — Running trip", note: "whole-trip overview · Map ↔ Table toggle (table = all stops/events, no map)", children: [] },
+            { title: "Tab — Unscheduled & tampering", note: "COMBINED view — unscheduled boarding/drop-off + tampering; tampering shows 'Detected' → opens the VIDEO (device can't tell turned vs covered); feeds the single message", children: [] },
+            { title: "Tab — Media", note: "ALL videos (unscheduled boarding/drop, tampering, stops); filterable", children: [] },
+          { title: "Tab — Audio announcements", note: "", children: [] },
+            { title: "Tab — Stops for this trip", note: "", children: [] },
+            { title: "Tab — Passenger list", note: "", children: [] },
+          ]},
+        ]},
+        { title: "Active (Live)", note: "active / live running trips; click → Trip detail (same tabs)", children: [
+          { title: "Trip detail", note: "same as Completed — Map (hero) + LEFT panel of clickable stops → locate on Map", children: [
+            { title: "Tab — Running trip", note: "whole-trip overview · Map ↔ Table toggle (table = all stops/events, no map)", children: [] },
+            { title: "Tab — Unscheduled & tampering", note: "COMBINED view — unscheduled boarding/drop-off + tampering; tampering shows 'Detected' → opens the VIDEO (device can't tell turned vs covered); feeds the single message", children: [] },
+            { title: "Tab — Media", note: "ALL videos (unscheduled boarding/drop, tampering, stops); filterable", children: [] },
+          { title: "Tab — Audio announcements", note: "", children: [] },
+            { title: "Tab — Stops for this trip", note: "", children: [] },
+            { title: "Tab — Passenger list", note: "", children: [] },
+          ]},
+        ]},
+      ]},
+      { title: "Verified", note: "audit trail — the message + WHO verified; click → Trip detail + Verification tab", children: [
+        { title: "Trip detail", note: "same as Active — Map (hero) + LEFT panel of clickable stops → locate on Map", children: [
+          { title: "Tab — Running trip", note: "whole-trip overview · Map ↔ Table toggle (table = all stops/events, no map)", children: [] },
+          { title: "Tab — Unscheduled & tampering", note: "COMBINED view — unscheduled boarding/drop-off + tampering; tampering shows 'Detected' → opens the VIDEO (device can't tell turned vs covered); feeds the single message", children: [] },
+          { title: "Tab — Media", note: "ALL videos (unscheduled boarding/drop, tampering, stops); filterable", children: [] },
+          { title: "Tab — Audio announcements", note: "", children: [] },
+          { title: "Tab — Stops for this trip", note: "", children: [] },
+          { title: "Tab — Passenger list", note: "", children: [] },
+          { title: "Tab — Verification & message", note: "WHO verified this trip · the exact message that was sent", children: [] },
+        ]},
+      ]},
+      { title: "Routes", note: "all common routes run by the fleet", children: [] },
+      { title: "Crew", note: "list the crew · map a crew to a trip · TRUST METER (red→green bar, no number up front; hover tooltip shows 'Trust N · flagged X of Y trips') from verified unscheduled events per trip → feeds the message (neutral, not 'repeat offender')", children: [] },
+    ]},
+  ]
+};
+
+const KEY = "pc-ia-v14";
+let data;
+
+function load(){
+  try{ const s = localStorage.getItem(KEY); if(s){ data = JSON.parse(s); return; } }catch(e){}
+  data = structuredClone(SEED);
+}
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(data)); }catch(e){} }
+
+function el(tag, cls, txt){ const e=document.createElement(tag); if(cls)e.className=cls; if(txt!=null)e.textContent=txt; return e; }
+
+function render(){
+  const root = document.getElementById('tree');
+  root.innerHTML='';
+  root.appendChild(renderNode(data, 0, null, -1));
+  save();
+}
+
+function renderNode(node, depth, parent, index){
+  const li = el('li','node');
+  if(node._collapsed) li.classList.add('collapsed');
+  const row = el('div','row depth'+Math.min(depth,1));
+  row._node = node; row._parent = parent;
+  // drag handle (root not draggable)
+  if(parent){
+    const grip = el('div','grip','⠿'); grip.title='Drag to move';
+    grip.draggable=true;
+    grip.addEventListener('dragstart', e=>{ drag={node,parent}; row.classList.add('dragging'); e.dataTransfer.effectAllowed='move'; e.dataTransfer.setData('text/plain',node.title); });
+    grip.addEventListener('dragend', ()=>{ row.classList.remove('dragging'); clearDropCues(); drag=null; });
+    row.appendChild(grip);
+  } else {
+    row.appendChild(el('div','grip',' '));
+  }
+  row.addEventListener('dragover', e=>{ if(!drag) return; e.preventDefault(); showDropCue(row,e); });
+  row.addEventListener('dragleave', ()=>{ row.classList.remove('drop-before','drop-after','drop-inside'); });
+  row.addEventListener('drop', e=>{ if(!drag) return; e.preventDefault(); doDrop(row,e); });
+  // caret
+  const caret = el('div','caret', node.children && node.children.length ? (node._collapsed?'▸':'▾') : '•');
+  if(!(node.children && node.children.length)) caret.classList.add('hidden');
+  caret.onclick=()=>{ node._collapsed=!node._collapsed; render(); };
+  row.appendChild(caret);
+  // labels
+  const labels = el('div','labels');
+  const label = el('div','label'); label.contentEditable=true; label.textContent=node.title;
+  label.oninput=()=>{ node.title=label.textContent; save(); };
+  const note = el('div','note'); note.contentEditable=true; note.textContent=node.note||''; note.setAttribute('data-ph','add a note…');
+  note.oninput=()=>{ node.note=note.textContent; save(); };
+  labels.appendChild(label); labels.appendChild(note);
+  row.appendChild(labels);
+  // actions
+  const act = el('div','actions');
+  const bUp = el('button','iconbtn','▲'); bUp.title='Move up';
+  bUp.onclick=()=>moveSibling(parent,index,-1);
+  const bDown = el('button','iconbtn','▼'); bDown.title='Move down';
+  bDown.onclick=()=>moveSibling(parent,index,1);
+  if(!parent){ bUp.style.visibility='hidden'; bDown.style.visibility='hidden'; }
+  const bChild = el('button','iconbtn','＋'); bChild.title='Add child';
+  bChild.onclick=()=>{ node.children=node.children||[]; node.children.push({title:'New item',note:'',children:[]}); node._collapsed=false; render(); };
+  const bSib = el('button','iconbtn','⤵'); bSib.title='Add sibling below';
+  bSib.onclick=()=>{ if(parent){ parent.children.splice(index+1,0,{title:'New item',note:'',children:[]}); render(); } };
+  if(depth===0) bSib.style.visibility='hidden';
+  const bDel = el('button','iconbtn del','🗑'); bDel.title='Delete';
+  bDel.onclick=()=>{ if(parent){ parent.children.splice(index,1); render(); } else { toast("Can't delete the root"); } };
+  act.appendChild(bUp); act.appendChild(bDown); act.appendChild(bChild); act.appendChild(bSib); act.appendChild(bDel);
+  row.appendChild(act);
+  li.appendChild(row);
+  // children
+  if(node.children && node.children.length){
+    const ul = el('ul');
+    node.children.forEach((c,i)=> ul.appendChild(renderNode(c, depth+1, node, i)));
+    li.appendChild(ul);
+  }
+  return li;
+}
+
+// ---- reorder: up/down among siblings ----
+function moveSibling(parent,index,dir){
+  if(!parent) return;
+  const arr=parent.children, j=index+dir;
+  if(j<0||j>=arr.length) return;
+  [arr[index],arr[j]]=[arr[j],arr[index]];
+  render();
+}
+
+// ---- drag & drop (move anywhere, incl. re-parenting) ----
+let drag=null;
+function isDescendant(anc,node){
+  if(anc===node) return true;
+  if(!anc.children) return false;
+  return anc.children.some(c=>isDescendant(c,node));
+}
+function dropZone(row,e){
+  const r=row.getBoundingClientRect(), y=e.clientY-r.top, h=r.height;
+  if(y<h*0.3) return 'before';
+  if(y>h*0.7) return 'after';
+  return 'inside';
+}
+function clearDropCues(){ document.querySelectorAll('.row').forEach(r=>r.classList.remove('drop-before','drop-after','drop-inside')); }
+function showDropCue(row,e){
+  clearDropCues();
+  if(row._node===drag.node || isDescendant(drag.node,row._node)) return; // no illegal target
+  const z=dropZone(row,e);
+  row.classList.add(z==='before'?'drop-before':z==='after'?'drop-after':'drop-inside');
+}
+function doDrop(row,e){
+  clearDropCues();
+  const target=row._node, tParent=row._parent;
+  if(target===drag.node || isDescendant(drag.node,target)){ drag=null; return; }
+  const z=dropZone(row,e);
+  // remove from source
+  const sArr=drag.parent.children, si=sArr.indexOf(drag.node);
+  if(si<0){ drag=null; return; }
+  sArr.splice(si,1);
+  if(z==='inside'){
+    target.children=target.children||[];
+    target.children.push(drag.node);
+    target._collapsed=false;
+  } else {
+    if(!tParent){ // dropping beside the root → put inside root
+      data.children.push(drag.node);
+    } else {
+      const tArr=tParent.children, ti=tArr.indexOf(target);
+      tArr.splice(z==='before'?ti:ti+1,0,drag.node);
+    }
+  }
+  drag=null; render();
+}
+
+function addRoot(){ data.children.push({title:'New section',note:'',children:[]}); render(); }
+function expandAll(open){ (function walk(n){ if(n.children){ n._collapsed=!open; n.children.forEach(walk);} })(data); render(); }
+function resetTree(){ if(confirm('Reset to the original v1 sketch? Your edits will be lost.')){ data=structuredClone(SEED); render(); } }
+
+function toMarkdown(){
+  let out = '# '+data.title+'\n\n';
+  if(data.note) out += '_'+data.note+'_\n\n';
+  (function walk(nodes, d){ nodes.forEach(n=>{
+    out += '  '.repeat(d)+'- **'+n.title+'**'+(n.note? ' — '+n.note:'')+'\n';
+    if(n.children&&n.children.length) walk(n.children,d+1);
+  }); })(data.children,0);
+  return out;
+}
+function exportMarkdown(){ navigator.clipboard.writeText(toMarkdown()).then(()=>toast('Markdown copied to clipboard')); }
+function showJSON(){ const dlg=document.getElementById('jsonDlg'); document.getElementById('jsonArea').value=JSON.stringify(data,null,2); dlg.showModal(); }
+function copyJSON(){ navigator.clipboard.writeText(document.getElementById('jsonArea').value).then(()=>toast('JSON copied')); }
+function importJSON(){ try{ data=JSON.parse(document.getElementById('jsonArea').value); render(); document.getElementById('jsonDlg').close(); toast('Loaded'); }catch(e){ toast('Invalid JSON'); } }
+
+let toastT;
+function toast(msg){ const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show'); clearTimeout(toastT); toastT=setTimeout(()=>t.classList.remove('show'),1800); }
+
+load(); render();
+</script>
+</body>
+</html>

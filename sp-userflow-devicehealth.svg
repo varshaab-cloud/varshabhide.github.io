@@ -1,0 +1,45 @@
+<svg viewBox="0 0 800 990" xmlns="http://www.w3.org/2000/svg" role="img" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">
+<title>People Counting — POO device-health / missing-signal triage user flow</title>
+<desc>User flow: the POO opens the Device Health tab, picks a flagged bus, decides whether the health signal is present or missing, then whether a weak signal is tampering or a genuine fault, escalating faults to the technical team and routing tampering to the tampering flow, while flagging affected counts as unreliable.</desc>
+<style>
+  .t{fill:#1c2430;font-weight:650;font-size:15px}
+  .s{fill:#6b7684;font-weight:400;font-size:12px}
+  .yes{fill:#1D9E75;font-size:12px;font-weight:700}
+  .no{fill:#D14520;font-size:12px;font-weight:700}
+  .alt{fill:#B8860B;font-size:12px;font-weight:700}
+  .flow{stroke:#97a2b0;stroke-width:1.6;fill:none}
+</style>
+<defs>
+  <marker id="arw" markerWidth="10" markerHeight="10" refX="7.5" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#97a2b0"/></marker>
+</defs>
+<g transform="translate(556,30)">
+  <rect x="0" y="0" width="224" height="110" rx="10" fill="#ffffff" stroke="#e3e7ec"/>
+  <text x="14" y="24" class="t" font-size="12.5">Legend</text>
+  <rect x="14" y="34" width="26" height="15" rx="7.5" fill="#DCEAF9" stroke="#185FA5"/><text x="48" y="46" class="s">Start / End</text>
+  <rect x="14" y="56" width="26" height="15" rx="3" fill="#E6F1FB" stroke="#185FA5"/><text x="48" y="68" class="s">Screen</text>
+  <path d="M27,80 L38,88 L27,96 L16,88 Z" fill="#fff" stroke="#6b7684"/><text x="48" y="93" class="s">Decision</text>
+</g>
+<g class="flow">
+  <line x1="300" y1="74" x2="300" y2="110" marker-end="url(#arw)"/>
+  <line x1="300" y1="164" x2="300" y2="196" marker-end="url(#arw)"/>
+  <line x1="300" y1="250" x2="300" y2="282" marker-end="url(#arw)"/>
+  <line x1="300" y1="336" x2="300" y2="410" marker-end="url(#arw)"/>
+  <line x1="300" y1="486" x2="300" y2="542" marker-end="url(#arw)"/>
+  <line x1="300" y1="596" x2="300" y2="670" marker-end="url(#arw)"/>
+  <line x1="300" y1="746" x2="300" y2="802" marker-end="url(#arw)"/>
+  <line x1="300" y1="856" x2="300" y2="892" marker-end="url(#arw)"/>
+</g>
+<rect x="170" y="30" width="260" height="44" rx="22" fill="#DCEAF9" stroke="#185FA5"/><text x="300" y="57" text-anchor="middle" class="t">POO opens SafePassenger</text>
+<rect x="170" y="110" width="260" height="54" rx="6" fill="#E6F1FB" stroke="#185FA5"/><text x="300" y="132" text-anchor="middle" class="t">Dashboard</text><text x="300" y="150" text-anchor="middle" class="s">Device-health KPI (e.g. 2/10 missed)</text>
+<rect x="170" y="196" width="260" height="54" rx="6" fill="#E6F1FB" stroke="#185FA5"/><text x="300" y="218" text-anchor="middle" class="t">Device Health tab</text><text x="300" y="236" text-anchor="middle" class="s">separate tab</text>
+<rect x="170" y="282" width="260" height="54" rx="14" fill="#F1F3F6" stroke="#c2cad6"/><text x="300" y="304" text-anchor="middle" class="t">Selects a flagged bus</text><text x="300" y="322" text-anchor="middle" class="s">Weak / missing signal</text>
+<path d="M300,410 L400,448 L300,486 L200,448 Z" fill="#fff" stroke="#6b7684" stroke-width="1.5"/><text x="300" y="445" text-anchor="middle" class="t" font-size="12.5">Health signal</text><text x="300" y="461" text-anchor="middle" class="t" font-size="12.5">present?</text><text x="306" y="520" class="alt">Weak</text>
+<line class="flow" x1="400" y1="448" x2="520" y2="448" marker-end="url(#arw)"/><text x="440" y="440" class="no">Missing</text>
+<rect x="520" y="418" width="230" height="60" rx="22" fill="#DCEAF9" stroke="#185FA5"/><text x="635" y="442" text-anchor="middle" class="t" font-size="13">Notify technical team</text><text x="635" y="460" text-anchor="middle" class="s">flag window if trip is live</text>
+<rect x="170" y="542" width="260" height="54" rx="6" fill="#E6F1FB" stroke="#185FA5"/><text x="300" y="564" text-anchor="middle" class="t">Reads the error type</text><text x="300" y="582" text-anchor="middle" class="s">camera down · GPS down · low quality</text>
+<path d="M300,670 L400,708 L300,746 L200,708 Z" fill="#fff" stroke="#6b7684" stroke-width="1.5"/><text x="300" y="705" text-anchor="middle" class="t" font-size="11.5">On inspection,</text><text x="300" y="721" text-anchor="middle" class="t" font-size="11.5">tampering?</text><text x="312" y="780" class="no">No</text>
+<line class="flow" x1="400" y1="708" x2="520" y2="708" marker-end="url(#arw)"/><text x="440" y="700" class="yes">Yes</text>
+<rect x="520" y="681" width="230" height="54" rx="22" fill="#DCEAF9" stroke="#185FA5"/><text x="635" y="703" text-anchor="middle" class="t" font-size="13">Switch to Tampering flow</text><text x="635" y="721" text-anchor="middle" class="s">camera covered / turned</text>
+<rect x="170" y="802" width="260" height="54" rx="14" fill="#F1F3F6" stroke="#c2cad6"/><text x="300" y="824" text-anchor="middle" class="t">Escalate to technical team</text><text x="300" y="842" text-anchor="middle" class="s">+ flag counts unreliable</text>
+<rect x="170" y="892" width="260" height="44" rx="22" fill="#DCEAF9" stroke="#185FA5"/><text x="300" y="919" text-anchor="middle" class="t">Logged / resolved (audit)</text>
+</svg>

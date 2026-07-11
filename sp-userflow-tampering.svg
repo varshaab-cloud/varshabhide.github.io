@@ -1,0 +1,60 @@
+<svg viewBox="0 0 860 1340" xmlns="http://www.w3.org/2000/svg" role="img" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">
+<title>People Counting — POO tampering user flow</title>
+<desc>User flow for handling a camera-tampering alert: review footage, decide if tampering is genuine, split crew tampering from device fault, flag affected counts as unreliable, verify and draft a message with evidence link, and send via WhatsApp; device faults escalate to the technical team.</desc>
+<style>
+  .t{fill:#1c2430;font-weight:650;font-size:15px}
+  .s{fill:#6b7684;font-weight:400;font-size:12px}
+  .yes{fill:#1D9E75;font-size:12px;font-weight:700}
+  .no{fill:#D14520;font-size:12px;font-weight:700}
+  .alt{fill:#B8860B;font-size:12px;font-weight:700}
+  .flow{stroke:#97a2b0;stroke-width:1.6;fill:none}
+</style>
+<defs>
+  <marker id="arw" markerWidth="10" markerHeight="10" refX="7.5" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#97a2b0"/></marker>
+</defs>
+<g transform="translate(596,30)">
+  <rect x="0" y="0" width="230" height="128" rx="10" fill="#ffffff" stroke="#e3e7ec"/>
+  <text x="14" y="24" class="t" font-size="12.5">Legend</text>
+  <rect x="14" y="34" width="26" height="15" rx="7.5" fill="#DCEAF9" stroke="#185FA5"/><text x="48" y="46" class="s">Start / End</text>
+  <rect x="14" y="56" width="26" height="15" rx="3" fill="#E6F1FB" stroke="#185FA5"/><text x="48" y="68" class="s">Screen</text>
+  <rect x="14" y="78" width="26" height="15" rx="7" fill="#F1F3F6" stroke="#c2cad6"/><text x="48" y="90" class="s">Action</text>
+  <path d="M27,100 L38,108 L27,116 L16,108 Z" fill="#fff" stroke="#6b7684"/><text x="48" y="113" class="s">Decision</text>
+</g>
+<g class="flow">
+  <line x1="300" y1="74" x2="300" y2="110" marker-end="url(#arw)"/>
+  <line x1="300" y1="164" x2="300" y2="196" marker-end="url(#arw)"/>
+  <line x1="300" y1="250" x2="300" y2="282" marker-end="url(#arw)"/>
+  <line x1="300" y1="336" x2="300" y2="368" marker-end="url(#arw)"/>
+  <line x1="300" y1="422" x2="300" y2="454" marker-end="url(#arw)"/>
+  <line x1="300" y1="508" x2="300" y2="528" marker-end="url(#arw)"/>
+  <line x1="300" y1="604" x2="300" y2="648" marker-end="url(#arw)"/>
+  <line x1="300" y1="724" x2="300" y2="780" marker-end="url(#arw)"/>
+  <line x1="300" y1="834" x2="300" y2="870" marker-end="url(#arw)"/>
+  <line x1="300" y1="924" x2="300" y2="978" marker-end="url(#arw)"/>
+  <line x1="300" y1="1054" x2="300" y2="1110" marker-end="url(#arw)"/>
+  <line x1="300" y1="1164" x2="300" y2="1196" marker-end="url(#arw)"/>
+  <line x1="300" y1="1250" x2="300" y2="1286" marker-end="url(#arw)"/>
+</g>
+<rect x="170" y="30" width="260" height="44" rx="22" fill="#DCEAF9" stroke="#185FA5"/><text x="300" y="57" text-anchor="middle" class="t">POO opens SafePassenger</text>
+<rect x="170" y="110" width="260" height="54" rx="6" fill="#E6F1FB" stroke="#185FA5"/><text x="300" y="132" text-anchor="middle" class="t">Login</text><text x="300" y="150" text-anchor="middle" class="s">enters credentials</text>
+<rect x="170" y="196" width="260" height="54" rx="6" fill="#E6F1FB" stroke="#185FA5"/><text x="300" y="218" text-anchor="middle" class="t">Dashboard</text><text x="300" y="236" text-anchor="middle" class="s">Tampering alert flagged</text>
+<rect x="170" y="282" width="260" height="54" rx="14" fill="#F1F3F6" stroke="#c2cad6"/><text x="300" y="304" text-anchor="middle" class="t">Clicks the tampering alert</text><text x="300" y="322" text-anchor="middle" class="s">opens the trip</text>
+<rect x="170" y="368" width="260" height="54" rx="6" fill="#E6F1FB" stroke="#185FA5"/><text x="300" y="390" text-anchor="middle" class="t">Tampering evidence</text><text x="300" y="408" text-anchor="middle" class="s">snapshots + clips, time window</text>
+<rect x="170" y="454" width="260" height="54" rx="14" fill="#F1F3F6" stroke="#c2cad6"/><text x="300" y="476" text-anchor="middle" class="t">Reviews the footage</text><text x="300" y="494" text-anchor="middle" class="s">covered / turned / blocked</text>
+<path d="M300,528 L400,566 L300,604 L200,566 Z" fill="#fff" stroke="#6b7684" stroke-width="1.5"/><text x="300" y="563" text-anchor="middle" class="t" font-size="12.5">Genuine</text><text x="300" y="579" text-anchor="middle" class="t" font-size="12.5">tampering?</text><text x="312" y="638" class="yes">Yes</text>
+<line class="flow" x1="400" y1="566" x2="520" y2="566" marker-end="url(#arw)"/><text x="446" y="558" class="no">No</text>
+<rect x="520" y="539" width="210" height="54" rx="14" fill="#F1F3F6" stroke="#c2cad6"/><text x="625" y="561" text-anchor="middle" class="t" font-size="13.5">Dismiss false alert</text><text x="625" y="579" text-anchor="middle" class="s">camera glitch</text>
+<path class="flow" d="M625,539 L625,223 L432,223" marker-end="url(#arw)"/>
+<path d="M300,648 L400,686 L300,724 L200,686 Z" fill="#fff" stroke="#6b7684" stroke-width="1.5"/><text x="300" y="683" text-anchor="middle" class="t" font-size="12.5">Crew or</text><text x="300" y="699" text-anchor="middle" class="t" font-size="12.5">device fault?</text><text x="304" y="758" class="yes">Crew</text>
+<line class="flow" x1="400" y1="686" x2="520" y2="686" marker-end="url(#arw)"/><text x="440" y="678" class="alt">Fault</text>
+<rect x="520" y="659" width="230" height="54" rx="22" fill="#DCEAF9" stroke="#185FA5"/><text x="635" y="681" text-anchor="middle" class="t" font-size="13.5">Escalate → technical team</text><text x="635" y="699" text-anchor="middle" class="s">device fault, not crew</text>
+<rect x="170" y="780" width="260" height="54" rx="14" fill="#F1F3F6" stroke="#c2cad6"/><text x="300" y="802" text-anchor="middle" class="t">Flags counts in the window</text><text x="300" y="820" text-anchor="middle" class="s">marked unreliable</text>
+<rect x="170" y="870" width="260" height="54" rx="14" fill="#FAE3B8" stroke="#BA7517" stroke-width="2"/><text x="300" y="892" text-anchor="middle" class="t">Verify tampering</text><text x="300" y="910" text-anchor="middle" class="s">drafts message + evidence link</text>
+<path d="M300,978 L400,1016 L300,1054 L200,1016 Z" fill="#fff" stroke="#6b7684" stroke-width="1.5"/><text x="300" y="1013" text-anchor="middle" class="t" font-size="12.5">Details</text><text x="300" y="1029" text-anchor="middle" class="t" font-size="12.5">correct?</text><text x="312" y="1088" class="yes">Yes</text>
+<line class="flow" x1="400" y1="1016" x2="520" y2="1016" marker-end="url(#arw)"/><text x="446" y="1008" class="no">No</text>
+<rect x="520" y="989" width="210" height="54" rx="14" fill="#F1F3F6" stroke="#c2cad6"/><text x="625" y="1011" text-anchor="middle" class="t" font-size="13.5">Edit the draft</text><text x="625" y="1029" text-anchor="middle" class="s">fix type / time / stops</text>
+<path class="flow" d="M625,989 L625,897 L432,897" marker-end="url(#arw)"/>
+<rect x="170" y="1110" width="260" height="54" rx="14" fill="#F1F3F6" stroke="#c2cad6"/><text x="300" y="1132" text-anchor="middle" class="t">Copies to clipboard</text><text x="300" y="1150" text-anchor="middle" class="s">one tap</text>
+<rect x="170" y="1196" width="260" height="54" rx="14" fill="#F1F3F6" stroke="#c2cad6"/><text x="300" y="1218" text-anchor="middle" class="t">Pastes &amp; sends in WhatsApp</text><text x="300" y="1236" text-anchor="middle" class="s">→ Bus Operator (crew action)</text>
+<rect x="170" y="1286" width="260" height="44" rx="22" fill="#DCEAF9" stroke="#185FA5"/><text x="300" y="1313" text-anchor="middle" class="t">Trip → Verified, tampering logged</text>
+</svg>

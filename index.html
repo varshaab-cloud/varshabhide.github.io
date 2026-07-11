@@ -176,9 +176,15 @@
 
     /* ── BACK BUTTON ── */
     .back-bar {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 24px 56px 0;
+      position: sticky;
+      top: 56px;
+      background: var(--white);
+      z-index: 20;
+      border-bottom: 1px solid var(--border);
+      padding: 12px 56px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
     }
 
     .back-btn {
@@ -589,27 +595,27 @@
     .page-header {
       max-width: 960px;
       margin: 0 auto;
-      padding: 56px 56px 52px;
+      padding: 24px 56px 16px;
       border-bottom: 1px solid var(--border);
     }
 
     .page-header h1 {
-      font-size: 48px;
+      font-size: 32px;
       font-weight: 400;
-      letter-spacing: -0.04em;
+      letter-spacing: -0.03em;
       line-height: 1.1;
-      margin-bottom: 10px;
+      margin-bottom: 6px;
     }
 
-    .page-header p { font-size: 15px; color: var(--gray); line-height: 1.7; }
+    .page-header p { font-size: 14px; color: var(--gray); line-height: 1.6; }
 
-    .work-section { padding: 52px 0 80px; }
+    .work-section { padding: 20px 0 60px; }
 
     .filter-tabs {
       display: flex;
       gap: 28px;
       border-bottom: 1px solid var(--border);
-      margin-bottom: 48px;
+      margin-bottom: 24px;
     }
 
     .tab {
@@ -636,15 +642,39 @@
       background: var(--black);
     }
 
-    .cat-group { margin-bottom: 52px; }
+    .cat-group { margin-bottom: 20px; }
     .cat-group:last-child { margin-bottom: 0; }
     .cat-group.hidden { display: none; }
+    .more-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 24px;
+    }
+    .more-cards.more-hidden { display: none; }
+    .show-more-btn {
+      margin-top: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      font-family: inherit;
+      color: var(--gray);
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 7px 16px;
+      cursor: pointer;
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .show-more-btn:hover { border-color: #aaa; color: var(--black); }
 
     .cat-header {
       display: flex;
       align-items: center;
       gap: 16px;
-      margin-bottom: 24px;
+      margin-bottom: 16px;
     }
 
     .cat-title {
@@ -680,7 +710,7 @@
     .grid-card:hover .card-arrow { opacity: 1; transform: translate(0,0); }
 
     .g-thumb {
-      height: 220px;
+      height: 180px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -1000,48 +1030,89 @@
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.82);
+      background: rgba(0,0,0,0.85);
       z-index: 9999;
       align-items: center;
       justify-content: center;
       padding: 24px;
     }
-    .flow-lightbox.open { display: flex; }
+    .flow-lightbox.open { display: flex; flex-direction: column; gap: 10px; }
+    .flow-lightbox-toolbar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 6px 10px;
+      flex-shrink: 0;
+    }
+    .flow-lightbox-toolbar button {
+      background: rgba(255,255,255,0.15);
+      border: none;
+      border-radius: 5px;
+      color: #fff;
+      font-size: 14px;
+      width: 28px;
+      height: 28px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s;
+    }
+    .flow-lightbox-toolbar button:hover { background: rgba(255,255,255,0.28); }
+    .flow-lightbox-zoom-label {
+      font-size: 12px;
+      color: rgba(255,255,255,0.7);
+      min-width: 40px;
+      text-align: center;
+      font-family: inherit;
+    }
+    .flow-lightbox-hint {
+      font-size: 11px;
+      color: rgba(255,255,255,0.45);
+      margin-left: 8px;
+    }
     .flow-lightbox-inner {
       width: 76vw;
       max-width: 1100px;
-      height: 80vh;
+      height: 75vh;
       overflow: auto;
       background: #fff;
       border-radius: 10px;
       position: relative;
       -webkit-overflow-scrolling: touch;
       scrollbar-width: thin;
+      cursor: grab;
     }
-
+    .flow-lightbox-inner.dragging { cursor: grabbing; }
     .flow-lightbox-inner img {
       display: block;
-      height: calc(80vh - 48px);
-      width: auto;
+      width: 100%;
+      height: auto;
       max-width: none;
+      user-select: none;
+      pointer-events: none;
     }
     .flow-lightbox-close {
-      position: absolute;
-      top: 10px;
-      right: 12px;
-      background: rgba(0,0,0,0.7);
+      position: fixed;
+      top: 18px;
+      right: 20px;
+      background: rgba(0,0,0,0.55);
       color: #fff;
-      border: none;
+      border: 1px solid rgba(255,255,255,0.2);
       border-radius: 50%;
-      width: 30px;
-      height: 30px;
+      width: 32px;
+      height: 32px;
       font-size: 16px;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      z-index: 2;
+      z-index: 10000;
+      transition: background 0.15s;
     }
+    .flow-lightbox-close:hover { background: rgba(0,0,0,0.8); }
 
     .cs-h2 {
       font-size: 24px;
@@ -1424,13 +1495,14 @@
           <button class="tab" data-filter="product">Product</button>
         </div>
 
+        <!-- ── Design System ── -->
         <div class="cat-group" id="grp-ds">
           <div class="cat-header">
             <span class="cat-title">Design system</span>
             <div class="cat-line"></div>
           </div>
-          <div class="project-grid">
 
+          <div class="project-grid">
             <button onclick="navigate('thematic')" class="grid-card" style="text-align:left; width:100%; border:none; font-family:inherit; cursor:pointer;">
               <div class="g-thumb t1" style="background-image:url('td-thumbnail.png'); background-size:cover; background-position:center;"></div>
               <div class="g-body">
@@ -1448,7 +1520,10 @@
               </div>
               <span class="card-arrow">→</span>
             </button>
+          </div>
 
+          <!-- DS more cards -->
+          <div id="ds-more" class="more-cards more-hidden">
             <button onclick="navigate('tokens')" class="grid-card" style="text-align:left; width:100%; border:none; font-family:inherit; cursor:pointer;">
               <div class="g-thumb t3" style="background-image:url('dt-hero.png'); background-size:cover; background-position:center;"></div>
               <div class="g-body">
@@ -1466,24 +1541,28 @@
               </div>
               <span class="card-arrow">→</span>
             </button>
-
           </div>
+
+          <button class="show-more-btn" data-more="ds-more" onclick="toggleMoreCards('ds-more', this)">Show more</button>
         </div>
 
+        <!-- ── Product ── -->
         <div class="cat-group" id="grp-prod">
           <div class="cat-header">
             <span class="cat-title">Product</span>
             <div class="cat-line"></div>
           </div>
-          <div class="project-grid">
 
-            <button onclick="navigate('eps')" class="grid-card" style="text-align:left; width:100%; border:none; font-family:inherit; cursor:pointer;">
-              <div class="g-thumb t4" style="background-image:url('eps-thumb.png'); background-size:cover; background-position:center;"></div>
-              <div class="g-body">
-                <div><p class="g-title">Electronic Patient Service</p><p class="g-meta">Healthcare · UX research · End-to-end design</p></div>
-                <span class="g-year">2023</span>
+          <div class="project-grid">
+            <button onclick="navigate('safepassenger')" class="grid-card" style="text-align:left; width:100%; border:none; font-family:inherit; cursor:pointer;">
+              <div class="g-thumb t4" style="background:#f0f9ff; display:flex; align-items:center; justify-content:center;">
+                <span style="font-size:28px;">🚌</span>
               </div>
-              <span class="card-arrow">↗</span>
+              <div class="g-body">
+                <div><p class="g-title">SafePassenger — People Counting</p><p class="g-meta">UX Research · Product Design · Transport SaaS</p></div>
+                <span class="g-year">2024</span>
+              </div>
+              <span class="card-arrow">→</span>
             </button>
 
             <button onclick="navigate('attendance')" class="grid-card" style="text-align:left; width:100%; border:none; font-family:inherit; cursor:pointer;">
@@ -1494,8 +1573,21 @@
               </div>
               <span class="card-arrow">↗</span>
             </button>
-
           </div>
+
+          <!-- Product more cards -->
+          <div id="prod-more" class="more-cards more-hidden">
+            <button onclick="navigate('eps')" class="grid-card" style="text-align:left; width:100%; border:none; font-family:inherit; cursor:pointer;">
+              <div class="g-thumb t4" style="background-image:url('eps-thumb.png'); background-size:cover; background-position:center;"></div>
+              <div class="g-body">
+                <div><p class="g-title">Electronic Patient Service</p><p class="g-meta">Healthcare · UX research · End-to-end design</p></div>
+                <span class="g-year">2023</span>
+              </div>
+              <span class="card-arrow">↗</span>
+            </button>
+          </div>
+
+          <button class="show-more-btn" data-more="prod-more" onclick="toggleMoreCards('prod-more', this)">Show more</button>
         </div>
 
       </div>
@@ -1705,6 +1797,8 @@
       <button class="back-btn" onclick="navigate('projects')">
         <span class="back-arrow">←</span> Work
       </button>
+      <span style="width:1px; height:14px; background:var(--border); display:inline-block; flex-shrink:0;"></span>
+      <span style="font-size:13px; font-weight:500; color:var(--black);">Electronic Patient Service</span>
     </div>
 
     <div class="cs-wrap">
@@ -1935,6 +2029,8 @@
       <button class="back-btn" onclick="navigate('projects')">
         <span class="back-arrow">←</span> Work
       </button>
+      <span style="width:1px; height:14px; background:var(--border); display:inline-block; flex-shrink:0;"></span>
+      <span style="font-size:13px; font-weight:500; color:var(--black);">Thematic.design</span>
     </div>
 
     <div class="cs-wrap">
@@ -2352,6 +2448,8 @@
       <button class="back-btn" onclick="navigate('projects')">
         <span class="back-arrow">←</span> Work
       </button>
+      <span style="width:1px; height:14px; background:var(--border); display:inline-block; flex-shrink:0;"></span>
+      <span style="font-size:13px; font-weight:500; color:var(--black);">Design Tokens</span>
     </div>
 
     <div class="cs-wrap">
@@ -2521,6 +2619,8 @@
       <button class="back-btn" onclick="navigate('projects')">
         <span class="back-arrow">←</span> Work
       </button>
+      <span style="width:1px; height:14px; background:var(--border); display:inline-block; flex-shrink:0;"></span>
+      <span style="font-size:13px; font-weight:500; color:var(--black);">Design Systems</span>
     </div>
 
     <div class="cs-wrap">
@@ -2648,7 +2748,9 @@
   <!-- ═══════════════════════════════════════ DESIGN SYSTEM DOCS ═══ -->
   <div id="page-dsdoc" class="page">
     <div class="back-bar">
-      <button class="back-btn" onclick="navigate('projects')">← Work</button>
+      <button class="back-btn" onclick="navigate('projects')"><span class="back-arrow">←</span> Work</button>
+      <span style="width:1px; height:14px; background:var(--border); display:inline-block; flex-shrink:0;"></span>
+      <span style="font-size:13px; font-weight:500; color:var(--black);">Design System Documentation</span>
     </div>
     <div class="cs-wrap">
 
@@ -2759,8 +2861,10 @@
   <div id="page-attendance" class="page">
     <div class="back-bar">
       <button class="back-btn" onclick="navigate('projects')">
-        ← Work
+        <span class="back-arrow">←</span> Work
       </button>
+      <span style="width:1px; height:14px; background:var(--border); display:inline-block; flex-shrink:0;"></span>
+      <span style="font-size:13px; font-weight:500; color:var(--black);">Attendance Management System</span>
     </div>
     <div class="cs-wrap">
 
@@ -3359,15 +3463,711 @@
   </div><!-- /page-attendance -->
 
 
+  <!-- ══════════════════════════════════════════
+       SAFEPASSENGER — PEOPLE COUNTING
+  ══════════════════════════════════════════ -->
+  <div id="page-safepassenger" class="page">
+
+    <div class="back-bar">
+      <button class="back-btn" onclick="navigate('projects')">
+        <span class="back-arrow">←</span> Work
+      </button>
+      <span style="width:1px; height:14px; background:var(--border); display:inline-block; flex-shrink:0;"></span>
+      <span style="font-size:13px; font-weight:500; color:var(--black);">SafePassenger — People Counting</span>
+    </div>
+
+    <div class="cs-wrap">
+
+      <!-- Hero -->
+      <div class="cs-hero">
+        <div class="cs-tags">
+          <span class="cs-tag">Product Design</span>
+          <span class="cs-tag">UX Research</span>
+          <span class="cs-tag">Transport</span>
+          <span class="cs-tag">Revenue Leakage</span>
+          <span class="cs-tag" style="background:#fff8e1; color:#92680a; border:1px solid #f5d47e;">Work in Progress</span>
+        </div>
+        <h1 class="cs-title" style="font-size:36px; white-space:nowrap;">SafePassenger — People Counting Dashboard</h1>
+        <p class="cs-subtitle" style="font-size:14px; max-width:100%; line-height:1.7;">Turning a person-as-integration-layer into a system that does the work. A solo freelance UX case study on redesigning a bus passenger-counting product around the person who actually uses it — detecting, verifying, and reporting revenue leakage from un-ticketed boarding.</p>
+        <div class="cs-meta-row" style="gap:28px; flex-wrap:nowrap;">
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Role</span>
+            <span class="cs-meta-value" style="white-space:nowrap;">UX / Product Designer</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Methods</span>
+            <span class="cs-meta-value" style="white-space:nowrap;">Research · IA · Prototyping · Usability Testing</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Status</span>
+            <span class="cs-meta-value" style="color:#92680a; white-space:nowrap;">Work in progress</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Read</span>
+            <span class="cs-meta-value" style="white-space:nowrap;">~10 min read</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- At a glance accordion -->
+      <div class="ep-accordion" onclick="epToggleAccordion(this)" style="margin-bottom:8px;">
+        <div class="ep-accordion-header">
+          <span class="ep-accordion-label">At a glance</span>
+          <svg class="ep-accordion-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="ep-accordion-body" style="display:none;">
+          <div style="display:flex; flex-direction:column; gap:0; border-radius:8px; overflow:hidden; border:1px solid var(--border);">
+            <div style="display:grid; grid-template-columns:160px 1fr; border-bottom:1px solid var(--border);">
+              <div style="padding:12px 16px; background:var(--light); font-size:12px; font-weight:600; color:var(--gray);">Product</div>
+              <div style="padding:12px 16px; font-size:13px; color:var(--black); line-height:1.5;">SafePassenger — a device + dashboard that counts passengers boarding intercity buses and surfaces revenue leakage from un-ticketed boarding</div>
+            </div>
+            <div style="display:grid; grid-template-columns:160px 1fr; border-bottom:1px solid var(--border); background:var(--light);">
+              <div style="padding:12px 16px; background:var(--light); font-size:12px; font-weight:600; color:var(--gray);">My role</div>
+              <div style="padding:12px 16px; font-size:13px; color:var(--black);">UX / Product Designer — research, information architecture, interaction design, prototyping, validation</div>
+            </div>
+            <div style="display:grid; grid-template-columns:160px 1fr; border-bottom:1px solid var(--border);">
+              <div style="padding:12px 16px; background:var(--light); font-size:12px; font-weight:600; color:var(--gray);">Duration</div>
+              <div style="padding:12px 16px; font-size:13px; color:var(--black);">6 weeks</div>
+            </div>
+            <div style="display:grid; grid-template-columns:160px 1fr; border-bottom:1px solid var(--border); background:var(--light);">
+              <div style="padding:12px 16px; background:var(--light); font-size:12px; font-weight:600; color:var(--gray);">Team</div>
+              <div style="padding:12px 16px; font-size:13px; color:var(--black);">Solo freelance — engineering + stakeholders</div>
+            </div>
+            <div style="display:grid; grid-template-columns:160px 1fr; border-bottom:1px solid var(--border); background:var(--light);">
+              <div style="padding:12px 16px; background:var(--light); font-size:12px; font-weight:600; color:var(--gray);">Methods</div>
+              <div style="padding:12px 16px; font-size:13px; color:var(--black); line-height:1.6;">Stakeholder &amp; user interviews · field study · contextual inquiry · mental-model mapping · IA + tree testing · low-fi prototyping · moderated usability testing (SUS) · competitor analysis</div>
+            </div>
+            <div style="display:grid; grid-template-columns:160px 1fr;">
+              <div style="padding:12px 16px; background:var(--light); font-size:12px; font-weight:600; color:var(--gray);">Deliverables</div>
+              <div style="padding:12px 16px; font-size:13px; color:var(--black); line-height:1.6;">Discovery synthesis · Define brief · ideation doc · editable IA · four user-flow diagrams · two clickable low-fi consoles · competitor analysis</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Context -->
+      <div class="cs-section" style="margin-top:48px;">
+        <span class="ep-section-tag">Context</span>
+        <div class="cs-body">
+          <p>SafePassenger is a multi-tenant SaaS used by intercity bus operators in India. A device on each bus counts passengers boarding and alighting; the system reconciles those counts against ticket bookings to flag <b>unscheduled boarding</b> — passengers who board without a ticket, which is how revenue leaks (drivers pocketing cash fares).</p>
+          <p>The existing dashboard worked, but users described it as <em>"unstructured, generic, and not operator-centric."</em> The brief: run a proper discovery and redesign the people-counting experience.</p>
+        </div>
+      </div>
+
+      <!-- ── 1 · DISCOVER ── -->
+      <div class="cs-section">
+        <span class="ep-section-tag">Discover</span>
+        <h2 class="cs-h2">Research insights</h2>
+        <div class="cs-body">
+          <p>Discovery ran in four structured phases: <b>business stakeholders → users → contextual inquiry → workflow mapping</b> (journey map). The goal was to understand the business, the users, and how the work actually happens today — before touching any design decisions.</p>
+        </div>
+
+        <!-- Primary research: Stakeholder interviews -->
+        <div class="ep-accordion" onclick="epToggleAccordion(this)" style="margin-top:16px;">
+          <div class="ep-accordion-header">
+            <span class="ep-accordion-label">Primary research — stakeholder interviews</span>
+            <svg class="ep-accordion-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="ep-accordion-body" style="display:none;">
+            <p style="font-size:13px; line-height:1.6; color:var(--gray); margin:0 0 16px;">Interviews with business stakeholders and the product team established the business framing and surfaced the first critical finding about who actually uses the dashboard.</p>
+            <div style="display:flex; flex-direction:column; gap:12px;">
+              <div style="border-left:2px solid var(--border); padding-left:16px;">
+                <p style="font-size:13px; font-weight:600; color:var(--black); margin:0 0 4px;">Business goal</p>
+                <p style="font-size:13px; line-height:1.65; color:var(--gray); margin:0;">Reduce revenue leakage from unscheduled boarding and replace random, manual inspector checks with continuous automated monitoring. Success was defined loosely — a baseline of ~2 minutes of monitoring time per bus — with two non-negotiables: <b>unscheduled-boarding alerts</b> and <b>hardware-tampering alerts</b>.</p>
+              </div>
+              <div style="border-left:2px solid var(--border); padding-left:16px;">
+                <p style="font-size:13px; font-weight:600; color:var(--black); margin:0 0 4px;">The pivotal user finding</p>
+                <p style="font-size:13px; line-height:1.65; color:var(--gray); margin:0;">The daily user is <em>not</em> the paying bus operator. It's a <b>Product Owner Operator (POO)</b> — someone on the service provider's side who runs the dashboard across multiple fleets, validates the analysis (it isn't 100% accurate), and pushes findings to operators. The bus operator is a light consumer who acts on what they receive.</p>
+              </div>
+              <div style="border-left:2px solid var(--border); padding-left:16px;">
+                <p style="font-size:13px; font-weight:600; color:var(--black); margin:0 0 4px;">Framing decision</p>
+                <p style="font-size:13px; line-height:1.65; color:var(--gray); margin:0;">SafePassenger is a <b>visibility / fare-reconciliation tool, not enforcement</b> — it surfaces leakage; it doesn't stop theft. This single line kept scope honest for the rest of the project.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Primary research: Contextual inquiry -->
+        <div class="ep-accordion" onclick="epToggleAccordion(this)" style="margin-top:8px;">
+          <div class="ep-accordion-header">
+            <span class="ep-accordion-label">Primary research — contextual inquiry</span>
+            <svg class="ep-accordion-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="ep-accordion-body" style="display:none;">
+            <p style="font-size:13px; line-height:1.6; color:var(--gray); margin:0 0 16px;">A <b>field study with the POO</b> — observing them live in their working environment alongside real product screenshots — surfaced how the job is actually done. Four findings shaped every design decision that followed.</p>
+            <div style="display:flex; flex-direction:column; gap:10px;">
+              <div style="border-left:2px solid var(--border); padding-left:14px;">
+                <p style="font-size:13px; font-weight:600; color:var(--black); margin:0 0 3px;">Behaviour management, not monitoring</p>
+                <p style="font-size:13px; line-height:1.65; color:var(--gray); margin:0;">The dashboard is only the trigger; the actual action happens in <b>WhatsApp</b>, where the POO manually retypes each finding to the operator ("bus 3679 · 5 unscheduled boarding in Salem · 3:19am").</p>
+              </div>
+              <div style="border-left:2px solid var(--border); padding-left:14px;">
+                <p style="font-size:13px; font-weight:600; color:var(--black); margin:0 0 3px;">The map is home</p>
+                <p style="font-size:13px; line-height:1.65; color:var(--gray); margin:0;">Users open the map first, scan for red/orange icons, verify via tooltip counts and boarding video — they don't live in tables.</p>
+              </div>
+              <div style="border-left:2px solid var(--border); padding-left:14px;">
+                <p style="font-size:13px; font-weight:600; color:var(--black); margin:0 0 3px;">Everything is manual</p>
+                <p style="font-size:13px; line-height:1.65; color:var(--gray); margin:0;">Fetching data, decoding an 8-colour legend, cross-checking tabs, and retyping into WhatsApp — the POO <em>was</em> the integration layer.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mental model diagram -->
+        <div class="ep-accordion" onclick="epToggleAccordion(this)" style="margin-top:8px;">
+          <div class="ep-accordion-header">
+            <span class="ep-accordion-label">Mental model map — 5 actors</span>
+            <svg class="ep-accordion-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="ep-accordion-body" style="display:none;">
+            <p style="font-size:13px; line-height:1.6; color:var(--gray); margin:0 0 14px;">Before any structural decisions, I mapped how each actor thinks about the system — so the IA would follow users' own concepts, not the database schema. Two distinctions shaped everything: Trip Summary is separate from the detailed Trip view, and the POO spans many fleets while the Bus Operator sees only his own.</p>
+            <img src="sp-mental-model.svg" alt="Mental model map — POO, Bus Operator, Bus, Trip data, and Trip running" style="width:100%; border-radius:10px; border:1px solid var(--border); display:block;">
+          </div>
+        </div>
+
+        <!-- Key insight callout -->
+        <div style="background:var(--light); border:1px solid var(--border); border-radius:10px; padding:18px 22px; margin-top:16px;">
+          <p style="font-size:13px; font-weight:600; color:var(--black); margin:0 0 6px;">Key insight</p>
+          <p style="font-size:13px; line-height:1.7; color:var(--gray); margin:0;">The POO is a human integration layer — fetching, decoding a cluttered map, verifying, transcribing, and delivering by hand. Every one of those steps is a candidate to shift from person to system, with <b>data trust</b> as the essential precondition.</p>
+        </div>
+      </div>
+
+      <!-- ── 2 · DEFINE ── -->
+      <div class="cs-section">
+        <span class="ep-section-tag">Define</span>
+        <h2 class="cs-h2">Problem statement, user needs &amp; requirements</h2>
+
+        <!-- Problem statement -->
+        <div style="background:var(--light); border-left:3px solid var(--black); border-radius:0 10px 10px 0; padding:18px 22px; margin-top:20px;">
+          <p style="font-size:12px; font-weight:700; color:var(--black); margin:0 0 10px; letter-spacing:0.01em;">Problem statement</p>
+          <p style="font-size:14px; line-height:1.75; color:var(--black); margin:0; font-style:italic;">"Bus operators lose revenue when passengers board without tickets, but they can't oversee trips and have no reliable visibility into where and when it happens. Today a POO manually hunts each completed trip on a cluttered map, verifies events through several steps, and re-types findings into WhatsApp — slow, effort-heavy work built on counts the team doesn't fully trust."</p>
+        </div>
+
+        <!-- User needs / JTBD -->
+        <div class="ep-accordion" onclick="epToggleAccordion(this)" style="margin-top:16px;">
+          <div class="ep-accordion-header">
+            <span class="ep-accordion-label">User needs — jobs to be done</span>
+            <svg class="ep-accordion-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="ep-accordion-body" style="display:none;">
+            <div style="display:flex; flex-direction:column; gap:12px;">
+              <div style="border:1px solid var(--border); border-radius:10px; padding:18px 20px;">
+                <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+                  <span style="font-size:10px; font-weight:700; color:var(--gray); background:var(--light); border:1px solid var(--border); border-radius:4px; padding:2px 8px; letter-spacing:0.05em; text-transform:uppercase;">Bus Operator</span>
+                </div>
+                <p style="font-size:13px; line-height:1.7; color:var(--black); margin:0; font-style:italic;">"When my buses run routes I can't watch, I want to reliably know where and when un-ticketed passengers boarded, so I can hold drivers accountable and recover lost fares."</p>
+              </div>
+              <div style="border:1px solid var(--border); border-radius:10px; padding:18px 20px;">
+                <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+                  <span style="font-size:10px; font-weight:700; color:var(--gray); background:var(--light); border:1px solid var(--border); border-radius:4px; padding:2px 8px; letter-spacing:0.05em; text-transform:uppercase;">POO</span>
+                </div>
+                <p style="font-size:13px; line-height:1.7; color:var(--black); margin:0; font-style:italic;">"When a trip completes, I want to quickly find and confirm real leakage events, so I can report them without manual effort or doubt."</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Requirements / Opportunity areas + metrics -->
+        <div class="ep-accordion" onclick="epToggleAccordion(this)" style="margin-top:8px;">
+          <div class="ep-accordion-header">
+            <span class="ep-accordion-label">Requirements — opportunity areas &amp; success metrics</span>
+            <svg class="ep-accordion-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="ep-accordion-body" style="display:none;">
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+              <div>
+                <p style="font-size:12px; font-weight:700; color:var(--black); margin:0 0 12px; letter-spacing:0.01em;">5 opportunity areas</p>
+                <div style="display:flex; flex-direction:column; gap:8px;">
+                  <div style="display:flex; gap:10px; align-items:flex-start;">
+                    <span style="font-size:10px; font-weight:700; color:var(--gray); background:var(--light); border:1px solid var(--border); border-radius:4px; padding:2px 7px; flex-shrink:0; margin-top:2px;">1</span>
+                    <p style="font-size:13px; color:var(--black); margin:0; line-height:1.5;"><b>Data trust</b> — validated counts; anomalies flagged, not shown raw.</p>
+                  </div>
+                  <div style="display:flex; gap:10px; align-items:flex-start;">
+                    <span style="font-size:10px; font-weight:700; color:var(--gray); background:var(--light); border:1px solid var(--border); border-radius:4px; padding:2px 7px; flex-shrink:0; margin-top:2px;">2</span>
+                    <p style="font-size:13px; color:var(--black); margin:0; line-height:1.5;"><b>Effortless detection</b> — clear signals instead of map-scanning + legend-decoding.</p>
+                  </div>
+                  <div style="display:flex; gap:10px; align-items:flex-start;">
+                    <span style="font-size:10px; font-weight:700; color:var(--gray); background:var(--light); border:1px solid var(--border); border-radius:4px; padding:2px 7px; flex-shrink:0; margin-top:2px;">3</span>
+                    <p style="font-size:13px; color:var(--black); margin:0; line-height:1.5;"><b>Automated reporting</b> — verified, shareable summaries replacing manual transcription.</p>
+                  </div>
+                  <div style="display:flex; gap:10px; align-items:flex-start;">
+                    <span style="font-size:10px; font-weight:700; color:var(--gray); background:var(--light); border:1px solid var(--border); border-radius:4px; padding:2px 7px; flex-shrink:0; margin-top:2px;">4</span>
+                    <p style="font-size:13px; color:var(--black); margin:0; line-height:1.5;"><b>Real-time delivery</b> — push alerts to the operator (in-app + WhatsApp).</p>
+                  </div>
+                  <div style="display:flex; gap:10px; align-items:flex-start;">
+                    <span style="font-size:10px; font-weight:700; color:var(--gray); background:var(--light); border:1px solid var(--border); border-radius:4px; padding:2px 7px; flex-shrink:0; margin-top:2px;">5</span>
+                    <p style="font-size:13px; color:var(--black); margin:0; line-height:1.5;"><b>Accountability &amp; trends</b> — attribute events to drivers; feed per-bus history.</p>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <p style="font-size:12px; font-weight:700; color:var(--black); margin:0 0 12px; letter-spacing:0.01em;">Success metrics</p>
+                <div style="border:1px solid var(--border); border-radius:10px; overflow:hidden;">
+                  <div style="display:grid; grid-template-columns:1fr auto auto; background:var(--light); padding:10px 14px; gap:10px;">
+                    <span style="font-size:11px; font-weight:700; color:var(--gray);">Metric</span>
+                    <span style="font-size:11px; font-weight:700; color:var(--gray);">Today</span>
+                    <span style="font-size:11px; font-weight:700; color:var(--gray);">Target</span>
+                  </div>
+                  <div style="border-top:1px solid var(--border); display:grid; grid-template-columns:1fr auto auto; padding:10px 14px; gap:10px; align-items:center;">
+                    <span style="font-size:12px; color:var(--black);">POO time per bus</span>
+                    <span style="font-size:13px; color:var(--gray);">2 min</span>
+                    <span style="font-size:12px; font-weight:600; color:var(--black);">≤ 60 sec</span>
+                  </div>
+                  <div style="border-top:1px solid var(--border); display:grid; grid-template-columns:1fr auto auto; padding:10px 14px; gap:10px; align-items:center; background:var(--light);">
+                    <span style="font-size:12px; color:var(--black);">Manual WhatsApp transcription</span>
+                    <span style="font-size:13px; color:var(--gray);">100%</span>
+                    <span style="font-size:12px; font-weight:600; color:var(--black);">0%</span>
+                  </div>
+                  <div style="border-top:1px solid var(--border); display:grid; grid-template-columns:1fr auto auto; padding:10px 14px; gap:10px; align-items:center;">
+                    <span style="font-size:12px; color:var(--black);">Impossible counts shown</span>
+                    <span style="font-size:13px; color:var(--gray);">Visible</span>
+                    <span style="font-size:12px; font-weight:600; color:var(--black);">0</span>
+                  </div>
+                  <div style="border-top:1px solid var(--border); display:grid; grid-template-columns:1fr auto auto; padding:10px 14px; gap:10px; align-items:center; background:var(--light);">
+                    <span style="font-size:12px; color:var(--black);">Full-fleet review (~60 buses)</span>
+                    <span style="font-size:13px; color:var(--gray);">~120 min</span>
+                    <span style="font-size:12px; font-weight:600; color:var(--black);">≤ 60 min</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── 3 · IDEATE ── -->
+      <div class="cs-section">
+        <span class="ep-section-tag">Ideate</span>
+        <h2 class="cs-h2">Map-first. Verify &amp; draft. Human in the loop.</h2>
+        <div class="cs-body">
+          <p>Rather than replace the map with a queue, I kept the map central — it's where operators already work — and made it <em>legible</em>. The core concept: <b>"Verify &amp; draft."</b> The POO confirms each event by watching its video, then a single <b>Final Verify</b> generates a copy-ready message they paste into WhatsApp. Human-in-the-loop by design — the device analyses; the dashboard displays; verification stays manual.</p>
+        </div>
+
+        <!-- HMW accordion -->
+        <div class="ep-accordion" onclick="epToggleAccordion(this)" style="margin-top:16px;">
+          <div class="ep-accordion-header">
+            <span class="ep-accordion-label">How Might We — 4 questions that framed the work</span>
+            <svg class="ep-accordion-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="ep-accordion-body" style="display:none;">
+            <div style="display:flex; flex-direction:column; gap:10px;">
+              <p style="font-size:13px; line-height:1.65; color:var(--black); margin:0; padding-left:14px; border-left:2px solid var(--border);">HMW make the counts trustworthy enough that the operator acts without second-guessing?</p>
+              <p style="font-size:13px; line-height:1.65; color:var(--black); margin:0; padding-left:14px; border-left:2px solid var(--border);">HMW surface real leakage events without scanning a cluttered map?</p>
+              <p style="font-size:13px; line-height:1.65; color:var(--black); margin:0; padding-left:14px; border-left:2px solid var(--border);">HMW separate signal (real leakage) from noise (false alerts, legitimate stops)?</p>
+              <p style="font-size:13px; line-height:1.65; color:var(--black); margin:0; padding-left:14px; border-left:2px solid var(--border);">HMW turn a verified event into a shareable, actionable message — without manual transcription?</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Design decisions accordion -->
+        <div class="ep-accordion" onclick="epToggleAccordion(this)" style="margin-top:8px;">
+          <div class="ep-accordion-header">
+            <span class="ep-accordion-label">Design decisions — insight to decision</span>
+            <svg class="ep-accordion-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="ep-accordion-body" style="display:none;">
+            <div style="display:flex; flex-direction:column; gap:10px;">
+              <div style="border-left:2px solid var(--border); padding-left:14px;">
+                <p style="font-size:13px; font-weight:600; color:var(--black); margin:0 0 3px;">No counting logic in the UI</p>
+                <p style="font-size:13px; line-height:1.6; color:var(--gray); margin:0;">The device analyses; the dashboard should only display. Impossible values shown as a neutral "under review" state — not "−10".</p>
+              </div>
+              <div style="border-left:2px solid var(--border); padding-left:14px;">
+                <p style="font-size:13px; font-weight:600; color:var(--black); margin:0 0 3px;">Tampering → video, not a label</p>
+                <p style="font-size:13px; line-height:1.6; color:var(--gray); margin:0;">Show "Tampering detected" and route the POO to video — never a false "turned" or "covered" label. Tampering is its own event type; Device Health holds only unattributed faults.</p>
+              </div>
+              <div style="border-left:2px solid var(--border); padding-left:14px;">
+                <p style="font-size:13px; font-weight:600; color:var(--black); margin:0 0 3px;">One trip, one message</p>
+                <p style="font-size:13px; line-height:1.6; color:var(--gray); margin:0;">Unscheduled boarding, drop-offs, and tampering roll into a single report — not three separate messages.</p>
+              </div>
+              <div style="border-left:2px solid var(--border); padding-left:14px;">
+                <p style="font-size:13px; font-weight:600; color:var(--black); margin:0 0 3px;">"Repeat offender" → crew trust meter</p>
+                <p style="font-size:13px; line-height:1.6; color:var(--gray); margin:0;">A red→green gauge where the number and "flagged X of Y trips" appear only on hover. Factual, humane. Ethics is a design surface, not an afterthought.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tree test accordion -->
+        <div class="ep-accordion" onclick="epToggleAccordion(this)" style="margin-top:8px;">
+          <div class="ep-accordion-header">
+            <span class="ep-accordion-label">Tree test — validate structure before pixels</span>
+            <svg class="ep-accordion-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="ep-accordion-body" style="display:none;">
+            <p style="font-size:13px; line-height:1.6; color:var(--gray); margin:0 0 14px;">To de-risk labels before investing in visuals, I built a runnable tree-test kit — a text-only tree + tasks + a self-contained HTML tool that logs each participant's path.</p>
+            <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:16px;">
+              <div style="border-left:3px solid #f59e0b; padding-left:12px;">
+                <p style="font-size:13px; font-weight:600; color:var(--black); margin:0 0 2px;">"Trips vs Reports" — top confusion risk</p>
+                <p style="font-size:13px; color:var(--gray); margin:0; line-height:1.55;">Users associate per-trip detail with "Trips," not "Reports" — fed directly back into the IA to remove the overlap.</p>
+              </div>
+              <div style="border-left:3px solid #f59e0b; padding-left:12px;">
+                <p style="font-size:13px; font-weight:600; color:var(--black); margin:0 0 2px;">"Media" doesn't read as "video"</p>
+                <p style="font-size:13px; color:var(--gray); margin:0; line-height:1.55;">Label renamed before any high-fidelity work, saving a usability test round.</p>
+              </div>
+            </div>
+            <div style="background:var(--light); border:1px solid var(--border); border-radius:8px; padding:16px 18px; text-align:center;">
+              <p style="font-size:13px; color:var(--gray); margin:0; font-style:italic;">Interactive tree test — updating to current IA. Component coming soon.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- User flows — inline thumbnails -->
+        <div style="margin-top:20px;">
+          <p style="font-size:12px; font-weight:600; color:var(--gray); margin:0 0 10px; letter-spacing:0.04em; text-transform:uppercase;">User flows — click to expand</p>
+          <div style="display:flex; gap:14px;">
+
+            <div onclick="openFlowZoom(this.querySelector('img'))" style="flex:1; border:1px solid var(--border); border-radius:8px; overflow:hidden; cursor:zoom-in; position:relative; background:var(--white); transition:box-shadow 0.15s;" onmouseenter="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseleave="this.style.boxShadow='none'">
+              <div style="height:200px; overflow:hidden;">
+                <img src="sp-userflow-happypath.svg" alt="Flow A — Verify unscheduled stops (happy path)" style="width:100%; height:auto; display:block; pointer-events:none;">
+              </div>
+              <div style="padding:10px 12px; border-top:1px solid var(--border); display:flex; align-items:center; justify-content:space-between;">
+                <span style="font-size:12px; font-weight:600; color:var(--black);">Flow A — Verify stops</span>
+                <span style="font-size:11px; color:var(--gray);">⤢</span>
+              </div>
+            </div>
+
+            <div onclick="openFlowZoom(this.querySelector('img'))" style="flex:1; border:1px solid var(--border); border-radius:8px; overflow:hidden; cursor:zoom-in; position:relative; background:var(--white); transition:box-shadow 0.15s;" onmouseenter="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseleave="this.style.boxShadow='none'">
+              <div style="height:200px; overflow:hidden;">
+                <img src="sp-userflow-devicehealth.svg" alt="Flow B — Device health triage" style="width:100%; height:auto; display:block; pointer-events:none;">
+              </div>
+              <div style="padding:10px 12px; border-top:1px solid var(--border); display:flex; align-items:center; justify-content:space-between;">
+                <span style="font-size:12px; font-weight:600; color:var(--black);">Flow B — Device health triage</span>
+                <span style="font-size:11px; color:var(--gray);">⤢</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Competitor analysis accordion -->
+        <div class="ep-accordion" onclick="epToggleAccordion(this)" style="margin-top:8px;">
+          <div class="ep-accordion-header">
+            <span class="ep-accordion-label">Competitor analysis — where SafePassenger sits</span>
+            <svg class="ep-accordion-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="ep-accordion-body" style="display:none;">
+            <p style="font-size:13px; line-height:1.6; color:var(--gray); margin:0 0 16px;">I benchmarked the dashboard against two categories of tools — broad transport operations platforms and high-accuracy counting hardware — to understand where SafePassenger differentiates and where it needs to match the field.</p>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:16px;">
+
+              <div style="border:1px solid var(--border); border-radius:10px; overflow:hidden;">
+                <div style="background:var(--light); padding:16px 20px; border-bottom:1px solid var(--border);">
+                  <p style="font-size:12px; font-weight:700; color:var(--gray); margin:0 0 4px; letter-spacing:0.05em; text-transform:uppercase;">Competitor</p>
+                  <p style="font-size:17px; font-weight:700; color:var(--black); margin:0;">Pysae</p>
+                  <p style="font-size:13px; color:var(--gray); margin:4px 0 0;">Transport operations + ridership analytics platform</p>
+                </div>
+                <div style="padding:16px 20px;">
+                  <p style="font-size:11px; font-weight:700; color:var(--gray); margin:0 0 10px; letter-spacing:0.05em; text-transform:uppercase;">What they do well</p>
+                  <div style="display:flex; flex-direction:column; gap:6px; margin-bottom:14px;">
+                    <div style="display:flex; gap:8px; align-items:flex-start;"><span style="color:#22c55e; font-size:13px; flex-shrink:0;">✓</span><p style="font-size:13px; color:var(--black); margin:0; line-height:1.5;">Broad transport ops coverage — scheduling, ridership trends, route performance</p></div>
+                    <div style="display:flex; gap:8px; align-items:flex-start;"><span style="color:#22c55e; font-size:13px; flex-shrink:0;">✓</span><p style="font-size:13px; color:var(--black); margin:0; line-height:1.5;">BI-level analytics with dashboards built for planning teams</p></div>
+                  </div>
+                  <p style="font-size:11px; font-weight:700; color:var(--gray); margin:0 0 10px; letter-spacing:0.05em; text-transform:uppercase;">Gap vs SafePassenger</p>
+                  <div style="display:flex; gap:8px; align-items:flex-start;"><span style="color:#f59e0b; font-size:13px; flex-shrink:0;">—</span><p style="font-size:13px; color:var(--gray); margin:0; line-height:1.5;">No video-verified leakage proof. No tampering detection. No shareable, attributable report for behaviour management.</p></div>
+                </div>
+              </div>
+
+              <div style="border:1px solid var(--border); border-radius:10px; overflow:hidden;">
+                <div style="background:var(--light); padding:16px 20px; border-bottom:1px solid var(--border);">
+                  <p style="font-size:12px; font-weight:700; color:var(--gray); margin:0 0 4px; letter-spacing:0.05em; text-transform:uppercase;">Competitor</p>
+                  <p style="font-size:17px; font-weight:700; color:var(--black); margin:0;">IRIS / IRMA</p>
+                  <p style="font-size:13px; color:var(--gray); margin:4px 0 0;">High-accuracy LiDAR sensors + BI data pipeline</p>
+                </div>
+                <div style="padding:16px 20px;">
+                  <p style="font-size:11px; font-weight:700; color:var(--gray); margin:0 0 10px; letter-spacing:0.05em; text-transform:uppercase;">What they do well</p>
+                  <div style="display:flex; flex-direction:column; gap:6px; margin-bottom:14px;">
+                    <div style="display:flex; gap:8px; align-items:flex-start;"><span style="color:#22c55e; font-size:13px; flex-shrink:0;">✓</span><p style="font-size:13px; color:var(--black); margin:0; line-height:1.5;">High count accuracy via LiDAR — less susceptible to lighting or occlusion</p></div>
+                    <div style="display:flex; gap:8px; align-items:flex-start;"><span style="color:#22c55e; font-size:13px; flex-shrink:0;">✓</span><p style="font-size:13px; color:var(--black); margin:0; line-height:1.5;">Established BI pipeline for ridership reporting at scale</p></div>
+                  </div>
+                  <p style="font-size:11px; font-weight:700; color:var(--gray); margin:0 0 10px; letter-spacing:0.05em; text-transform:uppercase;">Gap vs SafePassenger</p>
+                  <div style="display:flex; gap:8px; align-items:flex-start;"><span style="color:#f59e0b; font-size:13px; flex-shrink:0;">—</span><p style="font-size:13px; color:var(--gray); margin:0; line-height:1.5;">Gives you a number, not proof. No leakage/tampering workflow, no verify-and-report loop, no crew accountability layer.</p></div>
+                </div>
+              </div>
+
+            </div>
+            <div style="background:var(--light); border-left:3px solid var(--black); border-radius:0 10px 10px 0; padding:18px 22px;">
+              <p style="font-size:12px; font-weight:700; color:var(--black); margin:0 0 10px; letter-spacing:0.01em;">Positioning insight</p>
+              <p style="font-size:14px; line-height:1.75; color:var(--black); margin:0 0 10px; font-weight:500;">Pysae and IRIS help you <em>count and plan.</em> SafePassenger helps you <em>catch, prove, and act on</em> revenue leakage and tampering.</p>
+              <p style="font-size:13px; line-height:1.7; color:var(--gray); margin:0;">Neither competitor offers video-verified, shareable, attributable leakage and tampering reporting — that's the wedge. The main perception risk to design around is accuracy (camera vs LiDAR), reframed as: <b>LiDAR gives you a number; our camera gives you proof you can watch.</b></p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ── 4 · PROTOTYPE ── -->
+      <div class="cs-section">
+        <span class="ep-section-tag">Prototype</span>
+        <h2 class="cs-h2">Wireframes</h2>
+        <div class="cs-body">
+          <p>The original product scattered four overlapping "trip" areas, mixed configuration with daily monitoring, and overloaded the trip view with <b>11 tabs</b>. I restructured it into four clear, task-based sections — Dashboard, Trips, Bus/Fleet, Settings — and consolidated the trip view to ~6 tabs ordered by the POO's actual workflow.</p>
+        </div>
+
+        <!-- IA sitemap -->
+        <div class="cs-img-block">
+          <img src="sp-ia-sitemap.svg" alt="Redesigned information architecture" style="width:100%; border-radius:10px; border:1px solid var(--border);">
+          <p class="cs-screen-label" style="margin-top:10px; color:var(--gray); font-size:13px;">Information architecture — four task-based sections, the consolidated Trip-details tab set (11 → 6), and the POO / Bus Operator access split.</p>
+        </div>
+
+        <!-- Tab consolidation accordion -->
+        <div class="ep-accordion" onclick="epToggleAccordion(this)" style="margin-top:16px;">
+          <div class="ep-accordion-header">
+            <span class="ep-accordion-label">Trip view tab consolidation: 11 → 6</span>
+            <svg class="ep-accordion-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="ep-accordion-body" style="display:none;">
+            <div style="border:1px solid var(--border); border-radius:10px; overflow:hidden;">
+              <div style="display:grid; grid-template-columns:1fr 1fr 1fr; background:var(--light); padding:10px 16px; gap:12px; border-bottom:1px solid var(--border);">
+                <span style="font-size:12px; font-weight:700; color:var(--black);">Proposed tab</span>
+                <span style="font-size:12px; font-weight:700; color:var(--black);">Merged from</span>
+                <span style="font-size:12px; font-weight:700; color:var(--black);">Change</span>
+              </div>
+              <div style="display:grid; grid-template-columns:1fr 1fr 1fr; padding:10px 16px; gap:12px; border-bottom:1px solid var(--border);">
+                <span style="font-size:13px; font-weight:600; color:var(--black);">Map</span>
+                <span style="font-size:13px; color:var(--gray);">Map</span>
+                <span style="font-size:13px; color:var(--gray);">Declutter at full-route zoom; add clustering</span>
+              </div>
+              <div style="display:grid; grid-template-columns:1fr 1fr 1fr; padding:10px 16px; gap:12px; border-bottom:1px solid var(--border); background:var(--light);">
+                <span style="font-size:13px; font-weight:600; color:var(--black);">Unscheduled</span>
+                <span style="font-size:13px; color:var(--gray);">Unscheduled Stops + boarding</span>
+                <span style="font-size:13px; color:var(--gray);">Resolve raw lat/long → stop names</span>
+              </div>
+              <div style="display:grid; grid-template-columns:1fr 1fr 1fr; padding:10px 16px; gap:12px; border-bottom:1px solid var(--border);">
+                <span style="font-size:13px; font-weight:600; color:var(--black);">Stops</span>
+                <span style="font-size:13px; color:var(--gray);">Trip Stops + City Stats</span>
+                <span style="font-size:13px; color:var(--gray);">Merge — same data at two zoom levels</span>
+              </div>
+              <div style="display:grid; grid-template-columns:1fr 1fr 1fr; padding:10px 16px; gap:12px; border-bottom:1px solid var(--border); background:var(--light);">
+                <span style="font-size:13px; font-weight:600; color:var(--black);">Reservations</span>
+                <span style="font-size:13px; color:var(--gray);">Reservations</span>
+                <span style="font-size:13px; color:var(--gray);">—</span>
+              </div>
+              <div style="display:grid; grid-template-columns:1fr 1fr 1fr; padding:10px 16px; gap:12px;">
+                <span style="font-size:13px; font-weight:600; color:var(--black);">Media</span>
+                <span style="font-size:13px; color:var(--gray);">Videos + Raw Videos</span>
+                <span style="font-size:13px; color:var(--gray);">Merge; Hourly Count demoted</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Role access accordion -->
+        <div class="ep-accordion" onclick="epToggleAccordion(this)" style="margin-top:8px;">
+          <div class="ep-accordion-header">
+            <span class="ep-accordion-label">Role-based access — POO vs Bus Operator</span>
+            <svg class="ep-accordion-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="ep-accordion-body" style="display:none;">
+            <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px;">
+              <div style="font-size:11px; font-weight:700; color:var(--gray);">Section</div>
+              <div style="font-size:11px; font-weight:700; color:var(--gray);">POO (internal)</div>
+              <div style="font-size:11px; font-weight:700; color:var(--gray);">Bus Operator (customer)</div>
+              <div style="font-size:13px; font-weight:600; color:var(--black); padding-top:8px; border-top:1px solid var(--border);">Dashboard</div>
+              <div style="font-size:13px; color:var(--gray); padding-top:8px; border-top:1px solid var(--border);">Full · validate / dismiss · all managed fleets</div>
+              <div style="font-size:13px; color:var(--gray); padding-top:8px; border-top:1px solid var(--border);">View · receive · own fleet</div>
+              <div style="font-size:13px; font-weight:600; color:var(--black); padding-top:8px; border-top:1px solid var(--border);">Trips</div>
+              <div style="font-size:13px; color:var(--gray); padding-top:8px; border-top:1px solid var(--border);">Full</div>
+              <div style="font-size:13px; color:var(--gray); padding-top:8px; border-top:1px solid var(--border);">Full (own fleet)</div>
+              <div style="font-size:13px; font-weight:600; color:var(--black); padding-top:8px; border-top:1px solid var(--border);">Fleet</div>
+              <div style="font-size:13px; color:var(--gray); padding-top:8px; border-top:1px solid var(--border);">Full (manage)</div>
+              <div style="font-size:13px; color:var(--gray); padding-top:8px; border-top:1px solid var(--border);">View / limited edit</div>
+              <div style="font-size:13px; font-weight:600; color:var(--black); padding-top:8px; border-top:1px solid var(--border);">Settings</div>
+              <div style="font-size:13px; color:var(--gray); padding-top:8px; border-top:1px solid var(--border);">Notifications config</div>
+              <div style="font-size:13px; color:var(--gray); padding-top:8px; border-top:1px solid var(--border);">Notifications (own)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Key screens carousel -->
+        <div style="margin-top:24px;">
+          <p style="font-size:12px; font-weight:700; color:var(--black); margin:0 0 14px; letter-spacing:0.01em;">Key screens for POO</p>
+          <div class="ep-carousel" id="sp-screens-carousel">
+            <div class="ep-carousel-viewport">
+              <div class="ep-carousel-track">
+
+                <div class="ep-carousel-slide" style="line-height:normal;">
+                  <div style="min-height:380px; background:var(--light); display:flex; align-items:center; justify-content:center; flex-direction:column; gap:8px; border-bottom:1px solid var(--border);">
+                    <span style="font-size:11px; font-weight:600; color:var(--gray); letter-spacing:0.06em; text-transform:uppercase;">Dashboard</span>
+                    <span style="font-size:11px; color:var(--gray); opacity:0.6;">Wireframe coming</span>
+                  </div>
+                  <div style="padding:16px 20px;">
+                    <p style="font-size:13px; font-weight:600; color:var(--black); margin:0 0 4px;">Dashboard</p>
+                    <p style="font-size:13px; color:var(--gray); margin:0; line-height:1.6;">The POO's landing — KPI alert cards (unscheduled boarding, drop-off, tampering, device health), a filterable trip list with severity ordering, and a live bus map. Standby trips hidden by default.</p>
+                  </div>
+                </div>
+
+                <div class="ep-carousel-slide" style="line-height:normal;">
+                  <div style="min-height:380px; background:var(--light); display:flex; align-items:center; justify-content:center; flex-direction:column; gap:8px; border-bottom:1px solid var(--border);">
+                    <span style="font-size:11px; font-weight:600; color:var(--gray); letter-spacing:0.06em; text-transform:uppercase;">Trip detail</span>
+                    <span style="font-size:11px; color:var(--gray); opacity:0.6;">Wireframe coming</span>
+                  </div>
+                  <div style="padding:16px 20px;">
+                    <p style="font-size:13px; font-weight:600; color:var(--black); margin:0 0 4px;">Trip detail</p>
+                    <p style="font-size:13px; color:var(--gray); margin:0; line-height:1.6;">Map as the hero with a left-hand stop timeline (start/end, food, rest, unscheduled events). Clicking a flagged stop opens inline video verification. Final Verify generates one copy-ready message → WhatsApp.</p>
+                  </div>
+                </div>
+
+                <div class="ep-carousel-slide" style="line-height:normal;">
+                  <div style="min-height:380px; background:var(--light); display:flex; align-items:center; justify-content:center; flex-direction:column; gap:8px; border-bottom:1px solid var(--border);">
+                    <span style="font-size:11px; font-weight:600; color:var(--gray); letter-spacing:0.06em; text-transform:uppercase;">Bus / Fleet</span>
+                    <span style="font-size:11px; color:var(--gray); opacity:0.6;">Wireframe coming</span>
+                  </div>
+                  <div style="padding:16px 20px;">
+                    <p style="font-size:13px; font-weight:600; color:var(--black); margin:0 0 4px;">Bus / Fleet</p>
+                    <p style="font-size:13px; color:var(--gray); margin:0; line-height:1.6;">Per-bus history: device health timeline, crew trust meter (red→green gauge, flag count on hover), and a route-history list. POO sees all managed fleets; Bus Operator sees only his own.</p>
+                  </div>
+                </div>
+
+                <div class="ep-carousel-slide" style="line-height:normal;">
+                  <div style="min-height:380px; background:var(--light); display:flex; align-items:center; justify-content:center; flex-direction:column; gap:8px; border-bottom:1px solid var(--border);">
+                    <span style="font-size:11px; font-weight:600; color:var(--gray); letter-spacing:0.06em; text-transform:uppercase;">Trips — all trips</span>
+                    <span style="font-size:11px; color:var(--gray); opacity:0.6;">Wireframe coming</span>
+                  </div>
+                  <div style="padding:16px 20px;">
+                    <p style="font-size:13px; font-weight:600; color:var(--black); margin:0 0 4px;">Trips</p>
+                    <p style="font-size:13px; color:var(--gray); margin:0; line-height:1.6;">Merged "Trip reports" and "History" into one browse view — a research finding showed they were the same drill. Filterable by status (live, finished, verified) and operator, with a Bus view and Schedules sub-tab.</p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <div class="ep-carousel-controls">
+              <button class="ep-carousel-btn" onclick="epCarouselMove('sp-screens-carousel',-1)" aria-label="Previous">
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M10 4l-4 4 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="ep-carousel-dots">
+                <div class="ep-carousel-dot active"></div>
+                <div class="ep-carousel-dot"></div>
+                <div class="ep-carousel-dot"></div>
+                <div class="ep-carousel-dot"></div>
+              </div>
+              <button class="ep-carousel-btn" onclick="epCarouselMove('sp-screens-carousel',1)" aria-label="Next">
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Test -->
+      <div class="cs-section">
+        <span class="ep-section-tag">Usability Testing</span>
+        <h2 class="cs-h2">Two independent participants converged on the same six issues</h2>
+        <div class="cs-body">
+          <p>I ran a <b>moderated, think-aloud usability test</b> on the low-fi prototype — ~11 scenario-based tasks across detect-and-report, bus device health, and trip history. Chosen deliberately over unmoderated: with a small sample and an early prototype, I needed the <em>why</em> behind actions, not just click data.</p>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:20px;">
+          <div style="border:1px solid var(--border); border-radius:10px; padding:20px 22px;">
+            <p style="font-size:12px; font-weight:700; color:var(--black); margin:0 0 14px; letter-spacing:0.01em;">What held up ✓</p>
+            <div style="display:flex; flex-direction:column; gap:0;">
+              <div style="border-left:3px solid #22c55e; padding:0 0 12px 12px;">
+                <p style="font-size:13px; color:var(--black); margin:0; line-height:1.6;">Core <b>verify-and-report flow</b> worked end to end — detect → verify on video → Final Verify → copy → mark-as-sent without being blocked.</p>
+              </div>
+              <div style="border-left:3px solid #22c55e; padding:12px 0 12px 12px; border-top:1px solid var(--border);">
+                <p style="font-size:13px; color:var(--black); margin:0; line-height:1.6;"><b>"I decide what to send" control</b> was the emotional highlight — the human-in-the-loop model was exactly what users loved.</p>
+              </div>
+              <div style="border-left:3px solid #22c55e; padding:12px 0 0 12px; border-top:1px solid var(--border);">
+                <p style="font-size:13px; color:var(--black); margin:0; line-height:1.6;"><b>Alert-table-first behaviour</b> validated — users went straight to the highest-unscheduled bus as "maximum revenue leak."</p>
+              </div>
+            </div>
+          </div>
+          <div style="border:1px solid var(--border); border-radius:10px; padding:20px 22px;">
+            <p style="font-size:12px; font-weight:700; color:var(--black); margin:0 0 14px; letter-spacing:0.01em;">6 converging issues ✗</p>
+            <div style="display:flex; flex-direction:column; gap:0;">
+              <div style="border-left:3px solid #f59e0b; padding:0 0 10px 12px;">
+                <p style="font-size:13px; font-weight:600; color:var(--black); margin:0 0 2px;">Operator identity is missing</p>
+                <p style="font-size:13px; color:var(--gray); margin:0; line-height:1.6;">"Don't show my name, show ACLS Travels — that's my focus."</p>
+              </div>
+              <div style="border-left:3px solid #f59e0b; padding:10px 0 10px 12px; border-top:1px solid var(--border);">
+                <p style="font-size:13px; font-weight:600; color:var(--black); margin:0 0 2px;">Video model is wrong</p>
+                <p style="font-size:13px; color:var(--gray); margin:0; line-height:1.6;">Wanted chunked clips per event, with in/out direction + timestamp.</p>
+              </div>
+              <div style="border-left:3px solid #f59e0b; padding:10px 0 10px 12px; border-top:1px solid var(--border);">
+                <p style="font-size:13px; font-weight:600; color:var(--black); margin:0 0 2px;">Map isn't interactive enough</p>
+                <p style="font-size:13px; color:var(--gray); margin:0; line-height:1.6;">Unlabeled icons; users fell back to the table every time.</p>
+              </div>
+              <div style="border-left:3px solid #f59e0b; padding:10px 0 10px 12px; border-top:1px solid var(--border);">
+                <p style="font-size:13px; font-weight:600; color:var(--black); margin:0 0 2px;">Verify → message needs guidance</p>
+                <p style="font-size:13px; color:var(--gray); margin:0; line-height:1.6;">Both needed a hint to discover the multi-select-then-report action.</p>
+              </div>
+              <div style="border-left:3px solid #f59e0b; padding:10px 0 10px 12px; border-top:1px solid var(--border);">
+                <p style="font-size:13px; font-weight:600; color:var(--black); margin:0 0 2px;">Copy-only handoff felt thin</p>
+                <p style="font-size:13px; color:var(--gray); margin:0; line-height:1.6;">Users pushed for deep-links to evidence, or in-app send.</p>
+              </div>
+              <div style="border-left:3px solid #f59e0b; padding:10px 0 0 12px; border-top:1px solid var(--border);">
+                <p style="font-size:13px; font-weight:600; color:var(--black); margin:0 0 2px;">Crew belongs in the report</p>
+                <p style="font-size:13px; color:var(--gray); margin:0; line-height:1.6;">"Put the driver's name in the message — the operator knows the driver better than I do."</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reflection -->
+      <div class="cs-section">
+        <span class="ep-section-tag">Reflection</span>
+        <h2 class="cs-h2">Where the real design decisions happened</h2>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:20px;">
+
+          <div style="border:1px solid var(--border); border-radius:10px; padding:22px;">
+            <span style="font-size:10px; font-weight:600; letter-spacing:0.07em; text-transform:uppercase; color:var(--gray); background:var(--light); border:1px solid var(--border); padding:2px 8px; border-radius:4px;">Persona</span>
+            <p style="font-size:16px; font-weight:600; color:var(--black); margin:12px 0 10px; line-height:1.2;">Design for the real job, not the stated one</p>
+            <p style="font-size:13px; line-height:1.7; color:var(--gray); margin:0;">The brief was "a counting dashboard"; the job was "help me report leakage and act on crew." Correcting the persona — the POO, not the bus operator — reframed the entire product.</p>
+          </div>
+
+          <div style="border:1px solid var(--border); border-radius:10px; padding:22px;">
+            <span style="font-size:10px; font-weight:600; letter-spacing:0.07em; text-transform:uppercase; color:var(--gray); background:var(--light); border:1px solid var(--border); padding:2px 8px; border-radius:4px;">Research</span>
+            <p style="font-size:16px; font-weight:600; color:var(--black); margin:12px 0 10px; line-height:1.2;">Follow the data to where the work happens</p>
+            <p style="font-size:13px; line-height:1.7; color:var(--gray); margin:0;">Following findings to WhatsApp revealed the real opportunity: the dashboard's job isn't just to <em>display</em>, it's to <em>produce a trustworthy, shareable output</em>.</p>
+          </div>
+
+          <div style="border:1px solid var(--border); border-radius:10px; padding:22px;">
+            <span style="font-size:10px; font-weight:600; letter-spacing:0.07em; text-transform:uppercase; color:var(--gray); background:var(--light); border:1px solid var(--border); padding:2px 8px; border-radius:4px;">Trust</span>
+            <p style="font-size:16px; font-weight:600; color:var(--black); margin:12px 0 10px; line-height:1.2;">Trust is a feature</p>
+            <p style="font-size:13px; line-height:1.7; color:var(--gray); margin:0;">When the whole product hinges on believing a number, showing <em>evidence</em> (video) beats claiming <em>accuracy</em>.</p>
+          </div>
+
+          <div style="border:1px solid var(--border); border-radius:10px; padding:22px;">
+            <span style="font-size:10px; font-weight:600; letter-spacing:0.07em; text-transform:uppercase; color:var(--gray); background:var(--light); border:1px solid var(--border); padding:2px 8px; border-radius:4px;">Ethics</span>
+            <p style="font-size:16px; font-weight:600; color:var(--black); margin:12px 0 10px; line-height:1.2;">Ethics is a design surface</p>
+            <p style="font-size:13px; line-height:1.7; color:var(--gray); margin:0;">Swapping "repeat offender" for a crew trust meter was a small change with a big integrity payoff — the product only surfaces boarding; it doesn't prove intent.</p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Conclusion -->
+      <div class="cs-conclusion">
+        <p>This project shifted SafePassenger from a monitoring tool the team didn't trust into a <b>verify-and-report workflow</b> built around the POO — the person who actually does the work. Every structural decision, from the IA to the tab consolidation to the Final Verify flow, traces back to a single research finding: the human <em>was</em> the integration layer. The design's job was to replace that with a system.</p>
+        <p style="margin-top:16px; padding-top:16px; border-top:1px solid var(--border); font-size:14px; line-height:1.7; color:var(--gray);"><span style="font-weight:600; color:var(--black);">Still in progress.</span> Usability testing is ongoing — participant sessions are running and findings will feed directly into the next design iteration. High-fidelity visual design follows once testing wraps.</p>
+      </div>
+
+    </div><!-- /cs-wrap -->
+  </div><!-- /page-safepassenger -->
+
+
   <!-- Zoom lightbox -->
   <div class="flow-lightbox" id="flowLightbox" onclick="closeFlowZoom(event)">
-    <div class="flow-lightbox-inner">
-      <button class="flow-lightbox-close" onclick="document.getElementById('flowLightbox').classList.remove('open')">✕</button>
+    <button class="flow-lightbox-close" onclick="closeLightboxDirect()">✕</button>
+    <div class="flow-lightbox-toolbar" onclick="event.stopPropagation()">
+      <button onclick="lightboxZoomStep(-0.25)" title="Zoom out">−</button>
+      <span class="flow-lightbox-zoom-label" id="flowZoomLabel">100%</span>
+      <button onclick="lightboxZoomStep(+0.25)" title="Zoom in">+</button>
+      <button onclick="lightboxZoomReset()" title="Reset zoom" style="font-size:11px; width:auto; padding:0 8px;">Reset</button>
+      <span class="flow-lightbox-hint">Scroll to zoom · drag to pan</span>
+    </div>
+    <div class="flow-lightbox-inner" id="flowLightboxInner">
       <img id="flowLightboxImg" src="" alt="">
     </div>
   </div>
 
   <script>
+    // ── SHOW MORE TOGGLE ──
+    function toggleMoreCards(id, btn) {
+      const el = document.getElementById(id);
+      const isHidden = el.classList.contains('more-hidden');
+      el.classList.toggle('more-hidden');
+      btn.textContent = isHidden ? 'Show less' : 'Show more';
+    }
+
     // ── NAVIGATION ──
     function navigate(pageId) {
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
@@ -3386,7 +4186,7 @@
     // ── BACK TO TOP ──
     (function() {
       const btn = document.getElementById('back-to-top');
-      const CS_PAGES = ['eps','thematic','tokens','atoms','dsdoc','attendance'];
+      const CS_PAGES = ['eps','thematic','tokens','atoms','dsdoc','attendance','safepassenger'];
       function updateBtnVisibility() {
         const hash = location.hash.replace('#','');
         const onCS = CS_PAGES.includes(hash);
@@ -3398,7 +4198,7 @@
 
     // load from hash on page open
     const hash = location.hash.replace('#', '');
-    if (['home', 'projects', 'about', 'eps', 'thematic', 'tokens', 'atoms', 'dsdoc', 'attendance'].includes(hash)) navigate(hash);
+    if (['home', 'projects', 'about', 'eps', 'thematic', 'tokens', 'atoms', 'dsdoc', 'attendance', 'safepassenger'].includes(hash)) navigate(hash);
 
     // ── CONFETTI ──
     function downloadWithConfetti(btn) {
@@ -3489,29 +4289,100 @@
       el.addEventListener('mousemove', function(e){ if(!isDown) return; e.preventDefault(); el.scrollLeft = scrollLeft0-(e.pageX-el.offsetLeft-startX); });
     })();
 
-    // ── FLOW ZOOM ──
+    // ── FLOW ZOOM LIGHTBOX ──
+    let _lbZoom = 1;
+    const LB_MIN = 0.4, LB_MAX = 5;
+
+    function _lbApplyZoom() {
+      const inner = document.getElementById('flowLightboxInner');
+      const img   = document.getElementById('flowLightboxImg');
+      const base  = inner.clientWidth;
+      img.style.width  = (base * _lbZoom) + 'px';
+      img.style.height = 'auto';
+      document.getElementById('flowZoomLabel').textContent = Math.round(_lbZoom * 100) + '%';
+    }
+
+    function lightboxZoomStep(delta) {
+      _lbZoom = Math.min(LB_MAX, Math.max(LB_MIN, _lbZoom + delta));
+      _lbApplyZoom();
+    }
+
+    function lightboxZoomReset() {
+      _lbZoom = 1;
+      const inner = document.getElementById('flowLightboxInner');
+      inner.scrollLeft = 0;
+      inner.scrollTop  = 0;
+      _lbApplyZoom();
+    }
+
     function openFlowZoom(img) {
-      const lb = document.getElementById('flowLightbox');
-      document.getElementById('flowLightboxImg').src = img.src;
-      document.getElementById('flowLightboxImg').alt = img.alt;
+      const lb    = document.getElementById('flowLightbox');
+      const lbImg = document.getElementById('flowLightboxImg');
+      lbImg.src = img.src;
+      lbImg.alt = img.alt;
+      lbImg.style.width  = '';
+      lbImg.style.height = '';
+      _lbZoom = 1;
+      document.getElementById('flowZoomLabel').textContent = '100%';
       lb.classList.add('open');
       lb._trigger = document.activeElement;
-      const closeBtn = lb.querySelector('.flow-lightbox-close');
-      if (closeBtn) closeBtn.focus();
+      const inner = document.getElementById('flowLightboxInner');
+      inner.scrollLeft = 0;
+      inner.scrollTop  = 0;
     }
+
     function closeFlowZoom(e) {
-      const lb = document.getElementById('flowLightbox');
-      if (e.target === lb) {
-        lb.classList.remove('open');
-        if (lb._trigger) lb._trigger.focus();
-      }
+      if (e.target === document.getElementById('flowLightbox')) closeLightboxDirect();
     }
+
+    function closeLightboxDirect() {
+      const lb = document.getElementById('flowLightbox');
+      lb.classList.remove('open');
+      if (lb._trigger) lb._trigger.focus();
+    }
+
+    // Scroll-to-zoom on the inner panel
+    document.getElementById('flowLightboxInner').addEventListener('wheel', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      const inner    = this;
+      const rect     = inner.getBoundingClientRect();
+      const mouseX   = e.clientX - rect.left + inner.scrollLeft;
+      const mouseY   = e.clientY - rect.top  + inner.scrollTop;
+      const prevZoom = _lbZoom;
+      const delta    = e.deltaY < 0 ? 0.15 : -0.15;
+      _lbZoom = Math.min(LB_MAX, Math.max(LB_MIN, _lbZoom + delta));
+      _lbApplyZoom();
+      // Scroll so the point under the cursor stays fixed
+      const ratio = _lbZoom / prevZoom;
+      inner.scrollLeft = mouseX * ratio - (e.clientX - rect.left);
+      inner.scrollTop  = mouseY * ratio - (e.clientY - rect.top);
+    }, { passive: false });
+
+    // Drag-to-pan on the inner panel
+    (function() {
+      const el = document.getElementById('flowLightboxInner');
+      let isDown = false, startX, startY, sl, st;
+      el.addEventListener('mousedown', function(e) {
+        if (e.button !== 0) return;
+        isDown = true; startX = e.pageX; startY = e.pageY;
+        sl = el.scrollLeft; st = el.scrollTop;
+        el.classList.add('dragging');
+      });
+      window.addEventListener('mouseup', function() {
+        isDown = false;
+        el.classList.remove('dragging');
+      });
+      el.addEventListener('mousemove', function(e) {
+        if (!isDown) return;
+        e.preventDefault();
+        el.scrollLeft = sl - (e.pageX - startX);
+        el.scrollTop  = st - (e.pageY - startY);
+      });
+    })();
+
     document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') {
-        const lb = document.getElementById('flowLightbox');
-        lb.classList.remove('open');
-        if (lb._trigger) lb._trigger.focus();
-      }
+      if (e.key === 'Escape') closeLightboxDirect();
     });
 
     // ── COPY EMAIL ──

@@ -1,0 +1,144 @@
+<svg viewBox="0 0 1180 1560" xmlns="http://www.w3.org/2000/svg" role="img" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">
+  <title>SafePassenger — People Counting mental model</title>
+  <desc>Digital recreation of the hand-drawn mental models: POO, Bus Operator, Bus, Trips (API data), and Trip Running.</desc>
+  <style>
+    :root{--ink:#1e4fa3;--line:#9db6de;--surface:#eef3fb;--surface2:#ffffff;--text:#1e2a3a;--muted:#5b6b82;--band:#f6f9fd;}
+    .band{fill:#f6f9fd;stroke:#e4ecf7;}
+    .sec{fill:#1e4fa3;font-size:13px;font-weight:700;letter-spacing:.02em;}
+    .root{fill:#1e4fa3;}
+    .rootT{fill:#fff;font-size:15px;font-weight:700;text-anchor:middle;}
+    .node rect{fill:#eef3fb;stroke:#9db6de;}
+    .leaf rect{fill:#ffffff;stroke:#9db6de;}
+    .wide rect{fill:#ffffff;stroke:#9db6de;}
+    .t{fill:#1e2a3a;font-size:12px;}
+    .tm{fill:#5b6b82;font-size:11px;}
+    .edge{stroke:#9db6de;stroke-width:1.4;fill:none;}
+  </style>
+
+  <!-- ================= POO ================= -->
+  <rect class="band" x="14" y="46" width="1152" height="300" rx="12"/>
+  <text class="sec" x="30" y="38">POO — Product Owner Operator</text>
+  <ellipse class="root" cx="96" cy="196" rx="52" ry="34"/>
+  <text class="rootT" x="96" y="201">POO</text>
+
+  <line class="edge" x1="148" y1="196" x2="240" y2="80"/>
+  <line class="edge" x1="148" y1="196" x2="240" y2="124"/>
+  <line class="edge" x1="148" y1="196" x2="240" y2="168"/>
+  <line class="edge" x1="148" y1="196" x2="240" y2="212"/>
+  <line class="edge" x1="148" y1="196" x2="240" y2="256"/>
+  <line class="edge" x1="148" y1="196" x2="240" y2="312"/>
+
+  <g class="node"><rect x="240" y="64" width="230" height="32" rx="8"/><text class="t" x="256" y="84">Interacts with BO</text></g>
+  <g class="node"><rect x="240" y="108" width="230" height="32" rx="8"/><text class="t" x="256" y="128">Verifies data + final count</text></g>
+  <g class="node"><rect x="240" y="152" width="230" height="32" rx="8"/><text class="t" x="256" y="172">Verifies multiple fleets</text></g>
+  <g class="node"><rect x="240" y="196" width="230" height="32" rx="8"/><text class="t" x="256" y="216">Alerts</text></g>
+  <g class="node"><rect x="240" y="240" width="230" height="32" rx="8"/><text class="t" x="256" y="260">Sends final count to BO</text></g>
+  <g class="wide"><rect x="240" y="296" width="640" height="34" rx="8"/><text class="tm" x="256" y="317">Primary screens: Dashboard · Trip Summary · Device health</text></g>
+
+  <line class="edge" x1="470" y1="212" x2="500" y2="196"/>
+  <line class="edge" x1="470" y1="212" x2="500" y2="232"/>
+  <g class="leaf"><rect x="500" y="180" width="150" height="30" rx="8"/><text class="t" x="514" y="199">Tampering</text></g>
+  <g class="leaf"><rect x="500" y="216" width="300" height="30" rx="8"/><text class="t" x="514" y="235">Unscheduled boarding / drop-off</text></g>
+
+  <!-- ================= BO ================= -->
+  <rect class="band" x="14" y="382" width="1152" height="188" rx="12"/>
+  <text class="sec" x="30" y="374">BO — Bus Operator</text>
+  <ellipse class="root" cx="96" cy="470" rx="52" ry="34"/>
+  <text class="rootT" x="96" y="475">BO</text>
+
+  <line class="edge" x1="148" y1="470" x2="240" y2="416"/>
+  <line class="edge" x1="148" y1="470" x2="240" y2="460"/>
+  <line class="edge" x1="148" y1="470" x2="240" y2="504"/>
+  <line class="edge" x1="148" y1="470" x2="240" y2="548"/>
+
+  <g class="node"><rect x="240" y="400" width="280" height="32" rx="8"/><text class="t" x="256" y="420">Interacts with drivers &amp; conductors</text></g>
+  <g class="node"><rect x="240" y="444" width="230" height="32" rx="8"/><text class="t" x="256" y="464">Tracks all his buses</text></g>
+  <g class="node"><rect x="240" y="488" width="230" height="32" rx="8"/><text class="t" x="256" y="508">Checks analysis</text></g>
+  <g class="wide"><rect x="240" y="532" width="230" height="32" rx="8"/><text class="tm" x="256" y="552">Primary screen: Dashboard</text></g>
+
+  <!-- ================= BUS ================= -->
+  <rect class="band" x="14" y="606" width="1152" height="248" rx="12"/>
+  <text class="sec" x="30" y="598">Bus</text>
+  <ellipse class="root" cx="96" cy="726" rx="52" ry="34"/>
+  <text class="rootT" x="96" y="731">Bus</text>
+
+  <line class="edge" x1="148" y1="726" x2="240" y2="642"/>
+  <line class="edge" x1="148" y1="726" x2="240" y2="704"/>
+  <line class="edge" x1="148" y1="726" x2="240" y2="766"/>
+  <line class="edge" x1="148" y1="726" x2="240" y2="820"/>
+
+  <g class="node"><rect x="240" y="626" width="200" height="32" rx="8"/><text class="t" x="256" y="646">Device health</text></g>
+  <g class="node"><rect x="240" y="688" width="200" height="32" rx="8"/><text class="t" x="256" y="708">Trips</text></g>
+  <g class="node"><rect x="240" y="750" width="270" height="32" rx="8"/><text class="t" x="256" y="770">Onboarding + install (manual)</text></g>
+  <g class="node"><rect x="240" y="804" width="270" height="32" rx="8"/><text class="t" x="256" y="824">Has drivers &amp; conductors</text></g>
+
+  <line class="edge" x1="440" y1="704" x2="540" y2="644"/>
+  <line class="edge" x1="440" y1="704" x2="540" y2="684"/>
+  <line class="edge" x1="440" y1="704" x2="540" y2="724"/>
+  <line class="edge" x1="440" y1="704" x2="540" y2="764"/>
+  <g class="leaf"><rect x="540" y="628" width="200" height="30" rx="8"/><text class="t" x="554" y="647">Rest stops</text></g>
+  <g class="leaf"><rect x="540" y="668" width="220" height="30" rx="8"/><text class="t" x="554" y="687">Unscheduled boarding</text></g>
+  <g class="leaf"><rect x="540" y="708" width="200" height="30" rx="8"/><text class="t" x="554" y="727">Unscheduled drop</text></g>
+  <g class="leaf"><rect x="540" y="748" width="200" height="30" rx="8"/><text class="t" x="554" y="767">Passenger counting</text></g>
+
+  <!-- ================= TRIPS / API DATA ================= -->
+  <rect class="band" x="14" y="890" width="1152" height="300" rx="12"/>
+  <text class="sec" x="30" y="882">Trips — API data</text>
+  <ellipse class="root" cx="96" cy="1000" rx="52" ry="34"/>
+  <text class="rootT" x="96" y="1005">Trips</text>
+
+  <line class="edge" x1="148" y1="1000" x2="240" y2="928"/>
+  <line class="edge" x1="148" y1="1000" x2="240" y2="988"/>
+  <line class="edge" x1="148" y1="1000" x2="240" y2="1040"/>
+
+  <g class="node"><rect x="240" y="912" width="200" height="32" rx="8"/><text class="t" x="256" y="932">Start / End</text></g>
+  <g class="node"><rect x="240" y="972" width="200" height="32" rx="8"/><text class="t" x="256" y="992">All stops</text></g>
+  <g class="node"><rect x="240" y="1024" width="200" height="32" rx="8"/><text class="t" x="256" y="1044">Passengers</text></g>
+
+  <line class="edge" x1="440" y1="928" x2="540" y2="912"/>
+  <line class="edge" x1="440" y1="928" x2="540" y2="950"/>
+  <g class="leaf"><rect x="540" y="896" width="180" height="30" rx="8"/><text class="t" x="554" y="915">Destination</text></g>
+  <g class="leaf"><rect x="540" y="936" width="200" height="30" rx="8"/><text class="t" x="554" y="955">Timings (approx)</text></g>
+
+  <line class="edge" x1="440" y1="1040" x2="540" y2="1040"/>
+  <g class="leaf"><rect x="540" y="1024" width="150" height="30" rx="8"/><text class="t" x="554" y="1043">Boarding</text></g>
+  <line class="edge" x1="690" y1="1039" x2="740" y2="1039"/>
+  <g class="leaf"><rect x="740" y="1024" width="150" height="30" rx="8"/><text class="t" x="754" y="1043">Drop-off</text></g>
+
+  <g class="wide"><rect x="240" y="1108" width="820" height="46" rx="8"/>
+    <text class="tm" x="256" y="1130">Sequence:  Trip starts → Boarding starts → People counting →</text>
+    <text class="tm" x="256" y="1147">Scheduled  /  Unscheduled ( + or − )</text>
+  </g>
+
+  <!-- ================= TRIP RUNNING ================= -->
+  <rect class="band" x="14" y="1226" width="1152" height="316" rx="12"/>
+  <text class="sec" x="30" y="1218">Trip Running</text>
+  <g class="root"><rect x="44" y="1352" width="108" height="56" rx="10" fill="#1e4fa3"/></g>
+  <text class="rootT" x="98" y="1385">Trip Running</text>
+
+  <line class="edge" x1="152" y1="1380" x2="240" y2="1272"/>
+  <line class="edge" x1="152" y1="1380" x2="240" y2="1352"/>
+  <line class="edge" x1="152" y1="1380" x2="240" y2="1396"/>
+  <line class="edge" x1="152" y1="1380" x2="240" y2="1452"/>
+
+  <g class="node"><rect x="240" y="1256" width="200" height="32" rx="8"/><text class="t" x="256" y="1276">Stops</text></g>
+  <g class="node"><rect x="240" y="1336" width="200" height="32" rx="8"/><text class="t" x="256" y="1356">Device health</text></g>
+  <g class="node"><rect x="240" y="1380" width="200" height="32" rx="8"/><text class="t" x="256" y="1400">Tampering</text></g>
+  <g class="node"><rect x="240" y="1436" width="200" height="32" rx="8"/><text class="t" x="256" y="1456">Boarding / Drop</text></g>
+
+  <line class="edge" x1="440" y1="1272" x2="540" y2="1240"/>
+  <line class="edge" x1="440" y1="1272" x2="540" y2="1280"/>
+  <line class="edge" x1="440" y1="1272" x2="540" y2="1320"/>
+  <g class="leaf"><rect x="540" y="1224" width="180" height="30" rx="8"/><text class="t" x="554" y="1243">Adhoc stops</text></g>
+  <g class="leaf"><rect x="540" y="1264" width="180" height="30" rx="8"/><text class="t" x="554" y="1283">Food stops</text></g>
+  <g class="leaf"><rect x="540" y="1304" width="180" height="30" rx="8"/><text class="t" x="554" y="1323">Rest stops</text></g>
+
+  <line class="edge" x1="440" y1="1452" x2="540" y2="1384"/>
+  <line class="edge" x1="440" y1="1452" x2="540" y2="1424"/>
+  <line class="edge" x1="440" y1="1452" x2="540" y2="1464"/>
+  <line class="edge" x1="440" y1="1452" x2="540" y2="1504"/>
+  <g class="leaf"><rect x="540" y="1368" width="200" height="30" rx="8"/><text class="t" x="554" y="1387">Scheduled</text></g>
+  <g class="leaf"><rect x="540" y="1408" width="200" height="30" rx="8"/><text class="t" x="554" y="1427">Unscheduled</text></g>
+  <g class="leaf"><rect x="540" y="1448" width="200" height="30" rx="8"/><text class="t" x="554" y="1467">Drop-off</text></g>
+  <g class="leaf"><rect x="540" y="1488" width="200" height="30" rx="8"/><text class="t" x="554" y="1507">Unscheduled drop</text></g>
+</svg>
