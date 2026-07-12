@@ -2,332 +2,175 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>People Counting — Information Architecture (v1, editable)</title>
+<title>SafePassenger — Information Architecture</title>
 <style>
-  :root{
-    --bg:#f6f7f9; --panel:#ffffff; --ink:#1c2430; --muted:#6b7684;
-    --line:#e3e7ec; --accent:#2f6fed; --accent-soft:#eaf1fe;
-    --danger:#c0392b; --ok:#1e8e5a; --chip:#eef1f5;
-    --radius:10px; --mono:ui-monospace,SFMono-Regular,Menlo,monospace;
-    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-  }
-  *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.4}
-  header{position:sticky;top:0;z-index:10;background:var(--panel);border-bottom:1px solid var(--line);
-    padding:14px 20px;display:flex;flex-wrap:wrap;align-items:center;gap:12px}
-  header h1{font-size:16px;margin:0;font-weight:650;letter-spacing:.2px}
-  header .sub{color:var(--muted);font-size:12.5px;margin-left:2px}
-  .spacer{flex:1}
-  .btn{border:1px solid var(--line);background:#fff;color:var(--ink);padding:7px 12px;border-radius:8px;
-    font-size:13px;cursor:pointer;font-weight:550}
-  .btn:hover{background:var(--chip)}
-  .btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
-  .btn.primary:hover{filter:brightness(1.05)}
-  .btn.ghost{background:transparent}
-  main{max-width:1040px;margin:22px auto;padding:0 20px 80px}
-  .hint{color:var(--muted);font-size:12.5px;margin:0 0 16px}
-  .hint code{background:var(--chip);padding:1px 5px;border-radius:4px;font-family:var(--mono);font-size:11.5px}
-
-  ul.tree{list-style:none;margin:0;padding:0}
-  ul.tree ul{list-style:none;margin:0;padding-left:26px;border-left:1px dashed var(--line);margin-left:12px}
-  li.node{margin:6px 0;position:relative}
-  .row{display:flex;align-items:flex-start;gap:8px;background:var(--panel);border:1px solid var(--line);
-    border-radius:var(--radius);padding:8px 10px;transition:border-color .12s}
-  .row:hover{border-color:#c9d2de}
-  .row.depth0{border-left:4px solid var(--accent)}
-  .row.depth1{border-left:4px solid #8fb0f4}
-  .caret{cursor:pointer;color:var(--muted);width:16px;text-align:center;user-select:none;padding-top:2px;font-size:12px}
-  .caret.hidden{visibility:hidden}
-  .labels{flex:1;min-width:0}
-  .label{font-weight:600;outline:none;border-radius:4px;padding:1px 3px}
-  .row.depth0 .label{font-size:15.5px}
-  .note{color:var(--muted);font-size:12.5px;outline:none;border-radius:4px;padding:1px 3px;margin-top:2px;min-height:16px}
-  .label:focus,.note:focus{background:var(--accent-soft);box-shadow:0 0 0 1px var(--accent) inset}
-  .note:empty:before{content:attr(data-ph);color:#b4bcc7}
-  .actions{display:flex;gap:4px;opacity:0;transition:opacity .12s;flex-shrink:0}
-  .row:hover .actions,.row:focus-within .actions{opacity:1}
-  .grip{cursor:grab;color:#c0c8d2;padding-top:2px;font-size:13px;user-select:none;flex-shrink:0}
-  .grip:active{cursor:grabbing}
-  .row.dragging{opacity:.45}
-  .row.drop-before{box-shadow:0 -2px 0 var(--accent)}
-  .row.drop-after{box-shadow:0 2px 0 var(--accent)}
-  .row.drop-inside{box-shadow:0 0 0 2px var(--accent) inset;background:var(--accent-soft)}
-  .iconbtn{border:1px solid var(--line);background:#fff;border-radius:6px;width:26px;height:26px;cursor:pointer;
-    font-size:13px;color:var(--muted);display:flex;align-items:center;justify-content:center;padding:0}
-  .iconbtn:hover{background:var(--chip);color:var(--ink)}
-  .iconbtn.del:hover{background:#fdecea;color:var(--danger);border-color:#f3c6bf}
-  .badge{display:inline-block;background:var(--chip);color:var(--muted);font-size:10.5px;font-weight:600;
-    padding:1px 6px;border-radius:20px;margin-left:6px;vertical-align:middle;letter-spacing:.3px}
-  .collapsed > ul{display:none}
-  footer{max-width:1040px;margin:0 auto;padding:0 20px;color:var(--muted);font-size:12px}
-  dialog{border:none;border-radius:12px;padding:0;max-width:680px;width:92%;box-shadow:0 20px 60px rgba(0,0,0,.25)}
-  dialog::backdrop{background:rgba(20,28,40,.45)}
-  .dlg-head{padding:14px 18px;border-bottom:1px solid var(--line);display:flex;align-items:center}
-  .dlg-head h3{margin:0;font-size:15px}
-  .dlg-body{padding:16px 18px}
-  textarea{width:100%;height:300px;font-family:var(--mono);font-size:12px;border:1px solid var(--line);
-    border-radius:8px;padding:10px;resize:vertical}
-  .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;
-    padding:9px 16px;border-radius:8px;font-size:13px;opacity:0;pointer-events:none;transition:opacity .2s;z-index:50}
-  .toast.show{opacity:1}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#f8f9fb;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif}
+.wrap{padding:18px 20px 28px;overflow-x:auto}
 </style>
 </head>
 <body>
-<header>
-  <div>
-    <h1>People Counting — Information Architecture <span class="badge">v14 · editable</span></h1>
-    <div class="sub">Digitized from the hand-drawn draft. Edit inline · add/remove nodes · autosaves in this browser.</div>
-  </div>
-  <div class="spacer"></div>
-  <button class="btn" onclick="addRoot()">+ Section</button>
-  <button class="btn ghost" onclick="expandAll(true)">Expand all</button>
-  <button class="btn ghost" onclick="expandAll(false)">Collapse all</button>
-  <button class="btn" onclick="exportMarkdown()">Copy Markdown</button>
-  <button class="btn" onclick="showJSON()">Export / Import JSON</button>
-  <button class="btn ghost" onclick="resetTree()">Reset to v1</button>
-</header>
+<div class="wrap">
+<svg viewBox="0 0 900 635" width="900" xmlns="http://www.w3.org/2000/svg"
+     font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif">
 
-<main>
-  <p class="hint">
-    Click any <b>title</b> or <b>note</b> to edit. Hover a row for actions:
-    <code>＋Ch</code> add child · <code>＋Sib</code> add sibling · <code>🗑</code> delete · <code>▸</code> collapse.
-    Everything autosaves locally; use <b>Export JSON</b> to keep a durable copy or hand it back to me.
-  </p>
-  <ul class="tree" id="tree"></ul>
-</main>
+<!-- ── EDGES (drawn behind boxes) ── -->
 
-<footer>People Counting · SafePassenger · IA source of truth for wireframing. Notes in grey are context, not nav labels.</footer>
+<!-- Login → main sections trunk -->
+<line x1="140" y1="123" x2="140" y2="530" stroke="#9db6de" stroke-width="1.3"/>
+<line x1="125" y1="326" x2="140" y2="326" stroke="#9db6de" stroke-width="1.3"/>
+<line x1="140" y1="123" x2="150" y2="123" stroke="#9db6de" stroke-width="1.3"/>
+<line x1="140" y1="335" x2="150" y2="335" stroke="#9db6de" stroke-width="1.3"/>
+<line x1="140" y1="530" x2="150" y2="530" stroke="#9db6de" stroke-width="1.3"/>
 
-<dialog id="jsonDlg">
-  <div class="dlg-head"><h3>IA data (JSON)</h3><div class="spacer" style="flex:1"></div>
-    <button class="btn ghost" onclick="document.getElementById('jsonDlg').close()">Close</button></div>
-  <div class="dlg-body">
-    <textarea id="jsonArea" spellcheck="false"></textarea>
-    <div style="margin-top:10px;display:flex;gap:8px">
-      <button class="btn primary" onclick="importJSON()">Load this JSON</button>
-      <button class="btn" onclick="copyJSON()">Copy</button>
-    </div>
-  </div>
-</dialog>
+<!-- Dashboard → KPIs, Alerts -->
+<line x1="300" y1="71" x2="300" y2="177" stroke="#9db6de" stroke-width="1.2"/>
+<line x1="285" y1="123" x2="300" y2="123" stroke="#9db6de" stroke-width="1.2"/>
+<line x1="300" y1="71"  x2="315" y2="71"  stroke="#9db6de" stroke-width="1.2"/>
+<line x1="300" y1="177" x2="315" y2="177" stroke="#9db6de" stroke-width="1.2"/>
 
-<div class="toast" id="toast"></div>
+<!-- KPIs → items -->
+<line x1="473" y1="32"  x2="473" y2="140" stroke="#c5d3e0" stroke-width="1"/>
+<line x1="460" y1="71"  x2="473" y2="71"  stroke="#c5d3e0" stroke-width="1"/>
+<line x1="473" y1="32"  x2="490" y2="32"  stroke="#c5d3e0" stroke-width="1"/>
+<line x1="473" y1="68"  x2="490" y2="68"  stroke="#c5d3e0" stroke-width="1"/>
+<line x1="473" y1="104" x2="490" y2="104" stroke="#c5d3e0" stroke-width="1"/>
+<line x1="473" y1="140" x2="490" y2="140" stroke="#c5d3e0" stroke-width="1"/>
 
-<script>
-// ---- v1 IA, transcribed from the hand-drawn sketch (pages 6–7) ----
-const SEED = {
-  title: "SafePassenger — People Counting",
-  note: "Login → primary sections · Bus and Trips kept separate (no overlap)",
-  children: [
-    { title: "Dashboard", note: "Landing · verification hub", children: [
-      { title: "KPIs", note: "clickable filters", children: [
-        { title: "Unscheduled boarding", note: "" },
-        { title: "Unscheduled drop", note: "" },
-        { title: "Tampering", note: "device flags 'Tampering DETECTED' (can't tell turned vs covered) — POO confirms via video on Trip detail; flagged here, NOT in Device health", children: [] },
-        { title: "Device health", note: "CLICKABLE → opens the bus's Device health under Bus (bus no · signal · details · where it failed · GPS location)", children: [] },
-      ]},
-      { title: "Alerts (table)", note: "only unscheduled events surface here", children: [] },
-    ]},
-    { title: "Bus", note: "fleet list → bus detail (NO Trips here — Trips is its own section)", children: [
-      { title: "All busses (table)", note: "one table · columns: Bus number · Device status (BADGE: Active / Standby / Maintenance / Deprecated — Deprecated only if any exist) · Device health (Strong / Medium / Weak). Filter/sort by status. Click a bus → Bus page.", children: [
-        { title: "New bus added", note: "flagged explicitly when a bus is newly added", children: [] },
-      ]},
-      { title: "Bus page", note: "opens on a clicked bus — e.g. KA 04 PB 9080", children: [
-        { title: "Overview", note: "Trip route · Date run · Unscheduled boarding · Crew present", children: [] },
-        { title: "Analytics (tab)", note: "analytics for this particular bus", children: [] },
-        { title: "Device health (tab)", note: "signal Strong/Medium/Weak · details · WHERE it failed (GPS location · subsystem: camera / GPS) · history with DATE FILTER (Today/Yesterday/Last week/custom) · only UNATTRIBUTED issues live here · reclassify → Tampering if inspection shows camera covered/turned", children: [] },
-      ]},
-    ]},
-    { title: "Trips", note: "SEPARATE from Bus — no overlap · fleet-wide trip states", children: [
-      { title: "All trips", note: "GROUPS the two states below — Completed + Active", children: [
-        { title: "Completed", note: "all completed / analyzed trips — verified/not verified, alert/non-alert (everything shown on the dashboard); date filter; click → Trip detail", children: [
-          { title: "Trip detail", note: "Map (hero) + LEFT panel: stops as clickable buttons — Rest · Food · Unscheduled boarding · Unscheduled drop-off → click locates it on the Map", children: [
-            { title: "Tab — Running trip", note: "whole-trip overview · Map ↔ Table toggle (table = all stops/events, no map)", children: [] },
-            { title: "Tab — Unscheduled & tampering", note: "COMBINED view — unscheduled boarding/drop-off + tampering; tampering shows 'Detected' → opens the VIDEO (device can't tell turned vs covered); feeds the single message", children: [] },
-            { title: "Tab — Media", note: "ALL videos (unscheduled boarding/drop, tampering, stops); filterable", children: [] },
-          { title: "Tab — Audio announcements", note: "", children: [] },
-            { title: "Tab — Stops for this trip", note: "", children: [] },
-            { title: "Tab — Passenger list", note: "", children: [] },
-          ]},
-        ]},
-        { title: "Active (Live)", note: "active / live running trips; click → Trip detail (same tabs)", children: [
-          { title: "Trip detail", note: "same as Completed — Map (hero) + LEFT panel of clickable stops → locate on Map", children: [
-            { title: "Tab — Running trip", note: "whole-trip overview · Map ↔ Table toggle (table = all stops/events, no map)", children: [] },
-            { title: "Tab — Unscheduled & tampering", note: "COMBINED view — unscheduled boarding/drop-off + tampering; tampering shows 'Detected' → opens the VIDEO (device can't tell turned vs covered); feeds the single message", children: [] },
-            { title: "Tab — Media", note: "ALL videos (unscheduled boarding/drop, tampering, stops); filterable", children: [] },
-          { title: "Tab — Audio announcements", note: "", children: [] },
-            { title: "Tab — Stops for this trip", note: "", children: [] },
-            { title: "Tab — Passenger list", note: "", children: [] },
-          ]},
-        ]},
-      ]},
-      { title: "Verified", note: "audit trail — the message + WHO verified; click → Trip detail + Verification tab", children: [
-        { title: "Trip detail", note: "same as Active — Map (hero) + LEFT panel of clickable stops → locate on Map", children: [
-          { title: "Tab — Running trip", note: "whole-trip overview · Map ↔ Table toggle (table = all stops/events, no map)", children: [] },
-          { title: "Tab — Unscheduled & tampering", note: "COMBINED view — unscheduled boarding/drop-off + tampering; tampering shows 'Detected' → opens the VIDEO (device can't tell turned vs covered); feeds the single message", children: [] },
-          { title: "Tab — Media", note: "ALL videos (unscheduled boarding/drop, tampering, stops); filterable", children: [] },
-          { title: "Tab — Audio announcements", note: "", children: [] },
-          { title: "Tab — Stops for this trip", note: "", children: [] },
-          { title: "Tab — Passenger list", note: "", children: [] },
-          { title: "Tab — Verification & message", note: "WHO verified this trip · the exact message that was sent", children: [] },
-        ]},
-      ]},
-      { title: "Routes", note: "all common routes run by the fleet", children: [] },
-      { title: "Crew", note: "list the crew · map a crew to a trip · TRUST METER (red→green bar, no number up front; hover tooltip shows 'Trust N · flagged X of Y trips') from verified unscheduled events per trip → feeds the message (neutral, not 'repeat offender')", children: [] },
-    ]},
-  ]
-};
+<!-- Bus → All Buses, Bus Page -->
+<line x1="300" y1="303" x2="300" y2="373" stroke="#9db6de" stroke-width="1.2"/>
+<line x1="285" y1="335" x2="300" y2="335" stroke="#9db6de" stroke-width="1.2"/>
+<line x1="300" y1="303" x2="315" y2="303" stroke="#9db6de" stroke-width="1.2"/>
+<line x1="300" y1="373" x2="315" y2="373" stroke="#9db6de" stroke-width="1.2"/>
 
-const KEY = "pc-ia-v14";
-let data;
+<!-- Bus Page → tabs -->
+<line x1="473" y1="354" x2="473" y2="426" stroke="#c5d3e0" stroke-width="1"/>
+<line x1="460" y1="373" x2="473" y2="373" stroke="#c5d3e0" stroke-width="1"/>
+<line x1="473" y1="354" x2="490" y2="354" stroke="#c5d3e0" stroke-width="1"/>
+<line x1="473" y1="390" x2="490" y2="390" stroke="#c5d3e0" stroke-width="1"/>
+<line x1="473" y1="426" x2="490" y2="426" stroke="#c5d3e0" stroke-width="1"/>
 
-function load(){
-  try{ const s = localStorage.getItem(KEY); if(s){ data = JSON.parse(s); return; } }catch(e){}
-  data = structuredClone(SEED);
-}
-function save(){ try{ localStorage.setItem(KEY, JSON.stringify(data)); }catch(e){} }
+<!-- Trips → children -->
+<line x1="300" y1="467" x2="300" y2="594" stroke="#9db6de" stroke-width="1.2"/>
+<line x1="285" y1="530" x2="300" y2="530" stroke="#9db6de" stroke-width="1.2"/>
+<line x1="300" y1="467" x2="315" y2="467" stroke="#9db6de" stroke-width="1.2"/>
+<line x1="300" y1="515" x2="315" y2="515" stroke="#9db6de" stroke-width="1.2"/>
+<line x1="300" y1="558" x2="315" y2="558" stroke="#9db6de" stroke-width="1.2"/>
+<line x1="300" y1="594" x2="315" y2="594" stroke="#9db6de" stroke-width="1.2"/>
 
-function el(tag, cls, txt){ const e=document.createElement(tag); if(cls)e.className=cls; if(txt!=null)e.textContent=txt; return e; }
+<!-- All Trips → Completed, Active -->
+<line x1="473" y1="466" x2="473" y2="502" stroke="#c5d3e0" stroke-width="1"/>
+<line x1="460" y1="467" x2="473" y2="467" stroke="#c5d3e0" stroke-width="1"/>
+<line x1="473" y1="466" x2="490" y2="466" stroke="#c5d3e0" stroke-width="1"/>
+<line x1="473" y1="502" x2="490" y2="502" stroke="#c5d3e0" stroke-width="1"/>
 
-function render(){
-  const root = document.getElementById('tree');
-  root.innerHTML='';
-  root.appendChild(renderNode(data, 0, null, -1));
-  save();
-}
+<!-- Completed + Active → Trip detail (Y-join) -->
+<polyline points="635,466 649,466 649,484 663,484" fill="none" stroke="#c5d3e0" stroke-width="1"/>
+<polyline points="635,502 649,502 649,484 663,484" fill="none" stroke="#c5d3e0" stroke-width="1"/>
 
-function renderNode(node, depth, parent, index){
-  const li = el('li','node');
-  if(node._collapsed) li.classList.add('collapsed');
-  const row = el('div','row depth'+Math.min(depth,1));
-  row._node = node; row._parent = parent;
-  // drag handle (root not draggable)
-  if(parent){
-    const grip = el('div','grip','⠿'); grip.title='Drag to move';
-    grip.draggable=true;
-    grip.addEventListener('dragstart', e=>{ drag={node,parent}; row.classList.add('dragging'); e.dataTransfer.effectAllowed='move'; e.dataTransfer.setData('text/plain',node.title); });
-    grip.addEventListener('dragend', ()=>{ row.classList.remove('dragging'); clearDropCues(); drag=null; });
-    row.appendChild(grip);
-  } else {
-    row.appendChild(el('div','grip',' '));
-  }
-  row.addEventListener('dragover', e=>{ if(!drag) return; e.preventDefault(); showDropCue(row,e); });
-  row.addEventListener('dragleave', ()=>{ row.classList.remove('drop-before','drop-after','drop-inside'); });
-  row.addEventListener('drop', e=>{ if(!drag) return; e.preventDefault(); doDrop(row,e); });
-  // caret
-  const caret = el('div','caret', node.children && node.children.length ? (node._collapsed?'▸':'▾') : '•');
-  if(!(node.children && node.children.length)) caret.classList.add('hidden');
-  caret.onclick=()=>{ node._collapsed=!node._collapsed; render(); };
-  row.appendChild(caret);
-  // labels
-  const labels = el('div','labels');
-  const label = el('div','label'); label.contentEditable=true; label.textContent=node.title;
-  label.oninput=()=>{ node.title=label.textContent; save(); };
-  const note = el('div','note'); note.contentEditable=true; note.textContent=node.note||''; note.setAttribute('data-ph','add a note…');
-  note.oninput=()=>{ node.note=note.textContent; save(); };
-  labels.appendChild(label); labels.appendChild(note);
-  row.appendChild(labels);
-  // actions
-  const act = el('div','actions');
-  const bUp = el('button','iconbtn','▲'); bUp.title='Move up';
-  bUp.onclick=()=>moveSibling(parent,index,-1);
-  const bDown = el('button','iconbtn','▼'); bDown.title='Move down';
-  bDown.onclick=()=>moveSibling(parent,index,1);
-  if(!parent){ bUp.style.visibility='hidden'; bDown.style.visibility='hidden'; }
-  const bChild = el('button','iconbtn','＋'); bChild.title='Add child';
-  bChild.onclick=()=>{ node.children=node.children||[]; node.children.push({title:'New item',note:'',children:[]}); node._collapsed=false; render(); };
-  const bSib = el('button','iconbtn','⤵'); bSib.title='Add sibling below';
-  bSib.onclick=()=>{ if(parent){ parent.children.splice(index+1,0,{title:'New item',note:'',children:[]}); render(); } };
-  if(depth===0) bSib.style.visibility='hidden';
-  const bDel = el('button','iconbtn del','🗑'); bDel.title='Delete';
-  bDel.onclick=()=>{ if(parent){ parent.children.splice(index,1); render(); } else { toast("Can't delete the root"); } };
-  act.appendChild(bUp); act.appendChild(bDown); act.appendChild(bChild); act.appendChild(bSib); act.appendChild(bDel);
-  row.appendChild(act);
-  li.appendChild(row);
-  // children
-  if(node.children && node.children.length){
-    const ul = el('ul');
-    node.children.forEach((c,i)=> ul.appendChild(renderNode(c, depth+1, node, i)));
-    li.appendChild(ul);
-  }
-  return li;
-}
+<!-- Verified → Trip detail (dashed) -->
+<polyline points="460,515 561,515 561,484 663,484" fill="none" stroke="#c5d3e0" stroke-width="1" stroke-dasharray="4 3"/>
 
-// ---- reorder: up/down among siblings ----
-function moveSibling(parent,index,dir){
-  if(!parent) return;
-  const arr=parent.children, j=index+dir;
-  if(j<0||j>=arr.length) return;
-  [arr[index],arr[j]]=[arr[j],arr[index]];
-  render();
-}
+<!-- ── BOXES ── -->
 
-// ---- drag & drop (move anywhere, incl. re-parenting) ----
-let drag=null;
-function isDescendant(anc,node){
-  if(anc===node) return true;
-  if(!anc.children) return false;
-  return anc.children.some(c=>isDescendant(c,node));
-}
-function dropZone(row,e){
-  const r=row.getBoundingClientRect(), y=e.clientY-r.top, h=r.height;
-  if(y<h*0.3) return 'before';
-  if(y>h*0.7) return 'after';
-  return 'inside';
-}
-function clearDropCues(){ document.querySelectorAll('.row').forEach(r=>r.classList.remove('drop-before','drop-after','drop-inside')); }
-function showDropCue(row,e){
-  clearDropCues();
-  if(row._node===drag.node || isDescendant(drag.node,row._node)) return; // no illegal target
-  const z=dropZone(row,e);
-  row.classList.add(z==='before'?'drop-before':z==='after'?'drop-after':'drop-inside');
-}
-function doDrop(row,e){
-  clearDropCues();
-  const target=row._node, tParent=row._parent;
-  if(target===drag.node || isDescendant(drag.node,target)){ drag=null; return; }
-  const z=dropZone(row,e);
-  // remove from source
-  const sArr=drag.parent.children, si=sArr.indexOf(drag.node);
-  if(si<0){ drag=null; return; }
-  sArr.splice(si,1);
-  if(z==='inside'){
-    target.children=target.children||[];
-    target.children.push(drag.node);
-    target._collapsed=false;
-  } else {
-    if(!tParent){ // dropping beside the root → put inside root
-      data.children.push(drag.node);
-    } else {
-      const tArr=tParent.children, ti=tArr.indexOf(target);
-      tArr.splice(z==='before'?ti:ti+1,0,drag.node);
-    }
-  }
-  drag=null; render();
-}
+<!-- LOGIN -->
+<rect x="20" y="310" width="105" height="32" rx="6" fill="#185FA5"/>
+<text x="72" y="330" text-anchor="middle" fill="white" font-size="12" font-weight="600">Login</text>
 
-function addRoot(){ data.children.push({title:'New section',note:'',children:[]}); render(); }
-function expandAll(open){ (function walk(n){ if(n.children){ n._collapsed=!open; n.children.forEach(walk);} })(data); render(); }
-function resetTree(){ if(confirm('Reset to the original v1 sketch? Your edits will be lost.')){ data=structuredClone(SEED); render(); } }
+<!-- ── LEVEL 2 : MAIN SECTIONS ── -->
 
-function toMarkdown(){
-  let out = '# '+data.title+'\n\n';
-  if(data.note) out += '_'+data.note+'_\n\n';
-  (function walk(nodes, d){ nodes.forEach(n=>{
-    out += '  '.repeat(d)+'- **'+n.title+'**'+(n.note? ' — '+n.note:'')+'\n';
-    if(n.children&&n.children.length) walk(n.children,d+1);
-  }); })(data.children,0);
-  return out;
-}
-function exportMarkdown(){ navigator.clipboard.writeText(toMarkdown()).then(()=>toast('Markdown copied to clipboard')); }
-function showJSON(){ const dlg=document.getElementById('jsonDlg'); document.getElementById('jsonArea').value=JSON.stringify(data,null,2); dlg.showModal(); }
-function copyJSON(){ navigator.clipboard.writeText(document.getElementById('jsonArea').value).then(()=>toast('JSON copied')); }
-function importJSON(){ try{ data=JSON.parse(document.getElementById('jsonArea').value); render(); document.getElementById('jsonDlg').close(); toast('Loaded'); }catch(e){ toast('Invalid JSON'); } }
+<rect x="150" y="108" width="135" height="30" rx="5" fill="#EAF1FE" stroke="#185FA5" stroke-width="1.5"/>
+<text x="217" y="127" text-anchor="middle" fill="#1c2430" font-size="12" font-weight="600">Dashboard</text>
 
-let toastT;
-function toast(msg){ const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show'); clearTimeout(toastT); toastT=setTimeout(()=>t.classList.remove('show'),1800); }
+<rect x="150" y="320" width="135" height="30" rx="5" fill="#EAF1FE" stroke="#185FA5" stroke-width="1.5"/>
+<text x="217" y="339" text-anchor="middle" fill="#1c2430" font-size="12" font-weight="600">Bus</text>
 
-load(); render();
-</script>
+<rect x="150" y="515" width="135" height="30" rx="5" fill="#EAF1FE" stroke="#185FA5" stroke-width="1.5"/>
+<text x="217" y="534" text-anchor="middle" fill="#1c2430" font-size="12" font-weight="600">Trips</text>
+
+<!-- ── LEVEL 3 : DASHBOARD CHILDREN ── -->
+
+<rect x="315" y="56" width="145" height="30" rx="5" fill="#F0F4FA" stroke="#8aadd4" stroke-width="1.2"/>
+<text x="387" y="75" text-anchor="middle" fill="#2d3a4a" font-size="11.5" font-weight="500">KPIs</text>
+
+<rect x="315" y="162" width="145" height="30" rx="5" fill="#F0F4FA" stroke="#8aadd4" stroke-width="1.2"/>
+<text x="387" y="181" text-anchor="middle" fill="#2d3a4a" font-size="11.5" font-weight="500">Alerts</text>
+
+<!-- ── LEVEL 4 : KPI ITEMS ── -->
+
+<rect x="490" y="18" width="178" height="28" rx="4" fill="white" stroke="#c5d3e0" stroke-width="1"/>
+<text x="579" y="36" text-anchor="middle" fill="#4a5568" font-size="11">Unscheduled boarding</text>
+
+<rect x="490" y="54" width="178" height="28" rx="4" fill="white" stroke="#c5d3e0" stroke-width="1"/>
+<text x="579" y="72" text-anchor="middle" fill="#4a5568" font-size="11">Unscheduled drop</text>
+
+<rect x="490" y="90" width="178" height="28" rx="4" fill="white" stroke="#c5d3e0" stroke-width="1"/>
+<text x="579" y="108" text-anchor="middle" fill="#4a5568" font-size="11">Tampering</text>
+
+<rect x="490" y="126" width="178" height="28" rx="4" fill="white" stroke="#c5d3e0" stroke-width="1"/>
+<text x="579" y="144" text-anchor="middle" fill="#4a5568" font-size="11">Device health</text>
+
+<!-- ── LEVEL 3 : BUS CHILDREN ── -->
+
+<rect x="315" y="288" width="145" height="30" rx="5" fill="#F0F4FA" stroke="#8aadd4" stroke-width="1.2"/>
+<text x="387" y="307" text-anchor="middle" fill="#2d3a4a" font-size="11.5" font-weight="500">All buses</text>
+
+<rect x="315" y="358" width="145" height="30" rx="5" fill="#F0F4FA" stroke="#8aadd4" stroke-width="1.2"/>
+<text x="387" y="377" text-anchor="middle" fill="#2d3a4a" font-size="11.5" font-weight="500">Bus page</text>
+
+<!-- ── LEVEL 4 : BUS PAGE TABS ── -->
+
+<rect x="490" y="340" width="155" height="28" rx="4" fill="white" stroke="#c5d3e0" stroke-width="1"/>
+<text x="567" y="358" text-anchor="middle" fill="#4a5568" font-size="11">Overview</text>
+
+<rect x="490" y="376" width="155" height="28" rx="4" fill="white" stroke="#c5d3e0" stroke-width="1"/>
+<text x="567" y="394" text-anchor="middle" fill="#4a5568" font-size="11">Analytics</text>
+
+<rect x="490" y="412" width="155" height="28" rx="4" fill="white" stroke="#c5d3e0" stroke-width="1"/>
+<text x="567" y="430" text-anchor="middle" fill="#4a5568" font-size="11">Device health</text>
+
+<!-- ── LEVEL 3 : TRIPS CHILDREN ── -->
+
+<rect x="315" y="452" width="145" height="30" rx="5" fill="#F0F4FA" stroke="#8aadd4" stroke-width="1.2"/>
+<text x="387" y="471" text-anchor="middle" fill="#2d3a4a" font-size="11.5" font-weight="500">All trips</text>
+
+<rect x="315" y="500" width="145" height="30" rx="5" fill="#F0F4FA" stroke="#8aadd4" stroke-width="1.2"/>
+<text x="387" y="519" text-anchor="middle" fill="#2d3a4a" font-size="11.5" font-weight="500">Verified</text>
+
+<rect x="315" y="544" width="145" height="28" rx="4" fill="#F0F4FA" stroke="#8aadd4" stroke-width="1.2"/>
+<text x="387" y="562" text-anchor="middle" fill="#2d3a4a" font-size="11" font-weight="500">Routes</text>
+
+<rect x="315" y="580" width="145" height="28" rx="4" fill="#F0F4FA" stroke="#8aadd4" stroke-width="1.2"/>
+<text x="387" y="598" text-anchor="middle" fill="#2d3a4a" font-size="11" font-weight="500">Crew</text>
+
+<!-- ── LEVEL 4 : ALL TRIPS CHILDREN ── -->
+
+<rect x="490" y="452" width="145" height="28" rx="4" fill="white" stroke="#c5d3e0" stroke-width="1"/>
+<text x="562" y="470" text-anchor="middle" fill="#4a5568" font-size="11">Completed</text>
+
+<rect x="490" y="488" width="145" height="28" rx="4" fill="white" stroke="#c5d3e0" stroke-width="1"/>
+<text x="562" y="506" text-anchor="middle" fill="#4a5568" font-size="11">Active (live)</text>
+
+<!-- ── TRIP DETAIL (shared destination) ── -->
+<rect x="663" y="440" width="210" height="90" rx="6" fill="#FFF8F0" stroke="#d4986a" stroke-width="1.4"/>
+<text x="768" y="461" text-anchor="middle" fill="#7a4010" font-size="12" font-weight="600">Trip detail</text>
+<line x1="683" y1="469" x2="853" y2="469" stroke="#e8c8a0" stroke-width="0.8"/>
+<text x="768" y="483" text-anchor="middle" fill="#a0683a" font-size="10">Running trip · Unscheduled</text>
+<text x="768" y="497" text-anchor="middle" fill="#a0683a" font-size="10">&amp; Tampering · Media · Audio</text>
+<text x="768" y="511" text-anchor="middle" fill="#a0683a" font-size="10">Stops · Passenger list</text>
+<text x="768" y="525" text-anchor="middle" fill="#c8a070" font-size="9.5" font-style="italic">6 tabs · +Verification tab on Verified</text>
+
+<!-- ── LEGEND ── -->
+<rect x="670" y="30" width="206" height="100" rx="6" fill="white" stroke="#e3e7ec" stroke-width="1"/>
+<text x="685" y="50" fill="#6b7684" font-size="10.5" font-weight="600">Legend</text>
+<rect x="685" y="58" width="18" height="16" rx="3" fill="#EAF1FE" stroke="#185FA5" stroke-width="1.5"/>
+<text x="711" y="70" fill="#4a5568" font-size="10.5">Main section</text>
+<rect x="685" y="82" width="18" height="16" rx="3" fill="#F0F4FA" stroke="#8aadd4" stroke-width="1.2"/>
+<text x="711" y="94" fill="#4a5568" font-size="10.5">Sub-section</text>
+<rect x="685" y="106" width="18" height="16" rx="3" fill="white" stroke="#c5d3e0" stroke-width="1"/>
+<text x="711" y="118" fill="#4a5568" font-size="10.5">Page / screen</text>
+
+</svg>
+</div>
 </body>
 </html>
