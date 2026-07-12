@@ -3845,6 +3845,34 @@
           </div>
         </div>
 
+        <!-- User flows — inline thumbnails -->
+        <div style="margin-top:20px;">
+          <p style="font-size:12px; font-weight:600; color:var(--gray); margin:0 0 10px; letter-spacing:0.04em; text-transform:uppercase;">User flows — click to expand</p>
+          <div style="display:flex; gap:14px;">
+
+            <div onclick="openFlowZoom(this.querySelector('img'))" style="flex:1; border:1px solid var(--border); border-radius:8px; overflow:hidden; cursor:zoom-in; position:relative; background:var(--white); transition:box-shadow 0.15s;" onmouseenter="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseleave="this.style.boxShadow='none'">
+              <div style="height:200px; overflow:hidden;">
+                <img src="sp-userflow-happypath.svg" alt="Flow A — Verify unscheduled stops (happy path)" style="width:100%; height:auto; display:block; pointer-events:none;">
+              </div>
+              <div style="padding:10px 12px; border-top:1px solid var(--border); display:flex; align-items:center; justify-content:space-between;">
+                <span style="font-size:12px; font-weight:600; color:var(--black);">Flow A — Verify stops</span>
+                <span style="font-size:11px; color:var(--gray);">⤢</span>
+              </div>
+            </div>
+
+            <div onclick="openFlowZoom(this.querySelector('img'))" style="flex:1; border:1px solid var(--border); border-radius:8px; overflow:hidden; cursor:zoom-in; position:relative; background:var(--white); transition:box-shadow 0.15s;" onmouseenter="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseleave="this.style.boxShadow='none'">
+              <div style="height:200px; overflow:hidden;">
+                <img src="sp-userflow-devicehealth.svg" alt="Flow B — Device health triage" style="width:100%; height:auto; display:block; pointer-events:none;">
+              </div>
+              <div style="padding:10px 12px; border-top:1px solid var(--border); display:flex; align-items:center; justify-content:space-between;">
+                <span style="font-size:12px; font-weight:600; color:var(--black);">Flow B — Device health triage</span>
+                <span style="font-size:11px; color:var(--gray);">⤢</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
         <!-- Competitor analysis accordion -->
         <div class="ep-accordion" onclick="epToggleAccordion(this)" style="margin-top:8px;">
           <div class="ep-accordion-header">
@@ -3895,34 +3923,6 @@
               <p style="font-size:14px; line-height:1.75; color:var(--black); margin:0 0 10px; font-weight:500;">Pysae and IRIS help you <em>count and plan.</em> SafePassenger helps you <em>catch, prove, and act on</em> revenue leakage and tampering.</p>
               <p style="font-size:13px; line-height:1.7; color:var(--gray); margin:0;">Neither competitor offers video-verified, shareable, attributable leakage and tampering reporting — that's the wedge. The main perception risk to design around is accuracy (camera vs LiDAR), reframed as: <b>LiDAR gives you a number; our camera gives you proof you can watch.</b></p>
             </div>
-          </div>
-        </div>
-
-        <!-- User flows — inline thumbnails -->
-        <div style="margin-top:20px;">
-          <p style="font-size:12px; font-weight:600; color:var(--gray); margin:0 0 10px; letter-spacing:0.04em; text-transform:uppercase;">User flows — click to expand</p>
-          <div style="display:flex; gap:14px;">
-
-            <div onclick="openFlowZoom(this.querySelector('img'))" style="flex:1; border:1px solid var(--border); border-radius:8px; overflow:hidden; cursor:zoom-in; position:relative; background:var(--white); transition:box-shadow 0.15s;" onmouseenter="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseleave="this.style.boxShadow='none'">
-              <div style="height:200px; overflow:hidden;">
-                <img src="sp-userflow-happypath.svg" alt="Flow A — Verify unscheduled stops (happy path)" style="width:100%; height:auto; display:block; pointer-events:none;">
-              </div>
-              <div style="padding:10px 12px; border-top:1px solid var(--border); display:flex; align-items:center; justify-content:space-between;">
-                <span style="font-size:12px; font-weight:600; color:var(--black);">Flow A — Verify stops</span>
-                <span style="font-size:11px; color:var(--gray);">⤢</span>
-              </div>
-            </div>
-
-            <div onclick="openFlowZoom(this.querySelector('img'))" style="flex:1; border:1px solid var(--border); border-radius:8px; overflow:hidden; cursor:zoom-in; position:relative; background:var(--white); transition:box-shadow 0.15s;" onmouseenter="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseleave="this.style.boxShadow='none'">
-              <div style="height:200px; overflow:hidden;">
-                <img src="sp-userflow-devicehealth.svg" alt="Flow B — Device health triage" style="width:100%; height:auto; display:block; pointer-events:none;">
-              </div>
-              <div style="padding:10px 12px; border-top:1px solid var(--border); display:flex; align-items:center; justify-content:space-between;">
-                <span style="font-size:12px; font-weight:600; color:var(--black);">Flow B — Device health triage</span>
-                <span style="font-size:11px; color:var(--gray);">⤢</span>
-              </div>
-            </div>
-
           </div>
         </div>
 
