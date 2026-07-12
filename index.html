@@ -189,6 +189,11 @@
       background: var(--white);
       z-index: 20;
       border-bottom: 1px solid var(--border);
+    }
+
+    .back-bar-inner {
+      max-width: 960px;
+      margin: 0 auto;
       padding: 12px 56px;
       display: flex;
       align-items: center;
@@ -1344,7 +1349,7 @@
       .carousel-wrapper { padding: 0 20px 0 0; }
       .carousel-card { width: 260px; }
       .c-thumb { height: 160px; }
-      .wrap, .back-bar, .page-header, .about-page-header, .avail-row, .footer-inner { padding-left: 20px; padding-right: 20px; }
+      .wrap, .back-bar-inner, .nav-inner, .page-header, .about-page-header, .avail-row, .footer-inner { padding-left: 20px; padding-right: 20px; }
       .section-row { flex-direction: column; gap: 20px; }
       .col-label { width: auto; }
       .project-grid { grid-template-columns: 1fr; }
@@ -1413,7 +1418,7 @@
           <button onclick="navigate('safepassenger')" class="carousel-card" style="text-align:left; border:none; font-family:inherit; cursor:pointer; background:var(--white);">
             <div class="c-thumb" style="background-image:url('sp-thumb.png'); background-size:cover; background-position:center;"></div>
             <div class="c-body">
-              <div><p class="c-title">SafePassenger — People Counting</p><p class="c-meta">UX Research · Product Design · Transport SaaS</p></div>
+              <div><p class="c-title">SafePassenger — People Counting</p><p class="c-meta">UX Research · Product Design</p></div>
               <span class="c-year">2025</span>
             </div>
             <span class="card-arrow">↗</span>
@@ -1491,10 +1496,12 @@
   <div id="page-projects" class="page">
 
     <div class="back-bar">
+    <div class="back-bar-inner">
       <button class="back-btn" onclick="navigate('home')">
         <span class="back-arrow">←</span> Home
       </button>
     </div>
+  </div>
 
     <div class="page-header">
       <h1>All projects</h1>
@@ -1572,7 +1579,7 @@
             <button onclick="navigate('safepassenger')" class="grid-card" style="text-align:left; width:100%; border:none; font-family:inherit; cursor:pointer;">
               <div class="g-thumb" style="background-image:url('sp-thumb.png'); background-size:cover; background-position:center;"></div>
               <div class="g-body">
-                <div><p class="g-title">SafePassenger — People Counting</p><p class="g-meta">UX Research · Product Design · Transport SaaS</p></div>
+                <div><p class="g-title">SafePassenger — People Counting</p><p class="g-meta">UX Research · Product Design</p></div>
                 <span class="g-year">2024</span>
               </div>
               <span class="card-arrow">→</span>
@@ -1634,10 +1641,12 @@
   <div id="page-about" class="page">
 
     <div class="back-bar">
+    <div class="back-bar-inner">
       <button class="back-btn" onclick="navigate('home')">
         <span class="back-arrow">←</span> Home
       </button>
     </div>
+  </div>
 
     <div class="about-page-header">
       <h1>About me</h1>
@@ -1807,12 +1816,14 @@
   <div id="page-eps" class="page">
 
     <div class="back-bar">
+    <div class="back-bar-inner">
       <button class="back-btn" onclick="navigate('projects')">
         <span class="back-arrow">←</span> Work
       </button>
       <span style="width:1px; height:14px; background:var(--border); display:inline-block; flex-shrink:0;"></span>
       <span style="font-size:13px; font-weight:500; color:var(--black);">Electronic Patient Service</span>
     </div>
+  </div>
 
     <div class="cs-wrap">
 
@@ -2039,12 +2050,14 @@
   <div id="page-thematic" class="page">
 
     <div class="back-bar">
+    <div class="back-bar-inner">
       <button class="back-btn" onclick="navigate('projects')">
         <span class="back-arrow">←</span> Work
       </button>
       <span style="width:1px; height:14px; background:var(--border); display:inline-block; flex-shrink:0;"></span>
       <span style="font-size:13px; font-weight:500; color:var(--black);">Thematic.design</span>
     </div>
+  </div>
 
     <div class="cs-wrap">
 
@@ -2458,12 +2471,14 @@
   <div id="page-tokens" class="page">
 
     <div class="back-bar">
+    <div class="back-bar-inner">
       <button class="back-btn" onclick="navigate('projects')">
         <span class="back-arrow">←</span> Work
       </button>
       <span style="width:1px; height:14px; background:var(--border); display:inline-block; flex-shrink:0;"></span>
       <span style="font-size:13px; font-weight:500; color:var(--black);">Design Tokens</span>
     </div>
+  </div>
 
     <div class="cs-wrap">
 
@@ -2629,12 +2644,14 @@
   <div id="page-atoms" class="page">
 
     <div class="back-bar">
+    <div class="back-bar-inner">
       <button class="back-btn" onclick="navigate('projects')">
         <span class="back-arrow">←</span> Work
       </button>
       <span style="width:1px; height:14px; background:var(--border); display:inline-block; flex-shrink:0;"></span>
       <span style="font-size:13px; font-weight:500; color:var(--black);">Design Systems</span>
     </div>
+  </div>
 
     <div class="cs-wrap">
 
@@ -2761,10 +2778,12 @@
   <!-- ═══════════════════════════════════════ DESIGN SYSTEM DOCS ═══ -->
   <div id="page-dsdoc" class="page">
     <div class="back-bar">
+    <div class="back-bar-inner">
       <button class="back-btn" onclick="navigate('projects')"><span class="back-arrow">←</span> Work</button>
       <span style="width:1px; height:14px; background:var(--border); display:inline-block; flex-shrink:0;"></span>
       <span style="font-size:13px; font-weight:500; color:var(--black);">Design System Documentation</span>
     </div>
+  </div>
     <div class="cs-wrap">
 
       <div class="cs-hero">
@@ -2873,12 +2892,14 @@
   <!-- ═══════════════════════════════════════ ATTENDANCE ═══ -->
   <div id="page-attendance" class="page">
     <div class="back-bar">
+    <div class="back-bar-inner">
       <button class="back-btn" onclick="navigate('projects')">
         <span class="back-arrow">←</span> Work
       </button>
       <span style="width:1px; height:14px; background:var(--border); display:inline-block; flex-shrink:0;"></span>
       <span style="font-size:13px; font-weight:500; color:var(--black);">Attendance Management System</span>
     </div>
+  </div>
     <div class="cs-wrap">
 
       <!-- Hero -->
@@ -3482,12 +3503,14 @@
   <div id="page-safepassenger" class="page">
 
     <div class="back-bar">
+    <div class="back-bar-inner">
       <button class="back-btn" onclick="navigate('projects')">
         <span class="back-arrow">←</span> Work
       </button>
       <span style="width:1px; height:14px; background:var(--border); display:inline-block; flex-shrink:0;"></span>
       <span style="font-size:13px; font-weight:500; color:var(--black);">SafePassenger — People Counting</span>
     </div>
+  </div>
 
     <div class="cs-wrap">
 
