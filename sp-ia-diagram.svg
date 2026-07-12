@@ -1,0 +1,160 @@
+<svg viewBox="0 0 900 635" width="900" xmlns="http://www.w3.org/2000/svg"
+     font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif">
+
+<!-- ── EDGES (drawn behind boxes) ── -->
+
+<!-- Login → main sections trunk -->
+<line x1="140" y1="123" x2="140" y2="530" stroke="#9db6de" stroke-width="1.3"/>
+<line x1="125" y1="326" x2="140" y2="326" stroke="#9db6de" stroke-width="1.3"/>
+<line x1="140" y1="123" x2="150" y2="123" stroke="#9db6de" stroke-width="1.3"/>
+<line x1="140" y1="335" x2="150" y2="335" stroke="#9db6de" stroke-width="1.3"/>
+<line x1="140" y1="530" x2="150" y2="530" stroke="#9db6de" stroke-width="1.3"/>
+
+<!-- Dashboard → KPIs, Alerts -->
+<line x1="300" y1="71" x2="300" y2="177" stroke="#9db6de" stroke-width="1.2"/>
+<line x1="285" y1="123" x2="300" y2="123" stroke="#9db6de" stroke-width="1.2"/>
+<line x1="300" y1="71"  x2="315" y2="71"  stroke="#9db6de" stroke-width="1.2"/>
+<line x1="300" y1="177" x2="315" y2="177" stroke="#9db6de" stroke-width="1.2"/>
+
+<!-- KPIs → items -->
+<line x1="473" y1="32"  x2="473" y2="140" stroke="#c5d3e0" stroke-width="1"/>
+<line x1="460" y1="71"  x2="473" y2="71"  stroke="#c5d3e0" stroke-width="1"/>
+<line x1="473" y1="32"  x2="490" y2="32"  stroke="#c5d3e0" stroke-width="1"/>
+<line x1="473" y1="68"  x2="490" y2="68"  stroke="#c5d3e0" stroke-width="1"/>
+<line x1="473" y1="104" x2="490" y2="104" stroke="#c5d3e0" stroke-width="1"/>
+<line x1="473" y1="140" x2="490" y2="140" stroke="#c5d3e0" stroke-width="1"/>
+
+<!-- Bus → All Buses, Bus Page -->
+<line x1="300" y1="303" x2="300" y2="373" stroke="#9db6de" stroke-width="1.2"/>
+<line x1="285" y1="335" x2="300" y2="335" stroke="#9db6de" stroke-width="1.2"/>
+<line x1="300" y1="303" x2="315" y2="303" stroke="#9db6de" stroke-width="1.2"/>
+<line x1="300" y1="373" x2="315" y2="373" stroke="#9db6de" stroke-width="1.2"/>
+
+<!-- Bus Page → tabs -->
+<line x1="473" y1="354" x2="473" y2="426" stroke="#c5d3e0" stroke-width="1"/>
+<line x1="460" y1="373" x2="473" y2="373" stroke="#c5d3e0" stroke-width="1"/>
+<line x1="473" y1="354" x2="490" y2="354" stroke="#c5d3e0" stroke-width="1"/>
+<line x1="473" y1="390" x2="490" y2="390" stroke="#c5d3e0" stroke-width="1"/>
+<line x1="473" y1="426" x2="490" y2="426" stroke="#c5d3e0" stroke-width="1"/>
+
+<!-- Trips → children -->
+<line x1="300" y1="467" x2="300" y2="594" stroke="#9db6de" stroke-width="1.2"/>
+<line x1="285" y1="530" x2="300" y2="530" stroke="#9db6de" stroke-width="1.2"/>
+<line x1="300" y1="467" x2="315" y2="467" stroke="#9db6de" stroke-width="1.2"/>
+<line x1="300" y1="515" x2="315" y2="515" stroke="#9db6de" stroke-width="1.2"/>
+<line x1="300" y1="558" x2="315" y2="558" stroke="#9db6de" stroke-width="1.2"/>
+<line x1="300" y1="594" x2="315" y2="594" stroke="#9db6de" stroke-width="1.2"/>
+
+<!-- All Trips → Completed, Active -->
+<line x1="473" y1="466" x2="473" y2="502" stroke="#c5d3e0" stroke-width="1"/>
+<line x1="460" y1="467" x2="473" y2="467" stroke="#c5d3e0" stroke-width="1"/>
+<line x1="473" y1="466" x2="490" y2="466" stroke="#c5d3e0" stroke-width="1"/>
+<line x1="473" y1="502" x2="490" y2="502" stroke="#c5d3e0" stroke-width="1"/>
+
+<!-- Completed + Active → Trip detail (Y-join) -->
+<polyline points="635,466 649,466 649,484 663,484" fill="none" stroke="#c5d3e0" stroke-width="1"/>
+<polyline points="635,502 649,502 649,484 663,484" fill="none" stroke="#c5d3e0" stroke-width="1"/>
+
+<!-- Verified → Trip detail (dashed) -->
+<polyline points="460,515 561,515 561,484 663,484" fill="none" stroke="#c5d3e0" stroke-width="1" stroke-dasharray="4 3"/>
+
+<!-- ── BOXES ── -->
+
+<!-- LOGIN -->
+<rect x="20" y="310" width="105" height="32" rx="6" fill="#185FA5"/>
+<text x="72" y="330" text-anchor="middle" fill="white" font-size="12" font-weight="600">Login</text>
+
+<!-- ── LEVEL 2 : MAIN SECTIONS ── -->
+
+<rect x="150" y="108" width="135" height="30" rx="5" fill="#EAF1FE" stroke="#185FA5" stroke-width="1.5"/>
+<text x="217" y="127" text-anchor="middle" fill="#1c2430" font-size="12" font-weight="600">Dashboard</text>
+
+<rect x="150" y="320" width="135" height="30" rx="5" fill="#EAF1FE" stroke="#185FA5" stroke-width="1.5"/>
+<text x="217" y="339" text-anchor="middle" fill="#1c2430" font-size="12" font-weight="600">Bus</text>
+
+<rect x="150" y="515" width="135" height="30" rx="5" fill="#EAF1FE" stroke="#185FA5" stroke-width="1.5"/>
+<text x="217" y="534" text-anchor="middle" fill="#1c2430" font-size="12" font-weight="600">Trips</text>
+
+<!-- ── LEVEL 3 : DASHBOARD CHILDREN ── -->
+
+<rect x="315" y="56" width="145" height="30" rx="5" fill="#F0F4FA" stroke="#8aadd4" stroke-width="1.2"/>
+<text x="387" y="75" text-anchor="middle" fill="#2d3a4a" font-size="11.5" font-weight="500">KPIs</text>
+
+<rect x="315" y="162" width="145" height="30" rx="5" fill="#F0F4FA" stroke="#8aadd4" stroke-width="1.2"/>
+<text x="387" y="181" text-anchor="middle" fill="#2d3a4a" font-size="11.5" font-weight="500">Alerts</text>
+
+<!-- ── LEVEL 4 : KPI ITEMS ── -->
+
+<rect x="490" y="18" width="178" height="28" rx="4" fill="white" stroke="#c5d3e0" stroke-width="1"/>
+<text x="579" y="36" text-anchor="middle" fill="#4a5568" font-size="11">Unscheduled boarding</text>
+
+<rect x="490" y="54" width="178" height="28" rx="4" fill="white" stroke="#c5d3e0" stroke-width="1"/>
+<text x="579" y="72" text-anchor="middle" fill="#4a5568" font-size="11">Unscheduled drop</text>
+
+<rect x="490" y="90" width="178" height="28" rx="4" fill="white" stroke="#c5d3e0" stroke-width="1"/>
+<text x="579" y="108" text-anchor="middle" fill="#4a5568" font-size="11">Tampering</text>
+
+<rect x="490" y="126" width="178" height="28" rx="4" fill="white" stroke="#c5d3e0" stroke-width="1"/>
+<text x="579" y="144" text-anchor="middle" fill="#4a5568" font-size="11">Device health</text>
+
+<!-- ── LEVEL 3 : BUS CHILDREN ── -->
+
+<rect x="315" y="288" width="145" height="30" rx="5" fill="#F0F4FA" stroke="#8aadd4" stroke-width="1.2"/>
+<text x="387" y="307" text-anchor="middle" fill="#2d3a4a" font-size="11.5" font-weight="500">All buses</text>
+
+<rect x="315" y="358" width="145" height="30" rx="5" fill="#F0F4FA" stroke="#8aadd4" stroke-width="1.2"/>
+<text x="387" y="377" text-anchor="middle" fill="#2d3a4a" font-size="11.5" font-weight="500">Bus page</text>
+
+<!-- ── LEVEL 4 : BUS PAGE TABS ── -->
+
+<rect x="490" y="340" width="155" height="28" rx="4" fill="white" stroke="#c5d3e0" stroke-width="1"/>
+<text x="567" y="358" text-anchor="middle" fill="#4a5568" font-size="11">Overview</text>
+
+<rect x="490" y="376" width="155" height="28" rx="4" fill="white" stroke="#c5d3e0" stroke-width="1"/>
+<text x="567" y="394" text-anchor="middle" fill="#4a5568" font-size="11">Analytics</text>
+
+<rect x="490" y="412" width="155" height="28" rx="4" fill="white" stroke="#c5d3e0" stroke-width="1"/>
+<text x="567" y="430" text-anchor="middle" fill="#4a5568" font-size="11">Device health</text>
+
+<!-- ── LEVEL 3 : TRIPS CHILDREN ── -->
+
+<rect x="315" y="452" width="145" height="30" rx="5" fill="#F0F4FA" stroke="#8aadd4" stroke-width="1.2"/>
+<text x="387" y="471" text-anchor="middle" fill="#2d3a4a" font-size="11.5" font-weight="500">All trips</text>
+
+<rect x="315" y="500" width="145" height="30" rx="5" fill="#F0F4FA" stroke="#8aadd4" stroke-width="1.2"/>
+<text x="387" y="519" text-anchor="middle" fill="#2d3a4a" font-size="11.5" font-weight="500">Verified</text>
+
+<rect x="315" y="544" width="145" height="28" rx="4" fill="#F0F4FA" stroke="#8aadd4" stroke-width="1.2"/>
+<text x="387" y="562" text-anchor="middle" fill="#2d3a4a" font-size="11" font-weight="500">Routes</text>
+
+<rect x="315" y="580" width="145" height="28" rx="4" fill="#F0F4FA" stroke="#8aadd4" stroke-width="1.2"/>
+<text x="387" y="598" text-anchor="middle" fill="#2d3a4a" font-size="11" font-weight="500">Crew</text>
+
+<!-- ── LEVEL 4 : ALL TRIPS CHILDREN ── -->
+
+<rect x="490" y="452" width="145" height="28" rx="4" fill="white" stroke="#c5d3e0" stroke-width="1"/>
+<text x="562" y="470" text-anchor="middle" fill="#4a5568" font-size="11">Completed</text>
+
+<rect x="490" y="488" width="145" height="28" rx="4" fill="white" stroke="#c5d3e0" stroke-width="1"/>
+<text x="562" y="506" text-anchor="middle" fill="#4a5568" font-size="11">Active (live)</text>
+
+<!-- ── TRIP DETAIL (shared destination) ── -->
+<rect x="663" y="440" width="210" height="90" rx="6" fill="#FFF8F0" stroke="#d4986a" stroke-width="1.4"/>
+<text x="768" y="461" text-anchor="middle" fill="#7a4010" font-size="12" font-weight="600">Trip detail</text>
+<line x1="683" y1="469" x2="853" y2="469" stroke="#e8c8a0" stroke-width="0.8"/>
+<text x="768" y="483" text-anchor="middle" fill="#a0683a" font-size="10">Running trip · Unscheduled</text>
+<text x="768" y="497" text-anchor="middle" fill="#a0683a" font-size="10">&amp; Tampering · Media · Audio</text>
+<text x="768" y="511" text-anchor="middle" fill="#a0683a" font-size="10">Stops · Passenger list</text>
+<text x="768" y="525" text-anchor="middle" fill="#c8a070" font-size="9.5" font-style="italic">6 tabs · +Verification tab on Verified</text>
+
+<!-- ── LEGEND ── -->
+<rect x="670" y="30" width="206" height="100" rx="6" fill="white" stroke="#e3e7ec" stroke-width="1"/>
+<text x="685" y="50" fill="#6b7684" font-size="10.5" font-weight="600">Legend</text>
+<rect x="685" y="58" width="18" height="16" rx="3" fill="#EAF1FE" stroke="#185FA5" stroke-width="1.5"/>
+<text x="711" y="70" fill="#4a5568" font-size="10.5">Main section</text>
+<rect x="685" y="82" width="18" height="16" rx="3" fill="#F0F4FA" stroke="#8aadd4" stroke-width="1.2"/>
+<text x="711" y="94" fill="#4a5568" font-size="10.5">Sub-section</text>
+<rect x="685" y="106" width="18" height="16" rx="3" fill="white" stroke="#c5d3e0" stroke-width="1"/>
+<text x="711" y="118" fill="#4a5568" font-size="10.5">Page / screen</text>
+
+</svg>
