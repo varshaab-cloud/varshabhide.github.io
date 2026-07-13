@@ -721,11 +721,11 @@
       display: flex;
       flex-direction: column;
       position: relative;
-      transition: border-color 0.15s, background 0.15s;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
       cursor: pointer;
     }
 
-    .grid-card:hover { border-color: #ccc; background: var(--light); }
+    .grid-card:hover { border-color: transparent; transform: translateY(-4px); box-shadow: 0 10px 28px rgba(0,0,0,0.10); }
     .grid-card:hover .card-arrow { opacity: 1; transform: translate(0,0); }
 
     .g-thumb {
