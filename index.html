@@ -1433,11 +1433,50 @@
       .g-year { margin-left: 0; }
       .g-meta { max-width: 100%; }
 
+      /* ── Back to top — bigger, bolder on mobile ── */
+      #back-to-top {
+        width: 52px;
+        height: 52px;
+        font-size: 20px;
+        bottom: 24px;
+        right: 20px;
+        background: var(--black);
+        color: var(--white);
+        border-color: var(--black);
+        box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+      }
+
+      /* ── Back bar — bigger tap target, more prominent ── */
+      .back-bar-inner { padding: 0; }
+      .back-btn {
+        font-size: 14px;
+        color: var(--black);
+        font-weight: 500;
+        padding: 16px 20px;
+        width: 100%;
+        justify-content: flex-start;
+        gap: 10px;
+        min-height: 52px;
+      }
+      .back-btn:hover { gap: 14px; }
+
+      /* ── Case study accordion headers — bigger tap target ── */
+      .ep-accordion-header {
+        padding: 16px 0;
+        min-height: 52px;
+      }
+      .ep-accordion-label { font-size: 14px; }
+
       /* ── Case study pages ── */
       .carousel-header, .carousel-controls { padding-left: 20px; padding-right: 20px; }
       .carousel-wrapper { padding: 0 20px 0 0; }
       .carousel-card { width: 260px; }
       .c-thumb { height: 160px; }
+
+      /* ── General tap targets ── */
+      .cs-section-label { font-size: 12px; }
+      .carousel-all { min-height: 44px; padding: 10px 20px; }
+      .avail-cta { min-height: 52px; padding: 14px 28px; }
     }
   
     /* ══════════════════════════════════════
