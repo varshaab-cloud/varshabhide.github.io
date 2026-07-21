@@ -1457,8 +1457,19 @@
         min-height: 52px;
       }
       .back-btn:hover { gap: 14px; }
-      /* Hide separator and case study title in back bar on mobile */
-      .back-bar-inner > span { display: none; }
+      /* Back bar layout: button on left, title truncates on right */
+      .back-bar-inner { display: flex; align-items: center; gap: 12px; overflow: hidden; }
+      .back-bar-inner > span:last-child {
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--black);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        flex: 1;
+        min-width: 0;
+      }
+      .back-bar-inner > span:not(:last-child) { flex-shrink: 0; }
 
       /* ── Case study accordion headers — bigger tap target ── */
       .ep-accordion-header {
