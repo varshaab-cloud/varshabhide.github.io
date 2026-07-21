@@ -1449,16 +1449,16 @@
       /* ── Back bar — bigger tap target, more prominent ── */
       .back-bar-inner { padding: 0; }
       .back-btn {
-        font-size: 14px;
+        font-size: 15px;
         color: var(--black);
         font-weight: 500;
         padding: 16px 20px;
-        width: 100%;
-        justify-content: flex-start;
         gap: 10px;
         min-height: 52px;
       }
       .back-btn:hover { gap: 14px; }
+      /* Hide separator and case study title in back bar on mobile */
+      .back-bar-inner > span { display: none; }
 
       /* ── Case study accordion headers — bigger tap target ── */
       .ep-accordion-header {
@@ -4601,6 +4601,7 @@
       if (active) active.classList.add('nav-current');
       window.scrollTo({ top: 0, behavior: 'instant' });
       history.pushState({ page: pageId }, '', '#' + pageId);
+      if (window._updateBtnVisibility) window._updateBtnVisibility();
     }
 
     window.addEventListener('popstate', e => {
@@ -4611,13 +4612,13 @@
     (function() {
       const btn = document.getElementById('back-to-top');
       const CS_PAGES = ['eps','thematic','tokens','atoms','dsdoc','attendance','safepassenger'];
-      function updateBtnVisibility() {
+      window._updateBtnVisibility = function() {
         const hash = location.hash.replace('#','');
         const onCS = CS_PAGES.includes(hash);
         btn.classList.toggle('visible', onCS && window.scrollY > 400);
-      }
-      window.addEventListener('scroll', updateBtnVisibility, { passive: true });
-      window.addEventListener('hashchange', updateBtnVisibility);
+      };
+      window.addEventListener('scroll', window._updateBtnVisibility, { passive: true });
+      window.addEventListener('hashchange', window._updateBtnVisibility);
     })();
 
     // load from hash on page open
