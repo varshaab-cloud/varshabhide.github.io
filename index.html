@@ -1432,7 +1432,164 @@
       .project-grid { grid-template-columns: 1fr; }
       .avail-row { flex-direction: column; align-items: flex-start; gap: 20px; }
     }
-  </style>
+  
+    /* ══════════════════════════════════════
+       NEW HOME PAGE LAYOUT
+    ══════════════════════════════════════ */
+
+    .home-hero { border-bottom: 1px solid var(--border); }
+    .home-hero-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 88px 56px 80px;
+    }
+    .home-h1 {
+      font-size: 58px;
+      font-weight: 400;
+      letter-spacing: -0.04em;
+      line-height: 1.06;
+      margin-bottom: 28px;
+    }
+    .home-sub {
+      font-size: 16px;
+      color: var(--gray);
+      max-width: 520px;
+      line-height: 1.75;
+    }
+
+    .home-about-block { border-bottom: 1px solid var(--border); }
+    .home-block-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 56px 56px;
+    }
+    .home-block-label {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 24px;
+      font-weight: 500;
+    }
+    .home-about-p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--black);
+      margin-bottom: 16px;
+      max-width: 560px;
+    }
+    .home-read-more {
+      font-size: 14px;
+      color: var(--black);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      padding: 0;
+      margin-top: 12px;
+      display: inline-block;
+      transition: color 0.15s;
+    }
+    .home-read-more:hover { color: var(--accent); }
+
+    .home-projects { border-bottom: 1px solid var(--border); }
+    .home-proj-group { margin-bottom: 40px; }
+    .home-proj-group:last-child { margin-bottom: 0; }
+    .home-proj-cat {
+      font-size: 12px;
+      color: var(--gray);
+      margin-bottom: 0;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      padding-bottom: 10px;
+    }
+    .home-proj-list { display: flex; flex-direction: column; }
+    .home-proj-row {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 20px 0;
+      border-top: 1px solid var(--border);
+      border-left: none;
+      border-right: none;
+      border-bottom: none;
+      background: none;
+      cursor: pointer;
+      font-family: inherit;
+      text-align: left;
+      width: 100%;
+      transition: background 0.12s;
+    }
+    .home-proj-row:last-child { border-bottom: 1px solid var(--border); }
+    .home-proj-row:hover .home-proj-name { color: var(--accent); }
+    .home-proj-row:hover .home-proj-arrow { transform: translate(3px, -3px); color: var(--accent); }
+    .home-proj-name {
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--black);
+      letter-spacing: -0.02em;
+      flex: 1;
+      transition: color 0.15s;
+    }
+    .home-proj-meta {
+      font-size: 12px;
+      color: var(--gray);
+      flex-shrink: 0;
+    }
+    .home-proj-arrow {
+      font-size: 15px;
+      color: var(--gray);
+      flex-shrink: 0;
+      transition: transform 0.2s, color 0.15s;
+    }
+
+    .home-cta { border-bottom: 1px solid var(--border); }
+    .home-cta-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 80px 56px;
+      text-align: center;
+    }
+    .home-cta-label {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 20px;
+      font-weight: 500;
+    }
+    .home-cta-headline {
+      font-size: 48px;
+      font-weight: 400;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      margin-bottom: 36px;
+    }
+    .home-cta-btn {
+      font-size: 14px;
+      color: var(--black);
+      background: none;
+      border: 1.5px solid var(--black);
+      cursor: pointer;
+      font-family: inherit;
+      padding: 13px 30px;
+      border-radius: 999px;
+      letter-spacing: 0.01em;
+      transition: background 0.15s, color 0.15s;
+    }
+    .home-cta-btn:hover { background: var(--black); color: var(--white); }
+
+    @media (max-width: 640px) {
+      .home-hero-inner, .home-block-inner, .home-cta-inner { padding: 48px 20px; }
+      .home-h1 { font-size: 38px; }
+      .home-cta-headline { font-size: 34px; }
+      .home-proj-meta { display: none; }
+      .home-proj-name { font-size: 16px; }
+    }
+
+    /* ══ END NEW HOME PAGE LAYOUT ══ */
+
+</style>
 </head>
 <body>
 
@@ -1473,107 +1630,76 @@
   ══════════════════════════════════════════ -->
   <div id="page-home" class="page active">
 
-    <section class="hero" id="main-content">
-      <div class="hero-text">
-        <h1>I'm <span class="name">Varsha Bhide</span>,<br>a designer who thinks in systems</h1>
-        <p class="hero-sub">Specialising in interaction design and design systems — shaping how products feel and how teams scale them. From flows and micro-interactions to tokens and component libraries.</p>
-        <button class="carousel-all" onclick="navigate('about')">About me →</button>
-      </div>
-      <div class="hero-photo">
-        <img src="varsha-photo.png" alt="Varsha Bhide">
+    <!-- ── Hero ── -->
+    <section class="home-hero" id="main-content">
+      <div class="home-hero-inner">
+        <h1 class="home-h1">I'm <span class="name">Varsha Bhide</span>,<br>a designer who thinks in systems</h1>
+        <p class="home-sub">Specialising in interaction design and design systems — shaping how products feel and how teams scale them. From flows and micro-interactions to tokens and component libraries.</p>
       </div>
     </section>
 
-    <section class="carousel-section">
-      <div class="carousel-header">
-        <span class="carousel-label">Featured work</span>
-        <button class="carousel-all" onclick="navigate('projects')">All projects →</button>
-      </div>
-
-      <div class="carousel-wrapper" id="carousel">
-        <div class="carousel-track">
-
-          <button onclick="navigate('thematic')" class="carousel-card" style="text-align:left; border:none; font-family:inherit; cursor:pointer; background:var(--white);">
-            <div class="c-thumb t1" style="background-image:url('td-thumbnail.png'); background-size:cover; background-position:center;"></div>
-            <div class="c-body">
-              <div><p class="c-title">Thematic.design 2026</p><p class="c-meta">Design system · 54 components · AI-assisted</p></div>
-              <span class="c-year">2026</span>
-            </div>
-            <span class="card-arrow">↗</span>
-          </button>
-
-          <button onclick="navigate('safepassenger')" class="carousel-card" style="text-align:left; border:none; font-family:inherit; cursor:pointer; background:var(--white);">
-            <div class="c-thumb" style="background-image:url('sp-thumb.png'); background-size:cover; background-position:center;"></div>
-            <div class="c-body">
-              <div><p class="c-title">SafePassenger — People Counting</p><p class="c-meta">UX Research · Product Design</p></div>
-              <span class="c-year">2026</span>
-            </div>
-            <span class="card-arrow">↗</span>
-          </button>
-
-          <button onclick="navigate('eps')" class="carousel-card" style="text-align:left; border:none; font-family:inherit; cursor:pointer; background:var(--white);">
-            <div class="c-thumb t4" style="background-image:url('eps-thumb.png'); background-size:cover; background-position:center;"></div>
-            <div class="c-body">
-              <div><p class="c-title">Electronic Patient Service</p><p class="c-meta">Healthcare · Insurance eligibility · EHR</p></div>
-              <span class="c-year">2023</span>
-            </div>
-            <span class="card-arrow">↗</span>
-          </button>
-
-          <button onclick="navigate('attendance')" class="carousel-card" style="text-align:left; border:none; font-family:inherit; cursor:pointer; background:var(--white);">
-            <div class="c-thumb t5" style="background-image:url('am-thumb.png'); background-size:cover; background-position:center;"></div>
-            <div class="c-body">
-              <div><p class="c-title">Attendance Management System</p><p class="c-meta">Product design + Build · Next.js · Live on Vercel</p></div>
-              <span class="c-year">2026</span>
-            </div>
-            <span class="card-arrow">↗</span>
-          </button>
-
-        </div>
-      </div>
-
-      <div class="carousel-controls">
-        <button class="chevron-btn" id="prevBtn" aria-label="Previous" disabled>
-          <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-        </button>
-        <button class="chevron-btn" id="nextBtn" aria-label="Next">
-          <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
-        </button>
-        <div class="drag-hint" id="dragHint">
-          <div class="drag-line"></div>
-          <span>drag to explore</span>
-          <div class="drag-line"></div>
-        </div>
+    <!-- ── About intro ── -->
+    <section class="home-about-block">
+      <div class="home-block-inner">
+        <p class="home-block-label">About me</p>
+        <p class="home-about-p">UI/UX Designer with 8+ years of experience building enterprise digital products across healthcare, pharmaceutical, and content services — simplifying complex workflows through accessible, scalable design.</p>
+        <p class="home-about-p">Most recently at OpenText, leading interaction design for enterprise applications — specialising in design systems, design tokens, and AI-assisted workflows.</p>
+        <button class="home-read-more" onclick="navigate('about')">Read more →</button>
       </div>
     </section>
 
-    <section class="home-about">
-      <div class="wrap">
-        <div class="section-row">
-          <div class="col-label"><span>About</span></div>
-          <div class="col-content">
-            <div class="about-preview">
-              <p>UI/UX Designer with 8+ years of experience building enterprise digital products across healthcare, pharmaceutical, and content services — simplifying complex workflows through accessible, scalable design.</p>
-              <p>Most recently at OpenText, leading interaction design for enterprise applications — specialising in design systems, design tokens, and AI-assisted workflows.</p>
-              <div class="read-more">
-                <button class="btn-text" onclick="navigate('about')">Read more →</button>
-              </div>
-            </div>
+    <!-- ── All projects ── -->
+    <section class="home-projects">
+      <div class="home-block-inner">
+        <p class="home-block-label">All projects</p>
+
+        <!-- Design system -->
+        <div class="home-proj-group">
+          <p class="home-proj-cat">Design system</p>
+          <div class="home-proj-list">
+            <button class="home-proj-row" onclick="navigate('thematic')">
+              <span class="home-proj-name">Thematic.design 2026</span>
+              <span class="home-proj-meta">54 components · AI-assisted · 2026</span>
+              <span class="home-proj-arrow">↗</span>
+            </button>
           </div>
         </div>
+
+        <!-- Product design -->
+        <div class="home-proj-group">
+          <p class="home-proj-cat">Product design</p>
+          <div class="home-proj-list">
+            <button class="home-proj-row" onclick="navigate('safepassenger')">
+              <span class="home-proj-name">SafePassenger — People Counting</span>
+              <span class="home-proj-meta">UX Research · Product Design · 2026</span>
+              <span class="home-proj-arrow">↗</span>
+            </button>
+            <button class="home-proj-row" onclick="navigate('eps')">
+              <span class="home-proj-name">Electronic Patient Service</span>
+              <span class="home-proj-meta">Healthcare · Insurance eligibility · 2023</span>
+              <span class="home-proj-arrow">↗</span>
+            </button>
+            <button class="home-proj-row" onclick="navigate('attendance')">
+              <span class="home-proj-name">Attendance Management System</span>
+              <span class="home-proj-meta">Product design + Build · Next.js · 2026</span>
+              <span class="home-proj-arrow">↗</span>
+            </button>
+          </div>
+        </div>
+
       </div>
     </section>
 
-    <hr class="divider">
-    <div class="avail-row">
-      <div>
-        <div class="avail-dot"><span class="dot"></span>Available for new projects</div>
-        <p class="avail-sub">Open to freelance and full-time opportunities</p>
+    <!-- ── Get in touch ── -->
+    <section class="home-cta">
+      <div class="home-cta-inner">
+        <p class="home-cta-label">Get in touch</p>
+        <h2 class="home-cta-headline">Let's work together</h2>
+        <button class="home-cta-btn" onclick="copyEmail()">varsha.ab@gmail.com →</button>
       </div>
-      <button class="avail-cta" onclick="copyEmail()">Get in touch →</button>
-    </div>
-    <hr class="divider">
+    </section>
 
+    <!-- ── Footer ── -->
     <footer>
       <div class="footer-inner">
         <span class="footer-text">© 2026 Varsha Bhide</span>
@@ -1586,6 +1712,7 @@
 
   </div>
 
+  
   <!-- ══════════════════════════════════════════
        ALL PROJECTS
   ══════════════════════════════════════════ -->
