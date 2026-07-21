@@ -1413,26 +1413,148 @@
       .nav-links { display: none; }
       .nav-hamburger { display: flex; }
 
-      /* ── Hero ── */
-      .hero { padding: 32px 20px 20px; flex-direction: column-reverse; gap: 16px; }
-      .hero h1 { font-size: 34px; }
-      .hero-photo { width: 100%; height: auto; overflow: hidden; }
-      .hero-photo img { max-height: 260px; width: 100%; object-fit: contain; object-position: top center; }
+      /* ── Hide desktop home sections, show mobile layout ── */
+      .hero, .carousel-section, .home-about, .divider, .avail-row { display: none; }
+      .mobile-home { display: block; }
 
-      /* ── Carousel ── */
+      /* ── General layout ── */
+      .wrap, .back-bar-inner, .nav-inner, .page-header, .about-page-header, .footer-inner { padding-left: 20px; padding-right: 20px; }
+      .section-row { flex-direction: column; gap: 20px; }
+      .col-label { width: auto; }
+      .project-grid { grid-template-columns: 1fr; }
+
+      /* ── Case study pages ── */
       .carousel-header, .carousel-controls { padding-left: 20px; padding-right: 20px; }
       .carousel-wrapper { padding: 0 20px 0 0; }
       .carousel-card { width: 260px; }
       .c-thumb { height: 160px; }
-
-      /* ── General layout ── */
-      .wrap, .back-bar-inner, .nav-inner, .page-header, .about-page-header, .avail-row, .footer-inner { padding-left: 20px; padding-right: 20px; }
-      .section-row { flex-direction: column; gap: 20px; }
-      .col-label { width: auto; }
-      .project-grid { grid-template-columns: 1fr; }
-      .avail-row { flex-direction: column; align-items: flex-start; gap: 20px; }
     }
-  </style>
+  
+    /* ══════════════════════════════════════
+       MOBILE-ONLY HOME LAYOUT
+    ══════════════════════════════════════ */
+
+    /* Hidden on desktop, revealed on mobile */
+    .mobile-home { display: none; }
+
+    .mh-hero {
+      padding: 48px 20px 40px;
+      border-bottom: 1px solid var(--border);
+    }
+    .mh-h1 {
+      font-size: 38px;
+      font-weight: 400;
+      letter-spacing: -0.04em;
+      line-height: 1.08;
+      margin-bottom: 20px;
+    }
+    .mh-sub {
+      font-size: 14px;
+      color: var(--gray);
+      line-height: 1.8;
+    }
+
+    .mh-section {
+      padding: 32px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .mh-label {
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray);
+      font-weight: 500;
+      margin-bottom: 16px;
+    }
+    .mh-body {
+      font-size: 14px;
+      line-height: 1.8;
+      color: var(--black);
+      margin-bottom: 12px;
+    }
+    .mh-link {
+      font-size: 13px;
+      color: var(--black);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      padding: 0;
+      margin-top: 4px;
+      transition: color 0.15s;
+    }
+    .mh-link:hover { color: var(--accent); }
+
+    .mh-proj-group { margin-bottom: 24px; }
+    .mh-proj-group:last-child { margin-bottom: 0; }
+    .mh-proj-cat {
+      font-size: 11px;
+      color: var(--gray);
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      padding-bottom: 8px;
+    }
+    .mh-proj-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+      padding: 16px 0;
+      border-top: 1px solid var(--border);
+      border-left: none;
+      border-right: none;
+      border-bottom: none;
+      background: none;
+      cursor: pointer;
+      font-family: inherit;
+      text-align: left;
+    }
+    .mh-proj-row:last-child { border-bottom: 1px solid var(--border); }
+    .mh-proj-row:hover .mh-proj-name { color: var(--accent); }
+    .mh-proj-row:hover .mh-proj-arrow { transform: translate(3px, -3px); color: var(--accent); }
+    .mh-proj-name {
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--black);
+      letter-spacing: -0.02em;
+      flex: 1;
+      transition: color 0.15s;
+    }
+    .mh-proj-arrow {
+      font-size: 14px;
+      color: var(--gray);
+      flex-shrink: 0;
+      transition: transform 0.2s, color 0.15s;
+    }
+
+    .mh-cta {
+      padding: 48px 20px;
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+    }
+    .mh-cta-headline {
+      font-size: 34px;
+      font-weight: 400;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      margin-bottom: 28px;
+    }
+    .mh-cta-btn {
+      font-size: 13px;
+      color: var(--black);
+      background: none;
+      border: 1.5px solid var(--black);
+      cursor: pointer;
+      font-family: inherit;
+      padding: 12px 24px;
+      border-radius: 999px;
+      transition: background 0.15s, color 0.15s;
+    }
+    .mh-cta-btn:hover { background: var(--black); color: var(--white); }
+
+    /* ══ END MOBILE-ONLY HOME LAYOUT ══ */
+
+</style>
 </head>
 <body>
 
@@ -1574,7 +1696,64 @@
     </div>
     <hr class="divider">
 
-    <footer>
+    
+    <!-- ══ MOBILE-ONLY HOME LAYOUT ══ -->
+    <div class="mobile-home">
+
+      <!-- Hero -->
+      <div class="mh-hero">
+        <h1 class="mh-h1">I'm <span class="name">Varsha Bhide</span>,<br>a designer who thinks in systems</h1>
+        <p class="mh-sub">Specialising in interaction design and design systems — shaping how products feel and how teams scale them. From flows and micro-interactions to tokens and component libraries.</p>
+      </div>
+
+      <!-- About -->
+      <div class="mh-section">
+        <p class="mh-label">About me</p>
+        <p class="mh-body">UI/UX Designer with 8+ years of experience building enterprise digital products across healthcare, pharmaceutical, and content services — simplifying complex workflows through accessible, scalable design.</p>
+        <p class="mh-body">Most recently at OpenText, leading interaction design for enterprise applications — specialising in design systems, design tokens, and AI-assisted workflows.</p>
+        <button class="mh-link" onclick="navigate('about')">Read more →</button>
+      </div>
+
+      <!-- Projects -->
+      <div class="mh-section">
+        <p class="mh-label">All projects</p>
+
+        <div class="mh-proj-group">
+          <p class="mh-proj-cat">Design system</p>
+          <button class="mh-proj-row" onclick="navigate('thematic')">
+            <span class="mh-proj-name">Thematic.design 2026</span>
+            <span class="mh-proj-arrow">↗</span>
+          </button>
+        </div>
+
+        <div class="mh-proj-group">
+          <p class="mh-proj-cat">Product design</p>
+          <button class="mh-proj-row" onclick="navigate('safepassenger')">
+            <span class="mh-proj-name">SafePassenger — People Counting</span>
+            <span class="mh-proj-arrow">↗</span>
+          </button>
+          <button class="mh-proj-row" onclick="navigate('eps')">
+            <span class="mh-proj-name">Electronic Patient Service</span>
+            <span class="mh-proj-arrow">↗</span>
+          </button>
+          <button class="mh-proj-row" onclick="navigate('attendance')">
+            <span class="mh-proj-name">Attendance Management System</span>
+            <span class="mh-proj-arrow">↗</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Get in touch -->
+      <div class="mh-cta">
+        <p class="mh-label">Get in touch</p>
+        <h2 class="mh-cta-headline">Let's work together</h2>
+        <button class="mh-cta-btn" onclick="copyEmail()">varsha.ab@gmail.com →</button>
+      </div>
+
+    </div>
+    <!-- ══ END MOBILE-ONLY HOME LAYOUT ══ -->
+
+<footer>
       <div class="footer-inner">
         <span class="footer-text">© 2026 Varsha Bhide</span>
         <div class="footer-links">
