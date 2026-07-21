@@ -1160,7 +1160,7 @@
 
     @media (max-width: 640px) {
       .cs-wrap { padding: 0 20px 80px; }
-      .cs-title { font-size: 32px; }
+      .cs-title { font-size: 26px; line-height: 1.15; word-break: break-word; overflow-wrap: break-word; }
       .cs-two-col { grid-template-columns: 1fr; }
       .cs-screens-grid { grid-template-columns: 1fr; }
       .cs-meta-row { flex-wrap: wrap; gap: 20px; }
@@ -1459,17 +1459,13 @@
       .back-btn:hover { gap: 14px; }
       /* Back bar layout: button on left, title truncates on right */
       .back-bar-inner { display: flex; align-items: center; gap: 12px; overflow: hidden; }
-      .back-bar-inner > span:last-child {
-        font-size: 13px;
-        font-weight: 500;
-        color: var(--black);
+      .back-bar-title {
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
         flex: 1;
         min-width: 0;
       }
-      .back-bar-inner > span:not(:last-child) { flex-shrink: 0; }
 
       /* ── Case study accordion headers — bigger tap target ── */
       .ep-accordion-header {
@@ -2153,7 +2149,7 @@
         <span class="back-arrow">←</span> Work
       </button>
       <span style="width:1px; height:14px; background:var(--border); display:inline-block; flex-shrink:0;"></span>
-      <span style="font-size:13px; font-weight:500; color:var(--black);">Electronic Patient Service</span>
+      <span class="back-bar-title" style="font-size:13px; font-weight:500; color:var(--black);">Electronic Patient Service</span>
     </div>
   </div>
 
@@ -2387,7 +2383,7 @@
         <span class="back-arrow">←</span> Work
       </button>
       <span style="width:1px; height:14px; background:var(--border); display:inline-block; flex-shrink:0;"></span>
-      <span style="font-size:13px; font-weight:500; color:var(--black);">Thematic.design</span>
+      <span class="back-bar-title" style="font-size:13px; font-weight:500; color:var(--black);">Thematic.design</span>
     </div>
   </div>
 
@@ -2808,7 +2804,7 @@
         <span class="back-arrow">←</span> Work
       </button>
       <span style="width:1px; height:14px; background:var(--border); display:inline-block; flex-shrink:0;"></span>
-      <span style="font-size:13px; font-weight:500; color:var(--black);">Design Tokens</span>
+      <span class="back-bar-title" style="font-size:13px; font-weight:500; color:var(--black);">Design Tokens</span>
     </div>
   </div>
 
@@ -2981,7 +2977,7 @@
         <span class="back-arrow">←</span> Work
       </button>
       <span style="width:1px; height:14px; background:var(--border); display:inline-block; flex-shrink:0;"></span>
-      <span style="font-size:13px; font-weight:500; color:var(--black);">Design Systems</span>
+      <span class="back-bar-title" style="font-size:13px; font-weight:500; color:var(--black);">Design Systems</span>
     </div>
   </div>
 
@@ -3113,7 +3109,7 @@
     <div class="back-bar-inner">
       <button class="back-btn" onclick="navigate('projects')"><span class="back-arrow">←</span> Work</button>
       <span style="width:1px; height:14px; background:var(--border); display:inline-block; flex-shrink:0;"></span>
-      <span style="font-size:13px; font-weight:500; color:var(--black);">Design System Documentation</span>
+      <span class="back-bar-title" style="font-size:13px; font-weight:500; color:var(--black);">Design System Documentation</span>
     </div>
   </div>
     <div class="cs-wrap">
@@ -3229,7 +3225,7 @@
         <span class="back-arrow">←</span> Work
       </button>
       <span style="width:1px; height:14px; background:var(--border); display:inline-block; flex-shrink:0;"></span>
-      <span style="font-size:13px; font-weight:500; color:var(--black);">Attendance Management System</span>
+      <span class="back-bar-title" style="font-size:13px; font-weight:500; color:var(--black);">Attendance Management System</span>
     </div>
   </div>
     <div class="cs-wrap">
@@ -3840,7 +3836,7 @@
         <span class="back-arrow">←</span> Work
       </button>
       <span style="width:1px; height:14px; background:var(--border); display:inline-block; flex-shrink:0;"></span>
-      <span style="font-size:13px; font-weight:500; color:var(--black);">SafePassenger — People Counting</span>
+      <span class="back-bar-title" style="font-size:13px; font-weight:500; color:var(--black);">SafePassenger — People Counting</span>
     </div>
   </div>
 
