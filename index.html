@@ -2456,7 +2456,7 @@
           <div class="ep-block">
             <span class="ep-section-tag">Design Language</span>
             <p class="ep-body-text">Before any token was created, Thematic began with a Taste Profile — a written brief setting the emotional target for every decision that followed. The brief: a trusted senior colleague. Precise, warm, never loud.</p>
-            <div class="ep-accordion" onclick="epToggleAccordion(this)">
+            <div class="ep-accordion" onclick="epToggleAccordion(this, event)">
               <div class="ep-accordion-header">
                 <span class="ep-accordion-label">Five design principles</span>
                 <svg class="ep-accordion-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -2508,7 +2508,7 @@
                 <div style="padding-top:8px; font-size:13px; color:var(--gray); line-height:1.65;">Implementation-specific slots. Enables brand overrides and theming without touching component code.</div>
               </div>
             </div>
-            <div class="ep-accordion" onclick="epToggleAccordion(this)">
+            <div class="ep-accordion" onclick="epToggleAccordion(this, event)">
               <div class="ep-accordion-header">
                 <span class="ep-accordion-label">Interactive token chain — Primary Button</span>
                 <svg class="ep-accordion-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -2617,7 +2617,7 @@
             <div style="margin-top:12px; overflow-x:auto; overflow-y:hidden; border-radius:10px; border:1px solid var(--border); cursor:grab; -webkit-overflow-scrolling:touch;" id="compAllScroll">
               <img src="td-components-all.png" alt="All Thematic components — Data Display, Messaging, Overlays, Forms and Input, Navigation, Loading" style="display:block; height:360px; width:auto; max-width:none;">
             </div>
-            <div class="ep-accordion" onclick="epToggleAccordion(this)">
+            <div class="ep-accordion" onclick="epToggleAccordion(this, event)">
               <div class="ep-accordion-header">
                 <span class="ep-accordion-label">Component categories</span>
                 <svg class="ep-accordion-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -2639,7 +2639,7 @@
           <div class="ep-block">
             <span class="ep-section-tag">Documentation</span>
             <p class="ep-body-text">Every component ships with a structured anatomy specification — a five-layer format designed to be read as clearly by an AI tool as by a developer. Intent, Rules, Relationships, Configuration, and Tokens each answer a different question, together forming a complete machine-parseable description that goes well beyond visual specs.</p>
-            <div class="ep-accordion" onclick="epToggleAccordion(this)">
+            <div class="ep-accordion" onclick="epToggleAccordion(this, event)">
               <div class="ep-accordion-header">
                 <span class="ep-accordion-label">Button — anatomy for AI readability</span>
                 <svg class="ep-accordion-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -2720,7 +2720,7 @@
             <div style="margin-top:20px; border-radius:10px; border:1px dashed var(--border); background:var(--light); padding:40px 24px; text-align:center;">
               <p style="margin:0; font-size:13px; color:var(--gray); letter-spacing:0.01em;">Image coming soon</p>
             </div>
-            <div class="ep-accordion" onclick="epToggleAccordion(this)">
+            <div class="ep-accordion" onclick="epToggleAccordion(this, event)">
               <div class="ep-accordion-header">
                 <span class="ep-accordion-label">AI component list</span>
                 <svg class="ep-accordion-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -3395,7 +3395,7 @@
               </div>
             </div>
 
-            <div class="ep-accordion" onclick="epToggleAccordion(this)">
+            <div class="ep-accordion" onclick="epToggleAccordion(this, event)">
               <div class="ep-accordion-header">
                 <span class="ep-accordion-label">View all three personas in detail</span>
                 <svg class="ep-accordion-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -3557,7 +3557,7 @@
               <text transform="translate(21,140) rotate(-90)" font-size="9" font-family="ui-sans-serif,system-ui,sans-serif" fill="#d1d5db" text-anchor="middle">new hire triggers</text>
             </svg>
 
-            <div class="ep-accordion" onclick="epToggleAccordion(this)">
+            <div class="ep-accordion" onclick="epToggleAccordion(this, event)">
               <div class="ep-accordion-header">
                 <span class="ep-accordion-label">Application structure — four layers</span>
                 <svg class="ep-accordion-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -3663,7 +3663,7 @@
             <p class="ep-body-text">The attendance screen organises staff by department in a left-side rail. Each employee shows their live status — Present, Absent, Late, On Leave, Half-day — alongside kiosk check-in and check-out times. Clicking an employee opens an edit drawer with their last seven days of history, a Mark As dropdown, and fields to override times manually. When a leave approval conflicts with an attendance record, the system flags it automatically.</p>
             <div style="margin-top:20px; border-radius:10px; overflow:hidden; border:1px solid var(--border);"><img src="am-attendance-today.png" alt="Attendance screen — today's view" style="display:block; width:100%;"></div>
 
-            <div class="ep-accordion" onclick="epToggleAccordion(this)">
+            <div class="ep-accordion" onclick="epToggleAccordion(this, event)">
               <div class="ep-accordion-header">
                 <span class="ep-accordion-label">Edit attendance — user flow</span>
                 <svg class="ep-accordion-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -3681,7 +3681,7 @@
               <p style="font-size:13px; font-weight:700; color:var(--black); margin:0 0 8px; letter-spacing:0.01em;">Backlog</p>
               <p style="font-size:13px; line-height:1.7; color:var(--gray); margin:0 0 16px;">A dedicated tab for gap days and conflicting records that couldn't be resolved at the time of marking. Supervisors work through backlog items before month-end so nothing reaches payroll unchecked.</p>
               <div style="border-radius:10px; overflow:hidden; border:1px solid var(--border);"><img src="am-attendance-backlog.png" alt="Attendance — backlog tab" style="display:block; width:100%;"></div>
-              <div class="ep-accordion" onclick="epToggleAccordion(this)" style="margin-top:12px;">
+              <div class="ep-accordion" onclick="epToggleAccordion(this, event)" style="margin-top:12px;">
                 <div class="ep-accordion-header">
                   <span class="ep-accordion-label">Backlog resolution — user flow</span>
                   <svg class="ep-accordion-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -3708,7 +3708,7 @@
             <span class="ep-section-tag">Leaves</span>
             <p class="ep-body-text">The Leave and Time Off screen is where managers and supervisors handle all leave requests across the team. Sick Leave and Casual Leave can be applied, approved, rejected, or reversed from a single interface, with a calendar view to check coverage before confirming. An approved leave automatically updates the corresponding attendance record — no manual reconciliation.</p>
             <div style="margin-top:20px; border-radius:10px; overflow:hidden; border:1px solid var(--border);"><img src="am-leave-timeoff.png" alt="Leave and Time Off screen" style="display:block; width:100%;"></div>
-            <div class="ep-accordion" onclick="epToggleAccordion(this)" style="margin-top:12px;">
+            <div class="ep-accordion" onclick="epToggleAccordion(this, event)" style="margin-top:12px;">
               <div class="ep-accordion-header">
                 <span class="ep-accordion-label">Leave approval — user flow</span>
                 <svg class="ep-accordion-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -3800,7 +3800,9 @@
         </div>
 
         <script>
-          function epToggleAccordion(el) {
+          function epToggleAccordion(el, event) {
+            // Only toggle when click originates from the header — not from interactive content inside the body
+            if (event && !event.target.closest('.ep-accordion-header')) return;
             const body = el.querySelector('.ep-accordion-body');
             const chevron = el.querySelector('.ep-accordion-chevron');
             const isOpen = body.style.display !== 'none';
@@ -3874,7 +3876,7 @@
       </div>
 
       <!-- At a glance accordion -->
-      <div class="ep-accordion" onclick="epToggleAccordion(this)" style="margin-bottom:8px;">
+      <div class="ep-accordion" onclick="epToggleAccordion(this, event)" style="margin-bottom:8px;">
         <div class="ep-accordion-header">
           <span class="ep-accordion-label">At a glance</span>
           <svg class="ep-accordion-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -3927,7 +3929,7 @@
         </div>
 
         <!-- Primary research: Stakeholder interviews -->
-        <div class="ep-accordion" onclick="epToggleAccordion(this)" style="margin-top:16px;">
+        <div class="ep-accordion" onclick="epToggleAccordion(this, event)" style="margin-top:16px;">
           <div class="ep-accordion-header">
             <span class="ep-accordion-label">Primary research — stakeholder interviews</span>
             <svg class="ep-accordion-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -3952,7 +3954,7 @@
         </div>
 
         <!-- Primary research: Contextual inquiry -->
-        <div class="ep-accordion" onclick="epToggleAccordion(this)" style="margin-top:8px;">
+        <div class="ep-accordion" onclick="epToggleAccordion(this, event)" style="margin-top:8px;">
           <div class="ep-accordion-header">
             <span class="ep-accordion-label">Primary research — contextual inquiry</span>
             <svg class="ep-accordion-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -3977,7 +3979,7 @@
         </div>
 
         <!-- Mental model diagram -->
-        <div class="ep-accordion" onclick="epToggleAccordion(this)" style="margin-top:8px;">
+        <div class="ep-accordion" onclick="epToggleAccordion(this, event)" style="margin-top:8px;">
           <div class="ep-accordion-header">
             <span class="ep-accordion-label">Workshop insight — Mental model, 5 actors</span>
             <svg class="ep-accordion-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -4007,7 +4009,7 @@
         </div>
 
         <!-- User needs / JTBD -->
-        <div class="ep-accordion" onclick="epToggleAccordion(this)" style="margin-top:16px;">
+        <div class="ep-accordion" onclick="epToggleAccordion(this, event)" style="margin-top:16px;">
           <div class="ep-accordion-header">
             <span class="ep-accordion-label">User needs — jobs to be done</span>
             <svg class="ep-accordion-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -4031,7 +4033,7 @@
         </div>
 
         <!-- Requirements / Opportunity areas + metrics -->
-        <div class="ep-accordion" onclick="epToggleAccordion(this)" style="margin-top:8px;">
+        <div class="ep-accordion" onclick="epToggleAccordion(this, event)" style="margin-top:8px;">
           <div class="ep-accordion-header">
             <span class="ep-accordion-label">Requirements — opportunity areas &amp; success metrics</span>
             <svg class="ep-accordion-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -4097,7 +4099,7 @@
           </div>
         </div>
         <!-- Persona -->
-        <div class="ep-accordion" onclick="epToggleAccordion(this)" style="margin-top:8px;">
+        <div class="ep-accordion" onclick="epToggleAccordion(this, event)" style="margin-top:8px;">
           <div class="ep-accordion-header">
             <span class="ep-accordion-label">Personas in short</span>
             <svg class="ep-accordion-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -4120,7 +4122,7 @@
           </div>
         </div>
 
-        <div class="ep-accordion" onclick="epToggleAccordion(this)" style="margin-top:8px;">
+        <div class="ep-accordion" onclick="epToggleAccordion(this, event)" style="margin-top:8px;">
           <div class="ep-accordion-header">
             <span class="ep-accordion-label">View all three personas in detail</span>
             <svg class="ep-accordion-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -4230,7 +4232,7 @@
         </div>
 
         <!-- HMW accordion -->
-        <div class="ep-accordion" onclick="epToggleAccordion(this)" style="margin-top:16px;">
+        <div class="ep-accordion" onclick="epToggleAccordion(this, event)" style="margin-top:16px;">
           <div class="ep-accordion-header">
             <span class="ep-accordion-label">How Might We — 4 questions that framed the work</span>
             <svg class="ep-accordion-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -4246,7 +4248,7 @@
         </div>
 
         <!-- Design decisions accordion -->
-        <div class="ep-accordion" onclick="epToggleAccordion(this)" style="margin-top:8px;">
+        <div class="ep-accordion" onclick="epToggleAccordion(this, event)" style="margin-top:8px;">
           <div class="ep-accordion-header">
             <span class="ep-accordion-label">Design decisions — insight to decision</span>
             <svg class="ep-accordion-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -4274,7 +4276,7 @@
         </div>
 
         <!-- Competitor analysis accordion -->
-        <div class="ep-accordion" onclick="epToggleAccordion(this)" style="margin-top:8px;">
+        <div class="ep-accordion" onclick="epToggleAccordion(this, event)" style="margin-top:8px;">
           <div class="ep-accordion-header">
             <span class="ep-accordion-label">Competitor analysis — where SafePassenger sits</span>
             <svg class="ep-accordion-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -4385,7 +4387,7 @@
         </div>
 
         <!-- Role access accordion -->
-        <div class="ep-accordion" onclick="epToggleAccordion(this)" style="margin-top:8px;">
+        <div class="ep-accordion" onclick="epToggleAccordion(this, event)" style="margin-top:8px;">
           <div class="ep-accordion-header">
             <span class="ep-accordion-label">Role-based access — POO vs Bus Operator</span>
             <svg class="ep-accordion-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
